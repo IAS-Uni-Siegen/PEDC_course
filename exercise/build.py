@@ -56,7 +56,6 @@ def build_pdf(with_solution):
     call(call_pdflatex_l)
     call(call_pdflatex_l)
 
-
 # go into the parent directory
 os.chdir('..')
 os.makedirs('built', exist_ok=True)
