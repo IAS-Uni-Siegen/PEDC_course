@@ -4,7 +4,8 @@
 [![CC BY 4.0][cc-by-shield]][cc-by]
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
-[//]: # [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14215441.svg)](https://doi.org/10.5281/zenodo.14215441)
+<!-- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14215441.svg)](https://doi.org/10.5281/zenodo.14215441) -->
+
 
 
 
@@ -40,8 +41,8 @@ The covered topics are:
 
 | Exam       | Only Tasks                                  | Tasks with Solutions                            |
 |------------|---------------------------------------------|-------------------------------------------------|
-| Summer 2024       | [Only Tasks](https://ias-uni-siegen.github.io/EMD_course/summer2024.pdf)   | [Tasks with Solutions](https://ias-uni-siegen.github.io/EMD_course/summer2024_with_solution.pdf) |
-| Summer 2024 (mock-up)| [Only Tasks](https://ias-uni-siegen.github.io/EMD_course/summer2024_mock-up.pdf)   | [Tasks with Solutions](https://ias-uni-siegen.github.io/EMD_course/summer2024_mock-up_with_solution.pdf) |
+| Summer 2025       | [Only Tasks](https://ias-uni-siegen.github.io/EMD_course/summer2024.pdf)   | [Tasks with Solutions](https://ias-uni-siegen.github.io/EMD_course/summer2024_with_solution.pdf) |
+| Summer 2025 (mock-up)| [Only Tasks](https://ias-uni-siegen.github.io/EMD_course/summer2024_mock-up.pdf)   | [Tasks with Solutions](https://ias-uni-siegen.github.io/EMD_course/summer2024_mock-up_with_solution.pdf) |
 
 
 ## Citation
