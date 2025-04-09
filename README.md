@@ -52,7 +52,6 @@ See "Cite this repository" info box on the top-right or use the following BibTeX
 ```
 @misc{Sah_PEDC_2025,
     author = {Sah, Bikash},
-    doi = {10.5281/zenodo.14215440},
     title = {{Power Electronics Devices (and Components)}},
     url = {https://github.com/IAS-Uni-Siegen/EMD_course},
     year = {2025}
