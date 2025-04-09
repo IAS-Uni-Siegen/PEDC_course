@@ -30,7 +30,7 @@ The covered topics are:
 - Passive components- capacitors, inductors, and passive filters
 - Way forward in power semiconductors- packaging, thermal, reliability and faults. 
 
-Exercises will be added later!
+Exercises will be added later.
 <!--
 ## Exercise tasks (click on preview picture)
 <a href="https://ias-uni-siegen.github.io/EMD_course/exercise.pdf" target="_blank" class="image fit"><img src="misc/Exercise_preview.png" alt=""></a>
