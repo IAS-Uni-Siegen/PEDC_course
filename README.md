@@ -8,7 +8,6 @@
 
 
 
-
 This work is licensed under a
 [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by].
 
@@ -22,14 +21,14 @@ This work is licensed under a
 <a href="https://ias-uni-siegen.github.io/EMD_course/lecture.pdf" target="_blank" class="image fit"><img src="misc/Lecture_preview.png" alt=""></a>
 
 The covered topics are:
-- An initial overview of electrical machines and drives
-- Fundamental electromagnetic principles and magnetic materials
-- DC machines
-- Transformers
-- Rotating field theory
-- Induction machines
-- Synchronous machines
-- semiconductors
+- An initial overview of power electronics devices and components
+- Fundamental semiconductor physics
+- pn junctions
+- Introduction to power semiconductors- P-i-N diodes, Schottky, and BJTs 
+- Conventional power semiconductors- Thyristors, MPSFETs, and BJTs
+- Next generation power semiconductors- Wide bandgap devices and gate drive networks
+- Passive components- capacitors, inductors, and passive filters
+- Way forward in power semiconductors- packaging, thermal, reliability and faults. 
 
 ## Exercise tasks (click on preview picture)
 <a href="https://ias-uni-siegen.github.io/EMD_course/exercise.pdf" target="_blank" class="image fit"><img src="misc/Exercise_preview.png" alt=""></a>
@@ -37,22 +36,23 @@ The covered topics are:
 ## Exercise tasks including solutions (click on preview picture)
 <a href="https://ias-uni-siegen.github.io/EMD_course/exercise_with_solution.pdf" target="_blank" class="image fit"><img src="misc/Exercise_with_solution_preview.png" alt=""></a>
 
-## Exam history
+<!--## Exam history
 
 | Exam       | Only Tasks                                  | Tasks with Solutions                            |
 |------------|---------------------------------------------|-------------------------------------------------|
 | Summer 2025       | [Only Tasks](https://ias-uni-siegen.github.io/EMD_course/summer2024.pdf)   | [Tasks with Solutions](https://ias-uni-siegen.github.io/EMD_course/summer2024_with_solution.pdf) |
 | Summer 2025 (mock-up)| [Only Tasks](https://ias-uni-siegen.github.io/EMD_course/summer2024_mock-up.pdf)   | [Tasks with Solutions](https://ias-uni-siegen.github.io/EMD_course/summer2024_mock-up_with_solution.pdf) |
+-->
 
 
 ## Citation
 See "Cite this repository" info box on the top-right or use the following BibTeX entry for citing it:
 ```
-@misc{Wallscheid_Fundamentals_of_electrical_2024,
-    author = {Wallscheid, Oliver and Hölsch, Lukas},
+@misc{Sah_PEDC_2025,
+    author = {Sah, Bikash},
     doi = {10.5281/zenodo.14215440},
-    title = {{Fundamentals of electrical machines and drives}},
+    title = {{Power Electronics Devices (and Components)}},
     url = {https://github.com/IAS-Uni-Siegen/EMD_course},
-    year = {2024}
+    year = {2025}
 }
 ```
