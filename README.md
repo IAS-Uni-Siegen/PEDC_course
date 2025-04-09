@@ -28,6 +28,7 @@ The covered topics are:
 - Rotating field theory
 - Induction machines
 - Synchronous machines
+- semiconductors
 
 ## Exercise tasks (click on preview picture)
 <a href="https://ias-uni-siegen.github.io/EMD_course/exercise.pdf" target="_blank" class="image fit"><img src="misc/Exercise_preview.png" alt=""></a>
