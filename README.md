@@ -18,7 +18,7 @@ This work is licensed under a
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
 ## Lecture slides (click on preview picture)
-<a href="https://github.com/optibikash/PEDC_course/lecture.pdf" target="_blank" class="image fit"><img src="misc/Lecture_preview.png" alt=""></a>
+<a href="https://ias-uni-siegen.github.io/PEDC_course/lecture.pdf" target="_blank" class="image fit"><img src="misc/Lecture_preview.png" alt=""></a>
 
 The covered topics are:
 - An initial overview of power electronics devices and components
