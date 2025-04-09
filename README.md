@@ -1,4 +1,4 @@
-# Fundamentals of electrical machines and drives course
+# Power Electronics Devices (and Components)
 
 [![Build Status](https://github.com/IAS-Uni-Siegen/EMD_Course/actions/workflows/BuildPDFs.yml/badge.svg)](https://github.com/IAS-Uni-Siegen/EMD_Course/actions/workflows/BuildPDFs.yml)
 [![CC BY 4.0][cc-by-shield]][cc-by]
