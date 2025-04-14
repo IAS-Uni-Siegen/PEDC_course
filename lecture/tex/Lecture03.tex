@@ -198,7 +198,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Electric field intensity in space charge regions %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Electric Field Intensity in the scpace charge region}
+\begin{frame}{Electric Field Intensity in the space charge region}
     \begin{itemize}
         \item \textbf{Electric field direction:}
         \begin{itemize}
@@ -300,4 +300,83 @@
             \item \textit{Logarithmic dependence allows efficient doping control of $V_{bi}$.}
         \end{itemize}
     \end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Biasing of p-n junctions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Biasing of p-n junctions}
+	\textbf{All discussions in the previous slides were based on the assumption of thermal equilibrium and no external fields.} \\
+	The behavior of a p-n junction can be controlled by applying an external voltage across the junction. This is known as \textbf{biasing}. \\
+	\textbf{Biasing} refers to the application of an external voltage across a p-n junction to control its operation. The two main types of biasing are:
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item \textbf{Forward Bias:} Positive voltage applied to the p-side and negative voltage to the n-side.
+			\end{itemize}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=1]{fig/lec03/pn_forward_bias.pdf}
+				\caption{Forward bias of a p-n junction.}
+				\label{fig:forward_bias_pn_junction}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item \textbf{Reverse Bias:} Positive voltage applied to the n-side and negative voltage to the p-side.
+			\end{itemize}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=1]{fig/lec03/pn_reverse_bias.pdf}
+				\caption{Reverse bias of a p-n junction.}
+				\label{fig:reverse_bias_pn_junction}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Reverse bias in a \textit{p-n} Junction}
+    \textbf{Key Concept:} Reverse bias widens the depletion region and blocks majority carrier flow.
+    \begin{itemize}
+        \item \textbf{Biasing:} Negative terminal to $p$-side, positive to $n$-side (Fig. 3-2a).
+        \item \textbf{Effect:} Drives majority carriers (holes in $p$, electrons in $n$) \textit{away} from the junction.
+        \item \textbf{Depletion Region:} Widens due to carrier drift, increasing the electric field barrier.
+        \item \textbf{Steady State:} Cannot sustain continuous diffusion without replenishment $\Rightarrow$ nominally zero current.
+        \item \textbf{Reverse Saturation Current $I_0$:}
+        \begin{itemize}
+            \item Small current due to minority carriers thermally generated.
+            \item $I_0$ increases with temperature, but is \textit{independent} of applied reverse voltage.
+        \end{itemize}
+        \item \textbf{Physical Insight:} Potential barrier increases by $qV \Rightarrow$ blocks majority carriers, but allows minority carriers to flow.
+		\item \textbf{Reverse Bias Breakdown:} If reverse voltage exceeds a critical value, breakdown occurs (Zener or avalanche breakdown).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Forward bias in a \textit{p-n} Junction}
+	\begin{columns}
+		\begin{column}{0.7\textwidth}
+			\textbf{Key Concept:} Forward bias lowers the potential barrier and allows majority carrier injection.
+			\begin{itemize}
+				\item \textbf{Biasing:} Positive terminal to $p$-side, negative to $n$-side.
+				\item \textbf{Effect:} Lowers the junction barrier height by $qV$, aiding carrier diffusion.
+				\item \textbf{Depletion Region:} Narrows, reducing the internal electric field.
+				\item \textbf{Carrier Movement:}
+				\begin{itemize}
+					\item Holes from $p$ move into $n$-side $\Rightarrow$ \textit{injected minority current}
+					\item Electrons from $n$ move into $p$-side $\Rightarrow$ \textit{minority current in opposite direction}
+				\end{itemize}
+				\item \textbf{Current Flow:} Resultant current = sum of hole and electron minority currents.
+				\item \textbf{Diode Equation:} $I = I_0 \left(e^{qV/kT} - 1\right)$ (derived later)
+    	\end{itemize}
+	\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=1]{fig/lec03/pn_forward_bias.pdf}
+				\caption{Forward bias of a p-n junction.}
+				\label{fig:forward_bias_pn_junction}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
