@@ -423,3 +423,43 @@
 	\item They ensure that changes in applied voltage affect only the junction, not the metal-semiconductor interfaces.
 \end{itemize}
 \end{frame}
+
+
+\begin{frame}{\textbf{Short-Circuited and Open-Circuited \textit{p-n} Junction}}
+    \textbf{Physical Insight:} The behavior of a \textit{p-n} junction under short-circuit ($V = 0$) or open-circuit conditions ($I = 0$) reveals fundamental principles of equilibrium electrostatics and energy conservation.
+
+    \vspace{0.7em}
+    \textbf{Key Points:}
+    \begin{itemize}
+        \item When $V = 0$ is applied across the \textit{p-n} diode (Fig. \ref{fig:forward_bias_pn_junction} or Fig. \ref{fig:reverse_bias_pn_junction}), the junction is \textbf{short-circuited}.
+        \item Under thermal equilibrium, this implies:
+        \begin{itemize}
+            \item Net current $I = 0$
+            \item Junction potential $V_0$ remains unchanged.
+        \end{itemize}
+
+        \item \textbf{Energy conservation argument:}
+        \begin{itemize}
+            \item If current $I \neq 0$, metal wire heats up.
+            \item No external energy source exists, so energy must come from \textit{p-n} bar $\Rightarrow$ thermal cooling of bar.
+            \item \textbf{Contradiction:} Can't have metal heating and bar cooling simultaneously in equilibrium.
+            \item \textbf{Conclusion:} $I = 0$
+        \end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{Short-Circuited and Open-Circuited \textit{p-n} Junction}}
+	\begin{itemize}
+	\item \textbf{Voltage Loop Consistency:}
+	\begin{itemize}
+		\item Total voltage drop across closed loop must be zero.
+		\item $V_0$ is exactly compensated by contact potentials at ohmic contacts.
+		\item Even if wire is cut, voltage drop remains zero.
+	\end{itemize}
+
+	\item \textbf{Implication:} $V_0$ cannot be measured directly by a voltmeter.
+	\end{itemize}
+
+	\vspace{0.7em}
+	\textbf{Conclusion:} \textit{Built-in potential $V_0$ exists, but is internally balanced by metal-semiconductor junctions; it is not externally measurable.}
+\end{frame}
