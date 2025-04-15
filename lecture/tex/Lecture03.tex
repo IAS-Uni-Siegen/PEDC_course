@@ -336,6 +336,10 @@
 	\end{columns}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Reverse bias of p-n junctions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}{Reverse bias in a \textit{p-n} Junction}
     \textbf{Key Concept:} Reverse bias widens the depletion region and blocks majority carrier flow.
     \begin{itemize}
@@ -352,6 +356,10 @@
 		\item \textbf{Reverse Bias Breakdown:} If reverse voltage exceeds a critical value, breakdown occurs (Zener or avalanche breakdown).
     \end{itemize}
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Forward bias of p-n junctions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Forward bias in a \textit{p-n} Junction}
 	\begin{columns}
@@ -379,4 +387,39 @@
 			\end{figure}
 		\end{column}
 	\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ohmic contacts in of p-n junctions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{\textbf{Ohmic Contacts in \textit{p-n} Junctions}}
+    \textbf{Definition:} \textit{Ohmic contacts} are special metal-semiconductor interfaces engineered to allow current to flow freely in both directions, without rectification behavior.
+
+    \vspace{1em}
+    \textbf{Key Assumptions:}
+    \begin{itemize}
+        \item In practical \textit{p-n} diodes, external bias is applied via metal contacts to both the $p$ and $n$ regions.
+        \item These contacts create metal-semiconductor junctions — which, in general, could have their own contact potential.
+        \item \textbf{Ohmic contacts} are designed to ensure:
+        \begin{itemize}
+            \item Contact potential remains \textbf{constant}, irrespective of current direction or magnitude.
+            \item There is \textbf{no barrier to carrier flow} at the metal-semiconductor interface.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{Ohmic Contacts in \textit{p-n} Junctions cont..}}
+\textbf{Physical Insight:}
+\textbf{Justification of Bias Assumption:}
+\begin{itemize}
+	\item Because the ohmic contacts are nonrectifying and the voltage drop across the bulk crystal is negligible,
+	\item $\Rightarrow$ \textbf{Entire external bias appears across the \textit{p-n} junction barrier.}
+	\item This simplifies analysis: bias voltage directly modifies the potential barrier height.
+\end{itemize}
+\textbf{Conclusion:}
+\begin{itemize}
+	\item Ohmic contacts are \textbf{essential} for accurate modeling of diode behavior under applied bias.
+	\item They ensure that changes in applied voltage affect only the junction, not the metal-semiconductor interfaces.
+\end{itemize}
 \end{frame}
