@@ -463,3 +463,379 @@
 	\vspace{0.7em}
 	\textbf{Conclusion:} \textit{Built-in potential $V_0$ exists, but is internally balanced by metal-semiconductor junctions; it is not externally measurable.}
 \end{frame}
+
+
+\begin{frame}{The current components in a \textit{p-n} Junction}
+\begin{columns}
+		\begin{column}{0.225\textwidth}
+	\textbf{Key Idea: Minority carrier injection under forward bias}
+	\begin{itemize}
+		\item When a forward voltage $V$ is applied:
+		\begin{itemize}
+			\item Holes are injected from $p$ to $n$ region.
+			\item Electrons are injected from $n$ to $p$ region.
+		\end{itemize}
+	\end{itemize}
+\end{column}
+\begin{column}{0.775\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.325]{fig/lec03/current_component_in_pn_junction.png}
+		\caption{The hole- and electron-current diffusion components vs. distance in a p-n junction diode; adapted from Millman, J., \& Halkias, C. C. Integrated Electronics: Analog and Digital Circuits and Systems.}
+		\label{fig:plot_of_pn_junction_current}
+	\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Minority Currents in a \textit{p-n} Junction}
+	\begin{itemize}
+\item Minority carrier current in $n$-type region:
+\begin{equation} \label{eq:minority_current_n_region}
+	I_{pn}(0) = \frac{AqD_p}{L_p} \left[ p_n(0) - p_{n0} \right]
+\end{equation}
+where:
+\begin{itemize}
+	\item $D_p$ = hole diffusion coefficient
+	\item $L_p$ = hole diffusion length
+	\item $p_n(0)$ = hole concentration at $x = 0$
+	\item $p_{n0}$ = equilibrium minority hole concentration
+\end{itemize}
+\item From law of the junction:
+\begin{equation} \label{eq:law_of_junction}
+	p_n(0) = p_{n0} e^{\frac{V}{V_T}} \quad
+\end{equation}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Minority Currents in a \textit{p-n} Junction}
+	\begin{itemize}
+	\item Substituting Eq. \ref{eq:law_of_junction} into Eq. \ref{eq:minority_current_n_region} gives:
+	\begin{equation}
+		I_{pn}(0) = \frac{AqD_p p_{n0}}{L_p} \left( e^{\frac{V}{V_T}} - 1 \right)
+	\end{equation}
+
+	\item Similarly for electron diffusion:
+	\begin{equation}
+		I_{np}(0) = \frac{AqD_n n_{p0}}{L_n} \left( e^{\frac{V}{V_T}} - 1 \right)
+	\end{equation}
+
+	\item \textbf{Total diode current:}
+	\begin{equation}
+		I = I_0 \left( e^{\frac{V}{V_T}} - 1 \right)
+	\end{equation}
+	where:
+	\begin{equation*}
+		I_0 = \frac{Aq}{L_p} D_p p_{n0} + \frac{Aq}{L_n} D_n n_{p0}
+	\end{equation*}
+	\item $I_0$ is the reverse saturation current.
+	\end{itemize}
+\end{frame}	
+
+	
+\begin{frame}{Majority Carrier Currents and Total Current Distribution}
+	\begin{columns}
+		\begin{column}{0.225\textwidth}
+	\textbf{Current Continuity and Carrier Profile:}
+	\begin{itemize}
+		\item Under forward bias, minority carrier current varies with $x$:
+		\begin{itemize}
+			\item $I_{pn}(x)$ (hole current) decreases exponentially in $n$-region.
+			\item $I_{np}(x)$ (electron current) decreases exponentially in $p$-region.
+		\end{itemize}
+	\end{itemize}
+\end{column}
+		\begin{column}{0.775\textwidth}
+	\begin{figure}	
+		\centering
+		\includegraphics[scale=0.325]{fig/lec03/majority_and_minority_vs_distance.png}
+		\caption{The minority (solid) end the majority (dashed) currents vs. distance
+		in a p-n diode. lt is assumed that no recombination takes place in the very	narrow depletion region.; adapted from Millman, J., \& Halkias, C. C. Integrated Electronics: Analog and Digital Circuits and Systems.}
+		\label{fig:minority_and_majority_current}
+	\end{figure}
+	\end{column}
+	\end{columns}
+\end{frame}
+
+
+\begin{frame}{Majority Carrier Currents and Total Current Distribution}
+\begin{itemize}
+\item \textbf{To maintain constant total current $I$ across the junction:}
+\begin{equation}
+	I_{nn}(x) = I - I_{pn}(x), \quad I_{pp}(x) = I - I_{np}(x)
+\end{equation}
+where:
+\begin{itemize}
+	\item $I_{nn}(x)$ is majority (electron) current in $n$ region
+	\item $I_{pp}(x)$ is majority (hole) current in $p$ region
+\end{itemize}
+
+\item \textbf{Total current is bipolar in nature}:
+\begin{itemize}
+	\item Composed of hole and electron contributions
+	\item Varies spatially due to recombination
+\end{itemize}
+\item Transition region assumed to have negligible recombination width (valid for Si)
+\end{itemize}
+\end{frame}
+
+	\begin{frame}{Volt-Ampere Characteristic of a \textit{p-n} Diode}
+	\textbf{General Current Equation:}
+	\begin{equation}
+		I = I_0 \left( e^{\frac{V}{\eta V_T}} - 1 \right)
+	\end{equation}
+	\begin{itemize}
+		\item $I_0$ = reverse saturation current
+		\item $V$ = applied voltage
+		\item $V_T = \frac{kT}{q}$ = thermal voltage ($\approx 26$ mV at 300 K)
+		\item $\eta$ = ideality factor ($\approx 1$ for Ge, $\approx 2$ for Si)
+	\end{itemize}
+	
+	\textbf{Interpretation:}
+	\begin{itemize}
+		\item For $V \gg V_T$: exponential current rise (forward bias)
+		\item For $V < 0$: $I \approx -I_0$ (reverse saturation current)
+	\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{\textbf{Reverse Saturation Current and Breakdown Behavior}}
+	\begin{columns}
+		\begin{column}{0.25\textwidth}
+    	\begin{itemize}
+        \item \textbf{Reverse Saturation Current} ($I_0$):
+        \begin{itemize}
+            \item For reverse bias $V < 0$, diode current saturates to $I = -I_0$.
+            \item $I_0$ is weakly dependent on reverse voltage.
+            \item Caused by thermally generated minority carriers.
+            \item Germanium diodes have $I_0$ \textasciitilde{}1000x larger than silicon.
+        \end{itemize}
+	\end{itemize}
+		\end{column}
+		\begin{column}{0.75\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.25]{fig/lec03/VI_characteristics.png}
+		\caption{The volt-ampere characteristic of an ideal p-n diode and the volt-ampere characteristic for a germanium; adapted from Millman, J., \& Halkias, C. C. Integrated Electronics: Analog and Digital Circuits and Systems.}
+		\label{fig:diode_characteristics}
+	\end{figure}
+	\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{\textbf{Reverse Saturation Current and Breakdown Behavior}}
+	\begin{columns}
+		\begin{column}{0.225\textwidth}
+\begin{itemize}
+	\item \textbf{Breakdown Region:}
+	\begin{itemize}
+		\item At a reverse voltage $V_Z$, breakdown occurs $\Rightarrow$ sudden increase in $I$.
+		\item Caused by impact ionization or Zener effect.
+		\item Fig. 3-6b illustrates abrupt transition at $V_Z$.
+	\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}{0.775\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.25]{fig/lec03/VI_characteristics.png}
+		\caption{The volt-ampere characteristic of an ideal p-n diode and the volt-ampere characteristic for a germanium; adapted from Millman, J., \& Halkias, C. C. Integrated Electronics: Analog and Digital Circuits and Systems.}
+		\label{fig:diode_characteristics}
+	\end{figure}
+	\end{column}
+	\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{\textbf{Cut-in Voltage and Material Comparison}}
+	\begin{columns}
+		\begin{column}{0.35\textwidth}
+    \begin{itemize}
+        \item \textbf{Cut-in / Threshold Voltage ($V_\gamma$):}
+        \begin{itemize}
+            \item Minimum forward bias for noticeable current.
+            \item Typically $V_\gamma \approx 0.2$ V (Ge), $\approx 0.6$ V (Si).
+            \item Beyond $V_\gamma$, current increases rapidly $\Rightarrow$ exponential growth.
+        \end{itemize}
+	\end{itemize}
+\end{column}
+\begin{column}{0.65\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.25]{fig/lec03/VI_character_Si_Ge.png}
+		\caption{Forward VI characteristics of Si and Ge; adapted from Millman, J., \& Halkias, C. C. Integrated Electronics: Analog and Digital Circuits and Systems.}
+		\label{fig:Si_Ge_diode_characteristics}
+	\end{figure}
+	\end{column}
+	\end{columns}
+\end{frame}
+
+
+\begin{frame}{\textbf{Cut-in Voltage and Material Comparison}}
+	\begin{columns}
+		\begin{column}{0.35\textwidth}
+    \begin{itemize}
+        \item \textbf{Material Differences:}
+        \begin{itemize}
+            \item Ge diodes: Lower $V_\gamma$, larger $I_0$, steeper characteristics.
+            \item Si diodes: Higher $V_\gamma$, lower $I_0$, more thermal stability.
+        \end{itemize}
+        \item \textbf{Fig. 3-7:} Comparative $I$-$V$ of 1N270 (Ge) vs 1N3605 (Si).
+    \end{itemize}
+\end{column}
+\begin{column}{0.65\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.25]{fig/lec03/VI_character_Si_Ge.png}
+		\caption{Forward VI characteristics of Si and Ge; adapted from Millman, J., \& Halkias, C. C. Integrated Electronics: Analog and Digital Circuits and Systems.}
+		\label{fig:Si_Ge_diode_characteristics}
+	\end{figure}
+	\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{\textbf{Temperature Dependence and $I_0$}}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+    \begin{itemize}
+        \item $I_0$ increases with temperature:
+        \begin{itemize}
+            \item $I_0(T) = I_{01} \times 2^{(T - T_1)/10}$
+            \item $\Rightarrow$ doubles for every $10^\circ$C rise.
+        \end{itemize}
+        \item \textbf{Thermal Impact:}
+        \begin{itemize}
+            \item $V_T = \frac{T}{11600}$ V
+            \item At room temp ($300K$), $V_T = 26$ mV
+            \item $\left|\frac{dV}{dT}\right| \approx 2.5$ mV/$^\circ$C
+        \end{itemize}
+        \item Fig. 3-8 shows $I$-$V$ shifts with temperature: Higher $T \Rightarrow$ lower $V_\gamma$
+    \end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.225]{fig/lec03/Temp_dependance.png}
+		\caption{VI characteristics at three different	temperatures for a silicon
+		diode; adapted from Millman, J., \& Halkias, C. C. Integrated Electronics: Analog and Digital Circuits and Systems.}
+		\label{fig:temp_Si_diode_characteristics}
+	\end{figure}
+	\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{\textbf{Diode Resistance and Piecewise Linear Model}}
+    \begin{itemize}
+        \item \textbf{Static Resistance:} $R = V/I$ \textemdash{} not reliable.
+        \item \textbf{Dynamic Resistance:}
+        \begin{equation*}
+            r = \frac{\eta V_T}{I}
+        \end{equation*}
+        \item \textbf{Dynamic Conductance:}
+        \begin{equation*}
+            g = \frac{1}{r} = \frac{I + I_0}{\eta V_T}
+        \end{equation*}
+        \item \textbf{Piecewise Linear Model:}
+        \begin{itemize}
+            \item Diode \textasciitilde{} open circuit if $V < V_\gamma$
+            \item For $V > V_\gamma$: $r = dV/dI$ constant $\Rightarrow$ $R_f$
+            \item Fig. 3-9: Diode modeled with $V_\gamma$ and slope $1/R_f$
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{Transition Capacitance ($C_T$)}}
+    \begin{itemize}
+        \item Under reverse bias, depletion region widens $\Rightarrow$ increase in uncovered charge.
+        \item Defined as:
+        \begin{equation*}
+            C_T = \left| \frac{dQ}{dV} \right|
+        \end{equation*}
+        \item \textbf{Corresponding Current:}
+        \begin{equation*}
+            i = C_T \frac{dV}{dt}
+        \end{equation*}
+        \item $C_T$ is voltage dependent, unlike a linear capacitor.
+        \item Important in high-frequency and switching circuits.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{\textbf{Diffusion Capacitance: Concept and Static Derivation}}
+	\begin{itemize}
+		\item \textbf{When forward biased:}
+		\begin{itemize}
+			\item Excess charge is injected into the neutral region.
+			\item Results in large capacitance — called \textbf{diffusion capacitance}, $C_D$.
+		\end{itemize}
+		
+		\item \textbf{Definition:}
+		\[
+		C_D = \left. \frac{dQ}{dV} \right|_{\text{forward bias}} \quad \text{(rate of change of stored charge w.r.t. voltage)}
+		\]
+	
+		\item \textbf{Using:}
+		\begin{align*}
+			C_D &= \tau \frac{dI}{dV} = \tau g = \frac{\tau}{r} \tag{3-27} \\
+			\Rightarrow C_D &= \frac{\tau I}{\eta V_T} \tag{3-28}
+		\end{align*}
+		\item Here:
+		\begin{itemize}
+			\item $\tau$ = carrier lifetime (mean time minority carrier remains mobile)
+			\item $I$ = diode current (assumed due to holes)
+			\item $\eta$ = ideality factor ($\approx 1$ for Ge, $\approx 2$ for Si)
+			\item $V_T = \frac{kT}{q}$ = thermal voltage
+		\end{itemize}
+	\end{itemize}
+	\end{frame}
+
+	\begin{frame}{\textbf{Dynamic Diffusion Capacitance: Arbitrary and Sinusoidal Inputs}}
+		\begin{itemize}
+			\item \textbf{Implication:} $C_D \propto I$ (linearly dependent on current)
+	
+			\item \textbf{Time constant:}
+			\[
+			r C_D = \tau \tag{3-29}
+			\]
+			where $r = \eta V_T / I$ is the diode dynamic resistance.
+			\item \textbf{In general:}
+			\[
+			i = \frac{dQ'}{dt} = C_D' \frac{dV}{dt} \tag{3-30}
+			\]
+			\item $C_D' < C_D$ when input varies rapidly.
+		
+			\item \textbf{Dynamic capacitance:}
+			\[
+			i \neq \frac{dQ}{dt}, \quad i \neq C_D \frac{dV}{dt} \tag{3-31}
+			\]
+			since $Q'$ accounts only for instantaneously injected charge, not steady-state.
+		\end{itemize}
+		\end{frame}	
+
+
+		\begin{frame}{\textbf{Dynamic Diffusion Capacitance: Arbitrary and Sinusoidal Inputs}}
+			\begin{itemize}			
+				\item \textbf{For sinusoidal voltage input:}
+				\begin{itemize}
+					\item Low frequency ($\omega \tau \ll 1$):
+					\[
+					C_D' = \frac{1}{2} \tau g \tag{3-32}
+					\]
+					\item High frequency ($\omega \tau \gg 1$):
+					\[
+					C_D' = \left( \frac{\tau}{2\omega} \right)^{1/2} g \tag{3-33}
+					\]
+					\item $g = dI/dV = \text{diode conductance}$
+				\end{itemize}
+			
+				\item \textbf{Key Insight:}
+				\begin{itemize}
+					\item $C_D'$ is frequency-dependent.
+					\item Decreases as frequency increases.
+					\item Must solve continuity equations to fully describe $C_D'(x,t)$ under general conditions.
+				\end{itemize}
+			\end{itemize}
+			\end{frame}	
