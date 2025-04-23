@@ -18,7 +18,7 @@ and compare the electrical behavior of intrinsic and extrinsic materials under s
     \centering  % Zentriert die Tabelle
     \begin{tabular}{ll}
         \toprule
-        Intrinsic concentration $n_\mathrm{i}$: &  $\SI{10^{13}}{atoms\per{\cubic{\centi\meter}}}$\\ 
+        Intrinsic concentration $n_\mathrm{i}$: &  $\SI{2.5 \cdot 10^{13}}{1\per{\cubic{\centi\meter}}}$\\ 
         Mobility $\mu_\mathrm{p}$: &  $\SI{1800}{\frac{\square{\centi\meter}}{\volt\second}}$ \\ 
         Mobility $\mu_\mathrm{n}$: &  $\SI{3800}{\frac{\square{\centi\meter}}{\volt\second}}$ \\ 
         Atomic weight $a_\mathrm{ger}$: &  $\SI{72.6}{\gram\per\mole}$ \\
@@ -38,7 +38,7 @@ and compare the electrical behavior of intrinsic and extrinsic materials under s
     \begin{equation}
         C_{Ger} = \frac{N_\mathrm{Av}}{a_\mathrm{ger}} \cdot D_\mathrm{ger}
         =\frac{\SI{6.02 \cdot 10{23}}{mol^{-1}}}{\SI{72.6}{\gram\per\mole}} \cdot \SI{5.32}{\gram\per{\cubic{\centi\meter}}}
-        = \SI{4.41 \cdot 10^{22}}{atoms\per\mol}.
+        = \SI{4.41 \cdot 10^{22}}{atoms\per{\cubic{\centi\meter}}}.
     \end{equation}
 \end{solutionblock}
 
@@ -48,8 +48,8 @@ and compare the electrical behavior of intrinsic and extrinsic materials under s
     Using the equation $n=p=n_\mathrm{i}$ the conductivity of the intrinsic germanium is calculated by
     \begin{equation}
         \begin{aligned}
-            \sigma  &= n_\mathrm{i}^2q(\mu_n+\mu_p) = \SI{2.5 \cdot 10^{13}}{atoms\per{\cubic{\centi\meter}}} \cdot \SI{1.60 \cdot 10^{-19}}{\coulomb}
-            \cdot \left( \SI{3800}{\square{\centi\meter}\per{\volt\second}} + \SI{3800}{\square{\centi\meter}\per{\volt\second}} \right) \\
+            \sigma  &= n_\mathrm{i}q(\mu_n+\mu_p) = \SI{2.5 \cdot 10^{13}}{1\per{\cubic{\centi\meter}}} \cdot \SI{1.60 \cdot 10^{-19}}{\coulomb}
+            \cdot \left( \SI{3800}{\square{\centi\meter}\per{\volt\second}} + \SI{1800}{\square{\centi\meter}\per{\volt\second}} \right) \\
             &= \SI{0.00224}{\frac{1}{\ohm\centi\meter}}.
     \end{aligned}        
     \end{equation}
@@ -63,16 +63,16 @@ and compare the electrical behavior of intrinsic and extrinsic materials under s
 \subtask{If a donor-type impurity is added to the extent of 1 part in $10^8$ germanium atoms, find the resistivity.}
 
 \begin{solutionblock}
-    If there is 1 donor atom per $10^8$ germanium atoms, then $N_\mathrm{D}= \SI{4.41 \cdot 10^{14}}{atoms\per{\cubic{\centi\meter}}}$.
+    If there is 1 donor atom per $10^8$ germanium atoms, then $N_\mathrm{D}= \SI{4.41 \cdot 10^{14}}{1\per{\cubic{\centi\meter}}}$.
     Using the fact $n \approx N_\mathrm{D}$ leads to:
     \begin{equation}
             p  = \frac{n_\mathrm{i}^2}{N_\mathrm{D}}
-            = \frac{\left({\SI{2.5 \cdot 10^{13}}{atoms\per{\cubic{\centi\meter}}}}\right)^2}{\SI{4.41 \cdot 10^{14}}{atoms\per{\cubic{\centi\meter}}}}
+            = \frac{\left({\SI{2.5 \cdot 10^{13}}{1\per{\cubic{\centi\meter}}}}\right)^2}{\SI{4.41 \cdot 10^{14}}{1\per{\cubic{\centi\meter}}}}
             = \SI{1.42 \cdot 10^{12}}{holes\per{\cubic{\centi\meter}}}.
     \end{equation}
-    Since $n \ll p$, we can neglect $p$ in calculating the conductivity. This leads to:
+    Since $n \gg p$, we can neglect $p$ in calculating the conductivity. This leads to:
     \begin{equation}
-        \sigma = nq\mu_n = \SI{4.41 \cdot 10^{14}}{atoms\per{\cubic{\centi\meter}}} \cdot \SI{1.60 \cdot 10^{-19}}{\coulomb}
+        \sigma = nq\mu_n = \SI{4.41 \cdot 10^{14}}{1\per{\cubic{\centi\meter}}} \cdot \SI{1.60 \cdot 10^{-19}}{\coulomb}
         \cdot \SI{3800}{\square{\centi\meter}\per{\volt\second}} = \SI{0.268}{\frac{1}{\ohm\centi\meter}}.
     \end{equation}
     The resistivity results by the reciprocal value:
@@ -88,7 +88,7 @@ and compare the electrical behavior of intrinsic and extrinsic materials under s
     If each atom contributed one free electron to the material the number of free electrons are $n  = 4.41 \cdot 10^{22}$.
     This leads to:
     \begin{equation}
-        \sigma = nq\mu_\mathrm{n} = \SI{4.41 \cdot 10^{22}}{atoms\per{\cubic{\centi\meter}}} \cdot \SI{1.60 \cdot 10^{-19}}{\coulomb}
+        \sigma = nq\mu_\mathrm{n} = \SI{4.41 \cdot 10^{22}}{1\per{\cubic{\centi\meter}}} \cdot \SI{1.60 \cdot 10^{-19}}{\coulomb}
         \cdot \SI{3800}{\square{\centi\meter}\per{\volt\second}} = \SI{2.58 \cdot 10^{7}}{\frac{1}{\ohm\centi\meter}}.
     \end{equation}
     The ratio yields:
@@ -128,7 +128,7 @@ Take in account, that $W_\mathrm{kin}(n)\propto \frac{1}{n^2}$ and the ground st
     Using \eqref{eq:Wkinmech} and \eqref{eq:Wkinelec} leads to 
     \begin{equation}
         W_\mathrm{kin} = \frac{1}{8\pi\epsilon_0} \cdot \frac{{q_\mathrm{e}}^2}{r n^2}
-        =\frac{1}{8\pi \cdot \SI{8.854 \cdot 10^{-12}}{\farad\per\meter}} \cdot \frac{{\SI{1.60 \cdot 10^{-19}}{\coulomb}}^2}{\SI{0.0529}{\nano\meter}} 
+        =\frac{1}{8\pi \cdot \SI{8.854 \cdot 10^{-12}}{\farad\per\meter}} \cdot \frac{({\SI{1.60 \cdot 10^{-19}}{\coulomb}})^2}{\SI{0.0529}{\nano\meter}} 
         =  \SI{2.17 \cdot 10^{-18}}{\joule}
     \end{equation}   
     Solving \eqref{eq:Wkinmech} for $\omega$ yields
@@ -145,13 +145,13 @@ Take in account, that $W_\mathrm{kin}(n)\propto \frac{1}{n^2}$ and the ground st
         = - \frac{{\SI{1.60 \cdot 10^{-19}}{\coulomb}}^2}{8\pi \cdot \SI{8.854 \cdot 10^{-12}}{\farad\per\meter} \cdot \SI{0.0529}{\nano\meter} }
         =  \SI{-2.17 \cdot 10^{-18}}{\joule}
     \end{equation}
-    The energy difference a transition from $n=2$ to $n=2$ is calculated by
+    The energy difference a transition from $n=2$ to $n=1$ is calculated by
     \begin{equation}
-        \Delta W= W_\mathrm{n=1} \cdot \left( 1 - \frac{1}{2^2} \right)=\SI{-2.17 \cdot 10^{-18}}{\joule} \cdot (-0.75) = \SI{1.63 \cdot 10^{-18}}{\joule}
+        \Delta W= W_\mathrm{n=1} \cdot \left(\frac{1}{2^2} -1 \right)=\SI{-2.17 \cdot 10^{-18}}{\joule} \cdot (-0.75) = \SI{1.63 \cdot 10^{-18}}{\joule}
     \end{equation}
     This corresponds to a frequency of
     \begin{equation}
-        f = \frac{\Delta W} {h}=\frac{\SI{1.63 \cdot 10^{-18}}{\joule}} {\SI{6.63 \cdot 10^{-34}}{\joule\per\second}} = \SI{2.5 \cdot 10^{-15}}{\hertz}
+        f = \frac{\Delta W} {h}=\frac{\SI{1.63 \cdot 10^{-18}}{\joule}} {\SI{6.63 \cdot 10^{-34}}{\joule\per\second}} = \SI{2.5 \cdot 10^{15}}{\hertz}
     \end{equation}       
 \end{solutionblock}
 
@@ -164,11 +164,11 @@ Take in account, that $W_\mathrm{kin}(n)\propto \frac{1}{n^2}$ and the ground st
     At room temperature we assume that all donors are ionized. 
     This leads to:
     \begin{equation}
-        n \approx N_\mathrm{D} = \SI{10^{16}}{atoms\per{\cubic{\centi\meter}}}.
+        n \approx N_\mathrm{D} = \SI{10^{16}}{1\per{\cubic{\centi\meter}}}.
     \end{equation}
     The conductivity is calculated by
     \begin{equation}
-        \sigma = nq\mu_n = \SI{10^{16}}{atoms\per{\cubic{\centi\meter}}} \cdot \SI{1.60 \cdot 10^{-19}}{\coulomb}
+        \sigma = nq\mu_n = \SI{10^{16}}{1\per{\cubic{\centi\meter}}} \cdot \SI{1.60 \cdot 10^{-19}}{\coulomb}
         \cdot \SI{1300}{\square{\centi\meter}\per{\volt\second}} = \SI{20.8}{\frac{1}{\ohm\centi\meter}}.
     \end{equation}
     The resistivity results by the reciprocal value:
@@ -185,7 +185,7 @@ and $B_\mathrm{z} =  \SI{10^{-4}}{\weber\per\square\centi\meter}$.}
 \begin{solutionblock}
     The Hall coefficient is calculated by
     \begin{equation}
-        R_\mathrm{H} = \frac{1}{qn} = \frac{1}{\SI{1.60 \cdot 10^{-19}}{\coulomb} \cdot 10^{16}} =  \SI{625}{\cubic{\centi\meter}\per\coulomb}.
+        R_\mathrm{H} = \frac{1}{qn} = \frac{1}{\SI{1.60 \cdot 10^{-19}}{\coulomb} \cdot \SI{10^{16}}{\frac{1}{\cubic{\centi\meter}}}} =  \SI{625}{\cubic{\centi\meter}\per\coulomb}.
     \end{equation}
     The Hall voltage results from
     \begin{equation}
@@ -195,7 +195,7 @@ and $B_\mathrm{z} =  \SI{10^{-4}}{\weber\per\square\centi\meter}$.}
 \end{solutionblock}
 
 \subtask{ Assume that, in an n-type semiconductor at $T = \SI{300}{\kelvin}$, the electron concentration varies linearly from 
- $\SI{10^{18}}{1\per\cubic\centi\meter}$ to $\SI{7 \cdot 10^{17}}{1\per\cubic\centi\meter}$ over a distance of $\SI{0.1}{\centi\meter}$.
+ $\SI{10^{18}}{1\per\cubic{\centi\meter}}$ to $\SI{7 \cdot 10^{17}}{1\per\cubic{\centi\meter}}$ over a distance of $\SI{0.1}{\centi\meter}$.
   Calculate the diffusion current density if the electron diffusion coefficient is $D_n = \SI{22.5}{\square\centi\meter\per\second}$.}
 
 \begin{solutionblock}
@@ -205,7 +205,7 @@ and $B_\mathrm{z} =  \SI{10^{-4}}{\weber\per\square\centi\meter}$.}
             J_\mathrm{n,diff} &= qD_\mathrm{n} \frac{\mathrm{d}n}{\mathrm{d}x} \approx qD_\mathrm{n} \frac{\mathrm{\Delta} n}{\mathrm{\Delta} x} \\
             &= \SI{1.60 \cdot 10^{-19}}{\coulomb} \cdot \SI{22.5}{\square\centi\meter\per\second} \cdot
             \frac{\SI{10^{18}}{\frac{1}{\cubic{\centi\meter}}} - \SI{7 \cdot 10^{17}}{\frac{1}{\cubic{\centi\meter}}}}{\SI{0.1}{\centi\meter}}
-            = \SI{10^{18}}{\ampere\per\square\centi\meter}.
+            = \SI{10.8}{\ampere\per\square\centi\meter}.
         \end{aligned}
     \end{equation}
 \end{solutionblock}
@@ -273,13 +273,13 @@ The assessment is performed at a temperature of $T = \SI{300}{\kelvin}$.
 
 
 \subtask{Calculate the expected resistivity of silicon at $T = \SI{300}{\kelvin}$ after doping with arsenic impurities 
-with concentration $N_d = 2\cdot \SI{10^{16}}{\cubic\centi\meter}$.}
+with concentration $N_d = 2\cdot \SI{10^{16}}{\cubic{\centi\meter}}$.}
 \begin{solutionblock}
     The concentration of majority carriers is so large that only they will be considered in the following calculation. 
     With $n_0 \approx N_\mathrm{d}$ the conductivity is calculated by:
     \begin{equation}
         \sigma \approx N_\mathrm{d}q\mu_\mathrm{n}
-               \approx  2\cdot \SI{10^{16}}{\cubic\centi\meter} \cdot \SI{1.60 \cdot 10^{-19}}{\coulomb} \cdot
+               \approx  2\cdot \SI{10^{16}}{\cubic{\centi\meter}} \cdot \SI{1.60 \cdot 10^{-19}}{\coulomb} \cdot
                  \SI{1350}{\frac{\square{\centi\meter}}{\volt\second}}
                  = \SI{2.3}{\frac{1}{\ohm\centi\meter}}.
     \end{equation}
@@ -297,11 +297,19 @@ with concentration $N_d = 2\cdot \SI{10^{16}}{\cubic\centi\meter}$.}
 %% Task 4 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\task{Hall sensor for  magnetic field measurment}
+\task{Hall sensor for  magnetic field measurement}
 
-A bar of type p silicon, of thickness $d=\SI{0.5}{\milli\meter}$, with impurity concentration $N_a = \SI{10^{14}}{\cubic\centi\meter}$, is used as a Hall sensor.
+A bar of type p silicon, of thickness $d=\SI{0.5}{\milli\meter}$, with impurity concentration $N_a = \SI{10^{14}}{\cubic{\centi\meter}}$, is used as a Hall sensor.
+See also \autoref{fig:ex01_hallsensor}.
 
-\subtask{Calculate the Hall voltage for a probe current of $\SI{100}{\milli\ampere}$ and a magnetic field perpendicular to the plane of $B= \SI{0.1}{\milli\tesla}$.}
+\begin{figure}[htbp]
+    \centering      
+    \includegraphics[width=0.5\textwidth]{fig/fig1_ex01_Hall.png}
+    \caption{Silicon semiconductor bar as Hall-sensor.}
+    \label{fig:ex01_hallsensor}
+\end{figure}
+
+\subtask{Calculate the Hall voltage for a probe current of $\SI{100}{\milli\ampere}$ and a magnetic field perpendicular to the plane of $B= \SI{0.1}{\tesla}$.}
 
 \begin{solutionblock}
     The Hall voltage is given by
@@ -310,19 +318,19 @@ A bar of type p silicon, of thickness $d=\SI{0.5}{\milli\meter}$, with impurity 
         \label{eq:hall_voltage}
     \end{equation}
     with $l_\mathrm{w}$ corresponds to the width and $d$ to the thickness of the bar. $J$ corresponds to the current density.
-    Since $N_\mathrm{a} \gg n_\mathrm{i}$ which leads to $p_0 \approx N_\mathrm{a} \gg n_0$, so that the current is dominated by holes.
+    Since $N_\mathrm{a} \gg n_\mathrm{i}$ which leads to $p \approx N_\mathrm{a} \gg n$, so that the current is dominated by holes.
     The electrical field in y-direction results in
     \begin{equation}
-        \vec{E_\mathrm{y}}=\frac{J_\mathrm{p}}{qp_0}B_\mathrm{z}
+        \vec{E_\mathrm{y}}=\frac{J_\mathrm{p}}{qp}B_\mathrm{z}
     \end{equation}
     Using \eqref{eq:hall_voltage} this leads to 
     \begin{equation}
-        U_\mathrm{H} = \frac{J_\mathrm{p}}{qp_0}B_\mathrm{z} l_\mathrm{w} = \frac{I \cdot B_\mathrm{z}}{qp_0d}
+        U_\mathrm{H} = \frac{J_\mathrm{p}}{qp}B_\mathrm{z} l_\mathrm{w} = \frac{I \cdot B_\mathrm{z}}{qpd}
         = \frac{\SI{100}{\milli\ampere} \cdot \SI{0.1}{\tesla}}{\SI{1.60 \cdot 10^{-19}}{\coulomb} \cdot \SI{10^{14}}{\frac{1}{\cubic{\centi\meter}}} \cdot \SI{0.1}{\milli\meter}}
         = \SI{1.25}{\volt} 
     \end{equation} 
 \end{solutionblock}    
-
+\vspace{0.5cm}
 Remark: This example shows that for magnetic fields with intensities typical of those used in laboratories, the Hall voltage has a relatively high value for electronic
 circuits. This does not happen in metals, because the concentration of free electrons $\approx \SI{10^{22}}{\frac{1}{\cubic{\centi\meter}}}$ is much larger than in semiconductors, and thus the
 voltage is quite small.
