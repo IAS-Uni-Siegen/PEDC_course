@@ -308,7 +308,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Biasing of p-n junctions}
 	\textbf{All discussions in the previous slides were based on the assumption of thermal equilibrium and no external fields.} \\
-	The behavior of a p-n junction can be controlled by applying an external voltage across the junction. This is known as \textbf{biasing}. \\
+	The behavior of a p-n junction can be controlled by applying an external voltage across the junction. \\
 	\textbf{Biasing} refers to the application of an external voltage across a p-n junction to control its operation. The two main types of biasing are:
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -343,7 +343,7 @@
 \begin{frame}{Reverse bias in a \textit{p-n} Junction}
     \textbf{Key Concept:} Reverse bias widens the depletion region and blocks majority carrier flow.
     \begin{itemize}
-        \item \textbf{Biasing:} Negative terminal to $p$-side, positive to $n$-side (Fig. 3-2a).
+        \item \textbf{Biasing:} Negative terminal to $p$-side, positive to $n$-side (Fig. \ref{fig:reverse_bias_pn_junction}).
         \item \textbf{Effect:} Drives majority carriers (holes in $p$, electrons in $n$) \textit{away} from the junction.
         \item \textbf{Depletion Region:} Widens due to carrier drift, increasing the electric field barrier.
         \item \textbf{Steady State:} Cannot sustain continuous diffusion without replenishment $\Rightarrow$ nominally zero current.
@@ -683,7 +683,7 @@ where:
             \item Ge diodes: Lower $V_\gamma$, larger $I_0$, steeper characteristics.
             \item Si diodes: Higher $V_\gamma$, lower $I_0$, more thermal stability.
         \end{itemize}
-        \item \textbf{Fig. 3-7:} Comparative $I$-$V$ of 1N270 (Ge) vs 1N3605 (Si).
+        \item \textbf{Fig. \ref{fig:Si_Ge_diode_characteristics}:} Comparative $I$-$V$ of 1N270 (Ge) vs 1N3605 (Si).
     \end{itemize}
 \end{column}
 \begin{column}{0.65\textwidth}
@@ -712,7 +712,7 @@ where:
             \item At room temp ($300K$), $V_T = 26$ mV
             \item $\left|\frac{dV}{dT}\right| \approx 2.5$ mV/$^\circ$C
         \end{itemize}
-        \item Fig. 3-8 shows $I$-$V$ shifts with temperature: Higher $T \Rightarrow$ lower $V_\gamma$
+        \item Fig. \ref{fig:temp_Si_diode_characteristics} shows $I$-$V$ shifts with temperature: Higher $T \Rightarrow$ lower $V_\gamma$
     \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
@@ -742,7 +742,7 @@ where:
         \begin{itemize}
             \item Diode \textasciitilde{} open circuit if $V < V_\gamma$
             \item For $V > V_\gamma$: $r = dV/dI$ constant $\Rightarrow$ $R_f$
-            \item Fig. 3-9: Diode modeled with $V_\gamma$ and slope $1/R_f$
+            \item Fig. \ref{fig:diode_characteristics}: Diode modeled with $V_\gamma$ and slope $1/R_f$
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -792,7 +792,7 @@ where:
 	\end{itemize}
 	\end{frame}
 
-	\begin{frame}{\textbf{Dynamic Diffusion Capacitance: Arbitrary and Sinusoidal Inputs}}
+	%\begin{frame}{\textbf{Dynamic Diffusion Capacitance: Arbitrary and Sinusoidal Inputs}}
 		\begin{itemize}
 			\item \textbf{Implication:} $C_D \propto I$ (linearly dependent on current)
 	
@@ -813,10 +813,10 @@ where:
 			\]
 			since $Q'$ accounts only for instantaneously injected charge, not steady-state.
 		\end{itemize}
-		\end{frame}	
+	%	\end{frame}	
 
 
-		\begin{frame}{\textbf{Dynamic Diffusion Capacitance: Arbitrary and Sinusoidal Inputs}}
+%		\begin{frame}{\textbf{Dynamic Diffusion Capacitance: Arbitrary and Sinusoidal Inputs}}
 			\begin{itemize}			
 				\item \textbf{For sinusoidal voltage input:}
 				\begin{itemize}
@@ -838,4 +838,4 @@ where:
 					\item Must solve continuity equations to fully describe $C_D'(x,t)$ under general conditions.
 				\end{itemize}
 			\end{itemize}
-			\end{frame}	
+%			\end{frame}	
