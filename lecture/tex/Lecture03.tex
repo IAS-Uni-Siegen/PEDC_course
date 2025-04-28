@@ -792,42 +792,42 @@ where:
 	\end{itemize}
 	\end{frame}
 
-	%\begin{frame}{\textbf{Dynamic Diffusion Capacitance: Arbitrary and Sinusoidal Inputs}}
+	\begin{frame}{\textbf{Dynamic Diffusion Capacitance: Arbitrary and Sinusoidal Inputs}}
 		\begin{itemize}
 			\item \textbf{Implication:} $C_D \propto I$ (linearly dependent on current)
 	
 			\item \textbf{Time constant:}
-			\[
+			\begin{equation}
 			r C_D = \tau \tag{3-29}
-			\]
+			\end{equation}
 			where $r = \eta V_T / I$ is the diode dynamic resistance.
 			\item \textbf{In general:}
-			\[
+			\begin{equation}
 			i = \frac{dQ'}{dt} = C_D' \frac{dV}{dt} \tag{3-30}
-			\]
+			\end{equation}
 			\item $C_D' < C_D$ when input varies rapidly.
 		
 			\item \textbf{Dynamic capacitance:}
-			\[
+			\begin{equation}
 			i \neq \frac{dQ}{dt}, \quad i \neq C_D \frac{dV}{dt} \tag{3-31}
-			\]
+			\end{equation}
 			since $Q'$ accounts only for instantaneously injected charge, not steady-state.
 		\end{itemize}
-	%	\end{frame}	
+	\end{frame}	
 
 
-%		\begin{frame}{\textbf{Dynamic Diffusion Capacitance: Arbitrary and Sinusoidal Inputs}}
-			\begin{itemize}			
+	\begin{frame}{\textbf{Dynamic Diffusion Capacitance: Arbitrary and Sinusoidal Inputs}}
+		\begin{itemize}			
 				\item \textbf{For sinusoidal voltage input:}
 				\begin{itemize}
 					\item Low frequency ($\omega \tau \ll 1$):
-					\[
+					\begin{equation}
 					C_D' = \frac{1}{2} \tau g \tag{3-32}
-					\]
+					\end{equation}
 					\item High frequency ($\omega \tau \gg 1$):
-					\[
+					\begin{equation}
 					C_D' = \left( \frac{\tau}{2\omega} \right)^{1/2} g \tag{3-33}
-					\]
+					\end{equation}
 					\item $g = dI/dV = \text{diode conductance}$
 				\end{itemize}
 			
@@ -837,5 +837,5 @@ where:
 					\item Decreases as frequency increases.
 					\item Must solve continuity equations to fully describe $C_D'(x,t)$ under general conditions.
 				\end{itemize}
-			\end{itemize}
-%			\end{frame}	
+		\end{itemize}
+	\end{frame}	
