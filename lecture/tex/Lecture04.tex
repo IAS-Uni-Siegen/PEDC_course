@@ -158,7 +158,6 @@
             \end{itemize}
             \item \textbf{Semicontrolled:}
             \begin{itemize}
-                \item GTOs
                 \item SCRs.
             \end{itemize}
             \item \textbf{Fully controlled:}
@@ -259,7 +258,7 @@
             \centering
             \label{fig:Power_Diodes_structure_and_IV_characteristics}
             \includegraphics[scale=0.2]{fig/lec04/cross_section_pn_junction.png}
-            \caption{Cross section of pn junction diode.}
+            \caption{Cross section of pn junction diode; adapted from Mohan, Undeland, Robbins, "Power Electronics: Converters, Applications and Design - 2nd Edition".}
         \end{figure}
     \end{columns}
 \end{frame}
@@ -379,15 +378,33 @@
 \end{frame}
 
 \begin{frame}{\textbf{Punch-Through Diode Breakdown Mechanism}}
+    \begin{columns}
+    
+    \begin{column}{0.5\textwidth}
     \textbf{Definition:} Punch-through occurs when the reverse bias extends the depletion region entirely across the lightly doped $n^-$ drift region up to the heavily doped $n^+$ region.
+    
     \begin{itemize}
         \item Reverse bias pushes the depletion edge to contact $n^+$, beyond which it cannot grow.
         \item The electric field profile changes shape — not triangular anymore.
         \item Breakdown voltage is reached when $E_1 + E_2 = E_{BD}$.
     \end{itemize}
+    
     \vspace{1em}
-    \textbf{Key Point:} $n^+$ layer's heavy doping blocks further depletion region growth.
+    \textbf{Key Point:} The $n^+$ layer's heavy doping blocks further depletion region growth.
+    \end{column}
+    
+    \begin{column}{0.5\textwidth}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.25]{fig/lec04/punch_through.png}
+        \caption{\scriptsize Punch-through diode under reverse bias: (a) Depletion layer extends fully across the drift region (punch-through condition); (b) Electric field profile. Adapted from Mohan et al., \textit{Power Electronics, 2nd Ed.}}
+        \label{fig:punch_through_diode}
+    \end{figure}
+    \end{column}
+    
+    \end{columns}
 \end{frame}
+
 
 \begin{frame}{\textbf{Electric Field \& Voltage Profile in Punch-Through Diode}}
     \begin{itemize}
@@ -535,7 +552,6 @@
         \item For sinusoidal operation, $I_{\text{Fav}}, I_{\text{Frms}}, I_{\text{F}}$ relations are well-known.
         \item For non-sinusoidal waveforms, these values must be derived from fundamentals.
         \item Choose diode ratings higher than the worst-case circuit values.
-        \item Nomo-graphs (if available) can simplify selection.
     \end{itemize}
     
     \end{frame}
@@ -568,4 +584,72 @@
         \end{equation}
         \item Junction temperature must remain below datasheet limit (e.g., 150$^\circ$C).
     \end{itemize}
+\end{frame}
+
+
+\begin{frame}{\textbf{Modeling a Power Diode: Steady-State and Transient Behavior}}
+    \begin{columns}
+        \begin{column}{0.48\textwidth}
+            \textbf{Objective:} To model both static and dynamic characteristics of a diode for simulation and design purposes.
+            \vspace{0.5em}
+            \begin{itemize}
+                \item \textbf{Steady-State Behavior:}
+                \begin{itemize}
+                    \item Current-voltage $(i_d$–$V_d)$ relationship is exponential:
+                    \[
+                        i_d = I_0\left(e^{\frac{V_d}{nV_T}} - 1\right)
+                    \]
+                    \item $R_s$: Series resistance due to bulk and contact resistance (non-zero in practice).
+                \end{itemize}
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[scale=0.25]{fig/lec04/diode_model.png}
+                \caption{Model of diode; adapted from Umanand, L., Power Electronics: Essentials \& Applications.}
+                \label{fig:diode_model}
+            \end{figure}
+        \end{column}
+    \end{columns}
+    \end{frame}
+    
+
+\begin{frame}{\textbf{Modeling a Power Diode: Steady-State and Transient Behavior}}
+    \begin{columns}
+        \begin{column}{0.48\textwidth}
+\begin{itemize}
+\item \textbf{Dynamic Behavior:}
+\begin{itemize}
+    \item \textbf{Diffusion Capacitance ($C_D$):} 
+        \begin{itemize}
+            \item Appears during transition from forward to reverse bias.
+            \item Models the excess mobile charge that must be removed.
+        \end{itemize}
+        
+    \item \textbf{Transition Capacitance ($C_T$):}
+        \begin{itemize}
+            \item Relevant when transitioning from reverse to forward bias.
+            \item Models mobile charge accumulation at the junction.
+        \end{itemize}
+\end{itemize}
+
+\item \textbf{Capacitance Non-Linearity:}
+    \begin{itemize}
+        \item Both $C_D$ and $C_T$ are non-linear and depend on the charge distribution.
+        \item Circuit simulators implement these models dynamically.
+    \end{itemize}
+\end{itemize}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.25]{fig/lec04/diode_model.png}
+        \caption{Model of diode; adapted from Umanand, L., Power Electronics: Essentials \& Applications.}
+        \label{fig:diode_model}
+    \end{figure}
+\end{column}
+\end{columns}
 \end{frame}
