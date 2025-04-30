@@ -653,3 +653,116 @@
     \end{itemize}
     \textbf{Conclusion:} Useful for high-speed, high-frequency operation despite higher on-resistance.
 \end{frame}
+
+\begin{frame}{\textbf{Schottky Diode: Structure and Principle of Operation}}
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+        \textbf{Structure:}
+        \begin{itemize}
+            \item Formed by placing a metal in contact with an $n$-type semiconductor.
+            \item The metal acts as the anode and the semiconductor as the cathode.
+            \item Only majority carriers (electrons in $n$-type) participate — no hole injection.
+        \end{itemize}
+        
+        \textbf{Principle of Operation:}
+        \begin{itemize}
+            \item Barrier formed due to work function difference.
+            \item Equilibrium is reached when electron flow from metal to semiconductor balances opposite flow.
+            \item No minority carriers $\Rightarrow$ no charge storage $\Rightarrow$ fast switching.
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+                \begin{figure}
+                    \centering
+                    \includegraphics[scale=1]{fig/lec04/schottky_diode.pdf}
+                    \caption{Schottky diode structure and energy band diagram; adapted from Mohan et al., \textit{Power Electronics, 2nd Ed.}}
+                    \label{fig:schottky_diode_structure}
+                \end{figure}
+    \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{\textbf{I-V Characteristics of Schottky Diode}}
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+        \textbf{Equation:}
+        \begin{equation}
+        I = I_s \left( e^{\frac{qV}{nkT}} - 1 \right)
+        \end{equation}
+        
+        \textbf{Key Observations:}
+        \begin{itemize}
+            \item Forward drop: 0.3–0.4 V (lower than silicon $p$-$n$ junction).
+            \item High reverse leakage current due to majority-carrier injection.
+            \item Not suitable beyond 100–200 V breakdown.
+        \end{itemize}
+        \textbf{Advantage:} Very fast ON/OFF response due to absence of stored charge.
+    \end{column}
+    \begin{column}{0.4\textwidth}
+                \begin{figure}
+                    \centering
+                    \includegraphics[scale=1]{fig/lec04/schottky_diode.pdf}
+                    \caption{Schottky diode structure and energy band diagram; adapted from Mohan et al., \textit{Power Electronics, 2nd Ed.}}
+                    \label{fig:schottky_diode_structure}
+                \end{figure}
+    \end{column}
+\end{columns}
+
+\end{frame}
+    
+\begin{frame}{\textbf{Ohmic vs Rectifying Contact in Metal–Semiconductor Junctions}}
+    \textbf{Ohmic Contact:}
+    \begin{itemize}
+        \item No rectifying behavior; linear I-V characteristics.
+        \item Occurs when metal work function $\phi_m < \phi_s$.
+        \begin{itemize}
+        \item The work function $\phi$ is the minimum energy needed to remove an electron from the Fermi level to vacuum.
+        \item $\phi_m$ = work function of metal
+        \item $\phi_s$ = work function (or electron affinity + energy gap position) of the semiconductor
+    \end{itemize}
+        \item Heavy doping or tunneling required to minimize barrier.
+    \end{itemize}
+    
+    \textbf{Rectifying (Schottky) Contact:}
+    \begin{itemize}
+        \item Barrier prevents majority carriers $\Rightarrow$ diode action.
+        \item No minority carrier injection $\Rightarrow$ low switching loss.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{\textbf{Breakdown Behavior of Schottky Diodes}}
+    \begin{itemize}
+        \item Geometry and electric field crowding limits breakdown voltage.
+        \item Surface effects and field curvature reduce breakdown to $\sim$200 V.
+        \item No conductivity modulation $\Rightarrow$ higher drift region resistance.
+        \item Trade-off: High $V_{BD}$ $\Rightarrow$ low doping $\Rightarrow$ high $R_{on}$.
+    \end{itemize}
+    \textbf{Comparison:} $p$-$n$ junction diodes can go to $\sim$5 kV due to conductivity modulation.
+    \begin{itemize}
+        \item Geometry and electric field crowding limits breakdown voltage.
+        \item Surface effects and field curvature reduce breakdown to $\sim$200 V.
+        \item No conductivity modulation $\Rightarrow$ higher drift region resistance.
+        \item Trade-off: High $V_{BD}$ $\Rightarrow$ low doping $\Rightarrow$ high $R_{on}$.
+    \end{itemize}
+    \textbf{Comparison:} $p$-$n$ junction diodes can go to $\sim$5 kV due to conductivity modulation.
+\end{frame}
+
+\begin{frame}{\textbf{Switching Characteristics of Schottky Diodes}}
+    \begin{itemize}
+        \item Turn-ON and turn-OFF are extremely fast (no minority carrier storage).
+        \item No reverse recovery current unlike $p$-$n$ diodes.
+        \item Higher junction capacitance $\Rightarrow$ small voltage overshoot if $di/dt$ is large.
+    \end{itemize}
+    
+    \textbf{Applications:} Preferred in high-frequency power converters and fast rectifiers. \\
+    \textbf{Schottky Diode: Key Takeaways}
+    \begin{itemize}
+        \item Majority-carrier device with fast switching.
+        \item Lower forward voltage drop (0.3–0.4 V).
+        \item Poor high-voltage blocking ($<200$ V).
+        \item Higher reverse leakage current than $p$-$n$ diodes.
+        \item Ideal for low-voltage, high-speed power circuits.
+    \end{itemize}
+\end{frame}
+    
