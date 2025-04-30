@@ -263,180 +263,6 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{\textbf{Introduction to punch-through vs non-punch-through power diodes}}
-    \textbf{Differences:Punch through vs non-punch-through:} 
-    \centering
-    \small
-    \begin{tabular}{|p{3.5cm}|p{4cm}|p{4cm}|}
-    \hline
-    \textbf{Characteristic} & \textbf{Punch-through (PT)} & \textbf{Non-punch-through (NPT)} \\
-    \hline
-    Drift Region & Thinner, moderately doped & Thicker, lightly doped \\
-    \hline
-    Electric Field Profile & Extends through drift region (reaches anode) & Ends before reaching the anode \\
-    \hline
-    Breakdown Mechanism & Abrupt avalanche breakdown & Gradual breakdown onset \\
-    \hline
-    Switching Speed & Faster reverse recovery & Slower but more robust \\
-    \hline
-    On-State Voltage Drop & Lower & Slightly higher \\
-    \hline
-    Reverse Recovery Loss & Lower & Higher \\
-    \hline
-    Application Voltage Range & Medium (e.g., 600–1200 V) & High (e.g., >1200 V) \\
-    \hline
-    Example Devices & Transient Voltage Suppression and Schottky barrier diodes & 1N400x  \\
-    \hline
-    \end{tabular} \\
-    \vspace{0.3cm}
-    \textbf{Design Implication:} Choice depends on switching frequency, voltage class, and thermal constraints.
-\end{frame}
-
-\begin{frame}{\textbf{Avalanche Breakdown in Step Junctions}}
-    \textbf{Concept:} Reverse bias in a $p$–$n$ junction causes the electric field to drop entirely across the depletion region. As the field strength increases, it approaches a critical value $E_{\text{BD}}$ where impact ionization begins $\Rightarrow$ Avalanche Breakdown.
-    
-    \vspace{0.3em}
-    \textbf{Key Definitions:}
-    \begin{itemize}
-        \item \textbf{Breakdown Voltage} ($BV_{\text{BD}}$): Reverse-bias voltage at which impact ionization becomes significant.
-        \item \textbf{Critical Field Strength} ($E_{\text{BD}}$): Electric field at which avalanche multiplication starts.
-    \end{itemize}
-    
-    \vspace{0.3em}
-    \textbf{Breakdown Condition:}
-    \begin{equation}
-        E_{\max} \approx E_{\text{BD}}
-    \end{equation}
-    \textbf{Where:}
-    \begin{itemize}
-        \item $E_{\max}$: Maximum electric field in the depletion region.
-    \end{itemize}
-\end{frame}
-    
-\begin{frame}{\textbf{Breakdown Voltage Expression for Step Junction}}
-    \begin{equation}
-    BV_{\text{BD}} = \phi_c + \left[ \frac{W_0 E_{\text{BD}}}{2 \varepsilon} \right]^2 - \phi_c \approx \frac{\varepsilon (N_A + N_D) E_{\text{BD}}^2}{2 q N_A N_D}
-    \end{equation}
-    
-    \textbf{Parameters:}
-    \begin{itemize}
-        \item $W_0$: Depletion width
-        \item $E_{\text{BD}}$: Breakdown electric field
-        \item $\varepsilon$: Permittivity of the semiconductor
-        \item $N_A, N_D$: Acceptor and donor concentrations
-        \item $q$: Electron charge
-        \item $\phi_c$: Contact potential
-    \end{itemize}
-    
-    \vspace{0.3em}
-    \textbf{Observation:} Breakdown voltage depends strongly on doping concentrations and junction profile (e.g., step, graded, diffused).
-\end{frame}
-
-
-\begin{frame}{\textbf{Breakdown Voltage in Non-Punch-Through (NPT) Diodes}}
-
-    \textbf{Structure Concept:}
-    \begin{itemize}
-        \item \textbf{Non-punch-through diode:} Drift region thickness $W_d$ is \textit{greater than} depletion width at breakdown.
-        \item Depletion region does \textbf{not reach} the heavily doped $n^+$ substrate.
-    \end{itemize}
-    
-    \vspace{0.4em}
-    \textbf{Simplified Breakdown Voltage Equation:}
-    \begin{equation}
-        BV_{\text{BD}} \approx \frac{\varepsilon E_{\text{BD}}^2}{2 q N_D}
-    \end{equation}
-    \begin{itemize}
-        \item $E_{\text{BD}}$: Breakdown electric field
-        \item $N_D$: Doping concentration of drift region (lightly doped $n$)
-        \item $\varepsilon$: Permittivity of the semiconductor
-    \end{itemize}
-    
-\end{frame}
-
-\begin{frame}{\textbf{Breakdown Voltage in Non-Punch-Through (NPT) Diodes}}
-
-\textbf{Numerical Estimation for Silicon:}
-\begin{equation}
-    BV_{\text{BD}} \approx \frac{1.3 \times 10^{17}}{N_D}
-\end{equation}
-(for $N_D$ in $\text{cm}^{-3}$, $BV_{\text{BD}}$ in volts)
-
-\vspace{0.4em}
-\textbf{Depletion Width at Breakdown:}
-\begin{equation}
-    W_d \approx \frac{2 BV_{\text{BD}}}{E_{\text{BD}}} \approx 10^{-5} BV_{\text{BD}} \quad \text{(in cm)}
-\end{equation}
-
-\vspace{0.4em}
-\textbf{Design Implications:}
-\begin{itemize}
-    \item High breakdown voltages $\Rightarrow$ require very \textbf{light doping} ($\sim 10^{14}$ cm$^{-3}$).
-    \item Drift region width for 1000 V breakdown $\approx$ 100 $\mu$m.
-    \item Trade-off between \textbf{blocking capability} and \textbf{on-resistance}.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{\textbf{Punch-Through Diode Breakdown Mechanism}}
-    \begin{columns}
-    
-    \begin{column}{0.5\textwidth}
-    \textbf{Definition:} Punch-through occurs when the reverse bias extends the depletion region entirely across the lightly doped $n^-$ drift region up to the heavily doped $n^+$ region.
-    
-    \begin{itemize}
-        \item Reverse bias pushes the depletion edge to contact $n^+$, beyond which it cannot grow.
-        \item The electric field profile changes shape — not triangular anymore.
-        \item Breakdown voltage is reached when $E_1 + E_2 = E_{BD}$.
-    \end{itemize}
-    
-    \vspace{1em}
-    \textbf{Key Point:} The $n^+$ layer's heavy doping blocks further depletion region growth.
-    \end{column}
-    
-    \begin{column}{0.5\textwidth}
-    \begin{figure}
-        \centering
-        \includegraphics[scale=0.25]{fig/lec04/punch_through.png}
-        \caption{\scriptsize Punch-through diode under reverse bias: (a) Depletion layer extends fully across the drift region (punch-through condition); (b) Electric field profile. Adapted from Mohan et al., \textit{Power Electronics, 2nd Ed.}}
-        \label{fig:punch_through_diode}
-    \end{figure}
-    \end{column}
-    
-    \end{columns}
-\end{frame}
-
-
-\begin{frame}{\textbf{Electric Field \& Voltage Profile in Punch-Through Diode}}
-    \begin{itemize}
-        \item Electric field profile:
-        \begin{itemize}
-            \item Triangular portion: $E_1 = \frac{qN_dW_d}{\varepsilon}$
-            \item Rectangular portion: $E_2$
-        \end{itemize}
-        \item Breakdown voltage:
-        \begin{equation}
-            V_1 = \frac{qN_dW_d^2}{2\varepsilon}, \quad V_2 = E_2 W_d
-        \end{equation}
-        \begin{equation}
-            BV_{BD} = V_1 + V_2 = E_{BD}W_d - \frac{qN_dW_d^2}{2\varepsilon}
-        \end{equation}
-    \end{itemize}
-    \textbf{Observation:} When $V_1 \ll V_2$, then $BV_{BD} \approx E_{BD}W_d$
-\end{frame}
-
-\begin{frame}{\textbf{Implications of Punch-Through Design}}
-    \begin{itemize}
-        \item Allows shorter $W_d$ for same $BV_{BD}$ → compact device.
-        \item Higher resistivity in drift region increases $R_{on}$:
-        \begin{itemize}
-            \item Higher conduction loss compared to non-punch-through.
-        \end{itemize}
-        \item \textbf{Important:} No conductivity modulation under on-state — no conductivity injection from minority carriers.
-        \item Results in higher $R_{on}$ under on-state condition.
-    \end{itemize}
-    \textbf{Conclusion:} Useful for high-speed, high-frequency operation despite higher on-resistance.
-\end{frame}
-
 \begin{frame}
     \frametitle{Power Diodes- Static characteristics}
     \begin{columns}
@@ -652,4 +478,178 @@
     \end{figure}
 \end{column}
 \end{columns}
+\end{frame}
+
+\begin{frame}{\textbf{Introduction to punch-through vs non-punch-through power diodes}}
+    \textbf{Differences:Punch through vs non-punch-through:} 
+    \centering
+    \small
+    \begin{tabular}{|p{3.5cm}|p{4cm}|p{4cm}|}
+    \hline
+    \textbf{Characteristic} & \textbf{Punch-through (PT)} & \textbf{Non-punch-through (NPT)} \\
+    \hline
+    Drift Region & Thinner, moderately doped & Thicker, lightly doped \\
+    \hline
+    Electric Field Profile & Extends through drift region (reaches anode) & Ends before reaching the anode \\
+    \hline
+    Breakdown Mechanism & Abrupt avalanche breakdown & Gradual breakdown onset \\
+    \hline
+    Switching Speed & Faster reverse recovery & Slower but more robust \\
+    \hline
+    On-State Voltage Drop & Lower & Slightly higher \\
+    \hline
+    Reverse Recovery Loss & Lower & Higher \\
+    \hline
+    Application Voltage Range & Medium (e.g., 600–1200 V) & High (e.g., >1200 V) \\
+    \hline
+    Example Devices & Transient Voltage Suppression and Schottky barrier diodes & 1N400x  \\
+    \hline
+    \end{tabular} \\
+    \vspace{0.3cm}
+    \textbf{Design Implication:} Choice depends on switching frequency, voltage class, and thermal constraints.
+\end{frame}
+
+\begin{frame}{\textbf{Avalanche Breakdown in Step Junctions}}
+    \textbf{Concept:} Reverse bias in a $p$–$n$ junction causes the electric field to drop entirely across the depletion region. As the field strength increases, it approaches a critical value $E_{\text{BD}}$ where impact ionization begins $\Rightarrow$ Avalanche Breakdown.
+    
+    \vspace{0.3em}
+    \textbf{Key Definitions:}
+    \begin{itemize}
+        \item \textbf{Breakdown Voltage} ($BV_{\text{BD}}$): Reverse-bias voltage at which impact ionization becomes significant.
+        \item \textbf{Critical Field Strength} ($E_{\text{BD}}$): Electric field at which avalanche multiplication starts.
+    \end{itemize}
+    
+    \vspace{0.3em}
+    \textbf{Breakdown Condition:}
+    \begin{equation}
+        E_{\max} \approx E_{\text{BD}}
+    \end{equation}
+    \textbf{Where:}
+    \begin{itemize}
+        \item $E_{\max}$: Maximum electric field in the depletion region.
+    \end{itemize}
+\end{frame}
+    
+\begin{frame}{\textbf{Breakdown Voltage Expression for Step Junction}}
+    \begin{equation}
+    BV_{\text{BD}} = \phi_c + \left[ \frac{W_0 E_{\text{BD}}}{2 \varepsilon} \right]^2 - \phi_c \approx \frac{\varepsilon (N_A + N_D) E_{\text{BD}}^2}{2 q N_A N_D}
+    \end{equation}
+    
+    \textbf{Parameters:}
+    \begin{itemize}
+        \item $W_0$: Depletion width
+        \item $E_{\text{BD}}$: Breakdown electric field
+        \item $\varepsilon$: Permittivity of the semiconductor
+        \item $N_A, N_D$: Acceptor and donor concentrations
+        \item $q$: Electron charge
+        \item $\phi_c$: Contact potential
+    \end{itemize}
+    
+    \vspace{0.3em}
+    \textbf{Observation:} Breakdown voltage depends strongly on doping concentrations and junction profile (e.g., step, graded, diffused).
+\end{frame}
+
+
+\begin{frame}{\textbf{Breakdown Voltage in Non-Punch-Through (NPT) Diodes}}
+
+    \textbf{Structure Concept:}
+    \begin{itemize}
+        \item \textbf{Non-punch-through diode:} Drift region thickness $W_d$ is \textit{greater than} depletion width at breakdown.
+        \item Depletion region does \textbf{not reach} the heavily doped $n^+$ substrate.
+    \end{itemize}
+    
+    \vspace{0.4em}
+    \textbf{Simplified Breakdown Voltage Equation:}
+    \begin{equation}
+        BV_{\text{BD}} \approx \frac{\varepsilon E_{\text{BD}}^2}{2 q N_D}
+    \end{equation}
+    \begin{itemize}
+        \item $E_{\text{BD}}$: Breakdown electric field
+        \item $N_D$: Doping concentration of drift region (lightly doped $n$)
+        \item $\varepsilon$: Permittivity of the semiconductor
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{\textbf{Breakdown Voltage in Non-Punch-Through (NPT) Diodes}}
+
+\textbf{Numerical Estimation for Silicon:}
+\begin{equation}
+    BV_{\text{BD}} \approx \frac{1.3 \times 10^{17}}{N_D}
+\end{equation}
+(for $N_D$ in $\text{cm}^{-3}$, $BV_{\text{BD}}$ in volts)
+
+\vspace{0.4em}
+\textbf{Depletion Width at Breakdown:}
+\begin{equation}
+    W_d \approx \frac{2 BV_{\text{BD}}}{E_{\text{BD}}} \approx 10^{-5} BV_{\text{BD}} \quad \text{(in cm)}
+\end{equation}
+
+\vspace{0.4em}
+\textbf{Design Implications:}
+\begin{itemize}
+    \item High breakdown voltages $\Rightarrow$ require very \textbf{light doping} ($\sim 10^{14}$ cm$^{-3}$).
+    \item Drift region width for 1000 V breakdown $\approx$ 100 $\mu$m.
+    \item Trade-off between \textbf{blocking capability} and \textbf{on-resistance}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{Punch-Through Diode Breakdown Mechanism}}
+    \begin{columns}
+    
+    \begin{column}{0.5\textwidth}
+    \textbf{Definition:} Punch-through occurs when the reverse bias extends the depletion region entirely across the lightly doped $n^-$ drift region up to the heavily doped $n^+$ region.
+    
+    \begin{itemize}
+        \item Reverse bias pushes the depletion edge to contact $n^+$, beyond which it cannot grow.
+        \item The electric field profile changes shape — not triangular anymore.
+        \item Breakdown voltage is reached when $E_1 + E_2 = E_{BD}$.
+    \end{itemize}
+    
+    \vspace{1em}
+    \textbf{Key Point:} The $n^+$ layer's heavy doping blocks further depletion region growth.
+    \end{column}
+    
+    \begin{column}{0.5\textwidth}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.25]{fig/lec04/punch_through.png}
+        \caption{\scriptsize Punch-through diode under reverse bias: (a) Depletion layer extends fully across the drift region (punch-through condition); (b) Electric field profile. Adapted from Mohan et al., \textit{Power Electronics, 2nd Ed.}}
+        \label{fig:punch_through_diode}
+    \end{figure}
+    \end{column}
+    
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{\textbf{Electric Field \& Voltage Profile in Punch-Through Diode}}
+    \begin{itemize}
+        \item Electric field profile:
+        \begin{itemize}
+            \item Triangular portion: $E_1 = \frac{qN_dW_d}{\varepsilon}$
+            \item Rectangular portion: $E_2$
+        \end{itemize}
+        \item Breakdown voltage:
+        \begin{equation}
+            V_1 = \frac{qN_dW_d^2}{2\varepsilon}, \quad V_2 = E_2 W_d
+        \end{equation}
+        \begin{equation}
+            BV_{BD} = V_1 + V_2 = E_{BD}W_d - \frac{qN_dW_d^2}{2\varepsilon}
+        \end{equation}
+    \end{itemize}
+    \textbf{Observation:} When $V_1 \ll V_2$, then $BV_{BD} \approx E_{BD}W_d$
+\end{frame}
+
+\begin{frame}{\textbf{Implications of Punch-Through Design}}
+    \begin{itemize}
+        \item Allows shorter $W_d$ for same $BV_{BD}$ → compact device.
+        \item Higher resistivity in drift region increases $R_{on}$:
+        \begin{itemize}
+            \item Higher conduction loss compared to non-punch-through.
+        \end{itemize}
+        \item \textbf{Important:} No conductivity modulation under on-state — no conductivity injection from minority carriers.
+        \item Results in higher $R_{on}$ under on-state condition.
+    \end{itemize}
+    \textbf{Conclusion:} Useful for high-speed, high-frequency operation despite higher on-resistance.
 \end{frame}
