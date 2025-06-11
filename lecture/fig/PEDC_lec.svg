@@ -18293,9 +18293,9 @@
      showgrid="true"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="1250.6875"
-     inkscape:cx="1672.4375"
-     inkscape:zoom="8"
+     inkscape:cy="1237.125"
+     inkscape:cx="1745.625"
+     inkscape:zoom="4"
      inkscape:pageshadow="2"
      inkscape:pageopacity="1"
      borderopacity="1.0"
@@ -38763,7 +38763,10 @@
        width="4.9502573"
        height="6.5069604"
        x="449.508"
-       y="201.35954" />
+       y="201.35954"
+       inkscape:export-filename="lec04\schottky_diode.pdf"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
     <path
        style="fill:#000000;stroke:#000000;stroke-width:0.254946;stroke-dasharray:none;paint-order:stroke fill markers;font-variation-settings:normal;opacity:1;vector-effect:none;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
        d="m 445.71642,157.75976 0.0136,11.98972"
