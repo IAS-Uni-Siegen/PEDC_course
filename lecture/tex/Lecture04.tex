@@ -776,5 +776,720 @@
     \frametitle{Power bipolar junction transistor (BJT)}
     \textbf{1. Definition:} \\
     \textit{A power BJT is a three-terminal semiconductor device that can amplify or switch electronic signals and electrical power. It consists of two p-n junctions and is designed to handle high voltages and currents, making it suitable for power applications.}
+\begin{itemize}
+    \item Power BJTs require high blocking voltage in OFF state and high current capacity in ON state.
+    \item Structure differs from logic-level BJTs to meet power handling demands.
+    \item Exhibits distinct $i$–$v$ characteristics and switching behavior compared to signal BJTs.
+    \item Applications include:
+    \begin{itemize}
+        \item Power converters
+        \item Motor drives
+        \item High-voltage switching circuits
+    \end{itemize}
+\end{itemize}
+\end{frame}
 
+\begin{frame}{\textbf{Bipolar Power Transistors (BJT)}}
+\begin{itemize}
+    \item BJTs are three-terminal current-controlled devices with:
+    \begin{itemize}
+        \item Emitter (E)
+        \item Base (B)
+        \item Collector (C)
+    \end{itemize}
+    \item Two types: \textbf{NPN} and \textbf{PNP}
+    \item Current controlled: Small base current controls large collector current
+    \item Can only conduct in one direction:
+    \begin{itemize}
+        \item NPN: C $\rightarrow$ E
+        \item PNP: E $\rightarrow$ C
+    \end{itemize}
+    \item Structure: vertically oriented layers with heavily doped emitter and lightly doped collector
+\end{itemize}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{fig/lec04/pnp_npn.png}
+    \caption{BJT structure and symbol, adapted from Ned Mohan, Tore M. Undeland, and William P. Robbins, Power Electronics: Converters, Applications, and Design, 3rd Edition.}
+    \label{fig:bjt_structure}
+\end{figure}
+\end{frame}
+
+\begin{frame}{\textbf{Vertical Power Transistor Structure}}
+    \begin{columns}
+        \begin{column}{0.35\textwidth}
+            \begin{itemize}
+                \item 4-layer vertical structure with alternating $p$ and $n$-type regions.
+                \item Base input, collector output, emitter common terminal.
+                \item Vertical layout reduces $R_{\text{on}}$ and thermal resistance.
+                \item Enhances current flow and reduces power dissipation.
+                \item Common-emitter configuration used in power circuits.
+            \end{itemize}
+        \end{column}
+    
+        \begin{column}{0.65\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[scale=0.25]{fig/lec04/vertical_BJT_structure.png}
+                \caption{Cross-section of a typical vertical $npn$ power BJT, adapted from Ned Mohan, Tore M. Undeland, and William P. Robbins, Power Electronics: Converters, Applications, and Design, 3rd Edition.}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{\textbf{Doping and Thickness in Vertical BJTs}}
+        \begin{columns}
+        \begin{column}{0.35\textwidth}
+            \begin{itemize}
+                \item Emitter: Heavily doped $n^+$ ($\sim 10^{19}~\text{cm}^{-3}$)
+                \item Base: Moderately doped $p$-type ($\sim 10^{16}~\text{cm}^{-3}$)
+                \item Collector drift: Lightly doped $n^-$ ($\sim 10^{14}~\text{cm}^{-3}$), width = 50–200 $\mu$m
+                \item Collector contact: $n^+$ ($\sim 10^{19}~\text{cm}^{-3}$)
+            \end{itemize}
+            \textbf{Design Considerations:}
+            \begin{itemize}
+                \item Base kept thin (5–20 $\mu$m) for high current gain.
+                \item Drift region determines breakdown voltage.
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{0.65\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[scale=0.25]{fig/lec04/vertical_BJT_structure.png}
+                \caption{Cross-section of a typical vertical $npn$ power BJT, adapted from Ned Mohan, Tore M. Undeland, and William P. Robbins, Power Electronics: Converters, Applications, and Design, 3rd Edition.}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{\textbf{NPN Transistor: Operating Principle}}
+    \begin{columns}
+    \begin{column}{0.5\textwidth}
+        \textbf{Operation:}
+        \begin{itemize}
+            \item Emitter–Base junction forward-biased $\rightarrow$ injects electrons into base.
+            \item Base–Collector junction reverse-biased $\rightarrow$ collects electrons.
+            \item Base is thin and lightly doped to minimize recombination.
+            \item Electrons diffuse across base and are swept into collector.
+            \item Base current $I_B$ is small; Collector current $I_C$ is large.
+        \end{itemize}
+        \textbf{Collector current:}
+        \begin{equation}
+            I_C = \alpha_F I_E - I_{CO}(e^{V_{CE}/V_T} - 1)
+        \end{equation}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.8\linewidth]{fig/lec04/npn_bjt_operation.png}
+            \caption{NPN BJT operation under forward active mode; adapted from Mohan et al., \textit{Power Electronics, 2nd Ed.}}
+            \label{fig:npn_bjt_operation}
+        \end{figure}
+        \textbf{Emitter current:}
+        \begin{equation}
+        I_E = \alpha_R I_C - I_{EO}(e^{V_{EC}/V_T} - 1)
+        \end{equation}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{\textbf{BJT Current Components and Ebers-Moll Model}}
+        \begin{columns}
+    \begin{column}{0.4\textwidth}
+        \begin{itemize}
+            \item BJT modeled using Ebers-Moll equivalent circuit
+            \item Includes forward and reverse $\alpha$ parameters
+            \item Defines base, collector, and emitter currents via diode current equations
+        \end{itemize}
+        \begin{align*}
+        I_C &= \alpha_F I_F - I_{CO}(e^{V_{CE}/V_T} - 1) \\
+        I_E &= \alpha_R I_R - I_{EO}(e^{V_{EC}/V_T} - 1)
+        \end{align*}
+        \textbf{Current continuity:} $I_C + I_E + I_B = 0$
+    \end{column}
+    \begin{column}{0.6\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.8\linewidth]{fig/lec04/NPN_BJT_eq_model.png}
+            \caption{Ebers-Moll equivalent circuit of NPN BJT}
+        \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{\textbf{Key Parameters and Insights}}
+\begin{itemize}
+    \item $\alpha_F = \frac{I_C}{I_E}$ (forward common-base current gain), typically 0.9 to 0.98
+    \item $\alpha_R = \frac{I_E}{I_R}$ (reverse common-base current gain), typically 0.02 to 0.1
+    \item $\alpha_R$ is usually much smaller than $\alpha_F$.
+    \item $\beta = \frac{I_C}{I_B}$ (common-emitter current gain), typically 50 to 200
+    \item Higher $\alpha$ → better carrier injection from emitter
+    \item Thin base → high efficiency but increased risk of punch-through
+    \item $I_B$ is small but essential for switching control
+\end{itemize}
+\vspace{0.5em}
+\textbf{Conclusion:} BJT operates via minority carrier injection and diffusion under strong forward bias conditions. It is highly efficient for amplification and switching when designed with proper base width and doping gradients.
+\end{frame}
+
+
+\begin{frame}{\textbf{BJT Current Gain Mechanism and Base Transport}}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\textbf{Active Region Operation:}
+\begin{itemize}
+    \item In the active mode of a BJT, the base-emitter junction is forward biased, and the base-collector junction is reverse biased.
+    \item Electrons are injected from the emitter (n$^+$) into the base (p) and then diffuse toward the collector.
+    \item The base is intentionally kept very thin and lightly doped to minimize recombination and ensure most electrons reach the collector.
+    \item The resulting collector current $I_C$ is almost equal to the emitter current $I_E$, while the base current $I_B$ remains small.
+\end{itemize}
+
+\textbf{Implication:} The small base current and large collector current results in current gain $\beta = \frac{I_C}{I_B}$.
+\end{column}
+
+\begin{column}{0.4\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{fig/lec04/cross_section_BJT.png}
+    \caption{Simplified cross-sectional model of BJT and current components; adapted from Ned Mohan, Tore M. Undeland, and William P. Robbins, Power Electronics: Converters, Applications, and Design, 3rd Edition.}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{\textbf{Diffusion Currents and Stored Charge Distribution}}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{itemize}
+    \item The injected electrons from the emitter diffuse through the base to the collector, supported by the electric field across the reverse-biased base-collector junction.
+    \item Recombination in the base is minimized due to short base width and high diffusion constant.
+    \item Stored charge distribution within the base and collector regions affects dynamic response and switching.
+    \item The base current includes three components:
+    \begin{itemize}
+        \item $I_{ne}$: diffusion of electrons injected from emitter to base.
+        \item $I_{nc}$: recombination in the collector depletion layer.
+        \item $I_{pe}$: holes injected into emitter to maintain charge neutrality.
+    \end{itemize}
+\end{itemize}
+\end{column}
+
+\begin{column}{0.4\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{fig/lec04/stored_charge_BJT.png}
+    \caption{Stored charge vs. log(p,n) profile; adapted from Ned Mohan, Tore M. Undeland, and William P. Robbins, Power Electronics: Converters, Applications, and Design, 3rd Edition.}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{\textbf{Expression for Current Gain and Beta}}
+    \begin{columns}
+\begin{column}{0.65\textwidth}
+\textbf{Terminal Current Definitions:}
+\begin{equation}
+\begin{aligned}
+I_C &= I_{nc} \\
+I_E &= I_{ne} + I_{pe} \\
+I_B &= I_E - I_C = I_{ne} - I_{nc} + I_{pe}
+\end{aligned}
+\end{equation}
+\textbf{Gain Expression:}
+\begin{equation}
+\frac{I_B}{I_C} = \frac{I_{ne} - I_{nc}}{I_{nc}} + \frac{I_{pe}}{I_{nc}} \Rightarrow \beta = \left( \frac{I_B}{I_C} \right)^{-1}
+\end{equation}
+\textbf{Optimization:}
+\begin{itemize}
+    \item Large $\beta$ requires: small $I_{pe}$ (via heavy emitter doping), minimal $(I_{ne} - I_{nc})$ (via long electron lifetime in base).
+    \item Thin base to reduce recombination path and ensure efficient electron diffusion.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.35\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{fig/lec04/BJT_Current_gain_plot.png}
+    \caption{Variation of BJT $\beta$ and $V_{CE(sat)}$, as a function of dc collector current; adapted from Ned Mohan, Tore M. Undeland, and William P. Robbins, Power Electronics: Converters, Applications, and Design, 3rd Edition.}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{\textbf{Emitter Current Crowding and its Impact on Beta}}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{itemize}
+    \item Emitter current does not flow uniformly due to geometry and lateral resistance in the base.
+    \item The voltage drop across the base-emitter junction is higher near the emitter edge, leading to current crowding.
+    \item Result: Increased base current density at the emitter edge $\Rightarrow$ early onset of high-level injection $\Rightarrow$ fall in $\beta$.
+    \item Modern power BJTs mitigate this by using interleaved emitter-base finger structures.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.4\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{fig/lec04/BJT_current_crowding.png}
+    \caption{Forward-biased emitter current crowding due to lateral base resistance; adapted from Ned Mohan, Tore M. Undeland, and William P. Robbins, Power Electronics: Converters, Applications, and Design, 3rd Edition.}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{\textbf{Quasi-Saturation in Power BJTs}}
+\begin{columns}
+\begin{column}{0.55\textwidth}
+\begin{itemize}
+    \item At high $I_C$, the voltage drop across the drift region increases due to $R_d$.
+    \item The base-collector junction becomes weakly forward biased.
+    \item Hole injection from base to collector drift occurs, and space-charge neutrality requires electron injection as well.
+    \item Drift region begins to accumulate charge on one side only — this is quasi-saturation.
+\end{itemize}
+
+\begin{equation}
+i_C = \frac{V_{CE}}{R_d}
+\end{equation}
+\end{column}
+
+\begin{column}{0.45\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{fig/lec04/BJT_stored_charge_distribution.png}
+    \caption{Charge profile showing virtual base in quasi-saturation; adapted from Ned Mohan, Tore M. Undeland, and William P. Robbins, Power Electronics: Converters, Applications, and Design, 3rd Edition.}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Static Characteristics of BJT}
+    \begin{columns}
+    \begin{column}{0.55\textwidth}
+    \begin{itemize}
+        \item A BJT is a current-controlled device.
+        \item Its output characteristic $i_C$ versus $V_{CE}$ depends on the base current $i_B$:
+        \[
+            i_C = f(V_{CE}, i_B)
+        \]
+        \item The collector current is ideally $i_C = \beta i_B$, where $\beta$ is the current gain of the transistor.
+        \item However, due to the Early effect (modulation of base width with $V_{CE}$), $\beta$ is not constant.
+        \item This leads to variation in $i_C$ for the same $i_B$ as $V_{CE}$ increases.
+    \end{itemize}
+    \end{column}
+
+    \begin{column}{0.45\textwidth}
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\textwidth]{fig/lec04/BJT_eq_circuit.png}
+        \caption{BJT equivalent circuit with resistances and capacitances; ; adapted from Mohan et al., \textit{Power Electronics, 2nd Ed.}}
+    \end{figure}
+    \end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Output Characteristics of a Transistor}
+    \begin{columns}
+    \begin{column}{0.55\textwidth}
+    \begin{itemize}
+        \item The $i_C$ vs $V_{CE}$ curve reveals three operating regions:
+        \begin{enumerate}
+            \item \textbf{Saturation Region:} Very low $V_{CE}$, high $i_C$, transistor fully ON.
+            \item \textbf{Active Region:} $i_C \approx \beta i_B$, transistor used for amplification.
+            \item \textbf{Cutoff Region:} $i_B \approx 0$, thus $i_C \approx 0$, transistor OFF.
+        \end{enumerate}
+        \item The Load Line on the output characteristic intersects the $i_C$-$V_{CE}$ curves based on $i_B$.
+        \item Used to find the Q-point in analog design.
+    \end{itemize}
+    \end{column}
+
+    \begin{column}{0.45\textwidth}
+        \begin{figure}
+        \centering
+        \includegraphics[width=1\textwidth]{fig/lec04/BJT_VI_Characteristics.png}
+        \caption{Output characteristics of a BJT; adapted from Umanand, L., \textit{Power Electronics, Essentials and Applications.}}
+    \end{figure}
+    \end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Power BJT – Static Characteristics}
+    \begin{columns}
+    \begin{column}{0.6\textwidth}
+
+    \begin{itemize}
+        \item Power BJTs exhibit similar $i_C$-$V_{CE}$ behavior but with effects like:
+        \begin{itemize}
+            \item \textbf{Quasi-saturation:} due to the lightly doped collector drift region.
+            \item \textbf{Second breakdown:} due to localized thermal hotspots under high $i_C$.
+        \end{itemize}
+        \item Three major regions are:
+        \begin{enumerate}
+            \item Active region: Used for amplification.
+            \item Quasi-saturation: Forward-biased $C$-$B$ junction begins to conduct.
+            \item Hard saturation: Excess carrier injection across drift region.
+        \end{enumerate}
+        \item Breakdown voltages:
+        \begin{itemize}
+            \item $BV_{CBO}$: Collector-base with emitter open.
+            \item $BV_{CEO}$: Collector-emitter with base open.
+            \item $BV_{SUS}$: Sustaining voltage after breakdown onset.
+        \end{itemize}
+    \end{itemize}
+    \end{column}
+
+    \begin{column}{0.4\textwidth}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{fig/lec04/BJT_VI_Characteristics2.png}
+        \caption{$i_C$-$V_{CE}$ curves with $I_B$ steps; adapted from Ned Mohan, Tore M. Undeland, and William P. Robbins, Power Electronics: Converters, Applications, and Design, 3rd Edition.}
+    \end{figure}
+    \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Current Gain and Load Line Intersection}
+    \begin{columns}
+    \begin{column}{0.6\textwidth}
+    \begin{itemize}
+        \item For a given $i_B$, collector current $i_C = \beta i_B$ in the active region.
+        \item $\beta$ is affected by:
+        \begin{itemize}
+            \item Injection efficiency (related to emitter doping)
+            \item Base transport factor (related to recombination and diffusion in base)
+        \end{itemize}
+        \item Load line defined by:
+        \[
+            i_C = \frac{V_{CC} - V_{CE}}{R_L}
+        \]
+        \item Intersection of load line and transistor characteristic determines Q-point.
+    \end{itemize}
+    \end{column}
+
+    \begin{column}{0.4\textwidth}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{fig/lec04/BJT_VI_Characteristics2.png}
+        \caption{$i_C$-$V_{CE}$ curves with $I_B$ steps; adapted from Ned Mohan, Tore M. Undeland, and William P. Robbins, Power Electronics: Converters, Applications, and Design, 3rd Edition.}
+    \end{figure}
+    \end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Key Observations in Power BJT Static Behavior}
+    \begin{columns}
+    \begin{column}{0.6\textwidth}
+    \begin{itemize}
+        \item Unlike small-signal BJTs, power BJTs show:
+        \begin{itemize}
+            \item \textbf{Lower current gain $\beta$}, especially in quasi-saturation.
+            \item \textbf{Voltage fall-off due to second breakdown.}
+            \item \textbf{Load line may enter second breakdown zone}, leading to thermal failure.
+        \end{itemize}
+        \item Quasi-saturation is due to double carrier injection in the collector drift region.
+        \item Proper thermal and current limiting design is critical in power BJTs.
+    \end{itemize}
+    \end{column}
+
+    \begin{column}{0.4\textwidth}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{fig/lec04/BJT_VI_Characteristics2.png}
+        \caption{$i_C$-$V_{CE}$ curves with $I_B$ steps; adapted from Ned Mohan, Tore M. Undeland, and William P. Robbins, Power Electronics: Converters, Applications, and Design, 3rd Edition.}
+    \end{figure}
+    \end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Dynamic Characteristics of BJT}
+\textbf{In the ON-state, a transistor stores three main charges:}
+\begin{enumerate}
+    \item \textbf{$Q_b$}: Charge stored in the base region.
+    \item \textbf{$Q_{ce}$}: Charge in the collector region beneath the emitter.
+    \item \textbf{$Q_{cb}$}: Charge in the collector region beneath the base contact.
+\end{enumerate}
+
+\vspace{1em}
+These charges define the transient behavior during switching. When transitioning to the OFF-state, all three must be removed for the transistor to fully block current.
+
+\begin{figure}
+    \centering
+    % \includegraphics[width=0.7\linewidth]{your_figure_path}
+    \caption{[Add diagram showing positions of $Q_b$, $Q_{ce}$, and $Q_{cb}$]}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Charge Dependency on $V_{CE}$ and $I_C$}
+        \begin{columns}
+    \begin{column}{0.5\textwidth}
+\begin{itemize}
+    \item \textbf{$Q_b$} is largely independent of $V_{CE}$, but increases with $I_C$.
+    \item \textbf{$Q_{ce}$} increases with $I_C$ but decreases as $V_{CE}$ increases.
+    \item \textbf{$Q_{cb}$} grows rapidly as $V_{CE}$ drops — marking the onset of saturation.
+\end{itemize}
+
+\textbf{Implication:} Charge buildup significantly affects collector-emitter voltage and switching speed.
+    \end{column}
+
+    \begin{column}{0.5\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{fig/lec04/BJT_charge_dependancy.png}
+    \caption{$Q$ vs $V_{CE}$ and $Q$ vs $I_C$; adapted from Umanand, L., \textit{Power Electronics, Essentials and Applications.}}
+\end{figure}
+    \end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Turn-OFF of BJT – Physical Process}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+\begin{itemize}
+    \item Turn-off begins when base drive is removed or reversed.
+    \item $Q_b$ is removed first, starting from edges near the emitter.
+    \item $Q_{ce}$ and $Q_{cb}$ follow, shrinking towards the center.
+    \item Residual charge $Q_r$ creates a \textit{tail current}, affecting turn-off time.
+\end{itemize}
+\textbf{Storage time $t_s$}: Time during which current still flows due to residual charge even after base drive is removed.
+    \end{column}
+
+    \begin{column}{0.5\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.65\linewidth]{fig/lec04/BJT_turn_off.png}
+    \caption{BJT Turn-off process: charge removal sequence; adapted from Umanand, L., \textit{Power Electronics, Essentials and Applications.}}
+\end{figure}
+    \end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Turn-ON of BJT – Dynamics}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+\begin{itemize}
+    \item In OFF-state, there are no stored charges.
+    \item A positive base pulse injects $Q_{ce}$, reducing $V_{CE}$ rapidly.
+    \item A sharp peak in base current is ideal for quick charge buildup.
+    \item Faster ON-switching means lower energy loss.
+\end{itemize}
+
+\textbf{Switching losses during turn-ON} depend on:
+\begin{itemize}
+    \item Time to establish $Q_{ce}$ and $Q_b$.
+    \item Load characteristics (resistive or inductive).
+\end{itemize}
+    \end{column}
+
+    \begin{column}{0.5\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{fig/lec04/BJT_turn_on.png}
+    \caption{BJT Turn-on process: charge buildup sequence; adapted from Umanand, L., \textit{Power Electronics, Essentials and Applications.}}
+\end{figure}
+    \end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Power Dissipation in BJT}
+\textbf{Total Power Dissipation:}
+\[
+P_d = P_{on} + P_{off} + P_{switching}
+\]
+
+\textbf{ON-state Loss:}
+\[
+P_{on} = V_{CE(sat)} \times I_C \times D
+\]
+where $D$ is the duty cycle.
+
+\textbf{Switching Loss (OFF $\rightarrow$ ON):}
+\[
+P_{\text{OFF-ON}} = \frac{V_{cc} I_C t_f f_s}{6}
+\]
+
+\textbf{Switching Loss (ON $\rightarrow$ OFF):}
+\[
+P_{\text{ON-OFF}} = \frac{V_{cc} I_C t_r f_s}{6}
+\]
+
+\textbf{Total Switching Loss:}
+\[
+P_{\text{switching}} = \frac{V_{cc} I_C f_s (t_r + t_f)}{6}
+\]
+\end{frame}
+
+
+\begin{frame}{Safe Operating Area (SOAR)}
+      \begin{columns}
+    \begin{column}{0.5\textwidth}
+\textbf{SOAR}: Region where transistor operates safely under given voltage-current conditions.
+
+\begin{itemize}
+    \item Forward SOAR (FSOAR): With positive base drive.
+    \item Reverse SOAR (RSOAR): With negative base drive (turn-off).
+    \item Delimits power dissipation, collector voltage, and current density.
+\end{itemize}
+
+\textbf{Key Constraints:}
+\begin{itemize}
+    \item Second breakdown limit.
+    \item Thermal limits (hot spot prevention).
+    \item Switching-induced crowding.
+\end{itemize}
+    \end{column}
+
+    \begin{column}{0.5\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{fig/lec04/BJT_SOAR_RSOAR.png}
+    \caption{SOAR and RSOAR curves for a power BJT; adapted from Umanand, L., \textit{Power Electronics, Essentials and Applications.}}
+\end{figure}
+    \end{column}
+\end{columns}
+\end{frame}
+
+
+%------------------------------------------------
+
+\begin{frame}{Breakdown Voltages in BJTs}
+\begin{itemize}
+  \item In the blocking state, the C--B junction must withstand the applied voltage.
+  \item The B--E junction has a lower breakdown voltage (5–20 V) due to heavy emitter doping to achieve high $\beta$.
+  \item To withstand high voltages, a lightly doped collector drift region is used.
+  \item Base width is minimized to maintain gain but limited to avoid reach-through breakdown.
+\end{itemize}
+\vspace{0.5em}
+\textbf{Design Trade-off:} Thin base for high gain vs. thick base for high voltage.
+\textbf{Breakdown Voltage Expressions:}
+\begin{itemize}
+  \item In common-emitter configuration: $BV_{CEO} < BV_{CBO}$
+  \item Relationship:
+  \[
+  BV_{CEO} = \frac{BV_{CBO}}{\beta^{1/n}} \quad \text{where } n = 4 \text{ for } npn, n = 6 \text{ for } pnp
+  \]
+  \item Due to reverse-bias current $I_{CBO}$ at B--E junction, impact ionization rate increases in emitter-open mode.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Second Breakdown, Thermal Runaway and Localized Hotspots}
+\begin{itemize}
+  \item Occurs at high $V_{CE}$ and $I_C$ despite staying below primary breakdown.
+  \item Triggered by localized thermal runaway and current filamentation.
+  \item Exponential increase in power dissipation with temperature due to:
+  \[
+  n_i \propto \exp\left(-\frac{E_g}{2kT}\right)
+  \]
+  \item Dangerous due to steep $V_{CE}$ drop and rapid localized heating.
+\end{itemize}
+\textbf{Thermal Runaway and Localized Hotspots}
+\begin{itemize}
+  \item Filamentation: nonuniform current density leads to $J_A > J_B$
+  \item Result: $T_A > T_B$ $\Rightarrow$ runaway due to positive feedback
+  \item Region A may exceed intrinsic temperature $T_i$ causing catastrophic failure.
+  \item Preventive measures:
+  \begin{itemize}
+    \item Use of snubbers and freewheeling diodes.
+    \item Narrow emitter stripes.
+    \item Controlled $di/dt$ and $dv/dt$ during switching.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{On-State Losses}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item Dominated by conduction loss:
+                \[
+                P_{on} = I_C \cdot V_{CE(sat)}
+                \]
+                \item $V_{CE(sat)}$ increases with $I_C$ due to:
+                \[
+                V_{CE(sat)} = V_{BE(on)} - V_{BC(sat)} + V_d + I_C(R_e + R_c)
+                \]
+                \item Main contributor: $V_d$ across collector drift region.
+                \item $V_d$ depends on carrier lifetime; trade-off between low $V_d$ and fast switching.
+            \end{itemize}
+        \end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{fig/lec04/BJT_on_state_losses.png}
+\caption{On-state losses in a BJT; adapted from Umanand, L., \textit{Power Electronics, Essentials and Applications.}}
+\label{fig:bjt_on_state_losses}
+\end{figure}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Paralleling of BJTs}
+        \begin{columns}
+        \begin{column}{0.5\textwidth}
+\begin{itemize}
+  \item Used in high-current applications to share load.
+  \item Risk: thermal runaway due to negative temp. coeff. of $V_{BE}$.
+  \item Solution: Add emitter resistance $R$ for negative feedback.
+  \[
+  V_{be1} = V_{be2} + R(I_{c1} - I_{c2}) \Rightarrow \Delta V_{be} = R \Delta I_c
+  \]
+  \item Limit $\Delta V_{be}$ to $\approx$ 0.2 V to allow $\Delta I_C \leq 0.5$ A.
+\end{itemize}
+        \end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{fig/lec04/BJT_parallel.png}
+\caption{Paralleling of BJT; adapted from Umanand, L., \textit{Power Electronics, Essentials and Applications.}}
+\label{fig:bjt_on_state_losses}
+\end{figure}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Darlington Connection}
+            \begin{columns}
+        \begin{column}{0.5\textwidth}
+\begin{itemize}
+  \item Used to boost current gain:
+  \[
+  I_B = \frac{I_C}{\beta_1 \cdot \beta_2}
+  \]
+  \item Higher $V_{CE(sat)} \approx$ 1–1.2 V compared to 0.4–0.6 V for single BJT.
+  \item Ideal for high-power applications where base drive must be minimized.
+  \item Trade-off: higher power loss and slower switching.
+\end{itemize}
+        \end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{fig/lec04/darlington_BJTs.png}
+\caption{Darlington; adapted from Umanand, L., \textit{Power Electronics, Essentials and Applications.}}
+\label{fig:bjt_on_state_losses}
+\end{figure}
+    \end{column}
+    \end{columns}
 \end{frame}
