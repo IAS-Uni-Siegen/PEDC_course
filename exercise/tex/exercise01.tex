@@ -115,14 +115,14 @@ Take in account, that $W_\mathrm{kin}(n)\propto \frac{1}{n^2}$ and the ground st
 \begin{solutionblock}
     The kinetic energy of this electron for ground state is calculated by
     \begin{equation}
-        W_\mathrm{kin}= \frac{1}{2} m_\mathrm{e}v^2 = \frac{1}{2} m_\mathrm{e} r \omega^2.
+        W_\mathrm{kin}= \frac{1}{2} m_\mathrm{e}v^2 = \frac{1}{2} m_\mathrm{e} r^2 \omega^2.
         \label{eq:Wkinmech}
     \end{equation}
     If the electron with the mass $m_\mathrm{e}$ orbits a proton in a circular path with radius $r$ and speed $v$, the centrifugal force 
     (from circular motion) is balanced by the electrostatic attraction (Coulomb force) between the electron and the proton.
     This balance leads to the equation:
     \begin{equation}
-        m_\mathrm{e} r \omega^2 = \frac{{q_\mathrm{e}}^2}{4\pi\epsilon_0}
+        m_\mathrm{e} r \omega^2 = \frac{{q_\mathrm{e}}^2}{4\pi\epsilon_0 r^2}
         \label{eq:Wkinelec}
     \end{equation}   
     Using \eqref{eq:Wkinmech} and \eqref{eq:Wkinelec} leads to 
@@ -134,9 +134,9 @@ Take in account, that $W_\mathrm{kin}(n)\propto \frac{1}{n^2}$ and the ground st
     Solving \eqref{eq:Wkinmech} for $\omega$ yields
     \begin{equation}
         \begin{aligned}
-            \omega &= \sqrt{\frac{2 \cdot W_\mathrm{kin}}{ m_\mathrm{e} r}} = \sqrt{\frac{2 \cdot \SI{2.17 \cdot 10^{-18}}{\joule}}{\SI{9.11 \cdot 10^{-31}}{\kilo\gram} \cdot \SI{0.0529}{\nano\meter}}}
-            = \SI{3 \cdot 10^{11}}{1\per\second}. \\
-            f& = \SI{47.8}{\giga\hertz}.
+            \omega &= \sqrt{\frac{2 \cdot W_\mathrm{kin}}{ m_\mathrm{e} r^2}} = \sqrt{\frac{2 \cdot \SI{2.17 \cdot 10^{-18}}{\joule}}{\SI{9.11 \cdot 10^{-31}}{\kilo\gram} \cdot (\SI{0.0529}{\nano\meter})^2}}
+            = \SI{4.13 \cdot 10^{16}}{1\per\second}. \\
+            f& = \SI{6.57 \cdot 10^{15}}{hertz}.
         \end{aligned}
     \end{equation}
     The total energy for ground state is calculated by
