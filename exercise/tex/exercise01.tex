@@ -310,7 +310,7 @@ See also \autoref{fig:ex01_hallsensor}.
     \label{fig:ex01_hallsensor}
 \end{figure}
 
-\subtask{Calculate the Hall voltage for a probe current of $\SI{100}{\milli\ampere}$ and a magnetic field perpendicular to the plane of $B= \SI{0.1}{\micro\tesla}$.}
+\subtask{Calculate the Hall voltage for a probe current of $\SI{100}{\milli\ampere}$ and a magnetic field perpendicular to the plane of $B= \SI{0.1}{\tesla}$.}
 
 \begin{solutionblock}
     The Hall voltage is given by
@@ -324,10 +324,10 @@ See also \autoref{fig:ex01_hallsensor}.
     \begin{equation}
         \vec{E_\mathrm{y}}=\frac{J_\mathrm{p}}{qp}B_\mathrm{z}
     \end{equation}
-    Using \eqref{eq:hall_voltage} this leads to 
+    Using \eqref{eq:hall_voltage} and taking in account, that $N_a = \SI{10^{14}}{\cubic{\centi\meter}} = \SI{10^{20}}{\cubic{\meter}}$ results in
     \begin{equation}
         U_\mathrm{H} = \frac{J_\mathrm{p}}{qp}B_\mathrm{z} l_\mathrm{w} = \frac{I \cdot B_\mathrm{z}}{qpd}
-        = \frac{\SI{100}{\milli\ampere} \cdot \SI{0.1}{\micro\tesla}}{\SI{1.60 \cdot 10^{-19}}{\coulomb} \cdot \SI{10^{14}}{\frac{1}{\cubic{\centi\meter}}} \cdot \SI{0.5}{\milli\meter}}
+        = \frac{\SI{100}{\milli\ampere} \cdot \SI{0.1}{\tesla}}{\SI{1.60 \cdot 10^{-19}}{\coulomb} \cdot \SI{10^{20}}{\frac{1}{\cubic{\meter}}} \cdot \SI{0.5}{\milli\meter}}
         = \SI{1.25}{\volt} 
     \end{equation} 
 \end{solutionblock}    
