@@ -482,35 +482,6 @@
 \end{columns}
 \end{frame}
 
-\begin{frame}{\textbf{Introduction to punch-through vs non-punch-through power diodes}}
-    \textbf{Differences:Punch through vs non-punch-through:} 
-    \centering
-    \small
-    \begin{tabular}{|p{3.5cm}|p{4cm}|p{4cm}|}
-    \hline
-    \textbf{Characteristic} & \textbf{Punch-through (PT)} & \textbf{Non-punch-through (NPT)} \\
-    \hline
-    Drift Region & Thinner, moderately doped & Thicker, lightly doped \\
-    \hline
-    Electric Field Profile & Extends through drift region (reaches anode) & Ends before reaching the anode \\
-    \hline
-    Breakdown Mechanism & Abrupt avalanche breakdown & Gradual breakdown onset \\
-    \hline
-    Switching Speed & Faster reverse recovery & Slower but more robust \\
-    \hline
-    On-State Voltage Drop & Lower & Slightly higher \\
-    \hline
-    Reverse Recovery Loss & Lower & Higher \\
-    \hline
-    Application Voltage Range & Medium (e.g., 600–1200 V) & High (e.g., >1200 V) \\
-    \hline
-    Example Devices & Transient Voltage Suppression and Schottky barrier diodes & 1N400x  \\
-    \hline
-    \end{tabular} \\
-    \vspace{0.3cm}
-    \textbf{Design Implication:} Choice depends on switching frequency, voltage class, and thermal constraints.
-\end{frame}
-
 \begin{frame}{\textbf{Avalanche Breakdown in Step Junctions}}
     \textbf{Concept:} Reverse bias in a $p$–$n$ junction causes the electric field to drop entirely across the depletion region. As the field strength increases, it approaches a critical value $E_{\text{BD}}$ where impact ionization begins $\Rightarrow$ Avalanche Breakdown.
     
@@ -655,6 +626,37 @@
     \end{itemize}
     \textbf{Conclusion:} Useful for high-speed, high-frequency operation despite higher on-resistance.
 \end{frame}
+
+
+\begin{frame}{\textbf{Introduction to punch-through vs non-punch-through power diodes}}
+    \textbf{Differences -- punch through vs non-punch-through:} 
+    \centering
+    \small
+    \begin{tabular}{|p{4cm}|p{4.5cm}|p{4.5cm}|}
+    \hline
+    \textbf{Characteristic} & \textbf{Punch-through (PT)} & \textbf{Non-punch-through (NPT)} \\
+    \hline
+    Drift Region & Thinner, moderately doped & Thicker, lightly doped \\
+    \hline
+    Electric Field Profile & Extends through drift region (reaches anode) & Ends before reaching the anode \\
+    \hline
+    Breakdown Mechanism & Abrupt avalanche breakdown & Gradual breakdown onset \\
+    \hline
+    Switching Speed & Faster reverse recovery & Slower but more robust \\
+    \hline
+    On-State Voltage Drop & Lower & Slightly higher \\
+    \hline
+    Reverse Recovery Loss & Lower & Higher \\
+    \hline
+    Application Voltage Range & Medium (e.g., 600–1200 V) & High (e.g., $>$1200 V) \\
+    \hline
+    Example Devices & Transient Voltage Suppression and Schottky barrier diodes & 1N400x  \\
+    \hline
+    \end{tabular} \\
+    \vspace{0.3cm}
+    \textbf{Design Implication:} Choice depends on switching frequency, voltage class, and thermal constraints.
+\end{frame}
+
 
 \begin{frame}{\textbf{Schottky Diode: Structure and Principle of Operation}}
     \begin{columns}
