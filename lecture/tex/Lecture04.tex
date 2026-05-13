@@ -1222,11 +1222,11 @@ i_C = \frac{V_{CE}}{R_d}
 \vspace{1em}
 These charges define the transient behavior during switching. When transitioning to the OFF-state, all three must be removed for the transistor to fully block current.
 
-\begin{figure}
-    \centering
-    % \includegraphics[width=0.7\linewidth]{your_figure_path}
-    \caption{[Add diagram showing positions of $Q_b$, $Q_{ce}$, and $Q_{cb}$]}
-\end{figure}
+%\begin{figure}
+%    \centering
+%    % \includegraphics[width=0.7\linewidth]{your_figure_path}
+%    \caption{[Add diagram showing positions of $Q_b$, $Q_{ce}$, and $Q_{cb}$]}
+%\end{figure}
 \end{frame}
 
 
@@ -1236,7 +1236,7 @@ These charges define the transient behavior during switching. When transitioning
 \begin{itemize}
     \item \textbf{$Q_b$} is largely independent of $V_{CE}$, but increases with $I_C$.
     \item \textbf{$Q_{ce}$} increases with $I_C$ but decreases as $V_{CE}$ increases.
-    \item \textbf{$Q_{cb}$} grows rapidly as $V_{CE}$ drops — marking the onset of saturation.
+    \item \textbf{$Q_{cb}$} grows rapidly as $V_{CE}$ drops - marking the onset of saturation.
 \end{itemize}
 
 \textbf{Implication:} Charge buildup significantly affects collector-emitter voltage and switching speed.
@@ -1373,8 +1373,8 @@ P_{\text{switching}} = \frac{V_{cc} I_C f_s (t_r + t_f)}{6}
   \item To withstand high voltages, a lightly doped collector drift region is used.
   \item Base width is minimized to maintain gain but limited to avoid reach-through breakdown.
 \end{itemize}
-\vspace{0.5em}
 \textbf{Design Trade-off:} Thin base for high gain vs. thick base for high voltage.
+
 \textbf{Breakdown Voltage Expressions:}
 \begin{itemize}
   \item In common-emitter configuration: $BV_{CEO} < BV_{CBO}$
