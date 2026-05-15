@@ -1,0 +1,228 @@
+
+
+\task{Selecting the freewheel diode for two different converters}
+
+A manufacturer has two diode candidates for use as the freewheel element.
+Following parameters are given:
+
+\begin{table}[ht]
+    \centering  % Zentriert die Tabelle
+    \begin{tabular}{ll}
+        \toprule
+        Forward voltage $V_\mathrm{F}$ (at $I_\mathrm{F} = \SI{12}{\ampere}$) &  $\SI{1.05}{\volt}$\\ 
+        Reverse charge $Q_\mathrm{rr}$ &  $\SI{4.2}{\micro\coulomb}$ \\ 
+        Reverse recovery time $t_\mathrm{rr}$ &  $\SI{110}{\nano\second}$ \\ 
+        Maximal reverse voltage  $V_\mathrm{R,\max}$ &  $\SI{1200}{\volt}$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{Device A: fast silicon p--n diode.}  % Beschriftung der Tabelle
+    \label{table:ex01_deviceA}
+\end{table}
+
+and
+
+\begin{table}[ht]
+    \centering  % Zentriert die Tabelle
+    \begin{tabular}{ll}
+        \toprule
+        Forward voltage $V_\mathrm{F}$ (at $I_\mathrm{F} = \SI{12}{\ampere}$) : &  $\SI{0.48}{\volt}$\\ 
+        Reverse charge $Q_\mathrm{rr}$: &  negligible \\ 
+        junction capacitance $C_\mathrm{j}$ &  $\SI{950}{\pico\farad}$ \\ 
+        reverse leakage at room temperature $I_\mathrm{R}$: &  $\SI{2.5}{\milli\ampere}$ \\
+        Maximal reverse voltage  $V_\mathrm{R,\max}$ &  $\SI{150}{\volt}$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{Device B: Schottky diode.}  % Beschriftung der Tabelle
+    \label{table:ex01_deviceA}
+\end{table}
+
+
+Two applications are under consideration.
+\textbf{Application I}
+A $\SI{48}{\volt}$ dc-dc converter, output current $\SI{12}{\ampere}$, switching frequency $\SI{100}{\kilo\hertz}$.
+\textbf{Application II}
+A $\SI{700}{\volt}$ dc-link chopper leg, current $\SI{12}{\ampere}$, switching frequency $\SI{20}{\kilo\hertz}$.
+
+\subtask{For each application, decide which diode should be selected and justify the choice physically.}
+
+\begin{solutionblock}
+    For Application I, choose Device B (Schottky). The bus is only $\SI{48}{\volt}$, so the $\SI{150}{\volt}$ blocking capability is acceptable. 
+    At $\SI{100}{\kilo\hertz}$, reverse recovery is highly undesirable, and the Schottky has none essentially. 
+    This matches the fact that Schottky diodes are majority-carrier devices, fast, low $V_F$, and preferred in low-voltage high-speed circuits.
+
+    For Application II, choose Device A (fast silicon p--n diode). 
+    The Schottky cannot be used because its reverse-voltage rating is only $\SI{150}{\volt}$, whereas the application needs $\SI{700}{\volt}$ blocking 
+    with a margin. The poor high-voltage blocking of Schottky diodes and the trade-off between breakdown voltage and drift-region resistance.
+\end{solutionblock} 
+
+\subtask{Estimate the forward-conduction loss in each diode if it carries 12 A for 50\% duty:
+    \begin{align*}
+        P_{\mathrm{cond}} = V_\mathrm{F} \cdot I \cdot D
+    \end{align*}}
+
+\begin{solutionblock}
+    With $I = \SI{12}{\ampere}$ and $D = 0.5$,
+
+    For Device A:
+    \begin{equation}
+        P_{\mathrm{cond},A} = V_\mathrm{F} \cdot I \cdot D = \SI{1.05}{\volt} \cdot \SI{12}{\ampere} \cdot 0.5 = \SI{6.3}{\watt}.
+    \end{equation}
+    For Device B:
+    \begin{equation}
+        P_{\mathrm{cond},B} = = V_\mathrm{F} \cdot I \cdot D \SI{0.48}{\volt} \cdot \SI{12}{\ampere} \cdot 0.5 = \SI{2.88}{\watt}
+    \end{equation}
+    So the Schottky saves:
+    \begin{equation}
+        P_{\mathrm{cond},A} - P_{\mathrm{cond},B} = \SI{6.3}{\watt} - \SI{2.88}{\watt} = \SI{3.42}{\watt}.
+    \end{equation}
+\end{solutionblock} 
+
+
+\subtask{For Device A, estimate the reverse-recovery loss in Application II using
+    \begin{align*}
+        E_\mathrm{rr} &\approx Q_\mathrm{rr} V_\mathrm{R} \\
+        P_\mathrm{rr} &= E_\mathrm{rr} f_\mathrm{s}
+    \end{align*}
+}
+
+
+\begin{solutionblock}
+    Reverse-recovery loss of Device A in Application II is calculated by
+    \begin{equation}
+        E_\mathrm{rr} \approx Q_\mathrm{rr} V_\mathrm{R}  = \SI{4.2}{\micro\coulomb} \cdot \SI{700}{\volt} = \SI{2.94}{\milli\joule}.
+    \end{equation}
+    \begin{equation}
+        P_\mathrm{rr} = E_\mathrm{rr} f_\mathrm{s} = \SI{2.94}{\milli\joule} \cdot \SI{20}{\kilo\hertz} = \SI{58.8}{\watt}.
+    \end{equation}
+
+    This is much larger than the conduction loss.
+\end{solutionblock} 
+
+\subtask{Explain why Device B may still be rejected for Application II even though it has lower forward loss and no reverse recovery.}
+
+\begin{solutionblock}
+    Device B is still rejected in Application II, because device selection is not determined only by low $V_F$ or fast switching. 
+    The diode must survive the blocking state. Device B fundamentally cannot support the required reverse voltage. 
+    This is the central trade-off in power-device design: majority-carrier speed helps switching, 
+    but high-voltage blocking usually requires a different structure.
+\end{solutionblock} 
+
+\subtask{State one situation in which Device A is the only realistic option, and one situation in which Device B is clearly preferable.}
+
+\begin{solutionblock}
+    The final design judgment bases on following points:
+    \begin{itemize}
+        \item Device A only realistic: high-voltage freewheel path, e.g. $\SI{700}{\volt}$ -- $\SI{1200}{\volt}$ leg.
+        \item Device B clearly preferable: low-voltage, high-frequency output rectifier.
+    \end{itemize} 
+\end{solutionblock} 
+
+\task{The drift region as the real blocking element of a power diode}
+
+Consider a vertical one-sided silicon power diode of type $p^+ - n^- - n^+$. The $n^-$ drift region is designed to support reverse voltage.
+
+
+\begin{table}[ht]
+    \centering  % Zentriert die Tabelle
+    \begin{tabular}{ll}
+        \toprule
+        Donator density $N_\mathrm{D}$          &  $\SI{10^{14}}{\centi\meter^{-3}}$ \\ 
+        Drift-region thickness $t_\mathrm{d}$   &  $\SI{80}{\micro\meter}$ \\ 
+        Reluction time $\varepsilon_\mathrm{s}$ &  $\SI{1.04 \cdot 10^{-12}}{\farad\centi\meter^{-1}}$ \\ 
+        Elementary charge $q$                   &  $\SI{1.6\cdot 10^{-19}}{\coulomb}$ \\
+        Electron mobility $\mu_n$ in the drift region & $\SI{1000}{\centi\meter^2\per\volt\per\second}$ \\
+        \multicolumn{2}{l}{built-in voltage may be neglected compared to large reverse voltage} \\
+        \bottomrule
+    \end{tabular}
+    \caption{Device A: fast silicon p--n diode.}  % Beschriftung der Tabelle
+    \label{table:ex01_deviceA}
+\end{table}
+
+
+\subtask{Under reverse bias, explain qualitatively why the depletion region extends mainly into the $n^-$ side rather than the $p^+$ side.}
+
+\begin{solutionblock}
+    The depletion region extends mainly into the $n^-$ side, because the $p^+$ side is very heavily doped compared with the $n^-$ drift region. 
+    Charge neutrality requires equal uncovered charge on both sides, so the lightly doped side must widen much more. 
+    This is the same electrostatic principle used in ordinary abrupt junctions, but it becomes the key design mechanism in power devices.
+\end{solutionblock} 
+
+\subtask{Estimate the depletion width at $V_\mathrm{R} = \SI{600}{\volt}$ using
+    \begin{equation*}
+        W = \sqrt{\frac{2 \varepsilon_\mathrm{s} V_\mathrm{R}} {q N_\mathrm{D}}}
+    \end{equation*}
+}
+
+\begin{solutionblock}
+    The depletion width $W$ is obtained by
+        \begin{align}   
+            W &= \sqrt{\frac{2 \varepsilon_\mathrm{s} V_\mathrm{R}} {q N_\mathrm{D}}}
+              = \sqrt{\frac{2 \cdot \SI{1.04 \cdot 10^{-12}}{\farad\per\centi\meter} \cdot \SI{600}{\volt}} {\SI{1.6\cdot 10^{-19}}{\coulomb} \cdot \SI{10^{14}}{1\per\centi\meter^{3}}}} \\
+              &= \sqrt{\frac{\SI{1.248 \cdot 10^{-9}}{\volt\farad\per\centi\meter}} {\SI{3.2 \cdot 10^{-5}}{\coulomb\per\centi\meter^{3}}}} = \SI{62.4}{\micro\meter}
+        \end{align}             
+\end{solutionblock} 
+
+\subtask{Decide whether the diode is still non-punch-through at $\SI{600}{\volt}$ by comparing $W$ and $t_\mathrm{d}$.}
+
+\begin{solutionblock}
+    If the drift-region thickness $t_\mathrm{d}$ is greater than depletion width $W$, then a punch-through is prevented.
+    This is the case: $\SI{80}{\micro\meter} > \SI{62.4}{\micro\meter}$.
+\end{solutionblock} 
+
+
+\subtask{Estimate the peak electric field using
+    \begin{equation*}
+        E_\mathrm{\max} = \frac{q N_\mathrm{D} W}{\varepsilon_\mathrm{s}}
+    \end{equation*}
+}
+
+\begin{solutionblock}
+    The peak electric field is estimated by
+        \begin{equation}   
+            E_\mathrm{\max} = \frac{q N_\mathrm{D}}{\varepsilon_\mathrm{s}}
+             = \frac{\SI{1.6\cdot 10^{-19}}{\coulomb} \cdot \SI{10^{14}}{\centi\meter^{-3}}}{\SI{1.04 \cdot 10^{-12}}{\farad\centi\per\meter}}
+             = \SI{1.92\cdot 10^{5}}{\volt\per\centi\meter}
+        \end{equation}             
+\end{solutionblock} 
+
+
+\subtask{Now double the drift doping to $\SI{4 \cdot 10^{14}}{1\per\centi\meter}^{3}$, keeping thickness unchanged. 
+         Without recalculating everything from scratch, state how $W$, $E_{\max}$, blocking capability, and drift-region resistance change.
+}
+
+\begin{solutionblock}
+    The depletion width $W$ is proportional to the inverted square root of the donator density:
+        \begin{equation}   
+            W \propto \frac{1}{\sqrt{N_\mathrm{D}}}
+        \end{equation}     
+    so that $W$ decreases by $\sqrt{2}$. On the other hand The peak electric field increases by $\sqrt{2}$ according
+        \begin{equation}   
+            E_\mathrm{\max} \propto \sqrt{N_\mathrm{D}}
+        \end{equation}    
+
+    Consequences:
+    \begin{itemize}
+        \item depletion width decreases
+        \item peak field increases
+        \item blocking capability worsens
+        \item drift resistance decreases
+    \end{itemize}
+\end{solutionblock} 
+
+\subtask{ Use
+        \begin{equation*}   
+            R_{\mathrm{drift}} \propto \frac{t_\mathrm{d}}{q \mu_\mathrm{n} N_\mathrm{D}}
+        \end{equation*}  
+    to explain the statement: ``High $V_\mathrm{BD}$ $\Rightarrow$ low doping $\Rightarrow$ high $R_\mathrm{on}$.''
+}
+
+\begin{solutionblock}
+    To support a large reverse voltage without reaching the critical field too early, the drift region must be lightly doped. 
+    But lower $N_D$ means fewer carriers and thus larger resistivity:
+        \begin{equation*}   
+            \rho \propto \frac{1}{q \mu_\mathrm{n} N_\mathrm{D}}
+        \end{equation*}  
+    Therefore, the same region that helps blocking makes on-state conduction worse. 
+    That is the structural origin of the power-device trade-off seen.
+\end{solutionblock} 
+
