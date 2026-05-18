@@ -1,4 +1,7 @@
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \task{Selecting the freewheel diode for two different converters}
 
@@ -117,6 +120,11 @@ A $\SI{700}{\volt}$ dc-link chopper leg, current $\SI{12}{\ampere}$, switching f
     \end{itemize} 
 \end{solutionblock} 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \task{The drift region as the real blocking element of a power diode}
 
 Consider a vertical one-sided silicon power diode of type $p^+ - n^- - n^+$. The $n^-$ drift region is designed to support reverse voltage.
@@ -225,4 +233,205 @@ Consider a vertical one-sided silicon power diode of type $p^+ - n^- - n^+$. The
     Therefore, the same region that helps blocking makes on-state conduction worse. 
     That is the structural origin of the power-device trade-off seen.
 \end{solutionblock} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Power BJT drive strategy --- active mode, saturation, or quasi-saturation?}
+
+A vertical npn power BJT is used as a switch. From the lecture, you know that:
+\begin{itemize}
+    \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-2pt} % Distance between the points (Part2)    
+    \item the emitter is heavily doped,
+    \item the base is thin and moderately doped,
+    \item the collector drift region is lightly doped and thick,
+    \item charge buildup in $Q_b$, $Q_{ce}$, and $Q_{cb}$ influences switching,
+    \item deep saturation improves low $V_{CE}$ but worsens stored-charge removal during turn-off.
+\end{itemize}
+
+\begin{table}[ht]
+    \centering  % Zentriert die Tabelle
+    \begin{tabular}{ll}
+        \toprule
+        Active-region current gain $\beta$                &  $20$ \\ 
+        Recommended forced beta for hard switching: $\beta_f$   &  $6$ \\ 
+        Charge at edge of saturation: $Q_\mathrm{s}$      &  $\SI{28}{\micro\coulomb}$ \\ 
+        Extra charge added in deep saturation: $\Delta Q$ &  $\SI{22}{\micro\coulomb}$ \\
+        Reverse base current available at turn-off: $I_{B,\mathrm{rev}}$  & $\SI{4}{\ampere}$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{Measured data for this transistor family.}
+    \label{table:ex02_PowerBJTdata}
+\end{table}
+
+The device is required to switch $V_{CC} = 300\SI{}{\volt}$ at $I_C = \SI{30}{\ampere}$.
+
+\subtask{If the transistor were kept only in forward-active mode at $I_C = \SI{30}{\ampere}$, what base current would be required?}
+
+\begin{solutionblock}
+    The required base current $I_\mathrm{B}$ is calculated by
+    \begin{equation*}
+        I_\mathrm{B} = \frac{I_\mathrm{C}}{\beta} = \frac{\SI{30}{\ampere}}{20} = \SI{1.5}{\ampere}.
+    \end{equation*}
+\end{solutionblock} 
+
+\subtask{If hard switching with forced beta is desired, what base current is needed?}
+
+\begin{solutionblock}
+    The required base current $I_\mathrm{B}$ based on forced beta is calculated by
+    \begin{equation*}
+        I_\mathrm{B} = \frac{I_\mathrm{C}}{\beta_\mathrm{f}} = \frac{\SI{30}{\ampere}}{6} = \SI{5}{\ampere}.
+    \end{equation*}
+\end{solutionblock} 
+
+\subtask{If the base driver can supply only $\SI{3}{\ampere}$, is deep saturation guaranteed?}
+
+\begin{solutionblock}
+    No, this is no the case. Since $\SI{3}{\ampere} < \SI{5}{\ampere}$, the driver cannot guarantee hard saturation. 
+    The device may operate near the onset of saturation or in quasi-saturation.
+\end{solutionblock} 
+
+\subtask{Estimate the additional storage time penalty caused by deep saturation using
+    \begin{equation*}
+        t_\mathrm{s} \approx \frac{\Delta Q}{I_{\mathrm{B},\mathrm{rev}}}.
+    \end{equation*}
+}
+
+\begin{solutionblock}
+    The required base current $I_\mathrm{B}$ based on forced beta is calculated by
+    \begin{equation}
+        t_\mathrm{s} = \frac{\Delta Q}{I_{\mathrm{B},\mathrm{rev}}} 
+        = \frac{\SI{22}{\micro\coulomb}}{\SI{4}{\ampere}} = \SI{5.5}{\micro\second}.
+    \end{equation}
+\end{solutionblock} 
+
+\subtask{Explain why quasi-saturation can sometimes be preferred over deep saturation in a switching converter, even though $V_\mathrm{CE}$ may not be minimum.}
+
+\begin{solutionblock}
+    Quasi-saturation may be better, because switching is not only about the lowest instantaneous $V_\mathrm{CE}$. 
+    Deep saturation stores more charge in the device, especially around the collector-base side, and this charge must later be removed. 
+    Literature explicitly connects charge buildup and charge removal to switching speed. If turn-off is slow, switching loss can dominate any conduction advantage.
+\end{solutionblock} 
+
+\subtask{Based on the numbers above, would you deliberately overdrive the base into deep saturation at $\SI{20}{\kilo\hertz}$? Justify your answer.}
+
+\begin{solutionblock}
+    At $\SI{20}{\kilo\hertz}$, a $\SI{5.5}{\micro\second}$ extra storage interval is too costly. The switching period is $\SI{50}{\micro\second}$, 
+    so this storage time alone is already more than $\SI{10}{\percent}$ of the cycle. 
+    Therefore I would not intentionally force deep saturation. I would prefer a controlled base drive that reaches low $V_\mathrm{CE}$ 
+    without excessive stored charge.
+    That is the real engineering lesson here: the ``best ON-state'' is not automatically the ``best switching design.''
+\end{solutionblock} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{SOA and second-breakdown screening of a power BJT}
+
+A simplified safe-operating-area sheet is given for a power BJT in common-emitter configuration.
+
+\begin{table}[ht]
+    \centering  % Zentriert die Tabelle
+    \begin{tabular}{ll}
+        \toprule
+        Maximum $V_\mathrm{CE}$    &  $\SI{400}{\volt}$ \\ 
+        Maximum $I_\mathrm{C}$   &  $\SI{20}{\ampere}$ \\ 
+        DC thermal limit $V_\mathrm{CE} \cdot I_\mathrm{C}$ &  $< \SI{180}{\watt}$ \\ 
+        $\SI{100}{\micro\second}$ pulse thermal limit &  $< \SI{1200}{\watt}$\\
+        Second-breakdown limit $P_\mathrm{max,2nd}$ for $V_\mathrm{CE}$ > $\SI{50}{\volt}$ & $I_\mathrm{C} \ cdot V_\mathrm{CE} \leq \SI{1000}{\watt}$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{Device and thermal limits.}
+    \label{table:ex02_DevAndThermalLimits}
+\end{table}
+
+Consider the following operating points.
+
+\begin{table}[ht]
+    \centering  % Zentriert die Tabelle
+    \begin{tabular}{llll}
+        \toprule
+        OP-Name & $V_\mathrm{CE}$ & $I_\mathrm{C}$ & Pulse time \\
+        \midrule
+        Point A  &  $\SI{40}{\volt}$  & $\SI{12}{\ampere}$ & DC \\ 
+        Point B  &  $\SI{120}{\volt}$ & $\SI{7}{\ampere}$  & $\SI{100}{\micro\second}$ \\ 
+        Point C  &  $\SI{250}{\volt}$ & $\SI{5}{\ampere}$  & $\SI{100}{\micro\second}$ \\ 
+        Point D  &  $\SI{300}{\volt}$ & $\SI{4}{\ampere}$  & DC \\
+        \bottomrule
+    \end{tabular}
+    \caption{Operation points to consider.}
+    \label{table:ex02_DevAndThermalLimits}
+\end{table}
+
+
+\subtask{ Investigate each operation point. Consider following items:
+    \begin{itemize}
+        \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+        \setlength{\parskip}{-2pt} % Distance between the points (Part2)
+        \item For each point, check the current limit, voltage limit, and thermal limit.
+        \item For points B, C, and D, check the second-breakdown condition.
+        \item State whether each point is safe or unsafe.
+        \item For each unsafe point, identify the dominant violated mechanism.
+    \end{itemize}}
+
+\begin{solutionblock}
+    The power is calculated by 
+    \begin{equation}
+        P = V_\mathrm{CE} \cdot I_\mathrm{C}.
+    \end{equation}
+    For operation point A the power consumption is calculated by
+    \begin{equation}
+        P_\mathrm{OP=A} = \SI{40}{\volt} \cdot \SI{12}{\ampere} = \SI{480}{\watt}.
+    \end{equation}
+    This exceeds dc thermal limit of $\SI{180}{\watt}$. Since $V_\mathrm < \SI{50}{\volt}$, second-breakdown line is not applied here.
+    So operation point A is unsafe, due to dc thermal overload.    \\
+    For operation point B the power consumption is calculated by
+    \begin{equation}
+        P_\mathrm{OP=B} = \SI{120}{\volt} \cdot \SI{7}{\ampere} = \SI{840}{\watt}.
+    \end{equation}
+    This is below the $\SI{100}{\micro\second}$  pulse thermal limit of $\SI{1200}{\watt}$.
+    According second-breakdown the current is obtained by
+    \begin{equation}
+        I_\mathrm{OP=B, max,2nd} = \frac{P_\mathrm{max,2nd}} {V_\mathrm{CE}} 
+        = \frac{\SI{1000}{\watt}} {\SI{120}{\volt}} = \SI{8.33}{\ampere} > \cdot \SI{7}{\ampere}.
+    \end{equation}
+    Actual current is $\SI{7}{\ampere}$, so it is below the second-breakdown limit.
+    So operation point B is safe. \\
+    For operation point C the power consumption is calculated by
+    \begin{equation}
+        P_\mathrm{OP=C} = \SI{250}{\volt} \cdot \SI{5}{\ampere} = \SI{1250}{\watt}.
+    \end{equation}
+    This already exceeds the $\SI{100}{\micro\second}$  pulse thermal limit of $\SI{1200}{\watt}$.
+    According second-breakdown the current is obtained by
+    \begin{equation}
+        I_\mathrm{OP=B, max,2nd} = \frac{P_\mathrm{max,2nd}} {V_\mathrm{CE}} 
+        = \frac{\SI{1000}{\watt}} {\SI{250}{\volt}} = \SI{4}{\ampere} \le \cdot \SI{5}{\ampere}.
+    \end{equation}
+    Actual current is $\SI{5}{\ampere}$, so it also exceeds the second-breakdown limit.
+    So operation point C is unsafe, due to both pulse thermal overload and second breakdown. \\
+    For operation point D the power consumption is calculated by
+    \begin{equation}
+        P_\mathrm{OP=D} = \SI{300}{\volt} \cdot \SI{4}{\ampere} = \SI{1200}{\watt}.
+    \end{equation}
+    This far exceeds the dc thermal limit of $\SI{180}{\watt}$.
+    According second-breakdown the current is obtained by
+    \begin{equation}
+        I_\mathrm{OP=B, max,2nd} = \frac{P_\mathrm{max,2nd}} {V_\mathrm{CE}} 
+        = \frac{\SI{1000}{\watt}} {\SI{300}{\volt}} = \SI{3.33}{\ampere} > \cdot \SI{4}{\ampere}.
+    \end{equation}
+    Actual current is $\SI{4}{\ampere}$, so it also violates second breakdown.
+    So operation point D is unsafe, due to dc thermal overload and second breakdown.
+\end{solutionblock} 
+
+\subtask{Explain physically why the pulse SOA is larger than the dc SOA.}
+
+\begin{solutionblock}
+    The pulse SOA is larger, because heating is time dependent. A device can survive a high instantaneous power for a short interval 
+    before the junction and hot spot temperature rises too far. 
+    That is exactly consistent with the textbook discussion of triggering time and second breakdown under transient power.
+\end{solutionblock} 
+
 
