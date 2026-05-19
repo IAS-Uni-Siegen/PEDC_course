@@ -14,35 +14,20 @@ Following parameters are given:
 
 \begin{table}[ht]
     \centering  % Zentriert die Tabelle
-    \begin{tabular}{ll}
+    \begin{tabular}{llll}
         \toprule
-        Forward voltage $V_\mathrm{F}$ (at $I_\mathrm{F} = \SI{12}{\ampere}$) &  $\SI{1.05}{\volt}$\\ 
-        Reverse charge $Q_\mathrm{rr}$ &  $\SI{4.2}{\micro\coulomb}$ \\ 
-        Reverse recovery time $t_\mathrm{rr}$ &  $\SI{110}{\nano\second}$ \\ 
-        Maximal reverse voltage  $V_\mathrm{R,\max}$ &  $\SI{1200}{\volt}$ \\
+        Parameter & Device A & Device B \\
+        \midrule
+        Forward voltage $V_\mathrm{F}$ (at $I_\mathrm{F} = \SI{12}{\ampere}$) &  $\SI{1.05}{\volt}$ &  $\SI{0.48}{\volt}$ \\ 
+        Reverse charge $Q_\mathrm{rr}$ &  $\SI{4.2}{\micro\coulomb}$ &  negligible \\ 
+        Reverse recovery time $t_\mathrm{rr}$ &  $\SI{110}{\nano\second}$  & <$\SI{5}{\nano\second}$ \\ 
+        Reverse leakage at room temperature $I_\mathrm{R}$: & <$\SI{0.01}{\milli\ampere}$ &  $\SI{2.5}{\milli\ampere}$ \\
+        Maximal reverse voltage  $V_\mathrm{R,\max}$ &  $\SI{1200}{\volt}$ &  $\SI{150}{\volt}$\\
         \bottomrule
     \end{tabular}
-    \caption{Device A: fast silicon p--n diode.}  % Beschriftung der Tabelle
+    \caption{Device A: fast silicon p--n diode and Device B: Schottky diode.}  % Beschriftung der Tabelle
     \label{table:ex01_deviceA}
 \end{table}
-
-and
-
-\begin{table}[ht]
-    \centering  % Zentriert die Tabelle
-    \begin{tabular}{ll}
-        \toprule
-        Forward voltage $V_\mathrm{F}$ (at $I_\mathrm{F} = \SI{12}{\ampere}$) : &  $\SI{0.48}{\volt}$\\ 
-        Reverse charge $Q_\mathrm{rr}$: &  negligible \\ 
-        junction capacitance $C_\mathrm{j}$ &  $\SI{950}{\pico\farad}$ \\ 
-        reverse leakage at room temperature $I_\mathrm{R}$: &  $\SI{2.5}{\milli\ampere}$ \\
-        Maximal reverse voltage  $V_\mathrm{R,\max}$ &  $\SI{150}{\volt}$ \\
-        \bottomrule
-    \end{tabular}
-    \caption{Device B: Schottky diode.}  % Beschriftung der Tabelle
-    \label{table:ex01_deviceA}
-\end{table}
-
 
 Two applications are under consideration. \\
 \textbf{Application I}
