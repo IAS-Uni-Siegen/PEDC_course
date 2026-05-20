@@ -49,7 +49,7 @@ A $\SI{700}{\volt}$ dc-link chopper leg, current $\SI{12}{\ampere}$, switching f
 
 \subtask{Estimate the forward-conduction loss in each diode if it carries 12 A for 50\% duty:
     \begin{align*}
-        P_{\mathrm{cond}} = V_\mathrm{F} \cdot I \cdot D
+        P_{\mathrm{cond}} = V_\mathrm{F} \cdot I \cdot D.
     \end{align*}}
 
 \begin{solutionblock}
@@ -61,7 +61,7 @@ A $\SI{700}{\volt}$ dc-link chopper leg, current $\SI{12}{\ampere}$, switching f
     \end{equation}
     For Device B:
     \begin{equation}
-        P_{\mathrm{cond},B} = = V_\mathrm{F} \cdot I \cdot D \SI{0.48}{\volt} \cdot \SI{12}{\ampere} \cdot 0.5 = \SI{2.88}{\watt}
+        P_{\mathrm{cond},B} = V_\mathrm{F} \cdot I \cdot D = \SI{0.48}{\volt} \cdot \SI{12}{\ampere} \cdot 0.5 = \SI{2.88}{\watt}.
     \end{equation}
     So the Schottky saves:
     \begin{equation}
@@ -73,7 +73,7 @@ A $\SI{700}{\volt}$ dc-link chopper leg, current $\SI{12}{\ampere}$, switching f
 \subtask{For Device A, estimate the reverse-recovery loss in Application II using
     \begin{align*}
         E_\mathrm{rr} &\approx Q_\mathrm{rr} V_\mathrm{R} \\
-        P_\mathrm{rr} &= E_\mathrm{rr} f_\mathrm{s}
+        P_\mathrm{rr} &= E_\mathrm{rr} f_\mathrm{s}.
     \end{align*}
 }
 
@@ -146,7 +146,7 @@ Consider a vertical one-sided silicon power diode of type $p^+ - n^- - n^+$. The
 
 \subtask{Estimate the depletion width at $V_\mathrm{R} = \SI{600}{\volt}$ using
     \begin{equation*}
-        W = \sqrt{\frac{2 \varepsilon_\mathrm{s} V_\mathrm{R}} {q N_\mathrm{D}}}
+        W = \sqrt{\frac{2 \varepsilon_\mathrm{s} V_\mathrm{R}} {q N_\mathrm{D}}}.
     \end{equation*}
 }
 
@@ -155,7 +155,7 @@ Consider a vertical one-sided silicon power diode of type $p^+ - n^- - n^+$. The
         \begin{align}   
             W &= \sqrt{\frac{2 \varepsilon_\mathrm{s} V_\mathrm{R}} {q N_\mathrm{D}}}
               = \sqrt{\frac{2 \cdot \SI{1.04 \cdot 10^{-12}}{\farad\per\centi\meter} \cdot \SI{600}{\volt}} {\SI{1.6\cdot 10^{-19}}{\coulomb} \cdot \SI{10^{14}}{1\per\centi\meter^{3}}}} \\
-              &= \sqrt{\frac{\SI{1.248 \cdot 10^{-9}}{\volt\farad\per\centi\meter}} {\SI{3.2 \cdot 10^{-5}}{\coulomb\per\centi\meter^{3}}}} = \SI{62.4}{\micro\meter}
+              &= \sqrt{\frac{\SI{1.248 \cdot 10^{-9}}{\volt\farad\per\centi\meter}} {\SI{3.2 \cdot 10^{-5}}{\coulomb\per\centi\meter^{3}}}} = \SI{62.4}{\micro\meter}.
         \end{align}             
 \end{solutionblock} 
 
@@ -169,7 +169,7 @@ Consider a vertical one-sided silicon power diode of type $p^+ - n^- - n^+$. The
 
 \subtask{Estimate the peak electric field using
     \begin{equation*}
-        E_\mathrm{\max} = \frac{q N_\mathrm{D} W}{\varepsilon_\mathrm{s}}
+        E_\mathrm{\max} = \frac{q N_\mathrm{D} W}{\varepsilon_\mathrm{s}}.
     \end{equation*}
 }
 
@@ -178,7 +178,7 @@ Consider a vertical one-sided silicon power diode of type $p^+ - n^- - n^+$. The
         \begin{equation}   
             E_\mathrm{\max} = \frac{q N_\mathrm{D}}{\varepsilon_\mathrm{s}}
              = \frac{\SI{1.6\cdot 10^{-19}}{\coulomb} \cdot \SI{10^{14}}{\centi\meter^{-3}}}{\SI{1.04 \cdot 10^{-12}}{\farad\centi\per\meter}}
-             = \SI{1.92\cdot 10^{5}}{\volt\per\centi\meter}
+             = \SI{1.92\cdot 10^{5}}{\volt\per\centi\meter}.
         \end{equation}             
 \end{solutionblock} 
 
@@ -190,17 +190,17 @@ Consider a vertical one-sided silicon power diode of type $p^+ - n^- - n^+$. The
 \begin{solutionblock}
     The depletion width $W$ is proportional to the inverted square root of the donator density:
         \begin{equation}   
-            W \propto \frac{1}{\sqrt{N_\mathrm{D}}}
+            W \propto \frac{1}{\sqrt{N_\mathrm{D}}},
         \end{equation}     
-    so that $W$ decreases by $\sqrt{2}$. On the other hand The peak electric field increases by $\sqrt{2}$ according
+    so that $W$ decreases by $\sqrt{2}$. On the other hand The peak electric field increases by 2 according
         \begin{equation}   
-            E_\mathrm{\max} \propto \sqrt{N_\mathrm{D}}
+            E_\mathrm{\max} \propto N_\mathrm{D}.
         \end{equation}    
 
     Consequences:
     \begin{itemize}
-        \item depletion width decreases
-        \item peak field increases
+        \item depletion width decreases by $\sqrt{2}$
+        \item peak field increases by 2
         \item blocking capability worsens
         \item drift resistance decreases
     \end{itemize}
