@@ -10,20 +10,32 @@
 %% Planned topics: Power MOSFETs, IGBTs, Thyristors %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Introduction to Power MOSFETs}
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
 \begin{itemize}
     \item Power MOSFETs (Metal-Oxide-Semiconductor Field Effect Transistors) are widely used in power electronics since the early 1980s.
     \item They offer high on-state current capability and off-state voltage blocking, making them suitable for high-speed switching applications.
     \item Replacing BJTs in many applications, especially those requiring fast switching, due to their voltage-controlled nature.
-    \item Understanding the differences between BJTs and MOSFETs is crucial for effective circuit design.
     \item This section introduces the physical structure, voltage and current limits, and failure mechanisms of MOSFETs.
 \end{itemize}
 
-\vspace{0.5cm}
-\textbf{Figure Placeholder:} \textit{Power MOSFET application context diagram (optional).}
+     \end{column}
+
+\begin{column}{0.4\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec05/MOSFET_ckt.png}
+\caption{MOSFET symbol and basic circuit representation}
+\label{fig:MOSFET_ckt}
+\end{figure}
+    \end{column}
+    \end{columns}
 \end{frame}
 
 
 \begin{frame}{Basic Structure of Power MOSFET}
+                \begin{columns}
+        \begin{column}{0.5\textwidth}
 \begin{itemize}
     \item The MOSFET is constructed with alternating p-type and n-type layers: \textbf{n$^+$-p-n$^-$-n$^+$}.
     \item The n$^+$ (source and drain), p-body, and n$^-$ (drift region) form the core active structure.
@@ -31,12 +43,22 @@
     \item Applying a positive voltage to the gate induces an n-channel in the p-body, allowing current flow.
     \item The drift region (n$^-$) is lightly doped to handle high blocking voltages.
 \end{itemize}
+     \end{column}
 
-\vspace{0.5cm}
-\textbf{Figure Placeholder:} \textit{MOSFET cross-section with labels for source, gate, drain, body, and drift region.}
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec05/MOSFET_cross.png}
+\caption{MOSFET cross-section with labels for source, gate, drain, body, and drift region; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John wiley \& sons (2003).}}
+\label{fig:MOSFET_cross}
+\end{figure}
+    \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Perspective View of a Power MOSFET}
+                    \begin{columns}
+        \begin{column}{0.5\textwidth}
 \begin{itemize}
     \item Power MOSFETs consist of thousands of small identical cells connected in parallel.
     \item Each cell includes source diffusion, gate conductor, field oxide, and drain contact.
@@ -45,11 +67,22 @@
     \item Parasitic elements like a BJT and integral body diode are naturally formed.
 \end{itemize}
 
-\vspace{0.5cm}
-\textbf{Figure Placeholder:} \textit{Figure 22-1(b): Perspective structure showing MOSFET cellular layout.}
+     \end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec05/MOSFET_vert.png}
+\caption{MOSFET perspective view; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John wiley \& sons (2003).}}
+\label{fig:MOSFET_vert}
+\end{figure}
+    \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Channel Formation and Operation}
+                    \begin{columns}
+        \begin{column}{0.5\textwidth}
 \begin{itemize}
     \item The p-body prevents current flow until a gate voltage is applied.
     \item Applying V$_{GS} > V_{th}$ induces an n-channel in the p-body.
@@ -58,11 +91,22 @@
     \item The MOSFET operates as a unidirectional voltage-controlled switch.
 \end{itemize}
 
-\vspace{0.5cm}
-\textbf{Figure Placeholder:} \textit{Figure 22-2(a): Accumulation layer in ON-state.}
+     \end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec05/MOSFET_ch.png}
+\caption{MOSFET channel formation; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John wiley \& sons (2003).}}
+\label{fig:MOSFET_ch}
+\end{figure}
+    \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Gate Metallization and Field Plate Action}
+                    \begin{columns}
+        \begin{column}{0.5\textwidth}
 \begin{itemize}
     \item Gate metallization overlaps the n$^-$ drift region to serve two purposes:
     \begin{enumerate}
@@ -73,8 +117,17 @@
     \item Design strategies include optimizing gate width-to-length ratio to maximize gain.
 \end{itemize}
 
-\vspace{0.5cm}
-\textbf{Figure Placeholder:} \textit{Figure 22-2(b): Field plate action during OFF-state.}
+     \end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec05/MOSFET_GF.png}
+\caption{MOSFET gate metallization and field plate action; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John wiley \& sons (2003).}}
+\label{fig:MOSFET_GF}
+\end{figure}
+    \end{column}
+    \end{columns}
 \end{frame}
 
 
@@ -97,24 +150,31 @@
 \end{itemize}
 \vspace{0.5em}
 \textbf{Note:} The inversion layer forms only after depletion is sufficient.
+
 \end{frame}
 
 
 \begin{frame}{Formation of Depletion and Inversion Layers}
 \begin{columns}
-\column{0.55\textwidth}
+\column{0.5\textwidth}
 \begin{itemize}
     \item As $V_{\mathrm{GS}}$ increases:
     \begin{enumerate}
-        \item Depletion region widens (Fig. 22-5a)
-        \item Electrons begin to accumulate at oxide–silicon interface (Fig. 22-5b)
-        \item Inversion layer forms when electron density exceeds hole density (Fig. 22-5c)
+        \item Depletion region widens (\ref{fig:MOSFET_op} (a))
+        \item Electrons begin to accumulate at oxide–silicon interface (\ref{fig:MOSFET_op} (b))
+        \item Inversion layer forms when electron density exceeds hole density (\ref{fig:MOSFET_op} (c))
     \end{enumerate}
     \item Inversion layer has \textbf{n-type} conductivity and enables conduction between source and drain.
     \item This defines the MOSFET’s enhancement mode behavior.
 \end{itemize}
-\column{0.4\textwidth}
-%\includegraphics[width=\textwidth]{figures/inversion_layer_diagram.png} % Placeholder for Fig. 22-5
+\column{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{fig/lec05/MOSFET_op.png}
+\caption{Depletion and inversion layer formation; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John wiley \& sons (2003).}}
+\label{fig:MOSFET_op}
+\end{figure}
+
 \end{columns}
 \end{frame}
 
@@ -216,3 +276,636 @@
     \item At high currents, the relationship becomes approximately linear.
 \end{itemize}
 \end{frame}
+
+
+\begin{frame}{MOSFET Output Characteristics and Operating Regions}
+\begin{columns}[T]
+\column{0.55\textwidth}
+\begin{itemize}
+    \item The gate-to-source voltage $V_{GS}$ controls the drain current $i_D$.
+    \item The output characteristic is represented as:
+    \[
+    i_D = f(v_{DS})
+    \]
+    with $V_{GS}$ as a parameter.
+\end{itemize}
+\textbf{Operating Regions of MOSFET}
+\begin{itemize}
+    \item \textbf{Cutoff Region}
+    \begin{itemize}
+        \item $V_{GS} < V_{GS(th)}$
+        \item No conductive channel exists
+        \item MOSFET behaves like an open switch
+    \end{itemize}
+\end{itemize}
+
+\column{0.45\textwidth}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{fig/lec05/MOSFET_st_ch.png}
+    \caption{Output characteristics of an enhancement-mode n-channel MOSFET; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John wiley \& sons (2003).}}
+\end{figure}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{MOSFET Output Characteristics and Operating Regions}
+\begin{columns}[T]
+\column{0.55\textwidth}
+\textbf{Operating Regions of MOSFET}
+\begin{itemize}  
+    \item \textbf{Ohmic (Linear) Region}
+    \begin{itemize}
+        \item MOSFET behaves like a controlled resistor
+        \item Small $v_{DS(on)}$ reduces conduction losses
+        \item Condition:
+        \[
+        v_{GS} - V_{GS(th)} > v_{DS}
+        \]
+    \end{itemize}
+    
+    \item \textbf{Active Region}
+    \begin{itemize}
+        \item Drain current becomes almost independent of $v_{DS}$
+        \item Current mainly controlled by $V_{GS}$
+    \end{itemize}
+\end{itemize}
+
+\column{0.45\textwidth}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{fig/lec05/MOSFET_st_ch.png}
+    \caption{Output characteristics of an enhancement-mode n-channel MOSFET; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John wiley \& sons (2003).}}
+\end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}{MOSFET Transfer Characteristics and Current Equations}
+\begin{columns}[T]
+\column{0.58\textwidth}
+\textbf{Drain Current in the Active Region}
+\begin{itemize}
+    \item In the active region, the drain current approximately follows:
+    \[
+    i_D = K(V_{GS} - V_{GS(th)})^2
+    \]
+    where:
+    \begin{itemize}
+        \item $K$ : device constant
+        \item $V_{GS(th)}$ : threshold voltage
+    \end{itemize}
+    \item This equation is derived from first-order MOSFET theory.
+\end{itemize}
+
+\textbf{Boundary Between Regions}
+\begin{itemize}
+    \item The transition between ohmic and active regions occurs when:
+    \[
+    v_{GS} - V_{GS(th)} = v_{DS}
+    \]
+\end{itemize}
+\column{0.42\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{fig/lec05/MOSFET_st_ch2.png}
+    \caption{\scriptsize MOSFET transfer characteristic; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John wiley \& sons (2003).}}
+\end{figure}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{MOSFET Transfer Characteristics and Current Equations}
+\begin{columns}[T]
+\column{0.58\textwidth}
+\textbf{Boundary Between Regions}
+\begin{itemize}
+    \item At this boundary:
+    \[
+    i_D = Kv_{DS}^{2}
+    \]
+\end{itemize}
+\textbf{Important Practical Observation}
+\begin{itemize}
+    \item Logic-level MOSFETs approximately follow the square-law relation.
+    \item Power MOSFETs exhibit a more linear transfer curve at higher currents.
+    \item Real devices deviate from ideal theory because of:
+    \begin{itemize}
+        \item Mobility degradation
+        \item Parasitic resistances
+        \item Temperature effects
+        \item Cell geometry
+    \end{itemize}
+\end{itemize}
+\column{0.42\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{fig/lec05/MOSFET_st_ch2.png}
+    \caption{\scriptsize MOSFET transfer characteristic; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John wiley \& sons (2003).}}
+\end{figure}
+\end{columns}
+\end{frame}
+
+
+
+
+\begin{frame}{Dynamic Characteristics of Power MOSFETs}
+\begin{columns}[T]
+\column{0.55\textwidth}
+\textbf{Why MOSFETs Switch Faster than BJTs}
+\begin{itemize}
+    \item MOSFETs are majority-carrier devices.
+    \item No minority carrier storage exists during switching.
+    \item Switching speed is mainly determined by charging and discharging:
+    \begin{itemize}
+        \item Gate-source capacitance $C_{gs}$
+        \item Gate-drain capacitance $C_{gd}$
+        \item Drain-source capacitance $C_{ds}$
+    \end{itemize}
+    \item Gate current is primarily capacitive current.
+\end{itemize}
+
+\textbf{Important Switching Waveforms}
+\begin{itemize}
+    \item Gate voltage $V_{gs}$
+    \item Drain current $i_d$
+    \item Drain-source voltage $V_{ds}$
+\end{itemize}
+% \textbf{Key Observation}
+% \begin{itemize}
+%     \item During turn-ON: $i_d$ rises while $V_{ds}$ falls.  
+%     \item During turn-OFF: $i_d$ falls while $V_{ds}$ rises.
+%     \item The flat region in $V_{gs}$ corresponds to the \textbf{Miller plateau}.
+% \end{itemize}
+
+\column{0.45\textwidth}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{fig/lec05/MOSFET_sw_waveform.png}
+    \caption{Switching waveforms of a power MOSFET; adapted from Umanand, L., \textit{Power Electronics, Essentials and Applications.}}
+\end{figure}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Turn-ON Process of a MOSFET}
+\begin{columns}[T]
+\column{0.56\textwidth}
+\textbf{Interval $t_0 - t_1$}
+\begin{itemize}
+    \item Gate-source capacitance begins charging. 
+    \item Gate voltage rises threshold voltage $V_{GS(th)}$.
+    \item Drain current is still nearly zero.
+\end{itemize}
+
+\textbf{Interval $t_1 - t_2$}
+\begin{itemize}
+    \item MOSFET channel begins forming.
+    \item Drain current rises tofull load current.
+    \item Device starts entering conduction mode.
+\end{itemize}
+
+\textbf{Interval $t_2 - t_3$}
+\begin{itemize}
+    \item Gate-drain capacitance $C_{gd}$ dominates.
+    \item Drain-source voltage falls rapidly.
+    \item Gate voltage remains nearly constant:
+    \[
+    \text{Miller Plateau}
+    \]
+\end{itemize}
+
+\textbf{Interval $t_3 - t_4$}
+\begin{itemize}
+    \item MOSFET reaches full enhancement.
+    \item $R_{DS(on)}$ becomes minimum.
+    \item Device fully enters ON-state.
+\end{itemize}
+
+\column{0.44\textwidth}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{fig/lec05/MOSFET_eq.png}
+    \caption{Equivalent circuits during MOSFET turn-ON; adapted from Umanand, L., \textit{Power Electronics, Essentials and Applications.}}
+\end{figure}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Turn-OFF Process and Switching Equations}
+\begin{columns}[T]
+\column{0.58\textwidth}
+\textbf{Turn-OFF Intervals}
+\begin{itemize}
+    \item \textbf{$t_5 - t_6$}
+    \begin{itemize}
+        \item Excess gate charge is removed.
+        \item Device exits full enhancement.
+    \end{itemize}
+    
+    \item \textbf{$t_6 - t_7$}
+    \begin{itemize}
+        \item Drain voltage rises.
+        \item Feedback capacitance $C_{gd}$ discharges.
+        \item MOSFET leaves ohmic region.
+    \end{itemize}
+    
+    \item \textbf{$t_7 - t_8$}
+    \begin{itemize}
+        \item Gate-source capacitance fully discharges.
+        \item Drain current falls to zero.
+        \item Device reaches OFF-state.
+    \end{itemize}
+\end{itemize}
+
+\column{0.42\textwidth}
+\textbf{Important Dynamic Relations}
+\[
+i_{gs} = C_{gs}\frac{dV_{gs}}{dt}
+\]
+
+\[
+i_{gd} = C_{gd}\frac{dV_{gd}}{dt}
+\]
+
+\[
+\frac{dV_{ds}}{dt} = \frac{i_g}{C_{gd}}
+\]
+
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Turn-OFF Process and Switching Equations}
+\begin{columns}[T]
+\column{0.55\textwidth}
+\textbf{Design Insight}
+\begin{itemize}
+    \item Faster switching requires:
+    \begin{itemize}
+        \item Higher gate current
+        \item Lower parasitic capacitances
+    \end{itemize}
+    \item Excessively high $dv/dt$ may increase EMI and ringing.
+\end{itemize}
+
+\begin{block}{Practical Importance}
+MOSFET gate driver design directly affects:
+\begin{itemize}
+    \item Switching speed
+    \item EMI
+    \item Efficiency
+    \item Thermal stress
+\end{itemize}
+\end{block}
+
+\column{0.4\textwidth}
+\begin{block}{Switching Behavior Summary}
+\begin{itemize}
+    \item Gate charge controls switching speed.
+    \item $C_{gd}$ is responsible for the Miller effect.
+    \item Turn-ON and turn-OFF losses occur when:
+    \[
+    V_{ds} \neq 0
+    \quad \text{and} \quad
+    i_d \neq 0
+    \]
+    simultaneously.
+\end{itemize}
+\end{block}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Paralleling and Power Dissipation of MOSFETs}
+\begin{columns}[T]
+\column{0.55\textwidth}
+\begin{itemize}
+    \item MOSFETs can be connected in parallel for higher current capability.
+    \item Unlike BJTs, MOSFETs exhibit: positive temperature coefficient of $R_{DS(on)}$.
+    \item If current increases in one device:
+    \begin{itemize}
+        \item Junction temperature rises
+        \item $R_{DS(on)}$ increases
+        \item Current naturally redistributes
+    \end{itemize}
+    \item This provides inherent current balancing.
+\end{itemize}
+
+\textbf{Gate Resistance Requirement}
+\begin{itemize}
+    \item Small gate resistors are used:  4$\Omega$ to 100 $\Omega$
+    \item They help suppress: oscillations, ringing, and high-frequency instability.
+\end{itemize}
+
+\column{0.45\textwidth}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{fig/lec05/MOSFET_parallel.png}
+    \caption{Parallel connection of MOSFETs; adapted from Umanand, L., \textit{Power Electronics, Essentials and Applications.}}
+\end{figure}
+
+\vspace{0.2cm}
+
+\begin{block}{Important Practical Insight}
+\small
+\begin{itemize}
+    \item High-voltage MOSFETs generally have:
+    \begin{itemize}
+        \item Larger drift regions
+        \item Higher $R_{DS(on)}$
+    \end{itemize}
+    \item Low-voltage MOSFETs provide:
+    \begin{itemize}
+        \item Lower conduction losses
+        \item Faster switching
+    \end{itemize}
+\end{itemize}
+\end{block}
+\end{columns}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Paralleling and Power Dissipation of MOSFETs}
+\textbf{Power Dissipation}
+\[
+P_{ON} = I_{D(rms)}^2 R_{DS(on)}
+\]
+\[
+P_{switching} =
+\frac{1}{6}V_{ds}I_d(t_r+t_f)f_s
+\]
+    \begin{block}{Important Practical Insight}
+\begin{itemize}
+    \item High-voltage MOSFETs generally have:
+    \begin{itemize}
+        \item Larger drift regions
+        \item Higher $R_{DS(on)}$
+    \end{itemize}
+    \item Low-voltage MOSFETs provide:
+    \begin{itemize}
+        \item Lower conduction losses
+        \item Faster switching
+    \end{itemize}
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Important MOSFET Datasheet Parameters}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\textbf{Electrical Parameters}
+\begin{itemize}
+    \item Drain-Source Breakdown Voltage: $V_{(BR)DSS}$
+    \item Continuous Drain Current: $I_D$    
+    \item Pulsed Drain Current: $I_{D,pulse}$
+    \item Drain-Source ON Resistance: $R_{DS(on)}$
+    \item Gate Threshold Voltage: $V_{GS(th)}$   
+    \item Gate-Source Voltage Limit: $V_{GS(max)}$    
+    \item Forward Transconductance: $g_{fs}$
+    \item Leakage Currents: $I_{DSS},\ I_{GSS}$    
+    \item Body Diode Forward Voltage Drop: $V_{SD}$
+\end{itemize}
+
+\column{0.48\textwidth}
+
+\textbf{Dynamic and Thermal Parameters}
+\begin{itemize}
+    \item Input Capacitance: $C_{iss}$    
+    \item Output Capacitance: $C_{oss}$
+    \item Reverse Transfer Capacitance: $C_{rss}$
+    \item Total Gate Charge: $Q_g$    
+    \item Gate-Drain Charge: $Q_{gd}$    
+    \item Turn-ON and Turn-OFF Times: $t_{on},\ t_{off}$    
+    \item Rise and Fall Times: $t_r,\ t_f$    
+    \item Thermal Resistance: $R_{\theta JC},\ R_{\theta JA}$    
+    \item Maximum Junction Temperature: $T_{j(max)}$
+    \item Safe Operating Area (SOA)
+    \item Avalanche Energy: $E_{AS}$
+\end{itemize}
+\end{columns}
+
+% \begin{block}{Why These Parameters are Important}
+% \small
+% These parameters determine:
+% \begin{itemize}
+%     \item Voltage and current capability
+%     \item Conduction and switching losses
+%     \item Thermal performance
+%     \item Switching speed
+%     \item Gate driver requirements
+%     \item Reliability and safe operation
+% \end{itemize}
+% \end{block}
+
+% \vspace{0.15cm}
+
+\small
+Source: Infineon OptiMOS\textsuperscript{TM} Power MOSFET Datasheet Explanation Application Note, AN 2012-03. 
+\end{frame}
+
+
+\begin{frame}{Introduction to IGBT}
+\begin{itemize}
+    \item The insulated gate bipolar transistor (IGBT) combines useful features of both MOSFETs and BJTs.
+    \item A MOSFET offers fast switching and voltage-controlled gate operation, but its conduction loss becomes high at larger blocking voltages.
+    \item A BJT offers lower on-state conduction loss at high voltage ratings, but requires continuous base current and has slower turn-off due to stored minority carriers.
+    \item The IGBT uses a MOS gate structure to control a bipolar conduction path.
+    \item Therefore, it behaves as a voltage-controlled power switch with conductivity modulation in the drift region.
+    \item It is widely used in medium- and high-power converters because it offers a good compromise between conduction loss, switching speed, and gate-drive simplicity.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Basic Structure of an IGBT}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+    \item A generic n-channel IGBT has a vertical layered structure: $n^+ - p - n^- - n^+ - p^+$
+    \item The upper part resembles a vertical power MOSFET with source, gate, oxide, p-body, and n$^-$ drift region.
+    \item Key difference from a MOSFET is the additional p$^+$ injecting layer at drain side.
+    \item This p$^+$ layer forms the junction $J_1$ and injects holes into the n$^-$ drift region during conduction.
+    \item The n$^-$ drift region supports the blocking voltage in the OFF-state.
+    \item The body-source short suppresses unwanted turn-on of the parasitic thyristor.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec05/IGBT_st.png}
+\caption{Vertical cross-section of an n-channel IGBT showing source, gate, body, drift region, buffer layer, injecting layer, and junctions; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John Wiley \& Sons (2003).}}
+\label{fig:IGBT_structure}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Punch-Through and Non-Punch-Through IGBTs}
+\begin{itemize}
+    \item The n$^-$ drift region is responsible for supporting the blocking voltage of the IGBT.
+    \item In a non-punch-through (NPT) IGBT, the drift region is sufficiently thick so that the depletion layer does not reach the p$^+$ injecting layer.
+    \item NPT structures can provide approximately symmetrical blocking capability, meaning the reverse-blocking voltage can be comparable to the forward-blocking voltage.
+    \item In a punch-through (PT) IGBT, an n$^+$ buffer layer is inserted between the p$^+$ injecting layer and the n$^-$ drift region.
+    \item The buffer layer prevents the depletion region from reaching the p$^+$ layer even when the drift region is made thinner.
+    \item PT IGBTs have lower on-state voltage because of the shorter drift region, but their reverse-blocking capability is poor.
+\end{itemize}
+
+\[
+\text{Shorter drift region} \Rightarrow \text{lower } V_{CE(on)}
+\quad \text{but weaker reverse blocking}
+\]
+
+\end{frame}
+
+
+\begin{frame}{IGBT Blocking-State Operation}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+    \item The gate-source voltage controls the IGBT in a manner similar to a MOSFET.
+    \item When
+    \[
+    v_{GS} < V_{GS(th)},
+    \]
+    no inversion channel is formed below the gate oxide.
+    \item The source is therefore not electrically connected to the n$^-$ drift region through a MOS channel.
+    \item In this condition, the IGBT is in the OFF-state and supports the applied drain-source or collector-emitter voltage.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\begin{itemize}
+    \item Most of the applied voltage is dropped across the reverse-biased junction $J_2$.
+    \item The depletion region extends mainly into the lightly doped n$^-$ drift region, while only a small leakage current flows.
+\end{itemize}
+\begin{block}{Physical Meaning}
+The blocking capability is governed mainly by the doping and thickness of the n$^-$ drift region. A lightly doped and sufficiently thick drift region is required for high voltage blocking.
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{IGBT On-State Operation}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+    \item When gate-source voltage exceeds threshold voltage, $v_{GS} > V_{GS(th)}$, an inversion channel forms in the p-body region.
+    \item Electrons flow from n$^+$ source through inversion channel into n$^-$ drift region.
+    \item This electron current enables hole injection from the p$^+$ drain/injecting layer into the n$^-$ drift region.
+    \item The injected holes and electrons increase the carrier concentration in the drift region, called conductivity modulation.
+    \item Conductivity modulation reduces the drift-region resistance and gives the IGBT lower on-state voltage than HV MOSFET.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{fig/lec05/IGBT_on.png}
+\caption{On-state current flow in an IGBT, showing MOS-controlled electron current and bipolar hole injection into the drift region; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John Wiley \& Sons (2003).}}
+\label{fig:IGBT_on_state}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Equivalent Circuit and On-State Voltage of IGBT}
+\begin{columns}
+\begin{column}{0.52\textwidth}
+\begin{itemize}
+    \item The IGBT can be interpreted as a MOSFET driving a bipolar transistor.
+    \item The MOSFET channel controls the electron current from source to drift region.
+    \item The p$^+$ injecting layer, n$^-$ drift region, and p-body form an effective pnp transistor.
+    \item A simplified on-state voltage expression is:
+    \[
+    V_{DS(on)} = V_{J1} + V_{drift} + I_D R_{channel}
+    \]
+    \item $V_{J1}$ is the forward voltage drop of the injection junction.
+    \item $V_{drift}$ is reduced by conductivity modulation, making IGBT attractive at high voltage ratings.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec05/IGBT_eq.png}
+\caption{Approximate IGBT equivalent circuit showing MOSFET control, drift-region resistance, and bipolar transistor action; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John Wiley \& Sons (2003).}}
+\label{fig:IGBT_equivalent}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Latch-Up Mechanism in IGBTs}
+\begin{itemize}
+    \item The IGBT structure contains a parasitic thyristor formed by coupled pnp and npn transistor sections.
+    \item During normal operation, the body-source short and cell design prevent this parasitic thyristor from turning on.
+    \item Hole current injected into the n$^-$ drift region partly flows laterally through the p-body region toward the source contact.
+    \item This lateral current produces a voltage drop across the body spreading resistance.
+    \item If this voltage drop becomes large enough, the n$^+$ source--p-body junction $J_3$ becomes forward biased.
+    \item Electron injection from the n$^+$ source can then activate the parasitic npn transistor.
+    \item Once both parasitic npn and pnp transistors conduct, latch-up occurs and the gate loses control of the drain current.
+\end{itemize}
+
+\[
+\text{Latch-up} \Rightarrow \text{gate control is lost} \Rightarrow \text{device can be destroyed by excessive current}
+\]
+
+\end{frame}
+
+
+\begin{frame}{Avoidance of Latch-Up in IGBTs}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+    \item Latch-up is avoided by preventing excessive lateral voltage drop in the p-body region.
+    \item The source/body geometry is designed to reduce the body spreading resistance.
+    \item The lateral width of the source region is kept small so that hole current does not travel a long distance beneath the source.
+    \item Heavier p-body doping beneath the source reduces the local resistance and raises the latch-up current threshold.
+    \item A hole-bypass structure can provide an alternate path for the hole current.
+    \item Slower turn-off using suitable gate resistance can also reduce dynamic latch-up risk.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{fig/lec05/IGBT_latch.png}
+\caption{Modified IGBT; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John Wiley \& Sons (2003).}}
+\label{fig:IGBT_latchup_avoidance}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Key Takeaways: IGBT Device Physics}
+\begin{itemize}
+    \item The IGBT combines MOS gate control with bipolar conduction.
+    \item The MOS channel controls electron flow, while the p$^+$ injecting layer enables hole injection into the drift region.
+    \item Conductivity modulation lowers the drift-region resistance and reduces conduction loss compared with high-voltage MOSFETs.
+    \item The n$^-$ drift region determines the blocking voltage and dominates the trade-off between voltage rating and on-state loss.
+    \item PT structures use an n$^+$ buffer layer to reduce drift-region thickness and on-state voltage, but with poor reverse-blocking capability.
+    \item The parasitic thyristor inside the IGBT can cause latch-up if the p-body lateral voltage drop becomes excessive.
+    \item Modern IGBTs use optimized body-source geometry, body shorting, buffer layers, and hole-bypass concepts to minimize latch-up risk.
+\end{itemize}
+\end{frame}
+
+%%Continue with IGBT static and switching characteristics and comparison with MOSFETs in the next lecture.
