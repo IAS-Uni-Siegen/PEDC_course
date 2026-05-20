@@ -192,15 +192,15 @@ Consider a vertical one-sided silicon power diode of type $p^+ - n^- - n^+$. The
         \begin{equation}   
             W \propto \frac{1}{\sqrt{N_\mathrm{D}}},
         \end{equation}     
-    so that $W$ decreases by $\sqrt{2}$. On the other hand The peak electric field increases by 2 according
+    so that $W$ decreases by $\sqrt{2}$. On the other hand The peak electric field increases by $\sqrt{2}$ according
         \begin{equation}   
-            E_\mathrm{\max} \propto N_\mathrm{D}.
+            E_\mathrm{\max} \propto N_\mathrm{D} \cdot W \propto N_\mathrm{D} \cdot \frac{1}{\sqrt{N_\mathrm{D}}} \propto \sqrt{N_\mathrm{D}}.
         \end{equation}    
-
+    
     Consequences:
     \begin{itemize}
-        \item depletion width decreases by $\sqrt{2}$
-        \item peak field increases by 2
+        \item depletion width decreases
+        \item peak field increases
         \item blocking capability worsens
         \item drift resistance decreases
     \end{itemize}
