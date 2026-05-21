@@ -123,9 +123,9 @@ Consider a vertical one-sided silicon power diode of type $p^+ - n^- - n^+$. The
     \centering  % Zentriert die Tabelle
     \begin{tabular}{ll}
         \toprule
-        Donator density $N_\mathrm{D}$          &  $\SI{10^{14}}{\centi\meter^{-3}}$ \\ 
+        Donator density $N_\mathrm{D}$          &  $\SI{2 \cdot 10^{14}}{\centi\meter^{-3}}$ \\ 
         Drift-region thickness $t_\mathrm{d}$   &  $\SI{80}{\micro\meter}$ \\ 
-        Reluction time $\varepsilon_\mathrm{s}$ &  $\SI{1.04 \cdot 10^{-12}}{\farad\centi\meter^{-1}}$ \\ 
+        Semiconductor permittivity $\varepsilon_\mathrm{s}$ &  $\SI{1.04 \cdot 10^{-12}}{\farad\centi\meter^{-1}}$ \\ 
         Elementary charge $q$                   &  $\SI{1.6\cdot 10^{-19}}{\coulomb}$ \\
         Electron mobility $\mu_n$ in the drift region & $\SI{1000}{\centi\meter^2\per\volt\per\second}$ \\
         \multicolumn{2}{l}{built-in voltage may be neglected compared to large reverse voltage} \\
@@ -154,8 +154,9 @@ Consider a vertical one-sided silicon power diode of type $p^+ - n^- - n^+$. The
     The depletion width $W$ is obtained by
         \begin{align}   
             W &= \sqrt{\frac{2 \varepsilon_\mathrm{s} V_\mathrm{R}} {q N_\mathrm{D}}}
-              = \sqrt{\frac{2 \cdot \SI{1.04 \cdot 10^{-12}}{\farad\per\centi\meter} \cdot \SI{600}{\volt}} {\SI{1.6\cdot 10^{-19}}{\coulomb} \cdot \SI{10^{14}}{1\per\centi\meter^{3}}}} \\
-              &= \sqrt{\frac{\SI{1.248 \cdot 10^{-9}}{\volt\farad\per\centi\meter}} {\SI{3.2 \cdot 10^{-5}}{\coulomb\per\centi\meter^{3}}}} = \SI{62.4}{\micro\meter}.
+              = \sqrt{\frac{2 \cdot \SI{1.04 \cdot 10^{-12}}{\farad\per\centi\meter} \cdot \SI{600}{\volt}} {\SI{1.6\cdot 10^{-19}}{\coulomb} \cdot \SI{2 \cdot 10^{14}}{1\per\centi\meter^{3}}}}
+              = \sqrt{\frac{2 \cdot \SI{1.04 \cdot 10^{-10}}{\farad\per\meter} \cdot \SI{600}{\volt}} {\SI{1.6 \cdot 10^{-19}}{\coulomb} \cdot \SI{2 \cdot 10^{20}}{1\per\meter^{3}}}} \\
+              &= \sqrt{\frac{\SI{1.248 \cdot 10^{-7}}{\volt\farad\per\meter}} {\SI{32}{\coulomb\per\meter^{3}}}} = \SI{6.24 \cdot 10^{-5}}{\meter} = \SI{62.4}{\micro\meter}.
         \end{align}             
 \end{solutionblock} 
 
@@ -175,11 +176,12 @@ Consider a vertical one-sided silicon power diode of type $p^+ - n^- - n^+$. The
 
 \begin{solutionblock}
     The peak electric field is estimated by
-        \begin{equation}   
-            E_\mathrm{\max} = \frac{q N_\mathrm{D}}{\varepsilon_\mathrm{s}}
-             = \frac{\SI{1.6\cdot 10^{-19}}{\coulomb} \cdot \SI{10^{14}}{\centi\meter^{-3}}}{\SI{1.04 \cdot 10^{-12}}{\farad\centi\per\meter}}
-             = \SI{1.92\cdot 10^{5}}{\volt\per\centi\meter}.
-        \end{equation}             
+        \begin{align}   
+            E_\mathrm{\max} &= \frac{q N_\mathrm{D}W}{\varepsilon_\mathrm{s}} 
+              = \frac{\SI{1.6\cdot 10^{-19}}{\coulomb} \cdot \SI{2 \cdot 10^{14}}{\centi\meter^{-3}} \cdot \SI{62.4}{\micro\meter}}{\SI{1.04 \cdot 10^{-12}}{\farad\centi\per\meter}} \\
+             &= \frac{\SI{1.6\cdot 10^{-19}}{\coulomb} \cdot \SI{2 \cdot 10^{20}}{\meter^{-3}} \cdot \SI{6.24 \cdot 10^{-5}}{\meter}}{\SI{1.04 \cdot 10^{-10}}{\farad\per\meter}}
+             = \SI{1.92\cdot 10^{7}}{\volt\per\meter} = \SI{1.92\cdot 10^{5}}{\volt\per\centi\meter}.
+        \end{align}             
 \end{solutionblock} 
 
 
