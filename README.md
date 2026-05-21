@@ -17,6 +17,17 @@ This work is licensed under a
 [cc-by-image]: https://licensebuttons.net/l/by/4.0/88x31.png
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
+## Folder structure for latex and code templates and jupyter notebook files:
+```plaintext
+PEDC_course-+- lecture  +- tex          # Contains the Lectures latex files
+            +- exercise +- tex- + ex[i] # Contains the exercise latex files i of n including
+                        |               # the code templates for python coding tasks
+                        |               # and the jupyter notebook without solution
+                        +- code + ex[i] # Contains the jupyter notebook with solutions
+```
+
+The dedicated jupyter notebook file with solutions are added after the seminar has taken place.
+
 ## Lecture slides (click on preview picture)
 <a href="https://ias-uni-siegen.github.io/PEDC_course/lecture.pdf" target="_blank" class="image fit"><img src="misc/Lecture_preview.png" alt=""></a>
 
