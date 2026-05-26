@@ -696,26 +696,27 @@ P_{switching} =
     \item Avalanche Energy: $E_{AS}$
 \end{itemize}
 \end{columns}
-
-% \begin{block}{Why These Parameters are Important}
-% \small
-% These parameters determine:
-% \begin{itemize}
-%     \item Voltage and current capability
-%     \item Conduction and switching losses
-%     \item Thermal performance
-%     \item Switching speed
-%     \item Gate driver requirements
-%     \item Reliability and safe operation
-% \end{itemize}
-% \end{block}
-
-% \vspace{0.15cm}
-
 \small
 Source: Infineon OptiMOS\textsuperscript{TM} Power MOSFET Datasheet Explanation Application Note, AN 2012-03. 
 \end{frame}
 
+
+\begin{frame}{Important MOSFET Datasheet Parameters}
+\begin{block}{Why These Parameters are Important}
+\small
+These parameters determine:
+\begin{itemize}
+    \item Voltage and current capability
+    \item Conduction and switching losses
+    \item Thermal performance
+    \item Switching speed
+    \item Gate driver requirements
+    \item Reliability and safe operation
+\end{itemize}
+\end{block}
+\small
+Source: Infineon OptiMOS\textsuperscript{TM} Power MOSFET Datasheet Explanation Application Note, AN 2012-03. 
+\end{frame}
 
 \begin{frame}{Introduction to IGBT}
 \begin{itemize}
@@ -863,10 +864,7 @@ The blocking capability is governed mainly by the doping and thickness of the n$
     \item Once both parasitic npn and pnp transistors conduct, latch-up occurs and the gate loses control of the drain current.
 \end{itemize}
 
-\[
-\text{Latch-up} \Rightarrow \text{gate control is lost} \Rightarrow \text{device can be destroyed by excessive current}
-\]
-
+$\text{Latch-up} \Rightarrow \text{gate control is lost} \Rightarrow \text{device can be destroyed by excessive current}$
 \end{frame}
 
 
@@ -908,4 +906,622 @@ The blocking capability is governed mainly by the doping and thickness of the n$
 \end{itemize}
 \end{frame}
 
-%%Continue with IGBT static and switching characteristics and comparison with MOSFETs in the next lecture.
+\begin{frame}{Static Characteristics of an IGBT}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{itemize}
+    \item The static characteristics of an n-channel IGBT describe the relation between collector current and collector--emitter voltage:
+    \[
+        i_C = f(v_{CE},V_{GE})
+    \]
+    \item Similar to a MOSFET, the gate-emitter voltage $V_{GE}$ controls the current level.
+    \item Similar to a BJT, the on-state current path includes bipolar carrier injection, which reduces the drift-region resistance.
+    \item When $V_{GE}<V_{GE(th)}$, no inversion channel is formed and the IGBT remains in the OFF-state.
+    \item When $V_{GE}$ increases above threshold, the collector current increases and the device enters forward conduction.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.4\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec05/IGBT_st_ch.png}
+\caption{Static $i_C$--$v_{CE}$ characteristic of an IGBT; adapted from Umanand, L., \textit{Power Electronics: Essentials \& Applications}.}
+\label{fig:IGBT_static_iv}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Output Characteristics: Forward Conduction}
+\begin{columns}
+\begin{column}{0.65\textwidth}
+\begin{itemize}
+    \item In the forward direction, the IGBT output characteristics resemble those of a BJT.
+    \item However, the controlling variable is not base current, but the gate-emitter voltage $V_{GE}$.
+    \item Increasing $V_{GE}$ increases the channel current and therefore increases the collector current.
+    \item The forward characteristics show a knee voltage because conduction requires both:
+    \begin{itemize}
+        \item formation of the MOS inversion channel, and
+        \item forward-biased carrier injection from the p$^+$ collector layer.
+    \end{itemize}
+    \item At high current levels, the IGBT has a relatively low on-state voltage because the n$^-$ drift region is conductivity modulated.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.35\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec05/IGBT_out.png}
+\caption{Output characteristics of an n-channel IGBT for increasing $V_{GE}$; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John Wiley \& Sons (2003).}}
+\label{fig:IGBT_output_characteristics}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Forward and Reverse Blocking Characteristics}
+\begin{itemize}
+    \item In the OFF-state, the IGBT must support the applied collector--emitter voltage while allowing only a small leakage current.
+    \item Forward blocking occurs when the collector is positive with respect to the emitter and $V_{GE}<V_{GE(th)}$.
+    \item The junction $J_2$ blocks the applied forward voltage, and the depletion layer extends mainly into the lightly doped n$^-$ drift region.
+    \item Reverse blocking depends strongly on the internal IGBT structure.
+    \item In a non-punch-through IGBT without an n$^+$ buffer layer, the reverse-blocking voltage can be made comparable to the forward-blocking voltage.
+    \item In a punch-through IGBT with an n$^+$ buffer layer, reverse-blocking capability is very poor because the reverse-blocking junction has heavily doped material on both sides.
+\end{itemize}
+
+\vspace{0.15cm}
+
+\[
+\text{NPT IGBT} \Rightarrow \text{possible reverse blocking}
+\qquad
+\text{PT IGBT} \Rightarrow \text{low reverse blocking}
+\]
+
+\end{frame}
+
+
+\begin{frame}{Comparison with MOSFET and BJT Static Behavior}
+
+\begin{itemize}
+    \item The IGBT input characteristic is MOSFET-like because the gate is insulated and voltage-controlled.
+    \item The IGBT output characteristic is BJT-like because the forward conduction path involves minority-carrier injection.
+    \item For a given current, the on-state voltage of an IGBT is usually:
+    \[
+        V_{CE(sat),IGBT} < V_{DS(on),MOSFET}
+    \]
+    for comparable high-voltage ratings.
+    \item However, compared with a BJT:
+    \[
+        V_{CE(sat),IGBT} > V_{CE(sat),BJT}
+    \]
+    because the IGBT still includes a MOS channel resistance and internal junction drops.
+    \item Thus, the IGBT is especially attractive where high blocking voltage and moderate switching frequency are required.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Comparison with MOSFET and BJT Static Behavior}
+\begin{block}{Key point}
+The IGBT should be understood as a hybrid power device:
+\begin{itemize}
+    \item \textbf{MOS gate} gives easy voltage control.
+    \item \textbf{Bipolar conduction} gives low drift-region resistance.
+    \item \textbf{Static characteristics} combine features of MOSFETs and BJTs.
+\end{itemize}
+\end{block}
+
+\begin{block}{Practical Interpretation}
+In power converters, the IGBT is usually operated either in:
+\begin{itemize}
+    \item OFF-state blocking region, or
+    \item ON-state forward conduction region.
+\end{itemize}
+The transition region is mainly important for switching loss analysis.
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Dynamic Characteristics of IGBTs}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{itemize}
+    \item The dynamic behavior of an IGBT combines:
+    \begin{itemize}
+        \item MOSFET-like gate control characteristics, and
+        \item BJT-like collector current behavior.
+    \end{itemize}
+    \item Switching performance is mainly influenced by:
+    \begin{itemize}
+        \item internal capacitances,
+        \item parasitic inductances,
+        \item gate-drive resistance, and
+        \item stored minority carriers.
+    \end{itemize}
+\end{itemize}
+\end{column}
+
+\begin{column}{0.4\textwidth}
+    \vspace{-1cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{fig/lec05/IGBT_dy.png}
+\caption{Typical dynamic switching waveforms of an IGBT; adapted from Umanand, L., \textit{Power Electronics: Essentials \& Applications}.}
+\label{fig:IGBT_dynamic_characteristics}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Dynamic Characteristics of IGBTs}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+    \begin{itemize}
+    \item Compared with MOSFETs, IGBTs usually have:
+    \begin{itemize}
+        \item lower conduction losses at high voltage,
+        \item but slower switching speed.
+    \end{itemize}
+    
+    \item Switching transitions are characterized using:
+    \[
+    t_{d(on)},\; t_r,\; t_{d(off)},\; t_f
+    \]
+    which define the turn-ON and turn-OFF intervals.
+    \end{itemize}
+\end{column}
+
+\begin{column}{0.4\textwidth}
+    \vspace{-1cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{fig/lec05/IGBT_dy.png}
+\caption{Typical dynamic switching waveforms of an IGBT; adapted from Umanand, L., \textit{Power Electronics: Essentials \& Applications}.}
+\label{fig:IGBT_dynamic_characteristics}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Turn-ON Characteristics of an IGBT}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+    \item During turn-ON, the IGBT behaves primarily like a MOSFET.
+    
+    \item When the gate-emitter voltage reaches the threshold voltage:
+    \[
+        V_{GE} = V_{GE(th)},
+    \]
+    the collector current begins to increase.
+    
+    \item The turn-ON process consists of:
+    \begin{itemize}
+        \item turn-ON delay time $t_{d(on)}$,
+        \item current rise time $t_r$,
+        \item voltage fall intervals.
+    \end{itemize}
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{fig/lec05/IGBT_turn_on.png}
+\caption{Turn-ON voltage and current waveforms of an IGBT in a step-down converter; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John Wiley \& Sons (2003).}}
+\label{fig:IGBT_turn_on_waveform}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Turn-ON Characteristics of an IGBT, continued...}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+    \item During current rise:
+    \[
+        i_C \uparrow
+        \qquad \text{and} \qquad
+        v_{CE} \downarrow
+    \]
+    \item A current overshoot may appear because of reverse recovery of the freewheeling diode.
+    
+    \item Most turn-ON switching losses occur while voltage and current overlap simultaneously.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{fig/lec05/IGBT_turn_on.png}
+\caption{Turn-ON voltage and current waveforms of an IGBT in a step-down converter; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John Wiley \& Sons (2003).}}
+\label{fig:IGBT_turn_on_waveform}
+\end{figure}
+
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Turn-OFF Characteristics and Tail Current}
+\begin{columns}
+\begin{column}{0.52\textwidth}
+\begin{itemize}
+    \item During turn-OFF, the IGBT behaves more like a bipolar device.
+    
+    \item The turn-OFF sequence consists of:
+    \begin{itemize}
+        \item turn-OFF delay time $t_{d(off)}$,
+        \item voltage rise time,
+        \item current fall interval.
+    \end{itemize}
+    
+    \item Unlike MOSFETs, IGBTs exhibit a \textbf{tail current} during turn-OFF.
+    
+    \item The tail current is caused by stored minority carriers in the n$^-$ drift region.
+    
+    \item These carriers cannot be removed instantly and must recombine within the device.
+    
+    \item The tail interval increases switching loss because:
+    \[
+        v_{CE} \approx V_{DC}
+        \quad \text{while} \quad
+        i_C \neq 0
+    \]
+    
+    \item Therefore, a trade-off exists between:
+    \begin{itemize}
+        \item low on-state losses, and
+        \item fast turn-OFF speed.
+    \end{itemize}
+\end{itemize}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+    \vspace{-1.5cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{fig/lec05/IGBT_turn_off.png}
+\caption{Turn-OFF voltage and current waveforms of an IGBT in a step-down converter; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John Wiley \& Sons (2003).}}
+\label{fig:IGBT_turn_off_waveform}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Tail Current Mechanism in IGBTs}
+\begin{columns}
+\begin{column}{0.56\textwidth}
+\begin{itemize}
+    \item The tail current originates from excess holes stored in the lightly doped n$^-$ drift region.
+    
+    \item During conduction, conductivity modulation reduces the drift-region resistance and improves efficiency.
+    
+    \item However, during turn-OFF these carriers remain stored temporarily.
+    
+    \item Since no reverse voltage exists to sweep out the holes rapidly, carrier recombination becomes the dominant removal mechanism.
+    
+    \item The tail current duration depends strongly on:
+    \begin{itemize}
+        \item carrier lifetime,
+        \item drift-region thickness,
+        \item device structure (PT or NPT),
+        \item operating temperature.
+    \end{itemize}
+    
+    \item Higher temperature generally increases carrier lifetime and prolongs the tail interval.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.44\textwidth}
+\begin{block}{Engineering Trade-Off}
+$\text{Low } V_{CE(sat)} \Longleftrightarrow \text{Large stored charge}$
+$\text{Large stored charge} \Longrightarrow \text{Longer tail current}$
+\end{block}
+
+\vspace{0.15cm}
+
+\begin{block}{Design Objective}
+Modern IGBT structures attempt to:
+\begin{itemize}
+    \item reduce tail current,
+    \item maintain low conduction loss,
+    \item improve switching speed.
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{PT and NPT IGBT Structures}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{itemize}
+    \item Two important IGBT structures are:
+    \begin{itemize}
+        \item Punch-Through (PT),
+        \item Non-Punch-Through (NPT).
+    \end{itemize}
+    
+    \item PT IGBTs use an n$^+$ buffer layer between the drift region and p$^+$ collector.
+    
+    \item The buffer layer helps remove stored carriers more rapidly and shortens the tail current interval.
+    
+    \item PT devices generally provide:
+    \begin{itemize}
+        \item lower turn-OFF losses,
+        \item shorter switching times,
+        \item improved high-frequency operation.
+    \end{itemize}
+    
+    \item NPT IGBTs use thicker drift region, usually exhibit:
+    \begin{itemize}
+        \item better ruggedness,
+        \item superior avalanche capability,
+        \item improved high-voltage behavior.
+    \end{itemize}
+\end{itemize}
+\end{column}
+
+\begin{column}{0.4\textwidth}
+\begin{block}{PT IGBT $\Rightarrow \text{speed}$}
+\begin{itemize}
+    \item Faster switching
+    \item Smaller tail current
+    \item Better for medium-voltage operation
+\end{itemize}
+\end{block}
+
+\vspace{0.15cm}
+
+\begin{block}{NPT IGBT $\Rightarrow \text{ruggedness}$}
+\begin{itemize}
+    \item Higher robustness
+    \item Better thermal stability
+    \item Preferred at higher voltages
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Device Limits of IGBTs}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+    \item The maximum collector current is limited to avoid:
+    \begin{itemize}
+        \item excessive thermal stress,
+        \item bond-wire failure,
+        \item latch-up conditions.
+    \end{itemize}
+    
+    \item The maximum gate-emitter voltage is limited by the gate oxide strength:
+    \[
+        |V_{GE(max)}| \approx 20\text{ V}
+    \]
+    for many practical devices.
+    
+    \item The maximum collector-emitter voltage is determined by avalanche breakdown of the drift region.
+    
+\end{itemize}
+\end{column}
+
+\begin{column}{0.46\textwidth}
+\begin{block}{Important Device Limits}
+\begin{itemize}
+    \item $V_{GE(max)}$
+    \item $V_{CES}$
+    \item $I_C$
+    \item $I_{CM}$
+    \item $T_J$
+    \item Short-circuit withstand time
+\end{itemize}
+\end{block}
+
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Device Limits of IGBTs}
+\begin{columns}
+\begin{column}{0.54\textwidth}
+\begin{itemize}   
+    \item IGBTs are designed to survive short-circuit conditions for a limited duration:
+    \[
+        t_{SC} \approx 5{-}10~\mu s
+    \]
+    
+    \item Modern devices can operate at junction temperatures up to:
+    \[
+        T_J \approx 150^\circ\text{C}
+    \]
+    
+    \item Positive temperature coefficient behavior helps current sharing in parallel-connected IGBTs.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.46\textwidth}
+
+\begin{block}{Practical Observation}
+IGBTs can tolerate much larger overload currents than MOSFETs for short durations because conductivity modulation distributes current more effectively within the drift region.
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Safe Operating Area (SOA) of IGBTs}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+    \item The Safe Operating Area (SOA) defines combinations of voltage and current for which the IGBT can operate safely.
+    
+    \item Two important SOA regions are:
+    \begin{itemize}
+        \item Forward-Bias SOA (FBSOA),
+        \item Reverse-Bias SOA (RBSOA).
+    \end{itemize}
+    
+    \item The FBSOA mainly limits:
+    \begin{itemize}
+        \item thermal stress,
+        \item conduction power dissipation.
+    \end{itemize}
+
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+    \vspace{-0.5cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{fig/lec05/IGBT_SOA.png}
+\caption{Forward-bias and reverse-bias safe operating areas of an IGBT; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John Wiley \& Sons (2003).}}
+\label{fig:IGBT_SOA}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Safe Operating Area (SOA) of IGBTs}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+    
+    \item The RBSOA becomes important during turn-OFF conditions.
+    
+    \item Excessive:
+    \[
+        \frac{dv_{CE}}{dt}
+    \]
+    during turn-OFF may trigger latch-up or localized failure.
+    
+    \item Gate resistance and negative gate bias are often used to control:
+    \[
+        \frac{dv_{CE}}{dt}
+    \]
+    and improve RBSOA performance.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+        \vspace{-0.5cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{fig/lec05/IGBT_SOA.png}
+\caption{Forward-bias and reverse-bias safe operating areas of an IGBT; adapted from Mohan, N. et al., \textit{Power electronics: converters, applications, and design. John Wiley \& Sons (2003).}}
+\label{fig:IGBT_SOA}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Remarks on Dynamic Performance of IGBTs}
+\begin{itemize}
+    \item IGBTs combine the advantages of MOSFET gate control with the low conduction losses of bipolar devices.
+    
+    \item The gate-drive power requirement is relatively low because the gate is insulated.
+    
+    \item Compared with MOSFETs:
+    \begin{itemize}
+        \item IGBTs have lower conduction loss at high voltage,
+        \item but higher switching losses due to stored charge.
+    \end{itemize}
+    
+    \item Compared with BJTs:
+    \begin{itemize}
+        \item IGBTs do not require continuous base current drive,
+        \item and exhibit easier gate control.
+    \end{itemize}
+    
+    \item Turn-ON behavior is largely MOSFET-like, while turn-OFF behavior strongly reflects bipolar carrier dynamics.
+    
+    \item Proper gate-drive design is extremely important to:
+    \begin{itemize}
+        \item reduce switching losses,
+        \item suppress oscillations,
+        \item avoid excessive $dv/dt$ and $di/dt$,
+        \item maintain SOA compliance.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Important IGBT Datasheet Parameters}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\textbf{Electrical and Static Parameters}
+\begin{itemize}
+    \item Collector-Emitter Voltage Rating: $V_{CE}$
+    \item Collector-Emitter Breakdown Voltage: $V_{(BR)CES}$
+    \item DC Collector Current: $I_C$
+    \item Pulsed Collector Current: $I_{C,pulse}$
+    \item Gate-Emitter Voltage Limit: $V_{GE(max)}$
+    \item Collector-Emitter Sat. Voltage: $V_{CE(sat)}$
+    \item Gate-Emitter Threshold Voltage: $V_{GE(th)}$
+    \item Transconductance: $g_{fs}$
+    \item Leakage Currents: $I_{CES},\ I_{GES}$
+    \item Short-Circuit Withstand Time: $t_{SC}$
+    \item Short-Circuit Collector Current: $I_{C(SC)}$
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Dynamic, Diode, and Thermal Parameters}
+\begin{itemize}
+    \item Input Capacitance: $C_{ies}$ or $C_{iss}$
+    \item Output Capacitance: $C_{oes}$ or $C_{oss}$
+    \item Reverse Transfer Capacitance: $C_{res}$ or $C_{rss}$
+    \item Gate Charge: $Q_G$
+    \item Internal Emitter Inductance: $L_E$
+    \item Turn-ON and -OFF Delay: $t_{d(on)},\ t_{d(off)}$
+    \item Rise and Fall Times: $t_r,\ t_f$
+    \item Turn-ON and -OFF Energies: $E_{on},\ E_{off}$
+    \item Total Switching Energy: $E_{ts}$
+    \item Diode Forward Voltage: $V_F$
+    \item Reverse Recov. $t$ and $Q$: $t_{rr},\ Q_{rr}$
+    \item FBSOA and RBSOA limits
+\end{itemize}
+\end{columns}
+
+\vspace{0.15cm}
+\small
+Source: Infineon Technologies, \textit{Discrete IGBT: Explanation of Discrete IGBTs' Datasheets}, Application Note, V1.0, 2015-09-18.
+\end{frame}
+
+
+
+
+\begin{frame}{Why IGBT Datasheet Parameters Matter}
+\textbf{Dynamic, Diode, and Thermal Parameters, continued...}
+\begin{itemize}
+    \item Thermal Resistance: $R_{\theta JC},\ R_{\theta JA}$
+    \item Maximum Junction Temperature: $T_{j(max)}$
+\end{itemize}
+
+\begin{block}{Design Relevance}
+IGBT datasheet parameters help the designer evaluate:
+\begin{itemize}
+    \item \textbf{Voltage and current limits:} $V_{CE}$, $I_C$, $I_{C,pulse}$
+    \item \textbf{Conduction loss:} mainly through $V_{CE(sat)}$
+    \item \textbf{Switching loss:} mainly through $E_{on}$, $E_{off}$, $t_r$, and $t_f$
+    \item \textbf{Gate-driver design:} $V_{GE(max)}$, $V_{GE(th)}$, $Q_G$
+    \item \textbf{Thermal design:} $R_{\theta JC}$, $R_{\theta JA}$, $T_{j(max)}$
+    \item \textbf{Reliability margin:} short-circuit rating, diode recovery, and SOA
+\end{itemize}
+\end{block}
+
+\vspace{0.15cm}
+
+\small
+Source: Infineon Technologies, \textit{Explanation of Discrete IGBTs' Datasheets}, Application Note, 2015.
+\end{frame}
