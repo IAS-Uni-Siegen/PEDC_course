@@ -339,3 +339,197 @@ Source: Adapted from Morya et al., \textit{IEEE TTE}, 2019; Iannaccone et al., \
 \end{column}
 \end{columns}
 \end{frame}
+
+
+
+\begin{frame}{SiC Power Diodes}
+\begin{columns}
+\begin{column}{0.52\textwidth}
+\begin{itemize}
+    \item SiC power diodes were among the first commercially successful wide-bandgap power devices.
+    \item Compared to Si diodes, SiC diodes provide:
+    \begin{itemize}
+        \item Higher blocking voltage capability
+        \item Faster switching performance
+        \item Lower reverse recovery losses
+        \item High-temperature operation
+    \end{itemize}
+    
+    \item Most commercial SiC power diodes are based on:
+    \begin{itemize}
+        \item Schottky Barrier Diodes (SBDs)
+        \item Junction Barrier Schottky (JBS) structures
+        \item Merged PiN Schottky (MPS) structures
+    \end{itemize}
+
+    \item Important datasheet characteristics include:
+    \[
+    V_{BR},\ I_R,\ V_F,\ C_j,\ Q_C,\ E_C
+    \]
+\end{itemize}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.95\textwidth]{fig/lec06/SiC_diode_intro.png}
+\caption{Representative SiC diode characteristics and parameters discussed in commercial datasheets; adapted from Gao, Y. et al., \textit{Silicon Carbide Power Devices, Characteristics, Test, and Applications}, 2025.}
+\label{fig:SiC_diode_intro}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Reverse Blocking Characteristics of SiC Diodes}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{itemize}
+    \item During reverse bias, the cathode is at a higher potential than the anode and only a small reverse leakage current flows.
+    
+    \item The reverse current $I_R$ depends on:
+    \begin{itemize}
+        \item Reverse voltage $V_R$
+        \item Junction temperature $T_j$
+    \end{itemize}
+
+    \item At low reverse voltage:$I_R \approx \text{pA to nA range}$ indicating effective blocking operation.
+
+    \item As $V_R$ approaches the breakdown region, avalanche multiplication causes a rapid increase in current.
+
+    \item SiC devices typically exhibit:
+    \begin{itemize}
+        \item High breakdown voltage margin
+        \item Low leakage current
+        \item Improved high-temperature blocking capability
+    \end{itemize}
+\end{itemize}
+\end{column}
+
+\begin{column}{0.4\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/SiC_diode_intro.png}
+\caption{Reverse current versus reverse voltage characteristics of a SiC diode at different temperatures; adapted from Gao, Y. et al., \textit{Silicon Carbide Power Devices, Characteristics, Test, and Applications}, 2025.}
+\label{fig:SiC_diode_IR_VR}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Forward Conduction Characteristics}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{itemize}
+    \item Under forward bias, current flows from anode to cathode once the forward voltage exceeds the conduction threshold.
+    
+    \item The forward conduction behaviour is represented by the: $I_F - V_F $ characteristic.
+
+    \item At low forward voltage: $I_F \approx 0$, diode remains OFF.
+
+    \item Beyond the knee voltage, the current increases rapidly with applied voltage.
+
+    \item The forward characteristics vary with junction temperature:
+    \begin{itemize}
+        \item Forward voltage decreases with increasing $T_j$
+        \item Temperature coefficient changes with operating current
+    \end{itemize}
+
+    \item The near-zero temperature coefficient region helps current sharing during parallel operation.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.4\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/SiC_diode_IF_VF.png}
+\caption{Forward current versus forward voltage characteristics of a SiC diode at different junction temperatures; adapted from Gao, Y. et al., \textit{Silicon Carbide Power Devices, Characteristics, Test, and Applications}, 2025.}
+\label{fig:SiC_diode_IF_VF}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Junction Capacitance and Charge}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{itemize}
+    \item Under reverse bias, a depletion region forms between the p-region and n-region.
+    
+    \item This depletion region behaves similarly to a voltage-dependent capacitor.
+
+    \item The junction capacitance decreases with increasing reverse voltage: $C_j \downarrow \quad \text{as} \quad V_R \uparrow$.
+    \item The stored junction charge is obtained from: $Q_C = \int_0^{V_R} C(V_R)\, dV_R$.
+    \item Lower junction capacitance is beneficial because it:
+    \begin{itemize}
+        \item Reduces switching losses
+        \item Improves high-frequency performance
+        \item Reduces reverse recovery effects
+    \end{itemize}
+\end{itemize}
+\end{column}
+
+\begin{column}{0.4\textwidth}
+    \vspace{-1.25cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{fig/lec06/SiC_diode_CV.png}
+\includegraphics[width=0.85\textwidth]{fig/lec06/SiC_diode_QV.png}
+\caption{Variation of junction capacitance and junction charge with reverse voltage; adapted from Gao, Y. et al., \textit{Silicon Carbide Power Devices, Characteristics, Test, and Applications}, 2025.}
+\label{fig:SiC_diode_CV}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Junction Capacitance Energy and Practical Implications}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{itemize}
+    \item The energy stored in junction capacitance is:
+    \[
+        E_C = \int_0^{V_R} C(V_R)\,V_R\,dV_R
+    \]
+
+    \item Junction capacitance energy becomes important during:
+    \begin{itemize}
+        \item High-frequency switching
+        \item Hard commutation
+        \item Fast transient operation
+    \end{itemize}
+
+    \item Lower stored energy in SiC diodes contributes to:
+    \begin{itemize}
+        \item Reduced switching loss
+        \item Faster switching transitions
+        \item Lower reverse recovery stress
+        \item Improved converter efficiency
+    \end{itemize}
+
+\end{itemize}
+\end{column}
+
+\begin{column}{0.4\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/SiC_diode_EV.png}
+\caption{Junction capacitance energy variation with reverse voltage for a SiC diode; adapted from Gao, Y. et al., \textit{Silicon Carbide Power Devices, Characteristics, Test, and Applications}, 2025.}
+\label{fig:SiC_diode_EV}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+    % \item These properties make SiC diodes highly suitable for:
+    % \begin{itemize}
+    %     \item High-frequency converters
+    %     \item EV traction systems
+    %     \item PFC stages
+    %     \item Renewable-energy converters
+    % \end{itemize}
