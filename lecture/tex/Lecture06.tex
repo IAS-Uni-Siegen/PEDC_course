@@ -526,10 +526,115 @@ Source: Adapted from Morya et al., \textit{IEEE TTE}, 2019; Iannaccone et al., \
 \end{frame}
 
 
-    % \item These properties make SiC diodes highly suitable for:
-    % \begin{itemize}
-    %     \item High-frequency converters
-    %     \item EV traction systems
-    %     \item PFC stages
-    %     \item Renewable-energy converters
-    % \end{itemize}
+\begin{frame}{Power Dissipation in SiC Power Diodes}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{itemize}
+    \item During operation, a SiC diode dissipates power mainly through forward conduction and switching-related capacitive effects.
+    \item The junction temperature rises until thermal equilibrium is reached between generated heat and removed heat.
+    \item With case temperature $T_C$ specified, the steady-state thermal relation is
+    \[
+        T_J - T_C = P_{\mathrm{tot}}(T_C)\,R_{\mathrm{th}(JC)}
+    \]
+    \item Therefore, the maximum allowable power dissipation decreases as $T_C$ increases.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.4\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.95\textwidth]{fig/lec06/SiC_diode_Ptot_TC.png}
+\caption{Typical $P_{\mathrm{tot}}$--$T_C$ derating characteristic of a SiC diode; adapted from Gao, Y. et al., \textit{Silicon Carbide Power Devices, Characteristics, Test, and Applications}, 2025.}
+\label{fig:SiC_diode_Ptot_TC}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Power Dissipation in SiC Power Diodes}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{itemize}
+    \item With ambient temperature $T_A$, the complete thermal path includes junction--case, case--heatsink, and heatsink--ambient resistances:
+    \[
+        T_J-T_A=P_{\mathrm{tot}}(T_A)
+        \left(R_{\mathrm{th}(JC)}+R_{\mathrm{th}(CH)}+R_{\mathrm{th}(HA)}\right)
+    \]
+\end{itemize}
+\end{column}
+
+\begin{column}{0.4\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.95\textwidth]{fig/lec06/SiC_diode_Ptot_TC.png}
+\caption{Typical $P_{\mathrm{tot}}$--$T_C$ derating characteristic of a SiC diode; adapted from Gao, Y. et al., \textit{Silicon Carbide Power Devices, Characteristics, Test, and Applications}, 2025.}
+\label{fig:SiC_diode_Ptot_TC}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Forward Current Limit and Surge Capability}
+\begin{columns}
+\begin{column}{0.53\textwidth}
+\begin{itemize}
+    \item The allowable forward current is limited by the maximum dissipated power, duty cycle, and forward voltage drop.
+    \item For duty cycle $D$, the current limit can be estimated as
+    \[
+        I_F =
+        \frac{P_{\mathrm{tot}}(T_C)/D}
+        {V_F\!\left(T_{J(\max)},I_F\right)}
+    \]
+    \item Datasheets therefore provide $I_F$--$T_C$ curves for different duty cycles.
+    \item Surge forward current $I_{FSM}$ defines the maximum non-repetitive half-sinusoidal current the diode can withstand.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.47\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.95\textwidth]{fig/lec06/SiC_diode_IF_TC.png}
+\caption{Typical $I_F$--$T_C$ characteristic of a SiC diode for different duty cycles; adapted from Gao, Y. et al., \textit{Silicon Carbide Power Devices, Characteristics, Test, and Applications}, 2025.}
+\label{fig:SiC_diode_IF_TC}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Forward Current Limit and Surge Capability}
+\begin{columns}
+\begin{column}{0.53\textwidth}
+\begin{itemize}
+    \item The $i^2t$ rating measures short-time thermal withstand capability:
+    \[
+        i^2t=\int_0^{10\,\mathrm{ms}}
+        \left(I_{FSM}\sin{\omega t}\right)^2dt
+        \approx 0.005\,I_{FSM}^2
+    \]
+    \item These properties make SiC diodes highly suitable for:
+    \begin{itemize}
+        \item High-frequency converters
+        \item EV traction systems
+        \item PFC stages
+        \item Renewable-energy converters
+    \end{itemize}
+\end{itemize}
+
+\end{column}
+
+\begin{column}{0.47\textwidth}
+\begin{block}{Design Meaning}
+\small
+At higher case or ambient temperature, less power can be dissipated before the junction reaches $T_{J(\max)}$.
+\end{block}
+
+\begin{block}{Practical Point}
+\small
+Surge ratings are strongly dependent on pulse duration, repetition, and initial junction temperature; they should not be compared blindly across datasheets.
+\end{block}
+
+\end{column}
+\end{columns}
+\end{frame}
