@@ -283,14 +283,10 @@ Source: Adapted from Morya et al., \textit{IEEE TTE}, 2019; Iannaccone et al., \
 \begin{columns}
 \begin{column}{0.52\textwidth}
 \begin{itemize}
-    \item The breakdown electric field is the field strength at which the semiconductor can no longer block voltage without avalanche multiplication.
     \item SiC has a breakdown field of approximately $2.5~\mathrm{MV/cm}$, about ten times higher than Si.
     \item Therefore, for the same blocking voltage, the SiC drift region can be thinner and more heavily doped than in a Si device.
     \item This reduces the drift-region resistance, which is usually the dominant part of $R_{\mathrm{DS(on)}}$ in high-voltage MOSFETs.
-    \item SiC also has a much lower intrinsic carrier concentration than Si:
-    \[
-        n_i(\mathrm{SiC}) \ll n_i(\mathrm{Si})
-    \]
+    \item SiC also has a much lower intrinsic carrier concentration than Si: $n_i(\mathrm{SiC}) \ll n_i(\mathrm{Si})$.
     \item The lower $n_i$ allows SiC devices to retain blocking capability at much higher junction temperatures.
 \end{itemize}
 \end{column}
@@ -318,21 +314,21 @@ Source: Adapted from Morya et al., \textit{IEEE TTE}, 2019; Iannaccone et al., \
 
 \begin{frame}{Commercial SiC MOSFET Device Structures}
 \begin{columns}
-\begin{column}{0.50\textwidth}
+\begin{column}{0.6\textwidth}
 \begin{itemize}
     \item Commercial SiC MOSFETs use vertical current flow so that high current and high blocking voltage can be obtained within a practical chip area.
-    \item The lightly doped $n^-$ drift region supports the blocking voltage, while the channel and source/body regions control the conduction path.
+    \item Lightly doped $n^-$ drift region supports the blocking voltage, while the channel and source/body regions control the conduction path.
     \item Planar SiC MOSFETs were the first commercial technology, but trench structures are widely used to reduce channel resistance and increase cell density.
     \item In trench MOSFETs, electric-field crowding at the trench bottom is a critical reliability concern for the gate oxide.
     \item Shielded or double-trench structures reduce the electric field at critical oxide corners and improve reliability, switching performance, and power density.
 \end{itemize}
 \end{column}
 
-\begin{column}{0.50\textwidth}
+\begin{column}{0.4\textwidth}
     \vspace{-2.5cm}
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{fig/lec06/SiC_commercial_structures.png}
+\includegraphics[width=0.6\textwidth]{fig/lec06/SiC_commercial_structures.png}
 \caption{Commercial SiC MOSFET structures: ROHM dual-trench and Infineon half-shielded trench concepts; adapted from Gao, Y. et al., \textit{Silicon Carbide Power Devices, Characteristics, Test, and Applications}, 2025.}
 \label{fig:SiC_commercial_structures}
 \end{figure}

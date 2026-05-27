@@ -910,10 +910,7 @@ $\text{Latch-up} \Rightarrow \text{gate control is lost} \Rightarrow \text{devic
 \begin{columns}
 \begin{column}{0.6\textwidth}
 \begin{itemize}
-    \item The static characteristics of an n-channel IGBT describe the relation between collector current and collector--emitter voltage:
-    \[
-        i_C = f(v_{CE},V_{GE})
-    \]
+    \item The static characteristics of an n-channel IGBT describe the relation between collector current and collector--emitter voltage: $i_C = f(v_{CE},V_{GE})$.
     \item Similar to a MOSFET, the gate-emitter voltage $V_{GE}$ controls the current level.
     \item Similar to a BJT, the on-state current path includes bipolar carrier injection, which reduces the drift-region resistance.
     \item When $V_{GE}<V_{GE(th)}$, no inversion channel is formed and the IGBT remains in the OFF-state.
@@ -969,14 +966,11 @@ $\text{Latch-up} \Rightarrow \text{gate control is lost} \Rightarrow \text{devic
     \item In a punch-through IGBT with an n$^+$ buffer layer, reverse-blocking capability is very poor because the reverse-blocking junction has heavily doped material on both sides.
 \end{itemize}
 
-\vspace{0.15cm}
-
-\[
-\text{NPT IGBT} \Rightarrow \text{possible reverse blocking}
+\begin{block}{Key Insight}
+$\text{NPT IGBT} \Rightarrow \text{possible reverse blocking}
 \qquad
-\text{PT IGBT} \Rightarrow \text{low reverse blocking}
-\]
-
+\text{PT IGBT} \Rightarrow \text{low reverse blocking}$
+\end{block}
 \end{frame}
 
 
@@ -1159,19 +1153,11 @@ The transition region is mainly important for switching loss analysis.
         \item current fall interval.
     \end{itemize}
     
-    \item Unlike MOSFETs, IGBTs exhibit a \textbf{tail current} during turn-OFF.
-    
     \item The tail current is caused by stored minority carriers in the n$^-$ drift region.
     
     \item These carriers cannot be removed instantly and must recombine within the device.
     
-    \item The tail interval increases switching loss because:
-    \[
-        v_{CE} \approx V_{DC}
-        \quad \text{while} \quad
-        i_C \neq 0
-    \]
-    
+    \item The tail interval increases switching loss because: $v_{CE} \approx V_{DC}; \text{while};  i_C \neq 0$.    
     \item Therefore, a trade-off exists between:
     \begin{itemize}
         \item low on-state losses, and
