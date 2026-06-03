@@ -730,7 +730,7 @@ while maintaining reliable gate oxide operation.
 \begin{frame}{Operation of the Baliga-Pair Configuration}
 \begin{columns}[T]
 
-\column{0.47\textwidth}
+\column{0.53\textwidth}
 
 \textbf{Voltage Blocking Mode}
 \begin{itemize}
@@ -744,7 +744,7 @@ while maintaining reliable gate oxide operation.
     \item Positive gate bias turns ON the Si MOSFET.
     \item Current flows through both devices with very low ON-state voltage drop.
 \end{itemize}
-\column{0.52\textwidth}
+\column{0.47\textwidth}
 
 \begin{figure}
 \centering
@@ -761,7 +761,7 @@ while maintaining reliable gate oxide operation.
 \begin{frame}{Operation of the Baliga-Pair Configuration}
 \begin{columns}[T]
 
-\column{0.47\textwidth}
+\column{0.53\textwidth}
 
 \textbf{Current Saturation Mode}
 \begin{itemize}
@@ -780,7 +780,7 @@ while maintaining reliable gate oxide operation.
     \item The structure inherently provides a low-loss flyback path.
     \item Reduces reverse recovery losses.
 \end{itemize}
-\column{0.52\textwidth}
+\column{0.47\textwidth}
 
 \begin{figure}
 \centering
@@ -1676,19 +1676,13 @@ Lower reverse conduction losses without additional external diode packages.
 \column{0.52\textwidth}
 
 \begin{itemize}
-    \item Transfer characteristics describe the dependence of drain current on gate voltage:
-    \[
-    I_{DS}-V_{GS}
-    \]
-
+    \item Transfer characteristics describe the dependence of drain current on gate voltage: $I_{DS}-V_{GS}$.
     \item Increasing \(V_{GS}\) enhances channel inversion and increases current flow.
 
     \item The threshold voltage \(V_{GS(th)}\) is the gate voltage where conduction begins.
 
-    \item \(V_{GS(th)}\) decreases with increasing temperature:
-    \[
-    T_J \uparrow \Rightarrow V_{GS(th)} \downarrow
-    \]
+    \item \(V_{GS(th)}\) decreases with increasing temperature:$
+    T_J \uparrow \Rightarrow V_{GS(th)} \downarrow$
 
     \item This affects:
     \begin{itemize}
@@ -2070,7 +2064,7 @@ Lower reverse conduction losses without additional external diode packages.
 \column{0.52\textwidth}
 \begin{itemize}
     \item The capacitance values are not constant during operation.
-    \item As $V_{DS}$ increases, the depletion region expands and the junction capacitances decrease.
+    \item As $V_{DS}$ increases, depletion region expands and junction capacitances decrease.
     \item $C_{iss}$ changes relatively little because it is dominated by $C_{GS}$.
     \item $C_{oss}$ and $C_{rss}$ show a stronger reduction with increasing $V_{DS}$.
     \item At high $V_{DS}$, the depletion region changes slowly; therefore, the capacitances become relatively constant.
@@ -2161,10 +2155,7 @@ Lower reverse conduction losses without additional external diode packages.
     \[
     I_{channel}=K\left(V_{GS}-V_{GS(th)}\right)^2
     \]
-    \item Initially:
-    \[
-    I_{DS}\approx I_{channel}
-    \]
+    \item Initially:$I_{DS}\approx I_{channel}$
     \item The increasing $I_{DS}$ generates voltage drop across loop inductance:
     \[
     \Delta V_{DS}=L_{Loop}\frac{dI_{DS}}{dt}
@@ -2313,7 +2304,7 @@ Lower reverse conduction losses without additional external diode packages.
     Q_G=\int I_G(t)\,dt
     \]
     \item A constant-current gate drive is often used for measurement.
-    \item The $V_{GS}$ waveform can be interpreted in four regions:
+    \item $V_{GS}$ waveform can be interpreted in 4 regions:
     \begin{itemize}
         \item Charging of $C_{iss}$
         \item Current rise
