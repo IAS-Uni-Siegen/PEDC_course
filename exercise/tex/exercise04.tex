@@ -1,0 +1,506 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Begin exercise %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ex{Power IGBTs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 1 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{When is the IGBT better than the MOSFET?}
+
+Two devices are available for a converter leg.
+
+\vspace{0.5em}
+\textbf{\SI{600}{\volt} MOSFET}
+\begin{itemize}
+    \item $R_\mathrm{DS(on)} = \SI{80}{\milli\ohm}$
+    \item $(t_\mathrm{r} + t_\mathrm{f}) = \SI{80}{\nano\second}$
+\end{itemize}
+
+\textbf{\SI{1200}{\volt} IGBT}
+\begin{itemize}
+    \item $V_\mathrm{CE(sat)} = \SI{2.1}{\volt}$
+    \item $E_\mathrm{on} + E_\mathrm{off} = \SI{1.8}{\milli\joule}$ at \SI{400}{\volt}, \SI{20}{\ampere}
+\end{itemize}
+
+\vspace{0.25em}
+\textbf{Application I}
+\begin{itemize}
+    \item $V_\mathrm{DC} = \SI{400}{\volt}$
+    \item $I = \SI{20}{\ampere}$
+    \item $f_\mathrm{s} = \SI{80}{\kilo\hertz}$
+    \item duty ratio $D = 0.5$
+\end{itemize}
+
+\vspace{0.25em}
+\textbf{Application II}
+\begin{itemize}
+    \item $V_\mathrm{DC} = \SI{800}{\volt}$
+    \item $I = \SI{50}{\ampere}$
+    \item $f_\mathrm{s} = \SI{5}{\kilo\hertz}$
+\end{itemize}
+
+For Application II, compare the IGBT with a hypothetical high-voltage MOSFET having
+\begin{equation}
+    R_\mathrm{DS(on)} = \SI{180}{\milli\ohm}
+\end{equation}
+and assume the IGBT switching energy is \SI{6}{\milli\joule} per cycle.
+
+\subtask{For Application I, compare approximate losses and choose the preferred device.}
+
+\begin{solutionblock}
+    The MOSFET conduction loss is
+    \begin{align}
+        I_\mathrm{rms} &= \SI{20}{\ampere}\sqrt{0.5} = \SI{14.14}{\ampere} \\
+        P_\mathrm{ON,M} &= \left( \SI{14.14}{\ampere} \right)^2 \cdot \SI{80}{\milli\ohm} \approx \SI{16}{\watt} \\
+        P_\mathrm{sw,M} &= \frac{1}{6} \cdot \SI{400}{\volt} \cdot \SI{20}{\ampere} \cdot \SI{80}{\nano\second} \cdot \SI{80}{\kilo\hertz}
+        \approx \SI{8.53}{\watt} \\
+        P_\mathrm{tot,M} &\approx \SI{24.5}{\watt}.
+    \end{align}
+
+    For the IGBT:
+    \begin{align}
+        P_\mathrm{ON,I} &= \SI{2.1}{\volt} \cdot \SI{20}{\ampere} \cdot 0.5 = \SI{21}{\watt} \\
+        P_\mathrm{sw,I} &= \SI{1.8}{\milli\joule} \cdot \SI{80}{\kilo\hertz} = \SI{144}{\watt} \\
+        P_\mathrm{tot,I} &\approx \SI{165}{\watt}.
+    \end{align}
+
+    Therefore, at \SI{400}{\volt} and \SI{80}{\kilo\hertz}, the MOSFET wins strongly.
+\end{solutionblock}
+
+\subtask{For Application II, compare approximate losses and choose the preferred device.}
+
+\begin{solutionblock}
+    For the hypothetical high-voltage MOSFET:
+    \begin{align}
+        I_\mathrm{rms} &= \SI{50}{\ampere}\sqrt{0.5} = \SI{35.36}{\ampere} \\
+        P_\mathrm{ON,M} &= \left( \SI{35.36}{\ampere} \right)^2 \cdot \SI{180}{\milli\ohm} \approx \SI{225}{\watt}.
+    \end{align}
+
+    For the IGBT, taking a realistic high-current value of $V_\mathrm{CE(sat)} \approx \SI{2.4}{\volt}$:
+    \begin{align}
+        P_\mathrm{ON,I} &= \SI{2.4}{\volt} \cdot \SI{50}{\ampere} \cdot 0.5 = \SI{60}{\watt} \\
+        P_\mathrm{sw,I} &= \SI{6}{\milli\joule} \cdot \SI{5}{\kilo\hertz} = \SI{30}{\watt} \\
+        P_\mathrm{tot,I} &\approx \SI{90}{\watt}.
+    \end{align}
+
+    Hence, at high voltage and low switching frequency, the IGBT is clearly preferred.
+\end{solutionblock}
+
+\subtask{Explain physically why the preferred device changes with voltage and frequency.}
+
+\begin{solutionblock}
+    The IGBT gains lower conduction loss at high voltage because conductivity modulation reduces the effective resistance of the drift region.
+    However, the stored minority charge produces larger switching losses, especially at high frequency.
+    Therefore, MOSFETs dominate at lower voltage and high switching frequency, while IGBTs become attractive at high voltage and lower frequency.
+\end{solutionblock}
+
+\subtask{State the main design insight students should retain.}
+
+\begin{solutionblock}
+    The preferred device cannot be decided from one parameter alone. 
+    Voltage class, frequency, and the balance between conduction and switching loss must all be considered together.
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 2 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Conductivity modulation made quantitative}
+
+Use the simplified on-state model
+\begin{equation}
+    V_\mathrm{CE(on)} \approx V_\mathrm{J1} + V_\mathrm{drift} + I_\mathrm{C} R_\mathrm{channel}.
+\end{equation}
+
+A \SI{1200}{\volt} IGBT carries $I_\mathrm{C} = \SI{40}{\ampere}$. Assume:
+\begin{itemize}
+    \item $V_\mathrm{J1} = \SI{0.95}{\volt}$
+    \item $V_\mathrm{drift} = \SI{0.55}{\volt}$
+    \item $R_\mathrm{channel} = \SI{12}{\milli\ohm}$
+\end{itemize}
+
+A comparable high-voltage MOSFET would have
+\begin{equation}
+    R_\mathrm{DS(on)} = \SI{90}{\milli\ohm}.
+\end{equation}
+
+\subtask{Estimate $V_\mathrm{CE(on)}$ for the IGBT.}
+
+\begin{solutionblock}
+    \begin{equation}
+        V_\mathrm{CE(on)} = \SI{0.95}{\volt} + \SI{0.55}{\volt} + \SI{40}{\ampere} \cdot \SI{12}{\milli\ohm}
+        = \SI{1.98}{\volt}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Estimate the on-state drop of the MOSFET at \SI{40}{\ampere}.}
+
+\begin{solutionblock}
+    \begin{equation}
+        V_\mathrm{DS(on)} = I_\mathrm{D} R_\mathrm{DS(on)}
+        = \SI{40}{\ampere} \cdot \SI{90}{\milli\ohm}
+        = \SI{3.6}{\volt}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{For duty ratio $D = 0.5$, compare the conduction losses.}
+
+\begin{solutionblock}
+    \begin{align}
+        P_\mathrm{cond,IGBT} &= \SI{1.98}{\volt} \cdot \SI{40}{\ampere} \cdot 0.5 = \SI{39.6}{\watt} \\
+        P_\mathrm{cond,MOSFET} &= \SI{3.6}{\volt} \cdot \SI{40}{\ampere} \cdot 0.5 = \SI{72}{\watt}.
+    \end{align}
+
+    Thus, the IGBT roughly halves the conduction loss in this case.
+\end{solutionblock}
+
+\subtask{Explain in words what conductivity modulation is buying the designer.}
+
+\begin{solutionblock}
+    Injected holes and electrons raise the carrier concentration in the drift region, thereby reducing its effective resistance.
+    This is why the IGBT becomes attractive when the drift region would otherwise dominate the MOSFET on-state loss.
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Latch-up is not a mystery; it is a voltage-drop problem}
+
+A student says: ``Latch-up sounds like an abstract failure mechanism.'' Show that it can be framed as a simple lateral voltage-drop problem.
+
+In an IGBT cell, assume the hole current in the p-body is $I_\mathrm{h}$, and the effective body-spreading resistance is $R_\mathrm{b}$.
+Latch-up risk begins when the lateral voltage drop is large enough to forward-bias the $n^+$-source / p-body junction, approximately \SI{0.7}{\volt}.
+
+\textbf{Case A}
+\begin{itemize}
+    \item $I_\mathrm{h} = \SI{12}{\ampere}$
+    \item $R_\mathrm{b} = \SI{60}{\milli\ohm}$
+\end{itemize}
+
+\textbf{Case B}
+\begin{itemize}
+    \item $I_\mathrm{h} = \SI{12}{\ampere}$
+    \item $R_\mathrm{b} = \SI{35}{\milli\ohm}$
+\end{itemize}
+
+\subtask{Compute the lateral p-body voltage drop in each case.}
+
+\begin{solutionblock}
+    For Case A:
+    \begin{equation}
+        V_\mathrm{b,A} = I_\mathrm{h} R_\mathrm{b}
+        = \SI{12}{\ampere} \cdot \SI{60}{\milli\ohm}
+        = \SI{0.72}{\volt}.
+    \end{equation}
+
+    For Case B:
+    \begin{equation}
+        V_\mathrm{b,B} = I_\mathrm{h} R_\mathrm{b}
+        = \SI{12}{\ampere} \cdot \SI{35}{\milli\ohm}
+        = \SI{0.42}{\volt}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Which case is vulnerable to latch-up, and why?}
+
+\begin{solutionblock}
+    Case A is vulnerable because \SI{0.72}{\volt} is enough to forward-bias the source-body junction.
+    Case B is much safer because the lateral voltage drop stays below the approximate forward-bias threshold.
+\end{solutionblock}
+
+\subtask{Suggest two structural ways to increase latch-up immunity.}
+
+\begin{solutionblock}
+    Latch-up immunity can be improved by reducing the body-spreading resistance, keeping the source width small, and providing an easier hole bypass path.
+    Any such measure keeps the lateral voltage drop below the forward-bias threshold of the parasitic npn path.
+\end{solutionblock}
+
+\subtask{Explain why gate control is lost once the parasitic thyristor turns on.}
+
+\begin{solutionblock}
+    Once the coupled pnp and npn sections both conduct, the parasitic thyristor structure is triggered.
+    In that condition, the current no longer depends on the MOS gate channel, so the gate loses effective control over the device current.
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 4 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{PT or NPT? Selecting a device structure}
+
+Two IGBTs are available.
+
+\textbf{Device P (PT-IGBT)}
+\begin{itemize}
+    \item $E_\mathrm{off} = \SI{2.5}{\milli\joule}$
+    \item tail-current fraction = \SI{15}{\percent}
+    \item short-circuit withstand time = \SI{6}{\micro\second}
+    \item avalanche ruggedness = moderate
+\end{itemize}
+
+\textbf{Device N (NPT-IGBT)}
+\begin{itemize}
+    \item $E_\mathrm{off} = \SI{4.0}{\milli\joule}$
+    \item tail-current fraction = \SI{25}{\percent}
+    \item short-circuit withstand time = \SI{10}{\micro\second}
+    \item avalanche ruggedness = high
+\end{itemize}
+
+Assume both have similar $E_\mathrm{on} = \SI{1.5}{\milli\joule}$.
+
+\vspace{0.25em}
+\textbf{Application I}
+\begin{itemize}
+    \item \SI{600}{\volt} servo inverter
+    \item \SI{25}{\ampere}
+    \item $f_\mathrm{s} = \SI{20}{\kilo\hertz}$
+\end{itemize}
+
+\vspace{0.25em}
+\textbf{Application II}
+\begin{itemize}
+    \item \SI{1200}{\volt} industrial motor drive
+    \item \SI{40}{\ampere}
+    \item $f_\mathrm{s} = \SI{4}{\kilo\hertz}$
+    \item overloads and harsh fault conditions are expected
+\end{itemize}
+
+\subtask{Compute the switching-loss power in each application for each device.}
+
+\begin{solutionblock}
+    Switching power is
+    \begin{equation}
+        P_\mathrm{sw} = f_\mathrm{s} (E_\mathrm{on} + E_\mathrm{off}).
+    \end{equation}
+
+    For Device P:
+    \begin{equation}
+        E_\mathrm{sw,P} = \SI{1.5}{\milli\joule} + \SI{2.5}{\milli\joule} = \SI{4.0}{\milli\joule}.
+    \end{equation}
+
+    For Device N:
+    \begin{equation}
+        E_\mathrm{sw,N} = \SI{1.5}{\milli\joule} + \SI{4.0}{\milli\joule} = \SI{5.5}{\milli\joule}.
+    \end{equation}
+
+    Application I:
+    \begin{align}
+        P_\mathrm{sw,P} &= \SI{4.0}{\milli\joule} \cdot \SI{20}{\kilo\hertz} = \SI{80}{\watt} \\
+        P_\mathrm{sw,N} &= \SI{5.5}{\milli\joule} \cdot \SI{20}{\kilo\hertz} = \SI{110}{\watt}.
+    \end{align}
+
+    Application II:
+    \begin{align}
+        P_\mathrm{sw,P} &= \SI{4.0}{\milli\joule} \cdot \SI{4}{\kilo\hertz} = \SI{16}{\watt} \\
+        P_\mathrm{sw,N} &= \SI{5.5}{\milli\joule} \cdot \SI{4}{\kilo\hertz} = \SI{22}{\watt}.
+    \end{align}
+\end{solutionblock}
+
+\subtask{Choose the preferred device for each application.}
+
+\begin{solutionblock}
+    At \SI{20}{\kilo\hertz}, Device P (PT-IGBT) is preferred because its switching-loss advantage is substantial.
+
+    At \SI{4}{\kilo\hertz}, the switching-loss penalty of Device N (NPT-IGBT) is small, while its ruggedness advantage matters much more.
+    Hence, Application II should use the NPT device.
+\end{solutionblock}
+
+\subtask{Explain the structural reason for the choice and why the PT/NPT choice is really a ``speed versus ruggedness'' trade-off.}
+
+\begin{solutionblock}
+    PT structures use a buffer layer and generally tend toward faster switching and shorter tail current.
+    NPT structures tend toward better ruggedness, avalanche capability, and thermal stability.
+
+    Therefore, PT versus NPT is fundamentally a trade-off between switching speed and fault robustness.
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Device-limit and SOA screening}
+
+Use the following simplified IGBT limits:
+\begin{itemize}
+    \item collector-emitter blocking voltage $V_\mathrm{CES} = \SI{1200}{\volt}$
+    \item maximal gate-emitter voltage $\lvert V_\mathrm{GE(max)} \rvert = \SI{20}{\volt}$
+    \item continuous collector current limit $I_\mathrm{C} = \SI{75}{\ampere}$
+    \item pulsed current limit $I_\mathrm{CM} = \SI{150}{\ampere}$
+    \item short-circuit withstand time $t_\mathrm{SC} = \SI{8}{\micro\second}$
+    \item dc conduction thermal proxy:
+    \begin{equation*}
+        V_\mathrm{CE} I_\mathrm{C} \leq \SI{250}{\watt}
+    \end{equation*}
+    \item \SI{100}{\micro\second} pulse limit:
+    \begin{equation*}
+        V_\mathrm{CE} I_\mathrm{C} \leq \SI{4000}{\watt}
+    \end{equation*}
+    \item turn-off RBSOA proxy for $V_\mathrm{CE} > \SI{400}{\volt}$:
+    \begin{equation*}
+        I_\mathrm{C} \leq \frac{1200}{V_\mathrm{CE}}
+    \end{equation*}
+\end{itemize}
+
+Consider the following cases:
+\begin{itemize}
+    \item \textbf{A.} $V_\mathrm{CE} = \SI{2.2}{\volt}$, $I_\mathrm{C} = \SI{60}{\ampere}$, dc
+    \item \textbf{B.} $V_\mathrm{CE} = \SI{600}{\volt}$, $I_\mathrm{C} = \SI{3}{\ampere}$, turn-off event, \SI{100}{\micro\second}
+    \item \textbf{C.} $V_\mathrm{CE} = \SI{600}{\volt}$, $I_\mathrm{C} = \SI{1.5}{\ampere}$, turn-off event, \SI{100}{\micro\second}
+    \item \textbf{D.} short-circuit event, detection trips only after \SI{12}{\micro\second}
+\end{itemize}
+
+\subtask{Decide which cases are safe.}
+
+\begin{solutionblock}
+    Case A:
+    \begin{equation}
+        P = \SI{2.2}{\volt} \cdot \SI{60}{\ampere} = \SI{132}{\watt} < \SI{250}{\watt}.
+    \end{equation}
+    Therefore, Case A is safe.
+
+    Case B:
+    \begin{equation}
+        P = \SI{600}{\volt} \cdot \SI{3}{\ampere} = \SI{1800}{\watt} < \SI{4000}{\watt}.
+    \end{equation}
+    But for RBSOA:
+    \begin{equation}
+        I_\mathrm{max} = \frac{1200}{600} = \SI{2}{\ampere}.
+    \end{equation}
+    Since the actual current is \SI{3}{\ampere}, Case B is unsafe.
+
+    Case C:
+    \begin{equation}
+        P = \SI{600}{\volt} \cdot \SI{1.5}{\ampere} = \SI{900}{\watt} < \SI{4000}{\watt}.
+    \end{equation}
+    The RBSOA current limit remains \SI{2}{\ampere}, and the actual current is only \SI{1.5}{\ampere}.
+    Therefore, Case C is safe.
+
+    Case D is unsafe because the short circuit is not cleared until \SI{12}{\micro\second}, while the device is rated only for \SI{8}{\micro\second}.
+\end{solutionblock}
+
+\subtask{Identify which violated mechanism dominates in each unsafe case, and explain why RBSOA is more restrictive than simple thermal power during turn-off.}
+
+\begin{solutionblock}
+    In Case B, the dominant violated mechanism is the reverse-bias safe operating area. 
+    In Case D, the dominant violated mechanism is the short-circuit withstand limit.
+
+    RBSOA is more restrictive than simple thermal power during turn-off because large $\mathrm{d}v_\mathrm{CE}/\mathrm{d}t$, stored carriers, and latch-up-related effects appear during the switching transient. 
+    Thus, a point may look thermally acceptable and still be dynamically unsafe.
+\end{solutionblock}
+
+\subtask{Explain why short-circuit withstand time is a real design parameter, not just a datasheet decoration.}
+
+\begin{solutionblock}
+    The short-circuit withstand time tells the designer how long the protection system may need to detect and clear a fault without destroying the device.
+    Therefore, it is a real coordination parameter between the device, the gate driver, and the fault-protection strategy.
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 6 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Coding exercise: tail-current and switching-energy map}
+
+Model the IGBT turn-off current as two segments:
+\begin{enumerate}
+    \item fast fall from $I_\mathrm{C} = \SI{40}{\ampere}$ to $I_\mathrm{tail,0} = \SI{10}{\ampere}$ over \SI{100}{\nano\second}
+    \item tail current
+    \begin{equation*}
+        i_\mathrm{tail}(t) = I_\mathrm{tail,0} e^{-t/\tau}
+    \end{equation*}
+\end{enumerate}
+
+Use:
+\begin{itemize}
+    \item $V_\mathrm{DC} = \SI{600}{\volt}$
+    \item $I_\mathrm{tail,0} = \SI{10}{\ampere}$
+    \item $\tau_\mathrm{PT} = \SI{0.3}{\micro\second}$
+    \item $\tau_\mathrm{NPT} = \SI{0.8}{\micro\second}$
+\end{itemize}
+
+\subtask{State the coding tasks to be completed by the students.}
+
+\begin{solutionblock}
+    The students should:
+    \begin{itemize}
+        \item plot the turn-off current waveform for the PT and NPT cases,
+        \item compute the tail-energy contribution
+        \begin{equation*}
+            E_\mathrm{tail} = V_\mathrm{DC}\int i_\mathrm{tail}(t)\,\mathrm{d}t,
+        \end{equation*}
+        \item compare the total turn-off energy for PT and NPT,
+        \item and explain how lifetime and drift-region structure shape the result.
+    \end{itemize}
+\end{solutionblock}
+
+\subtask{What should the students observe physically from the computed waveforms?}
+
+\begin{solutionblock}
+    The students should observe that a longer carrier-removal time creates a larger tail-energy penalty.
+    This provides a numerical visualization of the stored minority carriers and the PT/NPT trade-off.
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 7 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Coding exercise: FBSOA/RBSOA visualization}
+
+Build a simplified SOA visualization for two IGBTs.
+
+\textbf{PT-IGBT}
+\begin{itemize}
+    \item $V_\mathrm{CES} = \SI{1200}{\volt}$
+    \item $I_\mathrm{AM} = \SI{150}{\ampere}$
+    \item pulse thermal limit:
+    \begin{equation*}
+        V_\mathrm{CE} I_\mathrm{C} \leq \SI{5000}{\watt}
+    \end{equation*}
+    \item RBSOA:
+    \begin{equation*}
+        I_\mathrm{C} \leq \frac{1000}{V_\mathrm{CE}}
+    \end{equation*}
+\end{itemize}
+
+\textbf{NPT-IGBT}
+\begin{itemize}
+    \item same $V_\mathrm{CES}$
+    \item same $I_\mathrm{AM}$
+    \item same pulse thermal limit:
+    \begin{equation*}
+        V_\mathrm{CE} I_\mathrm{C} \leq \SI{5000}{\watt}
+    \end{equation*}
+    \item RBSOA:
+    \begin{equation*}
+        I_\mathrm{C} \leq \frac{1400}{V_\mathrm{CE}}
+    \end{equation*}
+\end{itemize}
+
+\subtask{State the coding tasks to be completed by the students.}
+
+\begin{solutionblock}
+    The students should:
+    \begin{itemize}
+        \item plot the FBSOA and RBSOA boundaries for both devices,
+        \item mark a list of candidate operating points,
+        \item identify which points are allowed for PT but not NPT, and vice versa,
+        \item and explain why the NPT device gives a wider safe turn-off region in this simplified model.
+    \end{itemize}
+\end{solutionblock}
+
+\subtask{What should the students conclude from the final SOA plots?}
+
+\begin{solutionblock}
+    The key design message is that SOA is not just a current or voltage rating; it is a dynamic operating boundary.
+    The wider RBSOA of the NPT type in the simplified model visualizes the ruggedness advantage of that structure.
+\end{solutionblock}

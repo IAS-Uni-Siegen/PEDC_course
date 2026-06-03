@@ -279,7 +279,7 @@ Source: Adapted from Morya et al., \textit{IEEE TTE}, 2019; Iannaccone et al., \
 % \end{columns}
 % \end{frame}
 
-\begin{frame}{Breakdown Field and Intrinsic Carrier Concentration}
+\begin{frame}{Breakdown Field and Intrinsic Carrier \\Concentration of SiC}
 \begin{columns}
 \begin{column}{0.52\textwidth}
 \begin{itemize}
@@ -634,3 +634,2259 @@ Surge ratings are strongly dependent on pulse duration, repetition, and initial 
 \end{column}
 \end{columns}
 \end{frame}
+
+
+
+%=========================================================
+\begin{frame}{SiC Power MOSFETs: Motivation and Challenges}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+
+\begin{itemize}
+    \item SiC MOSFETs enable:
+    \begin{itemize}
+        \item High blocking voltage
+        \item Low specific ON-resistance
+        \item High-temperature operation
+        \item Fast switching capability
+    \end{itemize}
+
+    \item Baliga's figure of merit for 4H-SiC is more than 2000$\times$ higher than silicon.
+
+    \item However, early commercialization faced major challenges:
+    \begin{itemize}
+        \item Poor SiC/SiO$_2$ interface quality
+        \item Low channel mobility
+        \item High electric field stress in gate oxide
+        \item Reliability concerns during blocking operation
+    \end{itemize}
+
+    \item These challenges motivated the development of advanced SiC MOSFET structures.
+\end{itemize}
+
+\column{0.42\textwidth}
+
+\begin{block}{Key Design Goal}
+\small
+Achieve:
+\[
+\text{High } V_{BR}
+\quad + \quad
+\text{Low } R_{DS(on)}
+\]
+while maintaining reliable gate oxide operation.
+\end{block}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Baliga-Pair Configuration}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item The Baliga-Pair combines:
+    \begin{itemize}
+        \item Low-voltage Si MOSFET
+        \item High-voltage normally-ON SiC JFET/MESFET
+    \end{itemize}
+
+    \item The Si MOSFET controls the composite switch.
+
+    \item The SiC device supports the high blocking voltage.
+
+    \item Advantages:
+    \begin{itemize}
+        \item Very low ON-state resistance
+        \item High voltage capability
+        \item Fast switching operation
+        \item Current saturation capability
+    \end{itemize}
+
+    \item The configuration behaves externally like a conventional MOSFET.
+\end{itemize}
+
+\column{0.45\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{fig/lec06/SiC_Baliga_pair_structure.png}
+\caption{Baliga-Pair SiC power switch configuration.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Operation of the Baliga-Pair Configuration}
+\begin{columns}[T]
+
+\column{0.47\textwidth}
+
+\textbf{Voltage Blocking Mode}
+\begin{itemize}
+    \item With zero gate bias, the Si MOSFET blocks initially.
+    \item Increasing drain voltage reverse-biases the SiC JFET gate junction.
+    \item The SiC channel pinches off and supports most of the applied voltage.
+\end{itemize}
+
+\textbf{Forward Conduction Mode}
+\begin{itemize}
+    \item Positive gate bias turns ON the Si MOSFET.
+    \item Current flows through both devices with very low ON-state voltage drop.
+\end{itemize}
+\column{0.52\textwidth}
+\textbf{Current Saturation Mode}
+\begin{itemize}
+    \item Structure naturally exhibits current saturation.
+    \item Useful during short-circuit and overload conditions.
+\end{itemize}
+
+\textbf{Switching Characteristics}
+\begin{itemize}
+    \item Fast switching enabled by low Si MOSFET gate charge.
+    \item Main limitation arises from parasitic inductances.
+\end{itemize}
+
+\textbf{Flyback Conduction}
+\begin{itemize}
+    \item The structure inherently provides a low-loss flyback path.
+    \item Reduces reverse recovery losses.
+\end{itemize}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Planar SiC Power MOSFET Structure}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item Conventional silicon VD-MOS structures are difficult to fabricate directly in SiC due to extremely low dopant diffusion rates.
+
+    \item Planar SiC MOSFETs are fabricated using ion implantation techniques.
+
+    \item Major regions:
+    \begin{itemize}
+        \item N$^+$ source
+        \item P-base
+        \item N-drift region
+        \item N$^+$ substrate
+    \end{itemize}
+
+    \item The inversion channel forms in the P-base region under positive gate bias.
+
+    \item The drift region supports the blocking voltage.
+\end{itemize}
+
+\column{0.44\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{fig/lec06/SiC_planar_MOSFET.png}
+\caption{Simplified planar SiC MOSFET structure.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Reach-Through Limitation in SiC MOSFETs}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item During blocking operation, the depletion region expands into the P-base region.
+
+    \item If the P-base becomes fully depleted, reach-through breakdown occurs.
+
+    \item Minimum P-base thickness:
+    \[
+    t_P=\frac{\varepsilon_s E_C}{qN_A}
+    \]
+
+    \item Due to the large critical electric field of SiC:
+    \begin{itemize}
+        \item Higher P-base doping is required
+        \item Threshold voltage increases significantly
+    \end{itemize}
+
+    \item This creates a trade-off between:
+    \begin{itemize}
+        \item Blocking capability
+        \item Threshold voltage
+        \item Channel resistance
+    \end{itemize}
+\end{itemize}
+
+\column{0.44\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{fig/lec06/SiC_reachthrough.png}
+\caption{Reach-through limitation in planar SiC MOSFETs.}
+\end{figure}
+
+\vspace{0.2cm}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{fig/lec06/SiC_Pbase_comparison.png}
+\caption{Required P-base thickness comparison for Si and 4H-SiC.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Threshold Voltage in SiC MOSFETs}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item The threshold voltage is the gate voltage required to form a strong inversion channel.
+
+    \item For SiC planar MOSFETs:
+    \[
+    V_{TH}=
+    \frac{\sqrt{4\varepsilon_skTN_A\ln(N_A/n_i)}}{C_{ox}}
+    +\frac{2kT}{q}\ln\left(\frac{N_A}{n_i}\right)
+    \]
+
+    \item SiC devices typically exhibit:
+    \begin{itemize}
+        \item Higher threshold voltage
+        \item Lower channel mobility
+    \end{itemize}
+
+    \item Causes:
+    \begin{itemize}
+        \item Wide bandgap
+        \item Very low intrinsic carrier concentration
+        \item High P-base doping requirement
+    \end{itemize}
+\end{itemize}
+
+\column{0.44\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{fig/lec06/SiC_threshold_voltage.png}
+\caption{Threshold voltage comparison between Si and 4H-SiC MOSFETs.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Gate Oxide Electric Field in SiC MOSFETs}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item SiC MOSFETs experience very high electric field stress in the gate oxide during blocking operation.
+
+    \item Oxide electric field:
+    \[
+    E_{ox}=
+    \left(
+    \frac{\varepsilon_{semi}}
+    {\varepsilon_{oxide}}
+    \right)
+    E_{semi}
+    \]
+
+    \item For 4H-SiC:
+    \begin{itemize}
+        \item Semiconductor electric field can reach very high values
+        \item Oxide field may exceed SiO$_2$ reliability limits
+    \end{itemize}
+
+    \item This can cause:
+    \begin{itemize}
+        \item Oxide degradation
+        \item Hot electron injection
+        \item Threshold voltage shift
+    \end{itemize}
+\end{itemize}
+
+\column{0.44\textwidth}
+\vspace{-0.5cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{fig/lec06/oxide_band_offset.png}
+\caption{Band offset comparison between Si/SiO$_2$ and SiC/SiO$_2$.}
+\end{figure}
+
+\vspace{-0.25cm}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.52\linewidth]{fig/lec06/FN_tunneling.png}
+\caption{Fowler--Nordheim tunneling in SiC MOS structures.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Shielded Planar SiC MOSFET Structures}
+\begin{columns}[T]
+
+\column{0.50\textwidth}
+
+\begin{itemize}
+    \item Shielded planar MOSFETs were introduced to reduce gate oxide electric field stress.
+
+    \item A heavily doped P$^+$ shielding region is added below the channel.
+
+    \item Benefits:
+    \begin{itemize}
+        \item Reduces oxide electric field
+        \item Prevents reach-through breakdown
+        \item Enables shorter channel length
+        \item Lowers ON-state resistance
+    \end{itemize}
+
+    \item Two major approaches:
+    \begin{itemize}
+        \item Inversion-mode MOSFET
+        \item Accumulation-mode MOSFET
+    \end{itemize}
+\end{itemize}
+
+\column{0.47\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{fig/lec06/SiC_shielded_planar_MOSFET.png}
+\caption{Shielded planar SiC MOSFET structures.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Accumulation-Mode SiC MOSFET}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item The accumulation-mode structure uses an N-base region below the gate oxide.
+
+    \item The built-in P$^+$/N junction depletes the N-base region at zero gate bias.
+
+    \item Advantages:
+    \begin{itemize}
+        \item Lower threshold voltage
+        \item Reduced dependence on P-base doping
+        \item Lower electric field at oxide interface
+    \end{itemize}
+
+    \item Electric field relations:
+    \[
+    E_1=
+    \frac{V_{bi}}{W_N}
+    -
+    \frac{qN_DW_N}{2\varepsilon_s}
+    \]
+
+    \[
+    E_{ox}=
+    \frac{\varepsilon_s}{\varepsilon_{ox}}E_1
+    \]
+\end{itemize}
+
+\column{0.44\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{fig/lec06/SiC_accumulation_mode_field.png}
+\caption{Electric field profile in accumulation-mode SiC MOSFETs.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Shielded Trench-Gate SiC MOSFET}
+\begin{columns}[T]
+
+\column{0.50\textwidth}
+
+\begin{itemize}
+    \item Trench-gate structures reduce channel resistance and improve packing density.
+
+    \item However, trench corners experience high electric field concentration.
+
+    \item A P$^+$ shielding region is introduced below the trench gate to protect the gate oxide.
+
+    \item Key advantages:
+    \begin{itemize}
+        \item Lower specific ON-resistance
+        \item Improved blocking capability
+        \item Reduced oxide electric field
+        \item Higher channel density
+    \end{itemize}
+\end{itemize}
+
+\column{0.47\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{fig/lec06/SiC_shielded_trench_MOSFET.png}
+\caption{Shielded trench-gate SiC MOSFET structure.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Current Flow and ON-Resistance in Trench SiC MOSFETs}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item Current flows through:
+    \begin{itemize}
+        \item Inversion channel
+        \item JFET constriction regions
+        \item Drift region
+        \item Substrate
+    \end{itemize}
+
+    \item Total specific ON-resistance:
+    \[
+    R_{on,sp}
+    =
+    R_{CH}
+    +
+    R_{JFET1}
+    +
+    R_{JFET2}
+    +
+    R_D
+    +
+    R_{subs}
+    \]
+
+    \item Drift resistance dominates in high-voltage devices.
+
+    \item Shielded trench structures reduce:
+    \begin{itemize}
+        \item Channel resistance
+        \item JFET constriction resistance
+    \end{itemize}
+\end{itemize}
+
+\column{0.44\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{fig/lec06/SiC_current_path_trench.png}
+\caption{Current flow path in shielded trench-gate SiC MOSFETs.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+%=========================================================
+\begin{frame}{JBSFET Structure for Third-Quadrant Conduction}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item SiC MOSFET body diodes exhibit:
+    \begin{itemize}
+        \item High forward voltage drop
+        \item Reverse recovery losses
+        \item Bipolar degradation effects
+    \end{itemize}
+
+    \item A discrete SiC JBS diode can solve this problem, but:
+    \begin{itemize}
+        \item Requires additional package
+        \item Increases parasitic inductance
+        \item Raises system complexity
+    \end{itemize}
+
+    \item The JBSFET integrates:
+    \begin{itemize}
+        \item SiC MOSFET
+        \item Junction Barrier Schottky (JBS) diode
+    \end{itemize}
+
+    \item This enables efficient third-quadrant conduction with reduced losses.
+\end{itemize}
+
+\column{0.44\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.92\linewidth]{fig/lec06/JBSFET_structure.png}
+\caption{Integrated SiC JBSFET structure.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Advantages of the JBSFET Structure}
+\begin{columns}[T]
+
+\column{0.50\textwidth}
+
+\begin{itemize}
+    \item The integrated JBS diode carries reverse current instead of the MOSFET body diode.
+
+    \item Key advantages:
+    \begin{itemize}
+        \item Lower third-quadrant voltage drop
+        \item Reduced reverse recovery current
+        \item Suppression of bipolar degradation
+        \item Lower switching losses
+    \end{itemize}
+
+    \item Experimental demonstrations achieved:
+    \begin{itemize}
+        \item Approximately 2 V third-quadrant drop
+        \item Reduced chip area
+        \item Simplified fabrication
+    \end{itemize}
+
+    \item JBSFETs are highly attractive for:
+    \begin{itemize}
+        \item Motor drives
+        \item Inverters
+        \item High-frequency converters
+    \end{itemize}
+\end{itemize}
+
+\column{0.46\textwidth}
+
+\begin{block}{Key Idea}
+\small
+Replace the lossy body diode conduction path with an integrated low-loss JBS diode path.
+\end{block}
+
+\vspace{0.3cm}
+
+\begin{block}{Main Benefit}
+\small
+Lower reverse conduction losses without additional external diode packages.
+\end{block}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Bidirectional Power Switches}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item Matrix converters and cycloconverters require:
+    \begin{itemize}
+        \item Bidirectional current conduction
+        \item Bidirectional voltage blocking
+    \end{itemize}
+
+    \item Conventional implementations use multiple discrete devices:
+    \begin{itemize}
+        \item IGBTs + diodes
+        \item Reverse-blocking IGBTs
+        \item Back-to-back MOSFETs
+    \end{itemize}
+
+    \item These approaches suffer from:
+    \begin{itemize}
+        \item Large ON-state voltage drop
+        \item Increased switching losses
+        \item Higher component count
+        \item Increased size and complexity
+    \end{itemize}
+\end{itemize}
+
+\column{0.44\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{fig/lec06/bidirectional_switch_options.png}
+\caption{Conventional bidirectional switch configurations.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Monolithic SiC Bidirectional FET (BiDFET)}
+\begin{columns}[T]
+
+\column{0.50\textwidth}
+
+\begin{itemize}
+    \item The BiDFET integrates two adjacent JBSFET structures into a single monolithic device.
+
+    \item Features:
+    \begin{itemize}
+        \item Bidirectional voltage blocking
+        \item Bidirectional current conduction
+        \item Fast switching capability
+        \item Gate-controlled operation
+    \end{itemize}
+
+    \item Terminal configuration:
+    \begin{itemize}
+        \item T1 and T2 are bidirectional AC terminals
+        \item G1 and G2 independently control each side
+    \end{itemize}
+
+    \item No external connection to the N$^+$ substrate is required.
+\end{itemize}
+
+\column{0.46\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.96\linewidth]{fig/lec06/SiC_BiDFET_structure.png}
+\caption{Monolithic SiC bidirectional FET structure.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Operation of the SiC BiDFET}
+\begin{columns}[T]
+
+\column{0.50\textwidth}
+
+\textbf{Blocking Operation}
+\begin{itemize}
+    \item Zero gate bias enables high-voltage blocking.
+    \item One JBSFET supports the applied voltage while the opposite body diode becomes forward biased.
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Forward Conduction}
+\begin{itemize}
+    \item Positive gate bias on both gates turns ON both channels.
+    \item Total ON-resistance becomes:
+    \[
+    R_{ON}=R_{JBSFET1}+R_{JBSFET2}
+    \]
+\end{itemize}
+
+\column{0.46\textwidth}
+
+\textbf{Advantages}
+\begin{itemize}
+    \item Low conduction loss
+    \item Fast switching speed
+    \item Excellent ruggedness
+    \item Reduced converter size and complexity
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Applications}
+\begin{itemize}
+    \item Matrix converters
+    \item Solid-state transformers
+    \item AC-AC converters
+    \item High-frequency power conversion
+\end{itemize}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Comparison of Bidirectional Power Switches}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+
+\begin{itemize}
+    \item Conventional bidirectional switches require multiple discrete components.
+
+    \item SiC MOSFET-based approaches reduce switching losses compared to IGBT-based solutions.
+
+    \item The monolithic BiDFET provides:
+    \begin{itemize}
+        \item Lowest ON-state voltage drop
+        \item Lowest component count
+        \item Simplified packaging
+        \item High power density
+    \end{itemize}
+
+    \item BiDFET structures are promising for compact and high-frequency AC power conversion systems.
+\end{itemize}
+
+\column{0.42\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{fig/lec06/SiC_BiDFET_comparison_table.png}
+\caption{Comparison of bidirectional switch approaches.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Advanced SiC MOSFET Structures: Key Takeaways}
+\begin{itemize}
+    \item Advanced SiC MOSFET structures are designed to overcome:
+    \begin{itemize}
+        \item High oxide electric field stress
+        \item Large threshold voltage
+        \item Reverse conduction losses
+        \item Reliability limitations
+    \end{itemize}
+
+    \item Important modern structures include:
+    \begin{itemize}
+        \item Shielded planar MOSFETs
+        \item Shielded trench-gate MOSFETs
+        \item JBSFETs
+        \item Bidirectional FETs (BiDFETs)
+    \end{itemize}
+
+    \item These structures enable:
+    \begin{itemize}
+        \item High-voltage operation
+        \item Fast switching
+        \item Low ON-state resistance
+        \item High efficiency and power density
+    \end{itemize}
+
+    \item SiC MOSFET technology continues to evolve toward compact, reliable, and ultra-efficient power conversion systems.
+\end{itemize}
+\end{frame}
+%=========================================================
+
+%=========================================================
+\begin{frame}{SiC MOSFET Characteristics}
+\begin{itemize}
+    \item SiC MOSFETs are characterized using:
+    \begin{itemize}
+        \item Maximum ratings
+        \item Static characteristics
+        \item Dynamic characteristics
+        \item Limiting characteristics
+    \end{itemize}
+
+    \item These parameters are essential for:
+    \begin{itemize}
+        \item Device selection
+        \item Thermal design
+        \item Converter optimization
+        \item Reliability assessment
+    \end{itemize}
+
+    \item Important parameters include:
+    \begin{itemize}
+        \item Breakdown voltage
+        \item Leakage current
+        \item Drain current capability
+        \item Safe operating area (SOA)
+        \item Threshold voltage
+        \item On-state resistance
+        \item Third-quadrant conduction
+    \end{itemize}
+
+    \item Unlike silicon MOSFETs, SiC MOSFETs exhibit strong temperature dependence and significant high-field effects.
+\end{itemize}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Leakage Current and Breakdown Voltage}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+
+\begin{itemize}
+    \item With \(V_{GS}=0\), the SiC MOSFET blocks the applied drain voltage \(V_{DS}\).
+
+    \item A small leakage current \(I_{DSS}\) flows in the OFF-state.
+
+    \item \(I_{DSS}\) increases with:
+    \begin{itemize}
+        \item Increasing \(V_{DS}\)
+        \item Increasing junction temperature \(T_J\)
+    \end{itemize}
+
+    \item At sufficiently high \(V_{DS}\), avalanche breakdown occurs:
+    \[
+    V_{DS} \rightarrow V_{(BR)DSS}
+    \]
+
+    \item SiC MOSFETs usually exhibit breakdown voltages significantly above their nominal ratings.
+\end{itemize}
+
+\column{0.42\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{fig/lec06/SiC_IDSS_VDS_curve.png}
+\caption{\(I_{DSS}-V_{DS}\) characteristics.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Temperature Dependence of Breakdown Voltage}
+\begin{columns}[T]
+
+\column{0.55\textwidth}
+
+\begin{itemize}
+    \item The breakdown voltage increases with junction temperature:
+    \[
+    V_{(BR)DSS} \uparrow \quad \text{as} \quad T_J \uparrow
+    \]
+
+    \item Higher temperature reduces carrier mobility due to:
+    \begin{itemize}
+        \item Lattice scattering
+        \item Impurity scattering
+    \end{itemize}
+
+    \item Reduced mobility makes avalanche multiplication more difficult.
+
+    \item The breakdown voltage is commonly defined at a specified leakage current:
+    \[
+    I_{(BR)DSS}
+    \]
+
+    \item Typical values of \(I_{(BR)DSS}\) range from:
+    \[
+    100~\mu A \; \text{to} \; 5~mA
+    \]
+\end{itemize}
+
+\column{0.40\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{fig/lec06/SiC_VBR_TJ_curve.png}
+\caption{Temperature dependence of \(V_{(BR)DSS}\).}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Power Dissipation and Drain Current}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item Power losses increase the junction temperature of the MOSFET.
+
+    \item The steady-state thermal relation is:
+    \[
+    T_J-T_C=P_{tot}(T_C)\cdot R_{th(JC)}
+    \]
+
+    \item As case temperature \(T_C\) increases:
+    \begin{itemize}
+        \item Maximum allowable power decreases
+        \item Maximum drain current decreases
+    \end{itemize}
+
+    \item Continuous drain current is approximated by:
+    \[
+    I_D=
+    \sqrt{
+    \frac{P_{tot}(T_C)}
+    {R_{DS(on)}(T_{J(max)})}
+    }
+    \]
+\end{itemize}
+
+\column{0.44\textwidth}
+\vspace{-0.5cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\linewidth]{fig/lec06/SiC_Ptot_TC_curve.png}
+\caption{Power dissipation versus case temperature.}
+\end{figure}
+
+\vspace{-0.5cm}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\linewidth]{fig/lec06/SiC_ID_TC_curve.png}
+\caption{Drain current derating characteristics.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Safe Operating Area (SOA)}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+
+\begin{itemize}
+    \item The Safe Operating Area (SOA) defines the region where the SiC MOSFET can operate safely.
+
+    \item The SOA is bounded by:
+    \begin{itemize}
+        \item \(R_{DS(on)}\) limitation
+        \item Breakdown voltage limitation
+        \item Pulse current limitation
+        \item Thermal power limitation
+    \end{itemize}
+
+    \item The SOA is generally represented in logarithmic coordinates using:
+    \[
+    I_{DS} \; \text{vs} \; V_{DS}
+    \]
+
+    \item Operation outside the SOA may cause:
+    \begin{itemize}
+        \item Thermal runaway
+        \item Avalanche failure
+        \item Bond-wire damage
+    \end{itemize}
+\end{itemize}
+
+\column{0.40\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{fig/lec06/SiC_SOA_curve.png}
+\caption{Safe operating area of a SiC MOSFET.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Transfer Characteristics and Threshold Voltage}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item Transfer characteristics describe the dependence of drain current on gate voltage:
+    \[
+    I_{DS}-V_{GS}
+    \]
+
+    \item Increasing \(V_{GS}\) enhances channel inversion and increases current flow.
+
+    \item The threshold voltage \(V_{GS(th)}\) is the gate voltage where conduction begins.
+
+    \item \(V_{GS(th)}\) decreases with increasing temperature:
+    \[
+    T_J \uparrow \Rightarrow V_{GS(th)} \downarrow
+    \]
+
+    \item This affects:
+    \begin{itemize}
+        \item Parallel operation
+        \item Gate driver design
+        \item Crosstalk immunity
+    \end{itemize}
+\end{itemize}
+
+\column{0.42\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{fig/lec06/SiC_transfer_curve.png}
+\caption{Transfer characteristics of a SiC MOSFET.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Threshold Voltage Variations and DIBL Effect}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item The threshold voltage exhibits strong dependence on:
+    \begin{itemize}
+        \item Junction temperature
+        \item Drain voltage
+    \end{itemize}
+
+    \item SiC MOSFETs show significant: $\text{Drain-Induced Barrier Lowering (DIBL)}$
+
+    \item Increasing \(V_{DS}\) reduces: $V_{GS(th)}$
+
+    \item Combined effects of high temperature and DIBL may lead to:
+    \begin{itemize}
+        \item Unintended turn-ON
+        \item Shoot-through faults
+        \item Increased switching losses
+    \end{itemize}
+
+    \item Careful gate driver and layout design are therefore essential.
+\end{itemize}
+
+\column{0.42\textwidth}
+\vspace{-0.5cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\linewidth]{fig/lec06/SiC_Vth_TJ_curve.png}
+\caption{Threshold voltage versus temperature.}
+\end{figure}
+
+\vspace{-0.5cm}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\linewidth]{fig/lec06/SiC_Vth_VDS_curve.png}
+\caption{DIBL effect in SiC MOSFETs.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Threshold Voltage Hysteresis}
+\begin{itemize}
+    \item SiC MOSFETs exhibit threshold voltage hysteresis during repeated switching operation.
+
+    \item The primary cause is the high density of interface traps at the SiC/SiO\(_2\) interface.
+
+    \item Gate bias stress changes the trapped charge distribution:
+    \begin{itemize}
+        \item Negative gate bias increases positive oxide traps
+        \item Positive gate bias traps electrons in the oxide
+    \end{itemize}
+
+    \item As a result:
+    \begin{itemize}
+        \item \(V_{GS(th)}\) shifts dynamically
+        \item Switching characteristics become history dependent
+        \item Measurement repeatability becomes challenging
+    \end{itemize}
+
+    \item Threshold voltage hysteresis strongly affects:
+    \begin{itemize}
+        \item Short-circuit performance
+        \item False turn-ON behavior
+        \item Gate charge characteristics
+        \item Reliability evaluation
+    \end{itemize}
+\end{itemize}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Output Characteristics of SiC MOSFETs}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item Output characteristics describe:
+    \[
+    I_{DS}-V_{DS}
+    \]
+    behavior at different gate voltages.
+
+    \item Increasing \(V_{GS}\):
+    \begin{itemize}
+        \item Reduces channel resistance
+        \item Increases current capability
+    \end{itemize}
+
+    \item Temperature strongly affects the output characteristics.
+
+    \item At lower \(V_{GS}\):
+    \begin{itemize}
+        \item Negative temperature coefficient may appear
+    \end{itemize}
+
+    \item At higher \(V_{GS}\):
+    \begin{itemize}
+        \item Positive temperature coefficient dominates
+    \end{itemize}
+\end{itemize}
+
+\column{0.43\textwidth}
+\vspace{-0.25cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{fig/lec06/SiC_output_characteristics.png}
+\caption{Output characteristics at different temperatures and gate voltages.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{On-State Resistance Characteristics}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item The ON-state resistance is defined as:
+    \[
+    R_{DS(on)}=\frac{V_{DS}}{I_{DS}}
+    \]
+
+    \item \(R_{DS(on)}\) depends on:
+    \begin{itemize}
+        \item Junction temperature
+        \item Gate voltage
+        \item Channel mobility
+        \item Drift region resistance
+    \end{itemize}
+
+    \item The temperature dependence is typically U-shaped:
+    \begin{itemize}
+        \item Channel resistance decreases initially
+        \item Drift and JFET resistances increase at high temperature
+    \end{itemize}
+
+    \item Higher gate voltage reduces: $R_{DS(on)}$
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{itemize}
+    \item Higher gate voltage reduces:$R_{DS(on)}$
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{fig/lec06/SiC_RDSon_TJ_curve.png}
+\caption{\(R_{DS(on)}\) versus temperature.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Body Diode Characteristics}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item SiC MOSFETs contain an intrinsic body diode formed by the p-n junction.
+
+    \item When:
+    \[
+    V_{GS}<0
+    \]
+    the MOSFET remains OFF and reverse current flows through the body diode.
+
+    \item The body diode exhibits:
+    \begin{itemize}
+        \item Large forward voltage drop
+        \item Strong temperature dependence
+        \item Minority carrier conduction
+    \end{itemize}
+
+    \item More negative gate bias increases:
+    \begin{itemize}
+        \item Diode threshold voltage
+        \item Conduction voltage drop
+    \end{itemize}
+\end{itemize}
+
+\column{0.43\textwidth}
+\vspace{-0.25cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\linewidth]{fig/lec06/SiC_body_diode_characteristics.png}
+\caption{Body diode conduction characteristics.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Third-Quadrant Conduction Characteristics}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item In third-quadrant operation:
+    \begin{itemize}
+        \item Reverse current flows from source to drain
+        \item Both channel and body diode may conduct
+    \end{itemize}
+
+    \item When: $V_{GS}>V_{GS(th)}$ the channel turns ON and reduces conduction loss.
+
+    \item Third-quadrant conduction voltage is much lower than pure body diode conduction.
+
+    \item This enables:
+    \begin{itemize}
+        \item Synchronous rectification
+        \item Reduced reverse conduction loss
+        \item Improved converter efficiency
+    \end{itemize}
+
+    \item Therefore, SiC MOSFETs are often actively driven during reverse conduction intervals.
+\end{itemize}
+
+\column{0.43\textwidth}
+\vspace{-0.25cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\linewidth]{fig/lec06/SiC_third_quadrant_characteristics.png}
+\caption{Third-quadrant conduction characteristics.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Key Observations for SiC MOSFET Characteristics}
+\begin{columns}
+\column{0.49\textwidth}
+\begin{itemize}
+    \item SiC MOSFETs exhibit:
+    \begin{itemize}
+        \item High blocking voltage capability
+        \item Low switching losses
+        \item Fast switching speed
+        \item Strong temperature dependence
+    \end{itemize}
+
+    \item Important physical effects include:
+    \begin{itemize}
+        \item DIBL
+        \item Threshold voltage hysteresis
+        \item Interface trap effects
+        \item Third-quadrant conduction behavior
+    \end{itemize}
+\end{itemize}
+\column{0.49\textwidth}
+\begin{itemize}
+    \item Device characteristics are strongly influenced by:
+    \begin{itemize}
+        \item Junction temperature
+        \item Gate bias
+        \item Drain voltage
+        \item Parasitic inductances
+    \end{itemize}
+
+    \item Understanding these characteristics is essential for:
+    \begin{itemize}
+        \item Reliable converter design
+        \item Gate driver optimization
+        \item Thermal management
+        \item EMI-aware switching design
+    \end{itemize}
+\end{itemize}
+\end{columns}
+\end{frame}
+%=========================================================
+
+%=========================================================
+\begin{frame}{Dynamic Characteristics of SiC MOSFETs}
+\begin{itemize}
+    \item The dynamic behavior of a SiC MOSFET is governed mainly by its parasitic capacitances between gate, drain, and source terminals.
+    \item Unlike bipolar devices, there is no excess minority-carrier storage in the main MOSFET channel; therefore, the switching speed can be very high.
+    \item The key capacitances are:
+    \begin{itemize}
+        \item Gate-source capacitance: $C_{GS}$
+        \item Gate-drain capacitance: $C_{GD}$
+        \item Drain-source capacitance: $C_{DS}$
+    \end{itemize}
+    \item These capacitances are strongly nonlinear because the depletion region changes with $V_{DS}$.
+    \item During switching, the measured voltage and current waveforms are therefore shaped by both the gate-drive circuit and the voltage-dependent capacitances.
+\end{itemize}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Junction Capacitances of SiC MOSFET}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+\begin{itemize}
+    \item $C_{GS}$ consists mainly of the channel-gate oxide capacitance and the gate-source overlap capacitance.
+    \item $C_{GD}$ is the feedback capacitance and is strongly related to the Miller effect.
+    \item $C_{DS}$ is mainly associated with the drain-source pn-junction depletion region.
+    \item Datasheets usually report:
+    \begin{align*}
+        C_{iss} &= C_{GS}+C_{GD} \\
+        C_{oss} &= C_{DS}+C_{GD} \\
+        C_{rss} &= C_{GD}
+    \end{align*}
+    \item $C_{rss}$ is especially important because it controls the drain-voltage transition during switching.
+\end{itemize}
+
+\column{0.44\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/SiC_MOSFET_capacitance_structure.png}
+\caption{SiC MOSFET parasitic capacitances and equivalent circuit.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Voltage Dependence of Capacitances}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+\begin{itemize}
+    \item The capacitance values are not constant during operation.
+    \item As $V_{DS}$ increases, the depletion region expands and the junction capacitances decrease.
+    \item $C_{iss}$ changes relatively little because it is dominated by $C_{GS}$.
+    \item $C_{oss}$ and $C_{rss}$ show a stronger reduction with increasing $V_{DS}$.
+    \item At high $V_{DS}$, the depletion region changes slowly; therefore, the capacitances become relatively constant.
+    \item In practical switching analysis, the nonlinear capacitance behavior must be considered carefully.
+\end{itemize}
+
+\column{0.44\textwidth}
+\vspace{-0.25cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{fig/lec06/SiC_MOSFET_CV_curve.png}
+\caption{$C$--$V_{DS}$ characteristics of a SiC MOSFET.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Inductive Load Switching Circuit}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+\begin{itemize}
+    \item SiC MOSFET switching is commonly evaluated using an inductive-load circuit.
+    \item The circuit includes:
+    \begin{itemize}
+        \item DC bus capacitor $C_{Bus}$
+        \item Load inductance $L$
+        \item Gate resistance $R_G$
+        \item Power-loop inductance $L_{Loop}$
+        \item Drive-loop inductance $L_{DRV}$
+    \end{itemize}
+    \item The upper device body diode or external diode conducts during freewheeling.
+    \item During turn-ON, the lower MOSFET takes over current from the diode.
+    \item This process creates reverse recovery, current overshoot, voltage ringing, and high $dv/dt$.
+\end{itemize}
+
+\column{0.44\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/SiC_MOSFET_inductive_load.png}
+\caption{Inductive load test circuit for SiC MOSFET switching.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Turn-ON Process: Initial Charging Stage}
+\begin{itemize}
+    \item Before turn-ON, the lower SiC MOSFET is OFF:
+    \[
+    I_{DS}=0,\qquad V_{DS}=V_{Bus}
+    \]
+    \item At $t_0$, the gate drive changes from $V_{DRV(off)}$ to $V_{DRV(on)}$.
+    \item The gate current charges the input capacitance:
+    \[
+    I_G = I_{CGS}+I_{CGD}
+    \]
+    \item Since $V_{DS}$ is still almost constant, $C_{GS}$ and $C_{GD}$ are approximately constant in this interval.
+    \item The gate voltage rises exponentially toward the applied drive voltage:
+    \[
+    V_{GS}(t)=V_{DRV(on)}
+    -\left(V_{DRV(on)}-V_{DRV(off)}\right)
+    e^{-\frac{t-t_0}{R_G C_{iss}}}
+    \]
+    \item When $V_{GS}$ reaches $V_{GS(th)}$, the MOSFET starts conducting and the turn-ON delay ends.
+\end{itemize}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Turn-ON Process: Current Rise and Reverse Recovery}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+\begin{itemize}
+    \item After $V_{GS}>V_{GS(th)}$, channel current starts to increase.
+    \item In the saturation region:
+    \[
+    I_{channel}=K\left(V_{GS}-V_{GS(th)}\right)^2
+    \]
+    \item Initially:
+    \[
+    I_{DS}\approx I_{channel}
+    \]
+    \item The increasing $I_{DS}$ generates voltage drop across loop inductance:
+    \[
+    \Delta V_{DS}=L_{Loop}\frac{dI_{DS}}{dt}
+    \]
+    \item When $I_{DS}$ exceeds the load current, the diode enters reverse recovery and produces current overshoot.
+\end{itemize}
+
+\column{0.44\textwidth}
+\vspace{-0.25cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.4\textwidth]{fig/lec06/SiC_MOSFET_turn_on_waveform.png}
+\caption{Turn-ON waveform with diode reverse recovery.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Turn-ON Process: Miller Ramp and Voltage Fall}
+\begin{itemize}
+    \item During the voltage-fall interval, $V_{DS}$ decreases rapidly while $I_{DS}$ is already high.
+    \item The drain-gate capacitance current becomes important:
+    \[
+    I_{CGD}=C_{GD}\frac{dV_{GD}}{dt}
+    \]
+    \item Since:
+    \[
+    V_{GD}=V_{GS}-V_{DS}
+    \]
+    and usually:
+    \[
+    \left|\frac{dV_{DS}}{dt}\right| \gg \left|\frac{dV_{GS}}{dt}\right|
+    \]
+    the feedback current is approximately:
+    \[
+    I_{CGD}\approx C_{GD}\left|\frac{dV_{DS}}{dt}\right|
+    \]
+    \item Unlike silicon MOSFETs, SiC MOSFETs may not show a perfectly flat Miller plateau.
+    \item The gate voltage can continue rising slowly due to DIBL, low channel mobility, and nonlinear $C_{GD}$.
+\end{itemize}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Turn-OFF Process of SiC MOSFET}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+\begin{itemize}
+    \item During turn-OFF, the gate drive changes from $V_{DRV(on)}$ to $V_{DRV(off)}$.
+    \item The input capacitance is discharged through the gate resistance.
+    \item Initially, $V_{DS}$ and $I_{DS}$ do not change significantly.
+    \item As $V_{GS}$ decreases, $R_{DS(on)}$ increases and $V_{DS}$ begins to rise.
+    \item The rising $V_{DS}$ charges $C_{DS}$ and discharges $C_{GD}$.
+    \item The measured current includes both channel current and capacitive current components.
+\end{itemize}
+
+\column{0.44\textwidth}
+\vspace{-0.25cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{fig/lec06/SiC_MOSFET_turn_off_waveform.png}
+\caption{Turn-OFF voltage and current waveforms.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Turn-OFF Current Components}
+\begin{itemize}
+    \item During turn-OFF, the measured drain current is not equal to the true channel current.
+    \item The channel current can be written as:
+    \[
+    I_{channel}
+    =
+    I_{DS}
+    -
+    C_{GD}\left|\frac{dV_{GD}}{dt}\right|
+    -
+    C_{DS}\frac{dV_{DS}}{dt}
+    \]
+    \item As $V_{DS}$ rises, $C_{GD}$ decreases, so the voltage rise may accelerate.
+    \item The rapid reduction of $I_{DS}$ can generate voltage overshoot through:
+    \[
+    \Delta V=L_{Loop}\frac{dI_{DS}}{dt}
+    \]
+    \item Oscillations may appear in $V_{GS}$, $V_{DS}$, and $I_{DS}$ due to coupling through $C_{GD}$ and parasitic inductances.
+\end{itemize}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Switching Energy of SiC MOSFETs}
+\begin{itemize}
+    \item Switching energy is usually calculated from the overlap of drain current and drain-source voltage:
+    \[
+    E=\int v_{DS}(t)i_{DS}(t)\,dt
+    \]
+    \item However, measured $I_{DS}$ includes capacitive current associated with $C_{oss}$.
+    \item Therefore, the channel current differs between turn-ON and turn-OFF:
+    \[
+    I_{channel}=I_{DS}+I_{Coss}
+    \]
+    \[
+    I_{channel}=I_{DS}-I_{Coss}
+    \]
+    \item The output capacitance energy is:
+    \[
+    E_{oss}(V_{Bus})=
+    \int_{0}^{V_{Bus}} C_{oss}(V)\cdot V_{DS}(V)\,dV
+    \]
+    \item Corrected switching energies can be expressed as:
+    \[
+    E_{on}=\int I_{DS}(t)V_{DS}(t)\,dt+E_{oss}(V_{Bus})
+    \]
+    \[
+    E_{off}=\int I_{DS}(t)V_{DS}(t)\,dt+E_{oss}(V_{Bus})
+    \]
+\end{itemize}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Gate Charge Characteristics}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+\begin{itemize}
+    \item Gate charge $Q_G$ represents the charge required to drive the MOSFET gate.
+    \item It is obtained by integrating the gate current:
+    \[
+    Q_G=\int I_G(t)\,dt
+    \]
+    \item A constant-current gate drive is often used for measurement.
+    \item The $V_{GS}$ waveform can be interpreted in four regions:
+    \begin{itemize}
+        \item Charging of $C_{iss}$
+        \item Current rise
+        \item Miller region
+        \item Full enhancement
+    \end{itemize}
+    \item The gate charge determines gate-driver power and switching speed.
+\end{itemize}
+
+\column{0.44\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/SiC_MOSFET_gate_charge.png}
+\caption{Gate charge test waveform of a SiC MOSFET.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Key Design Implications}
+\begin{itemize}
+    \item SiC MOSFETs switch very fast, but this makes parasitic inductance and capacitance more critical.
+    \item $C_{GD}$ strongly influences $dv/dt$, Miller coupling, and false turn-ON.
+    \item $C_{oss}$ affects measured switching energy and must be considered in loss calculation.
+    \item Reverse recovery of the body diode can still produce current overshoot and voltage ringing.
+    \item Gate resistance provides a practical way to tune:
+    \begin{itemize}
+        \item Switching speed
+        \item Voltage overshoot
+        \item Current overshoot
+        \item EMI generation
+    \end{itemize}
+    \item Accurate switching-loss evaluation requires consistent definitions of integration limits.
+\end{itemize}
+\end{frame}
+%=========================================================
+
+
+%=========================================================
+\begin{frame}{Figure of Merit (FOM) of SiC MOSFETs}
+\begin{itemize}
+    \item Device selection in power electronics is not based on a single parameter.
+    \item Engineers must simultaneously consider:
+    \begin{itemize}
+        \item Conduction loss
+        \item Switching loss
+        \item Gate-drive loss
+        \item Capacitances
+        \item Thermal capability
+    \end{itemize}
+    \item Figure of Merit (FOM) parameters provide simplified metrics for comparing devices.
+    \item A good FOM attempts to capture the tradeoff between:
+    \begin{itemize}
+        \item Low conduction loss ($R_{DS(on)}$)
+        \item Fast switching capability
+        \item Low stored charge and capacitance
+    \end{itemize}
+    \item Different FOMs are useful for different applications such as:
+    \begin{itemize}
+        \item Hard switching converters
+        \item Soft-switching converters
+        \item High-frequency operation
+        \item High-voltage applications
+    \end{itemize}
+\end{itemize}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Baliga High-Frequency Figure of Merit (BHFFOM)}
+\begin{itemize}
+    \item J. Baliga proposed one of the earliest MOSFET figures of merit for high-frequency operation.
+    \item The total loss is represented as the sum of:
+    \begin{itemize}
+        \item Conduction loss due to $R_{DS(on)}$
+        \item Switching loss associated with charging and discharging $C_{iss}$
+    \end{itemize}
+
+    \vspace{0.2cm}
+
+    \[
+    P_{loss}
+    =
+    I_{rms}^2\frac{R_{DS(on),sp}}{A}
+    +
+    C_{iss,sp}\cdot A \cdot V_{DRV}^2 \cdot f_s
+    \]
+
+    \item Based on this, the Baliga High-Frequency Figure of Merit is:
+    \[
+    \text{BHFFOM}
+    =
+    \frac{1}{R_{DS(on),sp}\cdot C_{iss,sp}}
+    \]
+
+    \item Since practical datasheets usually provide:
+    \[
+    R_{DS(on)}=\frac{R_{DS(on),sp}}{A}
+    \]
+    \[
+    C_{iss}=C_{iss,sp}\cdot A
+    \]
+
+    the practical form becomes:
+    \[
+    \boxed{
+    \text{FOM}=R_{DS(on)}\cdot Q_G
+    }
+    \]
+
+    \item Lower FOM values generally indicate better switching performance.
+\end{itemize}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{NHFFOM and KFOM}
+\begin{itemize}
+    \item Output capacitance $C_{oss}$ also contributes significantly to switching loss.
+    \item Il-Jung Kim therefore proposed the Next High-Frequency Figure of Merit (NHFFOM).
+
+    \[
+    \text{NHFFOM}
+    =
+    \frac{1}{R_{DS(on),sp}\cdot C_{oss,sp}}
+    \]
+
+    \item Since direct use of specific capacitance is difficult, equivalent $C_{oss}$ is introduced:
+
+    \[
+    \frac{1}{2}C_{oss,eq}V^2
+    =
+    \int_0^V C_{oss}(V_{DS})V_{DS}\,dV_{DS}
+    \]
+
+    \item J. W. Kolar proposed the more practical KFOM: $\text{KFOM}
+    =
+    \frac{1}{R_{DS(on)}\cdot C_{oss,eq}}$
+
+    \item KFOM is widely used in MHz converters because:
+    \begin{itemize}
+        \item $C_{oss}$ strongly influences hard-switching loss
+        \item Output capacitance energy becomes critical at high frequency
+    \end{itemize}
+\end{itemize}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{HDFOM and Idealized Switching Waveforms}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item Alex Huang divided MOSFET turn-ON into several switching intervals:
+    \begin{itemize}
+        \item Delay interval $t_d$
+        \item Current rise interval $t_r$
+        \item Voltage fall interval $t_f$
+        \item Overdrive interval $t_{ov}$
+    \end{itemize}
+
+    \item The dominant switching loss in high-voltage devices is often associated with $t_f$.
+    
+    \item Based on this observation:
+    \[
+    P_{loss}
+    =
+    I_{rms}^2R_{DS(on)}
+    +
+    V\cdot I_L\cdot (t_r+t_f)f_s
+    \]
+
+    \item The resulting High-Frequency Dynamic Figure of Merit (HDFOM) becomes:
+
+\end{itemize}
+
+\column{0.44\textwidth}
+    \[
+    \boxed{
+    \text{HDFOM}
+    =
+    \sqrt{R_{DS(on)}\cdot Q_{gd}}
+    }
+    \]
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/HDFOM_switching_waveform.png}
+\caption{Idealized MOSFET turn-ON switching waveform.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{YFOM for Hard-Switching Applications}
+\begin{columns}[T]
+
+\column{0.50\textwidth}
+
+\begin{itemize}
+    \item Yucheng Ying proposed a more detailed switching-loss model.
+    \item Both turn-ON and turn-OFF transitions are considered separately.
+    \item The switching intervals are related to:
+    \begin{itemize}
+        \item Gate resistance $R_G$
+        \item Miller plateau voltage $V_{plt}$
+        \item Gate charge components
+    \end{itemize}
+
+    \item Important timing equations:
+    \[
+    t_{r(on)}
+    =
+    \frac{Q_{gs2}R_G}{V_{DRV}-V_{plt}}
+    \]
+
+    \[
+    t_{f(on)}
+    =
+    \frac{Q_{gd}R_G}{V_{DRV}-V_{plt}}
+    \]
+
+\end{itemize}
+
+\column{0.46\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/YFOM_switching_process.png}
+\caption{Idealized switching process for turn-ON and turn-OFF.}
+\end{figure}
+
+\end{columns}
+
+\vspace{0.2cm}
+
+\begin{itemize}
+    \item The proposed YFOM becomes:
+    \[
+    \boxed{
+    \text{YFOM}
+    =
+    (Q_{gd}+K_{gs2}Q_{gs2})\cdot R_{DS(on)}
+    }
+    \]
+\end{itemize}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{FFOM for Soft-Switching Converters}
+\begin{itemize}
+    \item YFOM mainly targets hard-switching converters.
+    \item Under Zero-Voltage Switching (ZVS), the turn-ON loss becomes negligible.
+    \item Therefore, only these are dominant.:
+    \begin{itemize}
+        \item Turn-OFF loss
+        \item Conduction loss
+        \item Gate-drive loss
+    \end{itemize}
+
+
+    \item The switching loss model becomes:
+    \[
+    P_{loss}
+    =
+    \frac{V_sI_s}{2}
+    \frac{(Q_{gd}+Q_{gs2})R_G}{V_{plt}}
+    f_s
+    +
+    I_{rms}^2R_{DS(on)}
+    +
+    Q_GV_{DRV}f_s
+    \]
+
+    \item Dianbo Fu proposed the following Figure of Merit for ZVS systems:
+    \[
+    \boxed{
+    \text{FFOM}
+    =
+    (Q_{gd}+K_{loss}Q_{gs2})R_{DS(on)}
+    }
+    \]
+
+    \item FFOM is particularly useful for:
+    \begin{itemize}
+        \item LLC resonant converters
+        \item Phase-shifted full bridge converters
+        \item High-frequency soft-switching applications
+    \end{itemize}
+\end{itemize}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Calculation of Power Device Losses}
+\begin{columns}[T]
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item Device loss analysis is essential for:
+    \begin{itemize}
+        \item Thermal design
+        \item Efficiency optimization
+        \item Device selection
+        \item Converter reliability
+    \end{itemize}
+
+    \item In practical converters, losses include:
+    \begin{itemize}
+        \item Conduction losses
+        \item Switching losses
+        \item Reverse recovery losses
+        \item Gate-drive losses
+    \end{itemize}
+
+    \item Loss calculations can be performed using:
+    \begin{itemize}
+        \item Manufacturer datasheets
+        \item Experimental double-pulse testing
+        \item Electrothermal simulations
+    \end{itemize}
+\end{itemize}
+\column{0.48\textwidth}
+\begin{itemize}
+    \item Datasheet-based approaches are fast and convenient but are limited to specified operating conditions.
+    
+    \item Experimental measurements provide higher accuracy because:
+    \begin{itemize}
+        \item Parasitics are included
+        \item Real switching conditions are captured
+        \item Reverse recovery behavior is measured directly
+    \end{itemize}
+\end{itemize}
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Conduction Loss Calculation}
+\begin{itemize}
+    \item Conduction loss is generated when the MOSFET carries current in the ON-state.
+    \item Instantaneous conduction power is: $p(t)=v_{DS}(t)\cdot i_{DS}(t)$
+    \item Average conduction loss over one switching period:
+    \[
+    P_C^{MOS}
+    =
+    \frac{1}{T_s}
+    \int_0^{T_s}
+    V_{DS}(I_{DS}(t),T_J,V_{DRV(on)})
+    \cdot
+    I_{DS}(t)\,dt
+    \]
+
+    \item Since SiC MOSFET conduction is approximately resistive:
+    \[
+    P_C^{MOS}
+    =
+    \frac{1}{T_s}
+    \int_0^{T_s}
+    R_{DS(on)}
+    \cdot
+    I_{DS}^2(t)\,dt
+    \]
+
+    \item Body-diode conduction loss is:
+    \[
+    P_C^{MOS,BD}
+    =
+    \frac{1}{T_s}
+    \int_0^{T_s}
+    V_F(I_F,T_J)\cdot I_F(t)\,dt
+    \]
+
+    \item Third-quadrant conduction must include both channel conduction and body-diode conduction effects.
+\end{itemize}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Switching and Reverse Recovery Losses}
+
+\begin{columns}
+\column{0.52\textwidth}
+\begin{itemize}
+    \item Switching losses occur due to overlap between:
+    \begin{itemize}
+        \item Drain-source voltage $V_{DS}$
+        \item Drain current $I_{DS}$
+    \end{itemize}
+
+    \item Average turn-ON switching loss:
+    \[
+    P_{on}
+    =
+    \frac{1}{T_s}
+    \sum E_{on}
+    \]
+
+    \item Average turn-OFF switching loss:
+    \[
+    P_{off}
+    =
+    \frac{1}{T_s}
+    \sum E_{off}
+    \]
+    \end{itemize}
+\column{0.52\textwidth}
+    \begin{itemize}
+    \item These energies are influenced by:
+    \begin{itemize}
+        \item Junction temperature
+        \item Gate resistance
+        \item Loop inductance
+        \item Switching current
+        \item Bus voltage
+    \end{itemize}
+
+    \item Reverse recovery loss is:
+    \[
+    P_{rr}
+    =
+    \frac{1}{T_s}
+    \sum E_{rr}
+    \]
+
+    \item Reverse recovery strongly depends on:
+    \begin{itemize}
+        \item Reverse current
+        \item $di/dt$
+        \item Junction temperature
+        \item External circuit parasitics
+    \end{itemize}
+\end{itemize}
+\end{columns}  
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Total Loss Calculation}
+\begin{itemize}
+    \item Total MOSFET loss is the sum of all individual loss mechanisms:
+    
+    \[
+    P_{MOS}
+    =
+    P_C^{MOS}
+    +
+    P_C^{MOS,BD}
+    +
+    P_C^{MOS,3rd}
+    +
+    P_{on}
+    +
+    P_{off}
+    +
+    P_{rr}^{MOS,BD}
+    \]
+
+    \item Total diode loss is:
+    \[
+    P_{Diode}
+    =
+    P_C^{Diode}
+    +
+    P_{rr}^{Diode}
+    \]
+
+    \item Device losses affect junction temperature:
+    \[
+    T_J \uparrow
+    \Rightarrow
+    R_{DS(on)} \uparrow
+    \Rightarrow
+    P_{loss} \uparrow
+    \]
+
+    \item Therefore, electrothermal iteration is commonly used:
+    \begin{enumerate}
+        \item Estimate losses
+        \item Compute junction temperature
+        \item Update temperature-dependent parameters
+        \item Recalculate losses
+    \end{enumerate}
+
+    \item The process repeats until thermal steady-state convergence is achieved.
+\end{itemize}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Time-Interval Based Loss Calculation}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+
+\begin{itemize}
+    \item Converter loss analysis is often divided into multiple time intervals.
+    \item Example intervals:
+    \begin{itemize}
+        \item ON-state conduction
+        \item Turn-OFF transition
+        \item OFF-state blocking
+        \item Turn-ON transition
+    \end{itemize}
+
+    \item In each interval:
+    \begin{itemize}
+        \item Different loss mechanisms dominate
+        \item Junction temperature changes
+        \item Device parameters vary
+    \end{itemize}
+
+    \item Accurate loss analysis therefore requires:
+    \begin{itemize}
+        \item Time-domain waveform analysis
+        \item Temperature-dependent device models
+        \item Switching-energy characterization
+    \end{itemize}
+
+\end{itemize}
+
+\column{0.44\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/SiC_loss_intervals.png}
+\caption{Time-interval based loss analysis in a buck converter.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+%=========================================================
+
+
+
+%=========================================================
+\begin{frame}{Practical Considerations in SiC Loss Analysis}
+\begin{itemize}
+    \item Datasheet loss values are measured under manufacturer-defined conditions.
+    \item In practical converters, losses can differ significantly because of:
+    \begin{itemize}
+        \item PCB parasitics
+        \item Gate-drive configuration
+        \item Layout inductance
+        \item Cooling conditions
+        \item Device tolerances
+    \end{itemize}
+
+    \item Reverse recovery and switching energy are especially sensitive to:
+    \begin{itemize}
+        \item External loop inductance
+        \item Gate resistance
+        \item Commutation speed
+    \end{itemize}
+
+    \item Therefore:
+    \begin{itemize}
+        \item Datasheets provide initial estimates
+        \item Double-pulse testing validates real switching behavior
+        \item Electrothermal simulation improves prediction accuracy
+    \end{itemize}
+
+    \item Accurate loss analysis is essential in:
+    \begin{itemize}
+        \item MHz switching converters
+        \item High-power-density systems
+        \item EV traction inverters
+        \item Fast chargers and aerospace converters
+    \end{itemize}
+\end{itemize}
+\end{frame}
+%=========================================================
