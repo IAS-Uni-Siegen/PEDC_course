@@ -719,7 +719,7 @@ while maintaining reliable gate oxide operation.
 \includegraphics[width=\linewidth]{fig/lec06/SiC_Baliga_pair_structure.png}
 \caption{Baliga-Pair SiC power switch configuration.}
 \end{figure}
-
+%these figures are from Baliga books. 
 \end{columns}
 \end{frame}
 %=========================================================
@@ -1521,7 +1521,7 @@ Lower reverse conduction losses without additional external diode packages.
 \includegraphics[width=\linewidth]{fig/lec06/SiC_IDSS_VDS_curve.png}
 \caption{\(I_{DSS}-V_{DS}\) characteristics.}
 \end{figure}
-
+%figures this slides are from: Yuan Gao Yan Zhang SiC Power Devices Characteristics, Test and Application CPSS Springer 2025
 \end{columns}
 \end{frame}
 %=========================================================
@@ -1548,15 +1548,10 @@ Lower reverse conduction losses without additional external diode packages.
 
     \item Reduced mobility makes avalanche multiplication more difficult.
 
-    \item The breakdown voltage is commonly defined at a specified leakage current:
-    \[
-    I_{(BR)DSS}
-    \]
+    \item The breakdown voltage is commonly defined at a specified leakage current: $I_{(BR)DSS}$.
 
-    \item Typical values of \(I_{(BR)DSS}\) range from:
-    \[
-    100~\mu A \; \text{to} \; 5~mA
-    \]
+    \item Typical values of \(I_{(BR)DSS}\) range from:$ 100~\mu A \; \text{to} \; 5~mA$.
+
 \end{itemize}
 
 \column{0.40\textwidth}
@@ -1642,10 +1637,7 @@ Lower reverse conduction losses without additional external diode packages.
         \item Thermal power limitation
     \end{itemize}
 
-    \item The SOA is generally represented in logarithmic coordinates using:
-    \[
-    I_{DS} \; \text{vs} \; V_{DS}
-    \]
+    \item The SOA is generally represented in logarithmic coordinates using: $I_{DS} \; \text{vs} \; V_{DS}$.
 
     \item Operation outside the SOA may cause:
     \begin{itemize}
@@ -1681,7 +1673,7 @@ Lower reverse conduction losses without additional external diode packages.
 
     \item The threshold voltage \(V_{GS(th)}\) is the gate voltage where conduction begins.
 
-    \item \(V_{GS(th)}\) decreases with increasing temperature:$
+    \item \(V_{GS(th)}\) decreases with increasing temperature: $
     T_J \uparrow \Rightarrow V_{GS(th)} \downarrow$
 
     \item This affects:
@@ -1702,8 +1694,6 @@ Lower reverse conduction losses without additional external diode packages.
 
 \end{columns}
 \end{frame}
-%=========================================================
-
 
 
 %=========================================================
@@ -1721,7 +1711,7 @@ Lower reverse conduction losses without additional external diode packages.
 
     \item SiC MOSFETs show significant: $\text{Drain-Induced Barrier Lowering (DIBL)}$
 
-    \item Increasing \(V_{DS}\) reduces: $V_{GS(th)}$
+    \item DIBL: Increasing \(V_{DS}\) reduces: $V_{GS(th)}$
 
     \item Combined effects of high temperature and DIBL may lead to:
     \begin{itemize}
@@ -2311,7 +2301,6 @@ Lower reverse conduction losses without additional external diode packages.
         \item Miller region
         \item Full enhancement
     \end{itemize}
-    \item The gate charge determines gate-driver power and switching speed.
 \end{itemize}
 
 \column{0.44\textwidth}
@@ -2320,7 +2309,9 @@ Lower reverse conduction losses without additional external diode packages.
 \includegraphics[width=\textwidth]{fig/lec06/SiC_MOSFET_gate_charge.png}
 \caption{Gate charge test waveform of a SiC MOSFET.}
 \end{figure}
-
+    \begin{itemize}
+    \item The gate charge determines gate-driver power and switching speed.
+    \end{itemize}
 \end{columns}
 \end{frame}
 %=========================================================
@@ -2905,3 +2896,1800 @@ Lower reverse conduction losses without additional external diode packages.
 \end{itemize}
 \end{frame}
 %=========================================================
+
+
+% =========================================================
+% Slides: GaN Power Devices
+% =========================================================
+
+\begin{frame}{Why Gallium Nitride for Power Electronics?}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+\begin{itemize}
+    \item Wide bandgap semiconductors are important for improving:
+    \begin{itemize}
+        \item switching frequency,
+        \item blocking voltage,
+        \item converter efficiency,
+        \item power density.
+    \end{itemize}
+
+    \item GaN is especially attractive for high-frequency power conversion because it offers:
+    \begin{itemize}
+        \item high critical electric field,
+        \item high electron saturation velocity,
+        \item strong polarization-induced carrier generation,
+        \item low lateral device resistance.
+    \end{itemize}
+
+    \item These properties enable compact converters with smaller inductors, capacitors, and transformers.
+\end{itemize}
+
+\column{0.44\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_device_evolution.png}
+\caption{Role of wide bandgap semiconductors in improving power conversion efficiency; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Evolution of Power Semiconductor Devices}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+\begin{itemize}
+    \item Power semiconductor development has progressed through several application layers:
+    \begin{itemize}
+        \item infrastructure-level high-voltage systems,
+        \item home and industrial power systems,
+        \item personal and low-voltage electronics.
+    \end{itemize}
+
+    \item Silicon devices dominated early power electronics:
+    \begin{itemize}
+        \item thyristors,
+        \item GTOs,
+        \item bipolar transistors,
+        \item power MOSFETs,
+        \item IGBTs.
+    \end{itemize}
+
+    \item SiC and GaN entered later to address higher frequency, higher voltage, and higher efficiency requirements.
+\end{itemize}
+
+\column{0.44\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_device_evolution.png}
+\caption{Role of wide bandgap semiconductors in improving power conversion efficiency; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{GaN as a Wide Bandgap Semiconductor}
+
+\begin{itemize}
+    \item GaN belongs to the III-nitride semiconductor family, together with AlN and InN.
+    \item Compared with silicon, GaN has:
+    \begin{itemize}
+        \item wider bandgap,
+        \item higher critical electric field,
+        \item higher electron saturation velocity,
+        \item strong polarization effects.
+    \end{itemize}
+
+    \item These material properties allow GaN devices to support high-voltage and high-frequency operation simultaneously.
+    \item GaN is a direct-bandgap material, which also explains its importance in optoelectronic devices such as LEDs.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Breakdown Voltage and Cutoff Frequency Trade-Off}
+
+\begin{itemize}
+    \item In high-frequency power devices, there is a fundamental trade-off between blocking voltage and carrier transit time.
+    \item For a carrier path length $l$, the breakdown voltage is related to the critical electric field:
+\end{itemize}
+
+\begin{equation}
+B_{\mathrm{V}} = E_{\mathrm{c}} l
+\end{equation}
+
+\begin{itemize}
+    \item The cutoff frequency is related to the carrier saturation velocity:
+\end{itemize}
+
+\begin{equation}
+f_{\mathrm{T}} = \frac{1}{2\pi \tau}
+= \frac{v_{\mathrm{sat}}}{2\pi l}
+\end{equation}
+
+\begin{itemize}
+    \item Therefore, the product $B_{\mathrm{V}} f_{\mathrm{T}}$ is mainly determined by the material.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Johnson Limit: Why GaN Is Attractive}
+\begin{itemize}
+    \item Multiplying breakdown voltage and cutoff frequency gives:
+\end{itemize}
+
+\begin{equation}
+B_{\mathrm{V}} f_{\mathrm{T}}
+=
+\frac{E_{\mathrm{c}} v_{\mathrm{sat}}}{2\pi}
+\end{equation}
+
+\begin{itemize}
+    \item A material with high $E_{\mathrm{c}}$ can support a high electric field before avalanche breakdown.
+    \item A material with high $v_{\mathrm{sat}}$ allows faster carrier transport and higher frequency operation.
+    \item GaN has both high critical electric field and high saturation velocity.
+    \item This is why GaN is suitable for high-voltage and high-frequency power devices, especially when compact converter size is required.
+\end{itemize}
+
+\begin{block}{Central point}
+GaN is not only a “fast switch”; its advantage comes from the simultaneous combination of high breakdown field and high carrier velocity.
+\end{block}
+\end{frame}
+
+
+\begin{frame}{III-Nitride Material System}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+\begin{itemize}
+    \item GaN, AlN, and InN form an important III-nitride material system.
+    \item By alloying these materials, such as AlGaN or InGaN, the bandgap and lattice constant can be engineered.
+    \item This allows heterostructures such as AlGaN/GaN to be designed for high-density carrier generation.
+    \item The wurtzite crystal structure is central to the polarization behavior of GaN-based devices.
+\end{itemize}
+
+\column{0.44\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{fig/lec06/GaN_III_nitride_BG.png}
+\includegraphics[width=0.6\textwidth]{fig/lec06/GaN_III_nitride.png}
+\caption{III-nitride material system and bandgap-lattice relationship; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{GaN Crystal Polarity: Ga-Face and N-Face}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+\begin{itemize}
+    \item Wurtzite GaN has a hexagonal crystal structure.
+    \item Along the c-axis, the crystal can terminate with either:
+    \begin{itemize}
+        \item Ga-face polarity,
+        \item N-face polarity.
+    \end{itemize}
+
+    \item Because Ga and N atoms have different electronegativity, the crystal has an internal polarization direction.
+    \item This asymmetry is a key difference between GaN-based devices and conventional silicon devices.
+\end{itemize}
+
+\column{0.44\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_crystal_structure.png}
+\caption{Asymmetrical hexagonal GaN crystal structure along the c-axis; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Spontaneous and Piezoelectric Polarization}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item GaN-based heterostructures exhibit two important polarization effects:
+    \begin{itemize}
+        \item spontaneous polarization,
+        \item piezoelectric polarization.
+    \end{itemize}
+
+    \item Spontaneous polarization exists because of the non-centrosymmetric wurtzite crystal structure.
+    \item Piezoelectric polarization appears when mechanical strain changes the bond angles and charge distribution.
+    \item In AlGaN/GaN, lattice mismatch produces strain and therefore additional polarization charge.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_piezoelectric_polarization.png}
+\caption{Piezoelectric polarization caused by tensile stress; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Polarization-Induced 2DEG}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item At the AlGaN/GaN interface, polarization discontinuity creates fixed sheet charge.
+    \item Free electrons accumulate near the interface to neutralize this charge.
+    \item These electrons form a two-dimensional electron gas, commonly called 2DEG.
+    \item The 2DEG has high sheet carrier density and high mobility, enabling low on-resistance in lateral GaN HEMTs.
+\end{itemize}
+
+\begin{block}{Key idea}
+Unlike a conventional MOS channel, the conducting channel in GaN HEMTs can exist without intentional doping.
+\end{block}
+
+\column{0.42\textwidth}
+\vspace{-1.5cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{fig/lec06/GaN_polarisation.png}
+\includegraphics[width=0.7\textwidth]{fig/lec06/GaN_polarisation_II.png}
+\caption{Polarization charge and induced sheet carrier density; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{AlGaN/GaN HEMT: Normally-On Nature}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item A standard AlGaN/GaN HEMT naturally contains a 2DEG at the heterointerface.
+    \item Therefore, the device can conduct at zero gate bias.
+    \item This is called a normally-on or depletion-mode device.
+    \item For power converters, normally-off operation is preferred for fail-safe switching.
+\end{itemize}
+
+\begin{equation}
+V_{\mathrm{T}}
+=
+\phi_{\mathrm{b}}
+-
+\Delta E_{\mathrm{c}}
+-
+\frac{qN_{\mathrm{s}}d_{\mathrm{AlGaN}}}
+{\varepsilon_{0}\varepsilon_{\mathrm{AlGaN}}}
+\end{equation}
+
+\column{0.42\textwidth}
+\vspace{-1cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{fig/lec06/GaN_band_diagram.png}
+\caption{Band diagram and charge distribution of AlGaN/GaN Schottky-gate HEMT; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{How to Achieve Normally-Off GaN Devices}
+\begin{columns}[T]
+
+\column{0.56\textwidth}
+\begin{itemize}
+    \item Normally-off behavior requires a positive threshold voltage.
+    \item Practical approaches include:
+    \begin{itemize}
+        \item increasing the gate work function,
+        \item reducing 2DEG density,
+        \item thinning or recessing the AlGaN barrier,
+        \item using p-GaN or p-AlGaN gate structures,
+        \item introducing interface charge engineering.
+    \end{itemize}
+
+    \item Each method shifts the threshold voltage but also affects:
+    \begin{itemize}
+        \item channel resistance,
+        \item current capability,
+        \item gate reliability,
+        \item process complexity.
+    \end{itemize}
+\end{itemize}
+
+\column{0.40\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{fig/lec06/GaN_band_diagram.png}
+\caption{Band diagram and charge distribution of AlGaN/GaN Schottky-gate HEMT; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Polar, Non-Polar, and Semi-Polar GaN Planes}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item The crystal plane strongly influences polarization in GaN.
+    \item The conventional c-plane is polar and produces strong polarization effects.
+    \item Non-polar planes, such as a-plane and m-plane, have much weaker polarization.
+    \item Semi-polar planes have averaged polarization close to zero.
+    \item These orientations can be used to engineer enhanced-mode GaN devices.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{fig/lec06/GaN_crystal_planes.png}
+\caption{Representative GaN crystal planes: polar, non-polar, and semi-polar; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Natural Super Junction Structure in GaN}
+\begin{columns}[T]
+
+\column{0.53\textwidth}
+\begin{itemize}
+    \item In a natural super junction structure, nitride layers with different polarization are grown alternately.
+    \item Electrons and holes are generated at different heterointerfaces.
+    \item Under reverse bias, these stored charges can be depleted.
+    \item Once depleted, the structure behaves as an insulator and can support high voltage.
+\end{itemize}
+
+\begin{equation}
+V_{0}
+=
+\frac{N_{\mathrm{s}}}{C_{0}}
+=
+\frac{N_{\mathrm{s}} C_{\mathrm{GaN}} C_{\mathrm{AlGaN}}}
+{C_{\mathrm{GaN}} + C_{\mathrm{AlGaN}}}
+\end{equation}
+
+\column{0.47\textwidth}
+\vspace{-1cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{fig/lec06/GaN_natural_super_junction.png}
+\caption{Natural super junction structure and depletion concept; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{GaN Natural Super Junction: Experimental Evidence}
+\begin{columns}[T]
+
+\column{0.52\textwidth}
+\begin{itemize}
+    \item Fabricated GaN NSJ devices show breakdown voltage increasing with electrode spacing.
+    \item The breakdown voltage is mainly determined by:
+    \begin{itemize}
+        \item critical electric field,
+        \item anode-cathode spacing,
+        \item depletion of polarization-induced charges.
+    \end{itemize}
+
+    \item Unlike silicon super junctions, the charge balance in GaN NSJ can arise naturally from polarization charges.
+    \item This reduces the need for precisely doped p/n pillar structures.
+\end{itemize}
+
+\column{0.44\textwidth}
+\vspace{-1cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{fig/lec06/GaN_fabricated_nsj.png}
+\includegraphics[width=0.7\textwidth]{fig/lec06/GaN_fabricated_nsj2.png}
+\caption{Fabricated NSJ diode and breakdown voltage versus spacing; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{On-Resistance and Breakdown Voltage}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item In lateral GaN FETs, the on-resistance can be separated into channel and drift components.
+\end{itemize}
+
+\begin{equation}
+R_{\mathrm{on}} = R_{\mathrm{ch}} + R_{\mathrm{d}}
+\end{equation}
+
+\begin{equation}
+R_{\mathrm{ch}}
+=
+\frac{L_{\mathrm{g}}}{W_{\mathrm{g}} q \mu N_{\mathrm{s}}}
+\end{equation}
+
+\begin{equation}
+R_{\mathrm{d}}
+=
+\frac{L_{\mathrm{d}}}{W_{\mathrm{g}} q \mu N_{\mathrm{s}}}
+=
+\frac{1}{W_{\mathrm{g}} q \mu N_{\mathrm{s}}}
+\left(\frac{B_{\mathrm{V}}}{E_{\mathrm{c}}}\right)
+\end{equation}
+
+\begin{itemize}
+    \item At low voltage, channel resistance may dominate.
+    \item At high voltage, drift resistance becomes more important.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_on_resistance.png}
+\caption{Calculated $R_{\mathrm{on}}W_{\mathrm{g}}$ versus breakdown voltage; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Design Takeaways for GaN Power Devices}
+\begin{itemize}
+    \item GaN power devices are enabled by wide bandgap material properties and polarization-induced carrier generation.
+    \item The AlGaN/GaN heterostructure forms a high-density 2DEG without intentional channel doping.
+    \item Standard GaN HEMTs are naturally normally-on; power converters generally require normally-off device structures.
+    \item High-frequency operation is possible because of high saturation velocity and low device capacitance.
+    \item High-voltage operation is supported by the high critical electric field of GaN.
+    \item Practical GaN converter design must carefully manage gate drive, parasitic inductance, overvoltage, EMI, and thermal stress.
+\end{itemize}
+
+\begin{block}{Key message}
+GaN devices are polarization-engineered wide-bandgap devices, not simply as faster MOSFETs.
+\end{block}
+\end{frame}
+
+% =========================================================
+% Slides: GaN Low-Voltage and High-Voltage Devices
+% =========================================================
+
+\begin{frame}{GaN for Low-Voltage Power Conversion}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+
+\begin{itemize}
+    \item In low-voltage applications, reducing device size while maintaining low conduction and switching loss is essential.
+    
+    \item Silicon MOSFET scaling is limited because the critical electric field of Si is relatively low.
+    
+    \item Wide bandgap materials such as GaN allow:
+    \begin{itemize}
+        \item smaller drift-region dimensions,
+        \item lower device capacitance,
+        \item higher switching speed,
+        \item reduced chip area.
+    \end{itemize}
+
+    \item GaN therefore provides the possibility of achieving high conversion efficiency with significantly smaller die size.
+\end{itemize}
+
+\column{0.42\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_scaling_law.png}
+\includegraphics[width=\textwidth]{fig/lec06/GaN_scaling_lawII.png}
+\caption{Scaling law and estimated device dimensions for Si, SiC, and GaN; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Scaling Trends in Low-Voltage Devices}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+
+\begin{itemize}
+    \item Device miniaturization changes several electrical parameters simultaneously.
+    
+    \item When dimensions are scaled by a factor $1/k$:
+    \begin{itemize}
+        \item blocking voltage scales approximately as $1/k$,
+        \item capacitance scales approximately as $1/k^2$,
+        \item switching loss also reduces strongly.
+    \end{itemize}
+
+    \item Smaller capacitance is especially important for MHz switching because it directly reduces gate-drive energy and transition losses.
+    
+    \item Wide bandgap devices continue scaling effectively where silicon approaches practical limits.
+\end{itemize}
+
+\column{0.42\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_scaling_law.png}
+\includegraphics[width=\textwidth]{fig/lec06/GaN_scaling_lawII.png}
+\caption{Scaling law and estimated device dimensions for Si, SiC, and GaN; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Evolution of Low-Voltage MOSFET Structures}
+\begin{columns}[T]
+
+\column{0.5\textwidth}
+
+\begin{itemize}
+    \item Reducing on-resistance in low-voltage devices requires increasing channel packing density.
+    
+    \item Silicon MOSFET structures evolved from:
+    \begin{itemize}
+        \item planar DMOS,
+        \item trench-gate MOSFETs,
+        \item fully self-aligned trench structures.
+    \end{itemize}
+
+    \item The objective is to reduce channel resistance while maintaining sufficient blocking capability.
+    
+    \item Similar scaling concepts are also important in GaN device engineering.
+\end{itemize}
+
+\column{0.5\textwidth}
+\vspace{-1cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{fig/lec06/GaN_MOSFET_evolution.png}
+\caption{Evolution of low-voltage MOSFET structures for reducing $R_{\mathrm{on}}$; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{DC Loss and AC Loss in Switching Devices}
+
+\begin{itemize}
+    \item Converter efficiency depends on both:
+    \begin{itemize}
+        \item DC conduction loss,
+        \item AC switching loss.
+    \end{itemize}
+
+    \item Conduction loss is mainly related to device on-resistance:
+\end{itemize}
+
+\begin{equation}
+\mathrm{Loss}_{\mathrm{DC}}
+\propto
+R_{\mathrm{on}} W_{\mathrm{g}}
+\end{equation}
+
+\begin{itemize}
+    \item AC switching loss is strongly influenced by gate charge:
+\end{itemize}
+
+\begin{equation}
+\mathrm{Loss}_{\mathrm{AC}}
+\propto
+\frac{Q_{\mathrm{g}}}{W_{\mathrm{g}}}
+\end{equation}
+
+\begin{itemize}
+    \item Therefore, minimizing the product $R_{\mathrm{on}}Q_{\mathrm{g}}$ is one of the key design targets in high-frequency power devices.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Lateral Versus Vertical Device Structures}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+
+\begin{itemize}
+    \item Most commercial GaN HEMTs are lateral devices.
+    
+    \item In lateral structures:
+    \begin{itemize}
+        \item current flows parallel to the wafer surface,
+        \item the 2DEG channel provides low channel resistance.
+    \end{itemize}
+
+    \item Vertical devices conduct current through the bulk material.
+    
+    \item Vertical structures offer:
+    \begin{itemize}
+        \item higher packing density,
+        \item higher current capability,
+        \item improved high-voltage scalability.
+    \end{itemize}
+\end{itemize}
+
+\column{0.48\textwidth}
+\vspace{-1cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{fig/lec06/GaN_structure.png}
+\caption{Comparison of lateral and vertical structures under scaling rule $F$; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Gate Charge and Switching Waveforms}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+
+\begin{itemize}
+    \item Gate charge strongly influences switching speed and switching loss.
+    
+    \item During turn-on:
+    \begin{itemize}
+        \item gate voltage rises,
+        \item drain voltage falls,
+        \item drain current increases.
+    \end{itemize}
+
+    \item The Miller plateau appears because the gate-drain capacitance must be charged while $V_{\mathrm{DS}}$ changes.
+    
+    \item The total gate charge consists of:
+    \begin{itemize}
+        \item channel charge,
+        \item switching charge,
+        \item Miller-related charge components.
+    \end{itemize}
+\end{itemize}
+
+\column{0.42\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_gate_charge.png}
+\caption{Measurement setup and switching waveform showing gate-charge components; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Efficiency Versus Switching Frequency}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+
+\begin{itemize}
+    \item GaN devices enable operation at significantly higher switching frequency than conventional Si devices.
+    
+    \item However, switching frequency increases AC switching loss.
+    
+    \item Devices with lower $R_{\mathrm{on}}Q_{\mathrm{g}}$ maintain higher efficiency at MHz frequencies.
+    
+    \item This is one of the reasons why GaN is attractive for compact DC--DC converters and MHz resonant converters.
+\end{itemize}
+
+\begin{block}{Important insight}
+Reducing only $R_{\mathrm{on}}$ is not sufficient for high-frequency operation; gate charge must also be minimized.
+\end{block}
+
+\column{0.40\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_efficiency.png}
+\caption{Half-bridge converter efficiency versus switching frequency for different $R_{\mathrm{on}}Q_{\mathrm{g}}$ values; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Optimum Device Size for High-Frequency Switching}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+
+\begin{itemize}
+    \item Increasing gate width reduces conduction loss because $R_{\mathrm{on}}$ decreases.
+    
+    \item However, larger gate width also increases:
+    \begin{itemize}
+        \item capacitance,
+        \item gate charge,
+        \item switching loss.
+    \end{itemize}
+
+    \item Therefore, there exists an optimum device size where:
+    \begin{itemize}
+        \item DC loss and AC loss are balanced,
+        \item total converter loss becomes minimum.
+    \end{itemize}
+
+    \item The optimum gate width shifts toward smaller devices at higher switching frequency.
+\end{itemize}
+
+\column{0.42\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{fig/lec06/GaN_optimum_width.png}
+\caption{Concept of optimum gate width minimizing total loss; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{GaN High-Voltage Devices}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+
+\begin{itemize}
+    \item High-voltage GaN devices require a sufficiently long drift region to support blocking voltage.
+    
+    \item In lateral devices:
+    \begin{itemize}
+        \item current flows horizontally,
+        \item voltage is blocked laterally.
+    \end{itemize}
+
+    \item In vertical devices:
+    \begin{itemize}
+        \item current flows vertically through the substrate,
+        \item electric field is distributed in the bulk material.
+    \end{itemize}
+
+    \item Vertical devices are expected to become important for:
+    \begin{itemize}
+        \item high-voltage conversion,
+        \item high-current applications,
+        \item megawatt-class systems.
+    \end{itemize}
+\end{itemize}
+
+\column{0.42\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_vertical_vs_lateral.png}
+\caption{Lateral and vertical GaN power-device structures; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Breakdown Voltage and Drift-Region Resistance}
+
+\begin{itemize}
+    \item In one-dimensional drift-region analysis, the electric field is:
+\end{itemize}
+
+\begin{equation}
+E_{\mathrm{c}}
+=
+\frac{qN_{\mathrm{d}}}{\varepsilon_{\mathrm{GaN}}}
+W_{\mathrm{d}}
+\end{equation}
+
+\begin{itemize}
+    \item The breakdown voltage becomes:
+\end{itemize}
+
+\begin{equation}
+B_{\mathrm{V}}
+=
+\frac{1}{2}E_{\mathrm{c}}W_{\mathrm{d}}
+\end{equation}
+
+\begin{itemize}
+    \item The epitaxial drift-region resistance is approximately:
+\end{itemize}
+
+\begin{equation}
+R_{\mathrm{epi}}
+\propto
+\frac{B_{\mathrm{V}}^{2}}
+{\mu E_{\mathrm{c}}^{3}}
+\end{equation}
+
+\begin{itemize}
+    \item Because GaN has high $E_{\mathrm{c}}$, it can achieve lower drift resistance than Si at the same blocking voltage.
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}{Conductivity Modulation in Silicon Devices}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+
+\begin{itemize}
+    \item Silicon high-voltage devices often use conductivity modulation to reduce drift-region resistance.
+    
+    \item Examples include:
+    \begin{itemize}
+        \item GTO,
+        \item SI thyristor,
+        \item IGBT.
+    \end{itemize}
+
+    \item Minority-carrier injection increases carrier density in the drift region and reduces conduction loss.
+    
+    \item However, stored charge slows switching speed and increases turn-off loss.
+    
+    \item GaN devices are attractive because they can achieve low resistance without relying heavily on minority-carrier storage.
+\end{itemize}
+
+\column{0.42\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_conductivity_modulation.png}
+\caption{Conductivity modulation in Si high-voltage devices; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Vertical GaN Devices and CAVET Structures}
+
+\begin{itemize}
+    \item Most commercial GaN devices today are lateral HEMTs.
+    
+    \item For very high-voltage operation, vertical structures are increasingly important.
+    
+    \item One important concept is the CAVET:
+    \begin{itemize}
+        \item Current Aperture Vertical Electron Transistor.
+    \end{itemize}
+
+    \item In a CAVET:
+    \begin{itemize}
+        \item current flows vertically,
+        \item the drift region supports voltage in the bulk material,
+        \item current is guided through a controlled aperture region.
+    \end{itemize}
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}{Field Plates and Current Collapse}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+
+\begin{itemize}
+    \item Surface traps and electric-field crowding can cause current collapse and dynamic $R_{\mathrm{on}}$ increase.
+    
+    \item Field plates are widely used to:
+    \begin{itemize}
+        \item spread electric field,
+        \item reduce peak field concentration,
+        \item improve breakdown voltage,
+        \item suppress trapping effects.
+    \end{itemize}
+
+    \item Proper field management is critical for reliable high-voltage GaN switching.
+\end{itemize}
+
+\begin{block}{Teaching point}
+Dynamic device behavior in GaN is strongly linked to surface states and electric-field engineering.
+\end{block}
+
+\column{0.42\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_field_plate.png}
+\caption{Current collapse, field-plate effect, and electric-field redistribution; adapted from Meneghini et al., “Power GaN Devices: Material, Applications and Reliability” 2017.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Evolution of Vertical GaN Devices}
+
+\begin{itemize}
+    \item Vertical GaN devices evolved through multiple generations:
+    \begin{itemize}
+        \item regrown aperture structures,
+        \item ion-implanted current-blocking layers,
+        \item trench-gate structures,
+        \item MOS-channel vertical devices.
+    \end{itemize}
+
+    \item Progress focused on:
+    \begin{itemize}
+        \item increasing breakdown voltage,
+        \item reducing leakage,
+        \item lowering on-resistance,
+        \item achieving normally-off operation.
+    \end{itemize}
+
+    \item Vertical GaN devices are now approaching kV-class operation with milliohm-range resistance.
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}{Requirements for Practical GaN Power Devices}
+\begin{itemize}
+    \item Future GaN power devices must simultaneously achieve:
+    \begin{enumerate}
+        \item Normally-off operation
+        \item High breakdown voltage
+        \item Low on-resistance
+        \item High current density
+        \item High-temperature operation
+    \end{enumerate}
+
+    \item Practical normally-off approaches include:
+    \begin{itemize}
+        \item p-GaN gate structures,
+        \item recessed-gate structures,
+        \item fluorine treatment,
+        \item cascoded Si-GaN approaches.
+    \end{itemize}
+
+    \item GaN devices are particularly attractive for:
+    \begin{itemize}
+        \item EV traction systems,
+        \item fast chargers,
+        \item PV inverters,
+        \item aerospace converters,
+        \item MHz switching applications.
+    \end{itemize}
+\end{itemize}
+
+\vspace{0.2cm}
+
+\begin{block}{Key message}
+The future of GaN power electronics depends not only on material superiority, but also on successful electric-field management, thermal design, gate engineering, and reliable normally-off operation.
+\end{block}
+\end{frame}
+
+
+% =========================================================
+% Slides: Basic GaN Transistor Structures
+% =========================================================
+
+\begin{frame}{Basic Depletion-Mode GaN HEMT Structure}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item A basic GaN HEMT consists of source, drain, and gate electrodes formed on an AlGaN/GaN heterostructure.
+    \item The AlGaN/GaN interface naturally forms a two-dimensional electron gas, or 2DEG.
+    \item In a depletion-mode device, the 2DEG is present at zero gate bias.
+    \item Therefore, the device is normally ON unless a negative gate voltage depletes the channel.
+    \item This behavior is useful physically, but inconvenient for fail-safe power converter operation.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_depletion_mode.png}
+\caption{Depletion-mode GaN HEMT operation with negative gate bias; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Schottky-Gate and Insulated-Gate D-Mode HEMTs}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item Early GaN HEMTs commonly used a Schottky gate directly deposited on the AlGaN barrier.
+    \item The Schottky gate controls the 2DEG by modulating the electric field through the AlGaN layer.
+    \item A second option is an insulated gate, where a dielectric layer separates the metal gate from the semiconductor.
+    \item Insulated-gate structures are closer to MOSFET operation and can reduce gate leakage.
+    \item However, gate-dielectric quality and interface reliability become critical issues.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_schottky_insulated.png}
+\caption{Basic depletion-mode GaN HEMTs with Schottky gate and insulated gate; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Why Normally-Off GaN Is Required}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item In power converters, normally-off behavior is strongly preferred for safety.
+    \item If the gate driver fails, a normally-on device may conduct unintentionally and create a short circuit.
+    \item Enhancement-mode GaN devices are OFF at zero gate bias.
+    \item A positive gate voltage is required to restore or induce the conducting channel.
+    \item This makes enhancement-mode GaN more suitable for practical inverter and converter systems.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_enhancement_mode.png}
+\caption{Enhancement-mode GaN device: zero-bias channel depletion and positive-bias conduction; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Recessed-Gate Enhancement-Mode GaN}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item A recessed-gate structure is obtained by etching part of the AlGaN barrier under the gate.
+    \item Thinning the AlGaN barrier reduces the polarization-induced charge under the gate.
+    \item If the barrier is sufficiently thin, the 2DEG is depleted at zero gate voltage.
+    \item When positive gate bias is applied, electrons are attracted back to the interface and the channel is restored.
+    \item The main challenge is precise etch control and reliable gate-interface formation.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_recessed_gate.png}
+\caption{Recessed AlGaN barrier for enhancement-mode GaN transistor; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Fluorine-Implanted Enhancement-Mode GaN}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item Fluorine implantation introduces negative fixed charge into the AlGaN barrier.
+    \item These negative charges repel electrons and locally deplete the 2DEG under the gate.
+    \item A Schottky gate can then be used to reconstruct the 2DEG when a positive voltage is applied.
+    \item This method shifts the threshold voltage in the positive direction.
+    \item The key concern is long-term threshold stability and trapping-related reliability.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_fluorine_implant.png}
+\caption{Fluorine implantation method for enhancement-mode GaN HEMT; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{p-GaN Gate Enhancement-Mode Structure}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item In the p-GaN gate structure, a p-type GaN layer is grown on top of the AlGaN barrier.
+    \item The positive charge in the p-GaN region depletes the 2DEG below the gate at zero bias.
+    \item This creates normally-off operation.
+    \item p-GaN gate HEMTs are widely used in commercial enhancement-mode GaN power devices.
+    \item Their design must consider gate voltage limits, gate current, and threshold-voltage stability.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_p_gaN_gate.png}
+\caption{p-GaN gate enhancement-mode GaN transistor; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Hybrid Normally-Off GaN Structures}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item Hybrid normally-off solutions combine a low-voltage Si MOSFET with a high-voltage depletion-mode GaN HEMT.
+    \item In a cascode structure, the Si MOSFET controls the source potential of the GaN HEMT.
+    \item When the Si MOSFET is OFF, the GaN gate-source voltage becomes negative and the GaN HEMT turns OFF.
+    \item When the Si MOSFET is ON, the GaN HEMT conducts together with the MOSFET.
+    \item This approach enables normally-off behavior using a naturally normally-on GaN transistor.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_cascode.png}
+\caption{Hybrid normally-off GaN structures: cascode and enable/direct-drive circuit; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Cascode GaN: Added Resistance Contribution}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item In a cascode GaN device, the low-voltage Si MOSFET adds some on-resistance.
+    \item At higher blocking voltage, the GaN HEMT resistance dominates and the MOSFET contribution becomes relatively small.
+    \item Therefore, cascode structures are more attractive at higher voltage ratings.
+    \item At lower voltage ratings, the Si MOSFET contribution becomes more significant.
+    \item This is why device selection must consider the complete series conduction path.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_cascode_resistance.png}
+\caption{Percentage of cascode on-resistance contributed by the low-voltage Si MOSFET; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Reverse Conduction in Enhancement-Mode GaN}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item Enhancement-mode GaN HEMTs can conduct current in both forward and reverse directions.
+    \item During reverse conduction, the device does not rely on minority-carrier diode conduction.
+    \item Instead, when the drain voltage becomes sufficiently lower than the gate voltage, the 2DEG is restored.
+    \item Current can then flow through the channel in the reverse direction.
+    \item This gives GaN devices diode-like functionality without conventional reverse-recovery charge.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_reverse_conduction.png}
+\caption{Forward and reverse current flow in enhancement-mode GaN HEMT; adapted “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Reverse Conduction: Difference from Silicon MOSFETs}
+\begin{itemize}
+    \item In a silicon MOSFET, reverse current often flows through the intrinsic body diode during dead time.
+    \item This body diode involves minority-carrier storage and therefore has reverse-recovery behavior.
+    \item In an enhancement-mode GaN HEMT, reverse conduction is channel-based rather than body-diode-based.
+    \item As a result, GaN devices can reduce reverse-recovery-related switching loss.
+    \item However, the reverse voltage drop can be high if the gate is not properly driven during dead time.
+    \item Synchronous gate control is therefore important for achieving low reverse conduction loss.
+\end{itemize}
+
+\begin{block}{Key message}
+GaN reverse conduction is not identical to MOSFET body-diode conduction; it is mainly controlled by channel reformation and gate bias conditions.
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Comparison of Enhancement-Mode GaN Approaches}
+\begin{columns}
+    \column{0.45\textwidth}
+\begin{itemize}
+    \item \textbf{Recessed gate}
+    \begin{itemize}
+        \item Directly depletes 2DEG under gate.
+        \item Sensitive to etch damage and interface quality.
+    \end{itemize}
+
+    \item \textbf{Fluorine implantation}
+    \begin{itemize}
+        \item Uses negative fixed charge.
+        \item Threshold stability can be challenging.
+    \end{itemize}
+
+    \item \textbf{p-GaN gate}
+    \begin{itemize}
+        \item Commercially important solution.
+        \item Requires careful gate-voltage limitation.
+    \end{itemize}
+\end{itemize}
+
+\column{0.45\textwidth}
+\begin{itemize}
+    \item \textbf{Cascode / hybrid}
+    \begin{itemize}
+        \item Uses low-voltage Si MOSFET with d-mode GaN.
+        \item Compatible with standard gate driving.
+        \item Adds series resistance and package complexity.
+    \end{itemize}
+
+    \item \textbf{Direct-drive hybrid}
+    \begin{itemize}
+        \item Gives more control of GaN switching.
+        \item Requires more complex gate-drive supply.
+    \end{itemize}
+\end{itemize}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Design Takeaways for GaN Transistor Structures}
+\begin{itemize}
+    \item The natural AlGaN/GaN 2DEG makes GaN HEMTs highly conductive but often normally-on.
+    \item Power electronics generally requires normally-off devices for safe startup and fault handling.
+    \item Enhancement-mode GaN can be realized by recessing the gate, implanting charge, using p-GaN gates, or applying hybrid/cascode concepts.
+    \item Each method trades off threshold voltage, on-resistance, gate reliability, manufacturability, and switching behavior.
+    \item Reverse conduction in GaN is channel-based and can provide fast operation with negligible reverse-recovery charge.
+\end{itemize}
+
+\begin{block}{Key message}
+GaN transistor design is fundamentally about controlling the 2DEG: forming it for low loss, depleting it for normally-off behavior, and restoring it during controlled conduction.
+\end{block}
+\end{frame}
+
+
+% =========================================================
+% Slides: GaN Electrical Characteristics
+% =========================================================
+
+\begin{frame}{GaN Transistor Electrical Characteristics}
+
+\begin{itemize}
+    \item Electrical characteristics define how a GaN transistor behaves in practical converter operation.
+    \item Important parameters include:
+    \begin{itemize}
+        \item drain-source breakdown voltage,
+        \item drain leakage current,
+        \item on-resistance,
+        \item threshold voltage,
+        \item capacitance and gate charge,
+        \item reverse conduction behavior.
+    \end{itemize}
+    \item These parameters determine conduction loss, switching loss, safe operating range, and gate-driver requirements.
+    \item GaN devices must therefore be evaluated both statically and dynamically.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Drain-Source Voltage Rating}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item The drain-source voltage rating defines the maximum voltage the device can block between drain and source.
+    \item In the OFF state, the GaN transistor must withstand drain-source voltage without forming an unwanted current path.
+    \item Breakdown can occur if the electric field exceeds the critical field of:
+    \begin{itemize}
+        \item GaN,
+        \item AlGaN,
+        \item gate dielectric,
+        \item passivation or insulating layers.
+    \end{itemize}
+    \item Device geometry, field plates, and surface passivation strongly influence the practical voltage rating.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_reverse_bias.png}
+\caption{Reverse bias in e-mode and d-mode GaN transistors; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Electric-Field Distribution During Blocking}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item During blocking, high electric fields appear near the drain-side edge of the gate.
+    \item Closely spaced electric-field contour lines indicate strong local field concentration.
+    \item If the field becomes too high, breakdown may initiate locally before the whole device reaches its ideal material limit.
+    \item Field management is therefore central in GaN transistor design.
+    \item Field plates and optimized gate-drain spacing are commonly used to reduce electric-field crowding.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_electric_field.png}
+\caption{Electric-field distribution under drain-source voltage stress; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Leakage Current Components}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item Even in the OFF state, a small leakage current flows between device terminals.
+    \item The total drain-source leakage may include:
+    \begin{itemize}
+        \item drain-to-source leakage,
+        \item drain-to-gate leakage,
+        \item drain-to-substrate leakage.
+    \end{itemize}
+    \item Leakage current increases with blocking voltage and temperature.
+    \item For high-efficiency converters, leakage loss can be important during long standby or high-voltage blocking intervals.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_leakage_paths.png}
+\caption{Main leakage-current paths contributing to total drain-source leakage; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Temperature Dependence of Leakage Current}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item Drain-source leakage current is strongly temperature dependent.
+    \item Higher temperature increases carrier generation and thermally activated leakage paths.
+    \item Device-to-device variation is also important, especially near the maximum rated voltage.
+    \item In datasheets, leakage is usually specified at defined:
+    \begin{itemize}
+        \item drain-source voltage,
+        \item gate-source voltage,
+        \item junction temperature.
+    \end{itemize}
+    \item Comparing devices requires careful attention to these test conditions.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_leakage_temperature.png}
+\caption{$I_{\mathrm{DSS}}$ variation with temperature and device-to-device spread; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Datasheet Ratings: $B_{\mathrm{VDSS}}$ and $I_{\mathrm{DSS}}$}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item Datasheets usually separate absolute maximum ratings from static electrical characteristics.
+    \item $B_{\mathrm{VDSS}}$ defines the drain-source blocking voltage under specified test current.
+    \item $I_{\mathrm{DSS}}$ defines leakage current under specified blocking voltage and gate bias.
+    \item Different manufacturers may specify these values at different voltages, currents, and temperatures.
+    \item Therefore, direct comparison requires normalization of test conditions.
+\end{itemize}
+
+\column{0.42\textwidth}
+\vspace{-1cm}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_datasheet.png}
+\includegraphics[width=\textwidth]{fig/lec06/GaN_datasheet_II.png}
+\caption{Datasheet examples for $B_{\mathrm{VDSS}}$ and $I_{\mathrm{DSS}}$; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{On-Resistance Components in GaN HEMTs}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item The on-resistance of a GaN transistor is the sum of several resistance components.
+    \item Important contributions include:
+    \begin{itemize}
+        \item source and drain contact resistance,
+        \item access-region 2DEG resistance,
+        \item gate-region 2DEG resistance,
+        \item parasitic metal and package resistance.
+    \end{itemize}
+    \item The 2DEG resistance depends on electron mobility, sheet density, and conduction width.
+\end{itemize}
+
+\begin{equation}
+R_{\mathrm{HEMT}}
+=
+2R_{\mathrm{C}} + R_{\mathrm{2DEG}} + R_{\mathrm{2DEG(gate)}}
+\end{equation}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_major_resistance.png}
+\caption{Major components contributing to $R_{\mathrm{DS(on)}}$; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Temperature Dependence of $R_{\mathrm{DS(on)}}$}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item $R_{\mathrm{DS(on)}}$ increases with junction temperature.
+    \item In GaN HEMTs, this increase is strongly influenced by the temperature dependence of 2DEG mobility.
+    \item Contact and metal resistances also change with temperature, but the 2DEG contribution can dominate.
+    \item For converter design, $R_{\mathrm{DS(on)}}$ should be evaluated at expected operating junction temperature, not only at $25^{\circ}\mathrm{C}$.
+\end{itemize}
+
+\begin{equation}
+P_{\mathrm{cond}}
+=
+I_{\mathrm{D,rms}}^{2}R_{\mathrm{DS(on)}}(T_{\mathrm{j}})
+\end{equation}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_resistance_temperature.png}
+\caption{Normalized $R_{\mathrm{DS(on)}}$ versus junction temperature; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{$R_{\mathrm{DS(on)}}$ Dependence on Gate Voltage}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item The on-resistance decreases as gate-source voltage increases.
+    \item At low gate voltage, the channel under the gate is not fully enhanced.
+    \item Once the 2DEG is fully restored, further gate-voltage increase gives only limited reduction in resistance.
+    \item This is why GaN devices require a well-defined positive gate-drive voltage.
+    \item Under-driving the gate increases conduction loss and can raise junction temperature.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_resistance_gate_voltage.png}
+\caption{$R_{\mathrm{DS(on)}}$ versus $V_{\mathrm{GS}}$ for different currents and temperatures; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Datasheet Specification of $R_{\mathrm{DS(on)}}$}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item Datasheets specify $R_{\mathrm{DS(on)}}$ at a defined gate voltage, drain current, and temperature.
+    \item For low-voltage GaN, the specified gate voltage may be around $5~\mathrm{V}$.
+    \item For higher-voltage GaN devices, the specified gate voltage may be different, such as $6~\mathrm{V}$.
+    \item Maximum values are more useful for thermal design than typical values.
+    \item Always check whether the datasheet value is measured at $25^{\circ}\mathrm{C}$ or elevated temperature.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_datasheet_III.png}
+\includegraphics[width=\textwidth]{fig/lec06/GaN_datasheet_IV.png}
+\caption{Datasheet examples for $R_{\mathrm{DS(on)}}$ specification; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Threshold Voltage in GaN Transistors}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item Threshold voltage is the gate-source voltage at which drain current begins to flow under a defined test condition.
+    \item Enhancement-mode GaN has a positive threshold voltage.
+    \item Depletion-mode GaN has a negative threshold voltage.
+    \item In GaN devices, threshold voltage depends on:
+    \begin{itemize}
+        \item polarization-induced charge,
+        \item AlGaN barrier design,
+        \item gate metal or p-GaN gate structure,
+        \item temperature.
+    \end{itemize}
+\end{itemize}
+
+\column{0.42\textwidth}
+\vspace{-0.75cm}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_threshold_voltage.png}
+\caption{Normalized threshold voltage versus junction temperature for e-mode GaN; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Threshold Voltage: GaN Versus Si MOSFET}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item GaN threshold voltage is usually low compared with many silicon MOSFETs.
+    \item This makes gate-drive noise immunity especially important.
+    \item Compared with Si MOSFETs, GaN threshold voltage can show smaller temperature variation.
+    \item However, the small absolute threshold margin means that:
+    \begin{itemize}
+        \item false turn-on must be avoided,
+        \item negative gate undershoot must be controlled,
+        \item gate-driver layout must be very compact.
+    \end{itemize}
+\end{itemize}
+
+\column{0.42\textwidth}
+\vspace{-1cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{fig/lec06/GaN_threshold_voltage_comparison.png}
+\caption{Example Si MOSFET threshold voltage variation with temperature; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Datasheet Specification of Threshold Voltage}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item Threshold voltage is specified using a small drain current criterion.
+    \item Therefore, it should not be confused with the recommended gate voltage for low-loss conduction.
+    \item For example, a device may have $V_{\mathrm{th}}$ near $1$--$2~\mathrm{V}$ but still require $5$--$6~\mathrm{V}$ for full enhancement.
+    \item In converter design, threshold voltage is mainly useful for:
+    \begin{itemize}
+        \item noise-margin assessment,
+        \item false turn-on analysis,
+        \item gate-driver protection design.
+    \end{itemize}
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_datasheet_V.png}
+\includegraphics[width=\textwidth]{fig/lec06/GaN_datasheet_VI.png}
+\caption{Datasheet examples for GaN threshold voltage specification; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Capacitances in GaN Transistors}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item GaN transistor switching behavior is strongly influenced by terminal capacitances.
+    \item The main intrinsic capacitances are:
+    \begin{itemize}
+        \item gate-source capacitance $C_{\mathrm{GS}}$,
+        \item gate-drain capacitance $C_{\mathrm{GD}}$,
+        \item drain-source capacitance $C_{\mathrm{DS}}$.
+    \end{itemize}
+    \item Datasheets often report:
+\end{itemize}
+
+\begin{equation}
+C_{\mathrm{iss}} = C_{\mathrm{GS}} + C_{\mathrm{GD}}
+\end{equation}
+
+\begin{equation}
+C_{\mathrm{oss}} = C_{\mathrm{DS}} + C_{\mathrm{GD}},
+\qquad
+C_{\mathrm{rss}} = C_{\mathrm{GD}}
+\end{equation}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_capacitance_sources.png}
+\caption{Schematic of GaN transistor capacitance sources; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Voltage Dependence of GaN Capacitances}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item GaN capacitances are strongly voltage dependent.
+    \item As $V_{\mathrm{DS}}$ increases, the output capacitance usually decreases.
+    \item This occurs because the 2DEG near the drain is depleted and the effective charge-storage region changes.
+    \item $C_{\mathrm{oss}}$ is especially important because it affects:
+    \begin{itemize}
+        \item soft-switching energy,
+        \item voltage transition time,
+        \item resonant ringing,
+        \item switching loss.
+    \end{itemize}
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_capacitance_voltage.png}
+\caption{Capacitance variation with drain-source voltage; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Gate Charge and Miller Plateau}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item Gate charge describes the amount of charge required to move the device from OFF state to ON state.
+    \item The gate-charge curve links charge to gate-source voltage.
+    \item The nearly flat region corresponds to the Miller interval, where drain-source voltage changes.
+    \item Lower gate charge allows faster switching and lower gate-drive loss.
+    \item However, very fast switching increases sensitivity to parasitic inductance and EMI.
+\end{itemize}
+
+\begin{equation}
+Q = \int i_{\mathrm{G}}(t)\,dt
+\end{equation}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_gate_charge_I.png}
+\caption{Gate charge versus gate-source voltage for EPC2045; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Dynamic Datasheet Parameters}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item Dynamic parameters are essential for switching-loss and gate-driver design.
+    \item Important quantities include:
+    \begin{itemize}
+        \item $C_{\mathrm{iss}}$, $C_{\mathrm{oss}}$, $C_{\mathrm{rss}}$,
+        \item $Q_{\mathrm{G}}$, $Q_{\mathrm{GS}}$, $Q_{\mathrm{GD}}$,
+        \item output charge $Q_{\mathrm{OSS}}$,
+        \item internal gate resistance $R_{\mathrm{G}}$.
+    \end{itemize}
+    \item The minimum gate-voltage transition time can be estimated from gate charge and gate resistance:
+\end{itemize}
+
+\begin{equation}
+t_{\mathrm{rise,min}}
+=
+\frac{Q_{\mathrm{G}}R_{\mathrm{G}}}{V_{\mathrm{GS}}}
+\end{equation}
+
+\column{0.42\textwidth}
+\vspace{-0.75cm}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_datasheet_VII.png}
+\caption{Dynamic capacitance, charge, and gate-resistance data; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Reverse Conduction in GaN HEMTs}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item GaN HEMTs do not have a conventional p-n body diode like Si MOSFETs.
+    \item Reverse current can still flow through the 2DEG channel.
+    \item If $V_{\mathrm{GS}}$ is high enough, reverse conduction occurs with nearly the same on-resistance as forward conduction.
+    \item If the gate is OFF, reverse current requires a larger source-to-drain voltage to re-establish channel conduction.
+    \item This behavior is very important during dead time in half-bridge converters.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_reverse_conduction_IV.png}
+\caption{Source-to-drain current versus source-to-drain voltage under reverse conduction; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Reverse Conduction Versus Si MOSFET Body Diode}
+\begin{columns}[T]
+
+\column{0.54\textwidth}
+\begin{itemize}
+    \item In Si MOSFETs, reverse current usually flows through the intrinsic body diode during dead time.
+    \item This diode stores minority charge and creates reverse-recovery loss.
+    \item In enhancement-mode GaN, there is no minority-carrier reverse recovery.
+    \item Therefore, the specified reverse-recovery charge can be effectively zero.
+    \item The trade-off is that reverse voltage drop can be high if the gate is not properly driven.
+\end{itemize}
+
+\column{0.42\textwidth}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{fig/lec06/GaN_datasheet_VIII.png}
+\includegraphics[width=\textwidth]{fig/lec06/GaN_datasheet_IX.png}
+\caption{Reverse-conduction data for GaN and Si MOSFET comparison; adapted from “Lidow, Alex, et al. GaN power devices for efficient power conversion. John Wiley \& Sons” 2025.}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Design Takeaways from GaN Electrical Characteristics}
+\begin{itemize}
+    \item $B_{\mathrm{VDSS}}$ and $I_{\mathrm{DSS}}$ define voltage blocking and leakage behavior.
+    \item $R_{\mathrm{DS(on)}}$ determines conduction loss and increases with temperature.
+    \item Threshold voltage is low, so gate-drive noise immunity is critical.
+    \item Capacitances and gate charge determine switching speed, switching loss, and EMI sensitivity.
+    \item Reverse conduction is channel-based and avoids conventional reverse recovery.
+    \item Proper GaN converter design requires simultaneous optimization of device selection, gate drive, layout, dead time, and thermal management.
+\end{itemize}
+
+\begin{block}{Key message}
+GaN electrical characteristics cannot be judged from $R_{\mathrm{DS(on)}}$ alone; voltage rating, leakage, threshold, capacitance, charge, and reverse conduction must be evaluated together.
+\end{block}
+\end{frame}
