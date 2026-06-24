@@ -1459,21 +1459,154 @@ This distinction is fundamental because the design objectives of inductors and t
         \end{column} 
     \end{columns} 
 \end{frame} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Area product introduction %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame} \frametitle{Derivation of the Area Product Method} \begin{columns} \begin{column}{0.58\textwidth} Two independent constraints must simultaneously be satisfied: \vspace{0.15cm} \begin{enumerate} \item Copper accommodation constraint \item Magnetic flux-density constraint \end{enumerate} Combining both constraints leads to the area-product concept \begin{align} A_P = A_cA_w \end{align} where \begin{itemize} \item $A_c$ determines magnetic capability \item $A_w$ determines copper capability \end{itemize} \vspace{0.15cm} The area product links electrical requirements directly to core dimensions. \end{column} \begin{column}{0.38\textwidth} \begin{block}{Why Area Product?} Rather than solving for \[ A_c \] and \[ A_w \] individually, the designer first determines \[ A_P \] and then selects a suitable commercial core. \end{block} \end{column} \end{columns} \end{frame} 
+\begin{frame} \frametitle{Derivation of the Area Product Method}
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            Two independent constraints must simultaneously be satisfied: \vspace{0.15cm} 
+            \begin{enumerate} 
+                \item Copper accommodation constraint 
+                \item Magnetic flux-density constraint
+            \end{enumerate} 
+            Combining both constraints leads to the area-product concept 
+            \begin{align} 
+                A_P = A_cA_w 
+            \end{align} where 
+            \begin{itemize} 
+                \item $A_c$ determines magnetic capability 
+                \item $A_w$ determines copper capability
+            \end{itemize} 
+            \vspace{0.15cm} 
+            The area product links electrical requirements directly to core dimensions. 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{block}{Why Area Product?} Rather than solving for $A_c$ and $A_w$ individually, the designer first determines $A_P$ and then selects a suitable commercial core. 
+            \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Area product equation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame} \frametitle{Area Product Equation for Power Inductors} \begin{columns} \begin{column}{0.58\textwidth} Combining the energy-storage requirement \begin{align} E=\frac12LI^2 \end{align} with the window-area and flux-density constraints yields the well-known area-product equation. \vspace{0.15cm} For practical inductor design, \begin{align} A_P = \frac{2E} {K_wK_cJB_m} \end{align} where \begin{itemize} \item $K_w$ = window utilization factor \item $K_c$ = waveform crest factor \item $J$ = current density \item $B_m$ = maximum flux density \end{itemize} \end{column} \begin{column}{0.38\textwidth} \begin{block}{Meaning} More stored energy \[ \uparrow E \] requires \[ \uparrow A_P \] and therefore a larger magnetic core. \end{block} \end{column} \end{columns} \end{frame} 
+\begin{frame} \frametitle{Area Product Equation for Power Inductors} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            Combining the energy-storage requirement
+            \begin{align} 
+                E=\frac12LI^2 
+            \end{align} with the window-area and flux-density constraints yields the well-known area-product equation.
+            \vspace{0.15cm} For practical inductor design,
+            \begin{align} 
+                A_P = \frac{2E} {K_wK_cJB_m} 
+            \end{align} where 
+            \begin{itemize} 
+                \item $K_w$ = window utilization factor 
+                \item $K_c$ = waveform crest factor 
+                \item $J$ = current density 
+                \item $B_m$ = maximum flux density 
+            \end{itemize} 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{block}{Meaning} More stored energy $\uparrow E$ requires $\uparrow A_P$ and therefore a larger magnetic core. 
+            \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Core selection %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{frame} \frametitle{Core Selection Using Area Product} \begin{columns} \begin{column}{0.58\textwidth} Once the required area product has been calculated, \begin{align} A_P^{req} \end{align} the designer consults magnetic-core manufacturer catalogues. \vspace{0.15cm} The selected core must satisfy \begin{align} A_P^{core} > A_P^{req} \end{align} \vspace{0.15cm} Typical selection criteria: \begin{itemize} \item Thermal performance \item Core material \item Available winding window \item Manufacturing constraints \item Cost \end{itemize} \end{column} \begin{column}{0.38\textwidth} \begin{block}{Important Observation} Area product provides only a first-order selection. \vspace{0.15cm} Detailed verification must still be performed afterwards. \end{block} \end{column} \end{columns} \end{frame} 
+\begin{frame} 
+    \frametitle{Core Selection Using Area Product}
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            Once the required area product has been calculated,
+            \begin{align} 
+                A_P^{req} 
+            \end{align} 
+            the designer consults magnetic-core manufacturer catalogues. 
+            \vspace{0.15cm} 
+            The selected core must satisfy 
+            \begin{align} 
+                A_P^{core} > A_P^{req} 
+            \end{align} 
+            \vspace{0.15cm} Typical selection criteria:
+            \begin{itemize} 
+                \item Thermal performance 
+                \item Core material 
+                \item Available winding window 
+                \item Manufacturing constraints 
+                \item Cost 
+            \end{itemize} 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{block}{Important Observation} Area product provides only a first-order selection. \vspace{0.15cm} Detailed verification must still be performed afterwards. 
+            \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Design procedure %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{frame} \frametitle{Practical Inductor Design Procedure} Based on the procedure presented by Umanand, the design process consists of the following steps: \vspace{0.2cm} \begin{enumerate} \item Specify inductance $L$ and maximum current $I$. \item Determine required stored energy: \[ E=\frac12LI^2 \] \item Calculate required area product. \item Select magnetic core. \item Determine air-gap length. \item Calculate required turns. \item Select conductor size. \item Verify flux density and temperature rise. \end{enumerate} \vspace{0.2cm} These steps form the basis of most industrial magnetic-component design workflows. \end{frame} 
+\begin{frame} 
+    \frametitle{Practical Inductor Design Procedure} 
+    Based on the area product method, the design process consists of the following steps: 
+    \vspace{0.2cm}
+     \begin{enumerate} 
+        \item Specify inductance $L$ and maximum current $I$. 
+        \item Determine required stored energy: \[ E=\frac12LI^2 \] 
+        \item Calculate required area product. 
+        \item Select magnetic core. 
+        \item Determine air-gap length. 
+        \item Calculate required turns. 
+        \item Select conductor size. 
+        \item Verify flux density and temperature rise. 
+    \end{enumerate} 
+    \vspace{0.2cm} 
+    These steps form the basis of most industrial magnetic-component design workflows. 
+\end{frame} 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Fringing flux 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{frame} \frametitle{Fringing Flux Around Air Gaps} \begin{columns} \begin{column}{0.58\textwidth} The previous analysis assumed that magnetic flux remains confined within the core cross-sectional area. \vspace{0.15cm} In practice, flux spreads outward near the air gap. \vspace{0.15cm} This phenomenon is called fringing flux. \vspace{0.15cm} Consequences include: \begin{itemize} \item Increased effective gap area \item Reduced effective gap reluctance \item Increased winding eddy-current loss \item Localized heating \end{itemize} \vspace{0.15cm} Fringing becomes increasingly important in high-current and high-frequency inductors. \end{column} \begin{column}{0.38\textwidth} \begin{block}{Practical Solution} Avoid placing winding conductors directly adjacent to the air gap. \vspace{0.15cm} Many commercial designs deliberately move the gap away from copper windings. \end{block} \end{column} \end{columns} \end{frame}
+\begin{frame} 
+    \frametitle{Fringing Flux Around Air Gaps} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            The previous analysis assumed that magnetic flux remains confined within the core cross-sectional area.
+            \vspace{0.15cm} In practice, flux spreads outward near the air gap. 
+            \vspace{0.15cm} This phenomenon is called fringing flux. 
+            \vspace{0.15cm} Consequences include:
+            \begin{itemize} 
+                \item Increased effective gap area 
+                \item Reduced effective gap reluctance 
+                \item Increased winding eddy-current loss 
+                \item Localized heating 
+            \end{itemize} 
+            \vspace{0.15cm} Fringing becomes increasingly important in high-current and high-frequency inductors. 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{block}{Practical Solution} 
+                Avoid placing winding conductors directly adjacent to the air gap. 
+                \vspace{0.15cm} Many commercial designs deliberately move the gap away from copper windings. 
+            \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Inductor design summary %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame} \frametitle{Summary of Practical Inductor Design} \begin{itemize} \item The area-product method combines magnetic and copper constraints. \item Window area determines winding capability. \item Core area determines flux capability. \item Air gaps enable practical energy storage. \item Core selection is usually performed using the required area product. \item Fringing flux must be considered in practical implementations. \item Detailed design requires verification of: \begin{itemize} \item Flux density \item Saturation current \item Copper loss \item Core loss \item Temperature rise \end{itemize} \end{itemize} \end{frame}
+\begin{frame} 
+    \frametitle{Summary of Practical Inductor Design} 
+    \begin{itemize} 
+        \item The area-product method combines magnetic and copper constraints. 
+        \item Window area determines winding capability. 
+        \item Core area determines flux capability. 
+        \item Air gaps enable practical energy storage. 
+        \item Core selection is usually performed using the required area product. 
+        \item Fringing flux must be considered in practical implementations. 
+        \item Detailed design requires verification of:
+        \begin{itemize} 
+            \item Flux density 
+            \item Saturation current 
+            \item Copper loss 
+            \item Core loss 
+            \item Temperature rise 
+        \end{itemize} 
+    \end{itemize} 
+\end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1564,12 +1697,8 @@ The ideal transformer assumes:
 Under these assumptions,
 
 \begin{align}
-\frac{v_1}{N_1}
-=
-\frac{v_2}{N_2} \\
-\frac{i_1}{N_2}
-=
--\frac{i_2}{N_1}
+\frac{v_1}{N_1} &= \frac{v_2}{N_2} \\
+\frac{i_1}{N_2} &= -\frac{i_2}{N_1}
 \end{align}
 \end{column}
 
@@ -1602,23 +1731,17 @@ The negative sign reflects power conservation and dot-convention polarity.
 Applying Faraday's law to both windings,
 
 \begin{align}
-v_1
-=
-N_1\frac{d\Phi}{dt}
+v_1 &= N_1\frac{d\Phi}{dt}
 \end{align}
 
 \begin{align}
-v_2
-=
-N_2\frac{d\Phi}{dt}
+v_2 &= N_2\frac{d\Phi}{dt}
 \end{align}
 
 Dividing the equations gives
 
 \begin{align}
-\frac{v_2}{v_1}
-=
-\frac{N_2}{N_1}
+\frac{v_2}{v_1} &= \frac{N_2}{N_1}
 \end{align}
 
 \end{column}
@@ -1654,68 +1777,42 @@ Voltage is increased by a factor of five.
 
 \begin{columns}
 
-\begin{column}{0.58\textwidth}
+\begin{column}{0.45\textwidth}
 
 Power conservation in an ideal transformer requires
 
 \begin{align}
-v_1i_1
-=
-v_2i_2
+v_1 i_1 &= v_2 i_2
 \end{align}
 
 Using
 
 \begin{align}
-\frac{v_2}{v_1}
-=
-\frac{N_2}{N_1}
+\frac{v_2}{v_1} &= \frac{N_2}{N_1}
 \end{align}
 
 gives
 
 \begin{align}
-\frac{i_2}{i_1}
-=
-\frac{N_1}{N_2}
+\frac{i_2}{i_1} &= \frac{N_1}{N_2}
 \end{align}
 
-\vspace{0.15cm}
+\end{column}
 
+\begin{column}{0.5\textwidth}
+
+\begin{block}{Design Insight}
+High-voltage winding $\Rightarrow$ low current \\
+
+Low-voltage winding $\Rightarrow$ high current
+
+\end{block}
 Important observations:
-
 \begin{itemize}
 \item Voltage increases with turns ratio.
 \item Current decreases with turns ratio.
 \item Power remains unchanged in the ideal case.
 \end{itemize}
-
-\end{column}
-
-\begin{column}{0.38\textwidth}
-
-\begin{block}{Design Insight}
-
-High-voltage winding
-
-\[
-\Rightarrow
-\]
-
-low current
-
-\vspace{0.15cm}
-
-Low-voltage winding
-
-\[
-\Rightarrow
-\]
-
-high current
-
-\end{block}
-
 \end{column}
 
 \end{columns}
@@ -1736,9 +1833,7 @@ high current
 Applying Amp\`ere's law around the magnetic core yields
 
 \begin{align}
-N_1i_1+N_2i_2
-=
-0
+N_1 i_1 + N_2 i_2 &= 0
 \end{align}
 
 This relation is called ampere-turn balance.
@@ -1764,9 +1859,7 @@ This is the magnetic equivalent of current balance in electrical circuits.
 \begin{block}{Key Result}
 
 \begin{align}
-N_1i_1
-=
--N_2i_2
+N_1 i_1 &= -N_2 i_2
 \end{align}
 
 Ampere-turns cancel.
@@ -1794,10 +1887,7 @@ A practical transformer requires a finite current to establish magnetic flux. Th
 $L_m = \frac{N^2}{\mathcal R}$ the magnetizing current becomes
 
 \begin{align}
-i_m
-=
-\frac{1}{L_m}
-\int v\,dt
+i_m &= \frac{1}{L_m} \int v\,dt
 \end{align}
 
 \vspace{0.15cm}
@@ -1842,9 +1932,7 @@ Magnetizing inductance represents the ability of the transformer core to establi
 \vspace{0.15cm}
 
 \begin{align}
-L_m
-=
-\frac{N^2}{\mathcal R}
+L_m &= \frac{N^2}{\mathcal R}
 \end{align}
 
 Therefore,
