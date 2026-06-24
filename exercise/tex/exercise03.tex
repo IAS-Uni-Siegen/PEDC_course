@@ -38,7 +38,7 @@ duty ratio $D = 0.5$ \\
 
 Use the slide expressions
 \begin{align}
-    P_\mathrm{ON} &= I_\mathrm{D(rms)}^2 R_\mathrm{DS(on)} \\
+    P_\mathrm{ON} &= \left(I_\mathrm{D(rms)} \right)^2 R_\mathrm{DS(on)} \\
     P_\mathrm{switching} &= \frac{1}{6} V_\mathrm{DS} I_\mathrm{D} (t_\mathrm{r} + t_\mathrm{f}) f_\mathrm{s}.
 \end{align}
 
@@ -57,43 +57,43 @@ Use the slide expressions
 \begin{solutionblock}
     For $D = 0.5$, the root-mean-square current is
     \begin{equation}
-        I_\mathrm{rms} = I \sqrt{D}.
+        I_\mathrm{rms} = I \cdot D.
     \end{equation}
 
     For Application I:
     \begin{equation}
-        I_\mathrm{rms} = \SI{40}{\ampere} \cdot \sqrt{0.5} = \SI{28.3}{\ampere}.
+        I_\mathrm{rms} = \SI{40}{\ampere} \cdot 0.5 = \SI{20}{\ampere}.
     \end{equation}
 
     Device A:
     \begin{align}
-        P_\mathrm{ON,A} &= \left( \SI{28.3}{\ampere} \right)^2 \cdot \SI{3}{\milli\ohm} \approx \SI{2.4}{\watt} \\
+        P_\mathrm{ON,A} &= \left( \SI{20}{\ampere} \right)^2 \cdot \SI{3}{\milli\ohm} \approx \SI{1.2}{\watt} \\
         P_\mathrm{sw,A} &= \frac{1}{6} \cdot \SI{48}{\volt} \cdot \SI{40}{\ampere} \cdot \SI{40}{\nano\second} \cdot \SI{200}{\kilo\hertz}
         \approx \SI{2.56}{\watt} \\
-        P_\mathrm{tot,A} &\approx \SI{4.96}{\watt}.
+        P_\mathrm{tot,A} &\approx \SI{3.76}{\watt}.
     \end{align}
 
     Device B:
     \begin{align}
-        P_\mathrm{ON,B} &= \left( \SI{28.3}{\ampere} \right)^2 \cdot \SI{120}{\milli\ohm} \approx \SI{96}{\watt} \\
+        P_\mathrm{ON,B} &= \left( \SI{20}{\ampere} \right)^2 \cdot \SI{120}{\milli\ohm} \approx \SI{48}{\watt} \\
         P_\mathrm{sw,B} &= \frac{1}{6} \cdot \SI{48}{\volt} \cdot \SI{40}{\ampere} \cdot \SI{100}{\nano\second} \cdot \SI{200}{\kilo\hertz}
         \approx \SI{6.4}{\watt} \\
-        P_\mathrm{tot,B} &\approx \SI{102.4}{\watt}.
+        P_\mathrm{tot,B} &\approx \SI{54.4}{\watt}.
     \end{align}
 
     Hence, Device A is clearly correct for Application I.
 
     For Application II:
     \begin{equation}
-        I_\mathrm{rms} = \SI{8}{\ampere} \cdot \sqrt{0.5} = \SI{5.66}{\ampere}.
+        I_\mathrm{rms} = \SI{8}{\ampere} \cdot 0.5 = \SI{4}{\ampere}.
     \end{equation}
 
     Device B:
     \begin{align}
-        P_\mathrm{ON,B} &= \left( \SI{5.66}{\ampere} \right)^2 \cdot \SI{120}{\milli\ohm} \approx \SI{3.84}{\watt} \\
+        P_\mathrm{ON,B} &= \left( \SI{4}{\ampere} \right)^2 \cdot \SI{120}{\milli\ohm} \approx \SI{1.92}{\watt} \\
         P_\mathrm{sw,B} &= \frac{1}{6} \cdot \SI{400}{\volt} \cdot \SI{8}{\ampere} \cdot \SI{100}{\nano\second} \cdot \SI{50}{\kilo\hertz}
         \approx \SI{2.67}{\watt} \\
-        P_\mathrm{tot,B} &\approx \SI{6.51}{\watt}.
+        P_\mathrm{tot,B} &\approx \SI{4.59}{\watt}.
     \end{align}
 
 \end{solutionblock}
