@@ -1,1122 +1,2062 @@
-\section{Synchronous machines}
-\title[Synchronous machines]{Synchronous machines}  
 
-\begin{frame}[plain]
-    \titlepage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Magnetic Concepts %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{center}
+  \textbf{\Huge{Passive components- Inductors and Capacitors}}\\
+\end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Synchronous machine (SM) rotor types %%
+%% Importance of Magnetics
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-	\frametitle{Synchronous machine (SM) rotor types}
-	\begin{figure}
-		\centering
-		\begin{subfigure}{0.49\textwidth}
-			\centering
-			\includegraphics[width=0.8\textwidth]{fig/lec07/SM_salient_pole.pdf}
-			\caption{Salient pole rotor}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}{0.49\textwidth}
-			\centering
-			\includegraphics[width=0.8\textwidth]{fig/lec07/SM_cylindrical_rotor.pdf}
-			\caption{Cylindrical rotor}
-		\end{subfigure}
-        \caption{Major rotor types of synchronous machines (SM)} 
-        \label{fig:examples_SM_rotor}
-	\end{figure}
+\frametitle{Why are Magnetic Components Important in Power Electronics?}
+Magnetic components are indispensable building blocks of almost every power electronic converter. Unlike semiconductor devices, which process electrical energy through switching action, magnetic components enable energy storage, energy transfer, filtering, isolation, and voltage conversion.
+
+\begin{itemize}
+    \item Inductors store energy in magnetic fields and control current ripple.
+    \item Transformers transfer energy between circuits while providing galvanic isolation.
+    \item Magnetic components determine:
+    \begin{itemize}
+        \item Converter efficiency,
+        \item Power density,
+        \item Thermal performance,
+        \item Electromagnetic compatibility (EMC).
+    \end{itemize}
+    \item In modern GaN- and SiC-based converters, magnetics often become the primary bottleneck limiting switching frequency and power density.
+\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% SM application examples %%
+%% Classification
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-	\frametitle{SM application examples}
-	\begin{figure}
-		\centering
-		\begin{subfigure}{0.49\textwidth}
-			\centering
-			\includegraphics[height=0.55\textheight]{fig/lec07/Salient_pole_rotor.jpg}
-			\caption{\SI{2}{\mega\volt\ampere} generator from 1920 (source: \href{hhttps://commons.wikimedia.org/wiki/File:Drehstrom-Synchron-Generator.jpg}{Wikimedia Commons}, Kolossos, \href{https://creativecommons.org/licenses/by-sa/3.0/deed}{CC BY-SA 3.0})}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}{0.49\textwidth}
-			\centering
-			\includegraphics[height=0.55\textheight]{fig/lec07/Pelton_wheel_rotor.jpg}
-			\caption{\SI[tight-spacing=true]{36}{\mega\volt\ampere} Pelton wheel generator (source: \href{https://commons.wikimedia.org/wiki/File:Wald_am_Arlberg-OeBB_Spullersee_power_plant-M1-Rotor-09ASD.jpg}{Wikimedia Commons},  	Asurnipal, \href{https://creativecommons.org/licenses/by-sa/4.0/deed}{CC BY-SA 4.0})} 
-		\end{subfigure}
-        \caption{SM examples with salient pole rotor type} 
-        \label{fig:examples_SM_applications_01}
-	\end{figure}
-\end{frame}
+\frametitle{Classification of Magnetic Components}
+Magnetic components used in power electronics can be broadly classified into two categories:
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% SM application examples (cont.) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{SM application examples (cont.)}
-	\begin{figure}
-		\centering
-		\begin{subfigure}{0.49\textwidth}
-			\centering
-			\includegraphics[height=0.55\textheight]{fig/lec07/Turbogenerator.jpg}
-			\caption{\SI{650}{\mega\volt\ampere} turbogenerator from Cernavodă nuclear power plant (source: \href{https://commons.wikimedia.org/wiki/File:Grupul_turbogenerator_CNE_Cernavoda.jpg}{Wikimedia Commons}, R. Lavinia, \href{https://creativecommons.org/licenses/by-sa/4.0/deed}{CC BY-SA 4.0})}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}{0.49\textwidth}
-			\centering
-			\includegraphics[height=0.55\textheight]{fig/lec07/Turbogenerator_rotor.jpg}
-			\caption{\SI[tight-spacing=true]{1}{\giga\volt\ampere} turbogenerator SM rotor from Balakovo nuclear power plant (source: \href{https://commons.wikimedia.org/wiki/File:BalakovoNPP_tb.jpg}{Wikimedia Commons},  A. Seetenky, \href{https://creativecommons.org/licenses/by-sa/3.0/deed}{CC BY-SA 3.0})} 
-		\end{subfigure}
-        \caption{SM examples with cylindrical rotor type} 
-        \label{fig:examples_SM_applications_02}
-	\end{figure}
-\end{frame}
+\vspace{0.2cm}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Visualization of the synchronous machine operation %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Visualization of the synchronous machine operation}
-    \vspace{-0.275cm}
-    \begin{figure}
-        \centering
-        \movie{\includegraphics[height=0.85\textheight]{fig/lec07/SM_load_angle_90_preview.png}}{fig/lec07/SM_load_angle_90_animation.gif}
-        \vspace{-0.25cm}
-        \caption{Exemplary SM operation at $\omega=2 \pi \SI{50}{\per\second}$ in motoric operation (positive average torque)}
-        \label{fig:SM_load_angle_90_animation}
-    \end{figure}
-\end{frame}
+\begin{enumerate}
+\item \textbf{Energy-transfer devices}
+\begin{itemize}
+\item Transfer energy from one electrical port to another.
+\item Ideally store no energy.
+\item Examples:
+\begin{itemize}
+\item Power transformers,
+\item Current transformers (CTs),
+\item Pulse transformers.
+\end{itemize}
+\end{itemize}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Visualization of the synchronous machine operation (cont.) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Visualization of the synchronous machine operation (cont.)}
-    \vspace{-0.275cm}
-    \begin{figure}
-        \centering
-        \movie{\includegraphics[height=0.85\textheight]{fig/lec07/SM_load_angle_0_preview.png}}{fig/lec07/SM_load_angle_0_animation.gif}
-        \vspace{-0.25cm}
-        \caption{Exemplary SM operation at $\omega=2 \pi \SI{50}{\per\second}$ in no-load operation (zero average torque)}
-        \label{fig:SM_load_angle_0_animation}
-    \end{figure}
-\end{frame}
+\item \textbf{Energy-storage devices}
+\begin{itemize}
+\item Store energy temporarily in magnetic fields.
+\item Examples:
+\begin{itemize}
+\item Power inductors,
+\item Coupled inductors,
+\item Flyback transformers.
+\end{itemize}
+\end{itemize}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Dynamical IM model %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Dynamical SM model}
-    Based on Faraday's and Ohm's laws, we can write the following equations for the stator 
-    \begin{equation}
-            \bm{u}^\mathrm{s}_\mathrm{s,abc}(t) = R_\mathrm{s}\bm{i}^\mathrm{s}_\mathrm{s,abc}(t)+\frac{\mathrm{d}}{\mathrm{d}t}\bm{\psi}^\mathrm{s}_\mathrm{s,abc}(t) \hspace{0.2cm} \Leftrightarrow \hspace{0.2cm} \begin{bmatrix}
-                u_{\mathrm{s,a}}^\mathrm{s}(t)\\
-                u_{\mathrm{s,b}}^\mathrm{s}(t)\\
-                u_{\mathrm{s,c}}(t)\\
-            \end{bmatrix} = R_\mathrm{s} \begin{bmatrix}
-                i_{\mathrm{s,a}}^\mathrm{s}(t)\\
-                i_{\mathrm{s,b}}^\mathrm{s}(t)\\
-                i_{\mathrm{s,c}}^\mathrm{s}(t)\\
-            \end{bmatrix} + \frac{\mathrm{d}}{\mathrm{d}t} \begin{bmatrix}
-                \psi_{\mathrm{s,a}}^\mathrm{s}(t)\\
-                \psi_{\mathrm{s,b}}^\mathrm{s}(t)\\
-                \psi_{\mathrm{s,c}}^\mathrm{s}(t)\\
-            \end{bmatrix}
-            \label{eq:SM_stator_three_phase_voltage_equation}
-    \end{equation}
-    \pause
-    and rotor field winding
-    \begin{equation}
-            u^\mathrm{r}_\mathrm{f}(t) = R_\mathrm{f}i^\mathrm{r}_\mathrm{f}(t)+\frac{\mathrm{d}}{\mathrm{d}t}\psi^\mathrm{r}_\mathrm{f}(t) 
-            \label{eq:SM_rotor_voltage_equation}
-    \end{equation}
-which are generally applicable as only identical resistances per phase on the stator are assumed. \pause In contrast to the induction motor, only a single rotor field winding is present.
-\end{frame}
+\end{enumerate}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Flux linakge model %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Flux linkage model}
-    \onslide<2->
-    \begin{columns}
-		\begin{column}{0.55\textwidth}
-			The SM flux linkage model is similar to the IM model:
-	       \begin{itemize}
-            \item<2-> Assuming a cylindrical rotor, the self-induced stator flux remains identical to the IM model (derived from rotating field theory chapter).
-            \item<3-> In contrast to the IM model \figref{fig:Inductive_coupling_stator_rotor_IM}, the SM's rotor field coil is a represented by a single winding. 
-            \item<4-> The coupling of the stator and rotor remains rotor position-dependent (not explicitly shown on the right due to space limitations). 
-           \end{itemize}
-        \end{column}
-        \begin{column}{0.45\textwidth}
-            \onslide<1->
-                \begin{figure}
-                    \centering
-                    \includegraphics[width=0.75\textwidth]{fig/lec07/Inductive_coupling_stator_rotor.pdf}
-                    \caption{Simplified representation of the inductive coupling between the stator/rotor phases of the cylindrical rotor SM}
-                    \label{fig:Inductive_coupling_stator_rotor_SM}
-                \end{figure}
-        \end{column}
-    \end{columns}
-\end{frame}
+\vspace{0.15cm}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Flux linakge model %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Flux linkages of the three-phase model}
-    \onslide<1->
-    Based on the previous considerations, the flux linkages of the cylindrical SM are given by
-    \begin{equation}
-        \renewcommand*{\arraystretch}{1.15}
-        \begin{split}
-            \uncover<+->{
-            \bm{\psi}^\mathrm{s}_\mathrm{s,abc}(t) &=\begin{bmatrix}
-                L_\mathrm{s} & -\frac{M_\mathrm{s}}{2} & -\frac{M_\mathrm{s}}{2}\\
-                -\frac{M_\mathrm{s}}{2} & L_\mathrm{s} & -\frac{M_\mathrm{s}}{2}\\
-                -\frac{M_\mathrm{s}}{2} & -\frac{M_\mathrm{s}}{2} & L_\mathrm{s}
-            \end{bmatrix} \bm{i}^\mathrm{s}_\mathrm{s,abc}(t)}\uncover<+->{ +  M_{\mathrm{r}}\frac{N_\mathrm{s}}{N_\mathrm{r}} \begin{bmatrix}
-				\cos(\varepsilon_\mathrm{r,el}(t))\\
-				 \cos(\varepsilon_\mathrm{r,el}(t) - \frac{2\pi}{3})\\
-				 \cos(\varepsilon_\mathrm{r,el}(t) + \frac{2\pi}{3}) 
-			 \end{bmatrix}i^\mathrm{r}_\mathrm{f}(t),}\\
-            \uncover<+->{
-            \psi^\mathrm{r}_\mathrm{f}(t) &= L_\mathrm{f} i^\mathrm{r}_\mathrm{f}(t)\\ &+  M_{\mathrm{s}}\frac{N_\mathrm{r}}{N_\mathrm{s}} \begin{bmatrix}
-				\cos(\varepsilon_\mathrm{r,el}(t))  & \cos(\varepsilon_\mathrm{r,el}(t) - \frac{2\pi}{3}) & \cos(\varepsilon_\mathrm{r,el}(t) + \frac{2\pi}{3}) 
-			 \end{bmatrix}\bm{i}^\mathrm{s}_\mathrm{s,abc}(t)}
-        \end{split}
-        \label{eq:Flux_linkage_model_SM_abc}
-    \end{equation}
-	\onslide<+-> 
-    with $\varepsilon_\mathrm{r,el}(t)=p\varepsilon_\mathrm{r}(t)$. \onslide<+-> Consequently, \eqref{eq:Flux_linkage_model_SM_abc} is a reduced representation of the IM's flux linkage model \eqref{eq:Flux_linkage_model_IM_abc}.
-\end{frame}
+This distinction is fundamental because the design objectives of inductors and transformers are significantly different.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Cylindrical SM model in alpha-beta coordinates: voltage equations %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Cylindrical SM model in alpha-beta coordinates: voltage equations}
-    \begin{columns}
-		\begin{column}{0.55\textwidth}
-	       Similar to the IM, we can represent the SM model is orthogonal $\alpha\beta$-coordinates. For the SM this only applies to the three-phase stator, as the rotor has only a single phase winding. The $\alpha\beta$-coordinates voltage equation is given by (compare to \eqref{eq:IM_stator_alpha_beta_voltage_equation})
-		   \begin{equation}
-			\bm{u}^\mathrm{s}_\mathrm{s,\alpha\beta}(t) = R_\mathrm{s} \bm{i}^\mathrm{s}_\mathrm{s,\alpha\beta}(t)+ \frac{\mathrm{d}}{\mathrm{d}t}\bm{\psi}^\mathrm{s}_\mathrm{s,\alpha\beta}(t)
-		   \end{equation}
-		   \onslide<2->
-		   while the rotor field winding voltage equation remains identical to \eqref{eq:SM_rotor_voltage_equation}:
-		   $$
-			u^\mathrm{r}_\mathrm{f}(t) = R_\mathrm{f}i^\mathrm{r}_\mathrm{f}(t)+\frac{\mathrm{d}}{\mathrm{d}t}\psi^\mathrm{r}_\mathrm{f}(t).
-			$$
-        \end{column}
-        \begin{column}{0.45\textwidth}
-            \onslide<1->
-            \begin{figure}
-                \centering
-                \includegraphics[width=0.85\textwidth]{fig/lec07/SM_cylindrical_rotor_alpha_beta.pdf}
-                \caption{Conceptual cylindrical SM representation within the orthogonal $\alpha\beta$ coordinates ($p=1$ pole pair)}
-                \label{fig:SM_alpha_beta}
-            \end{figure}
-        \end{column}
-    \end{columns}
 \end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Cylindrical SM model in alpha-beta coordinates: flux linkage %%
+%% Ampere's circuital law: magnetic field strength %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-	\frametitle{Cylindrical SM model in alpha-beta coordinates: flux linkage}
-	\onslide<+->
-	For the flux linkage model in $\alpha\beta$-coordinates, we multiply the stator flux equations from \eqref{eq:Flux_linkage_model_SM_abc} with $\bm{T}_{23}$ from the right
-	\begin{equation}
-		\begin{split}
-			\uncover<+->{
-			\bm{\psi}^\mathrm{s}_\mathrm{s,\alpha\beta}(t)  &= \bm{T}_{23} \bm{\psi}^\mathrm{s}_\mathrm{s,abc}(t) = \overbrace{\bm{T}_{23} \bm{L}_{\mathrm{s,abc}}\bm{T}_{32}}^{\bm{L}_{\mathrm{s},\alpha\beta}} \bm{i}^\mathrm{s}_{\mathrm{s},\alpha\beta}(t) +  M_{\mathrm{r}}\frac{N_\mathrm{s}}{N_\mathrm{r}} \bm{T}_{23}\begin{bmatrix}
-				\cos(\varepsilon_\mathrm{r,el}(t))\\
-				 \cos(\varepsilon_\mathrm{r,el}(t) - \frac{2\pi}{3})\\
-				 \cos(\varepsilon_\mathrm{r,el}(t) + \frac{2\pi}{3}) 
-			 \end{bmatrix} i^\mathrm{r}_{\mathrm{f}}(t)\\}
-			 \uncover<+->{& = (L_\mathrm{s} +\nicefrac{M_\mathrm{s}}{2}) \bm{i}^\mathrm{s}_{\mathrm{s},\alpha\beta}(t) + M_\mathrm{r}\frac{N_\mathrm{s}}{N_\mathrm{r}} \begin{bmatrix}\cos(\varepsilon_\mathrm{r,el}(t))\\ \sin(\varepsilon_\mathrm{r,el}(t))\end{bmatrix} i^\mathrm{r}_{\mathrm{f}}(t)}
-			\end{split}
-	\end{equation}
-	\onslide<+->
-	and utilize $\bm{i}^\mathrm{s}_\mathrm{s,abc}(t)=\bm{T}_{32} \bm{i}^\mathrm{s}_\mathrm{s,\alpha\beta}(t)$ to modify the rotor flux linkage equation accordingly:
-	\begin{equation}
-		\begin{split}
-			\psi^\mathrm{r}_\mathrm{f}(t) &= L_\mathrm{f} i^\mathrm{r}_\mathrm{f}(t) + M_{\mathrm{s}}\frac{N_\mathrm{r}}{N_\mathrm{s}} \begin{bmatrix}
-				\cos(\varepsilon_\mathrm{r,el}(t))  & \sin(\varepsilon_\mathrm{r,el}(t))
-			 \end{bmatrix}\bm{i}^\mathrm{s}_\mathrm{s,\alpha\beta}(t).
-		\end{split}
-	\end{equation} 
-	\onslide<+->
-	In contrast to the IM $\alpha\beta$-coordinates flux linkage model, the SM flux-to-current coupling is rotor position-dependent.
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Cylindrical SM model in alpha-beta coordinates: flux linkage (cont.) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Cylindrical SM model in alpha-beta coordinates: flux linkage (cont.)}
-	\onslide<+->
-	Analyzing the (magnetic) power balance reveals
-    \begin{equation}
-        M_\mathrm{r}\frac{N_\mathrm{s}}{N_\mathrm{r}} = M_{\mathrm{s}}\frac{N_\mathrm{r}}{N_\mathrm{s}} \stackrel{!}{=} M_\mathrm{fs}, 
-    \end{equation}
-	\onslide<+->
-    and with the shorter notation 
-		\begin{equation}
-			L'_\mathrm{s} = (L_\mathrm{s} +\nicefrac{M_\mathrm{s}}{2})
-		\end{equation}
-	we can rewrite the flux linkage model in $\alpha\beta$-coordinates to
-	\begin{equation}
-		\begin{alignedat}{2}
-			\uncover<+->{
-			\bm{\psi}^\mathrm{s}_\mathrm{s,\alpha\beta}(t) &= L'_\mathrm{s} \bm{i}^\mathrm{s}_{\mathrm{s},\alpha\beta}(t) &&+ M_\mathrm{fs} \begin{bmatrix}\cos(\varepsilon_\mathrm{r,el}(t))\\ \sin(\varepsilon_\mathrm{r,el}(t))\end{bmatrix} i^\mathrm{r}_{\mathrm{f}}(t),\\}
-			\uncover<+->{
-			\psi^\mathrm{r}_\mathrm{f}(t) &= L_\mathrm{f} i^\mathrm{r}_\mathrm{f}(t) &&+ M_\mathrm{fs} \begin{bmatrix}\cos(\varepsilon_\mathrm{r,el}(t)) \\ \sin(\varepsilon_\mathrm{r,el}(t))\end{bmatrix}\T\bm{i}^\mathrm{s}_\mathrm{s,\alpha\beta}(t).}
-		\end{alignedat}
-		\label{eq:Flux_linkage_model_SM_alpha_beta}
-	\end{equation}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Cylindrical SM model in alpha-beta coordinates: torque %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Cylindrical SM model in alpha-beta coordinates: torque}
-	\onslide<+->
-	Following the same power balance approach as from the IM, the SM's torque equation is given by
-	\begin{equation}
-		T(t) = \frac{3}{2} p (\bm{i}_\mathrm{s,\alpha\beta}^\mathrm{s}(t))\T\bm{J}\bm{\psi}_\mathrm{s,\alpha\beta}^\mathrm{s}(t).
-	\end{equation}
-	\onslide<+->
-	The equivalent representation with the rotor current and flux linkage as in the IM case is not applicable in the SM case, as the rotor has only a single field winding, i.e., is lacking an $\alpha\beta$ representation. \onslide<+-> Inserting the linear flux linkage model from \eqref{eq:Flux_linkage_model_SM_alpha_beta} into the torque equation yields
-	\begin{equation}
-		\begin{split}
-			\uncover<+->{
-			T(t) &= \frac{3}{2} p (\bm{i}_\mathrm{s,\alpha\beta}^\mathrm{s}(t))\T\bm{J}\bm{\psi}_\mathrm{s,\alpha\beta}^\mathrm{s}(t)\\}
-			\uncover<+->{&= \frac{3}{2} p (\bm{i}_\mathrm{s,\alpha\beta}^\mathrm{s}(t))\T\bm{J}\left(L'_\mathrm{s} \bm{i}^\mathrm{s}_{\mathrm{s},\alpha\beta}(t) + M_\mathrm{fs} \begin{bmatrix}\cos(\varepsilon_\mathrm{r,el}(t))\\ \sin(\varepsilon_\mathrm{r,el}(t))\end{bmatrix} i^\mathrm{r}_{\mathrm{f}}(t)\right)\\}
-			\uncover<+->{&= \frac{3}{2} p M_\mathrm{fs} i^\mathrm{r}_{\mathrm{f}} \left(\cos(\varepsilon_\mathrm{r,el}(t))i_{\mathrm{s,\beta}}^\mathrm{s}(t) - \sin(\varepsilon_\mathrm{r,el}(t))i_{\mathrm{s,\alpha}}^\mathrm{s}(t)\right).}
-		\end{split}
-		\label{eq:SM_cylindrical_alphabeta_torque_equation}
-	\end{equation}
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Cylindrical SM model in alpha-beta coordinates: voltage equations %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Cylindrical SM model in alpha-beta coordinates: torque interpretation}
-    \begin{columns}
-		\begin{column}{0.55\textwidth}
-			\onslide<+->
-			In \eqref{eq:SM_cylindrical_alphabeta_torque_equation} the term
-			\begin{equation}
-				M_\mathrm{fs} \begin{bmatrix}\cos(\varepsilon_\mathrm{r,el}(t))\\ \sin(\varepsilon_\mathrm{r,el}(t))\end{bmatrix} i^\mathrm{r}_{\mathrm{f}}(t) =\bm{\psi}^\mathrm{s}_{\mathrm{f}}(t)
-			\end{equation}
-			can be interpreted as the field winding flux linkage coupled with the stator winding. \onslide<+-> Hence, the torque expression can be rewritten as:
-			\begin{equation}
-				\begin{split}
-				T(t) &= \frac{3}{2} p \left\|\bm{\psi}^\mathrm{s}_{\mathrm{f}}(t) \times \bm{i}^\mathrm{s}_{\mathrm{s,\alpha\beta}}(t)\right\| \\ &= \frac{3}{2} p \left\|\bm{\psi}^\mathrm{s}_{\mathrm{f}}(t) \vphantom{\bm{i}^\mathrm{s}_{\mathrm{s,\alpha\beta}}(t)}\right\| \left\| \bm{i}^\mathrm{s}_{\mathrm{s,\alpha\beta}}(t)\right\| \sin(\theta(t))
-			\end{split}
-			\end{equation}
-			with $\theta$ being the angle between the field winding flux linkage and the stator current vectors, also known as the load angle.
-        \end{column}
-        \begin{column}{0.45\textwidth}
-            \onslide<3->
-            \begin{figure}
-                \centering
-                \includegraphics[width=0.75\textwidth]{fig/lec07/Torque_interpretation.pdf}
-                \caption{Interpretation of the torque as the parallelogram area spannend by the vectors of the field winding flux and the stator current}
-                \label{fig:Torque_interpretation}
-            \end{figure}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Summary: cylindrical SM model in $\alpha\beta$ coordinates   %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Summary: cylindrical SM model in $\alpha\beta$ coordinates}
-    The most important equations of the cylindrical SM model in the  $\alpha\beta$ coordinates are:
-    \begin{equation*}
-        \begin{alignedat}{4}
-            &&\mbox{Stator voltage:}&& \quad\bm{u}^\mathrm{s}_\mathrm{s,\alpha\beta}(&t) &&= R_\mathrm{s} \bm{i}^\mathrm{s}_\mathrm{s,\alpha\beta}(t)+ \frac{\mathrm{d}}{\mathrm{d}t}\bm{\psi}^\mathrm{s}_\mathrm{s,\alpha\beta}(t),\\
-            &&\mbox{Rotor / field winding voltage:}&& \quad u^\mathrm{r}_\mathrm{f}(&t) &&= R_\mathrm{f}i^\mathrm{r}_\mathrm{f}(t)+\frac{\mathrm{d}}{\mathrm{d}t}\psi^\mathrm{r}_\mathrm{f}(t),\\
-            &&\mbox{Stator flux linkage:}&& \quad \bm{\psi}^\mathrm{s}_\mathrm{s,\alpha\beta}(&t) &&= L'_\mathrm{s} \bm{i}^\mathrm{s}_{\mathrm{s},\alpha\beta}(t) + M_\mathrm{fs} \begin{bmatrix}\cos(\varepsilon_\mathrm{r,el}(t))\\ \sin(\varepsilon_\mathrm{r,el}(t))\end{bmatrix} i^\mathrm{r}_{\mathrm{f}}(t),\\
-            &&\mbox{Rotor / field winding flux linkage:}&& \psi^\mathrm{r}_\mathrm{f}(&t) &&= L_\mathrm{f} i^\mathrm{r}_\mathrm{f}(t) + M_\mathrm{fs} \begin{bmatrix}\cos(\varepsilon_\mathrm{r,el}(t)) \\ \sin(\varepsilon_\mathrm{r,el}(t))\end{bmatrix}\T\bm{i}^\mathrm{s}_\mathrm{s,\alpha\beta}(t),\\
-            &&\mbox{Torque:}&& \quad T(&t) &&= \frac{3}{2} p (\bm{i}_\mathrm{s,\alpha\beta}^\mathrm{s})\T\bm{J}\bm{\psi}_\mathrm{s,\alpha\beta}^\mathrm{s}. 
-        \end{alignedat}
-    \end{equation*}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Rotor flux orientation: the dq coordinate system %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Rotor flux orientation: the dq coordinate system}	
-    \begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{itemize}
-				\item In the SM case the rotor flux orientaton is directly related to the rotor position (cf. \figref{fig:examples_SM_rotor}). 
-				\item Hence, to transfer the rotor and stator equations into a mutual coordinate system, the rotor flux orientation is typically used as a reference. 
-				\item In contrast to the $\alpha\beta$-coordinates, where the stator quantity signals are of sinusoidal shape during steady state, the rotor flux-oriented signals are constant during steady state.
-			\end{itemize}
-		\end{column}
-        \begin{column}{0.5\textwidth}
-            \begin{figure}
-                \centering
-                \includegraphics[width=0.9\textwidth]{fig/lec07/dq_orientation.pdf}
-                \caption{Rotor flux-oriented coordinate system}
-                \label{fig:dq_orientation}
-            \end{figure}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Rotor flux orientation: the dq coordinate system (cont.) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Rotor flux orientation: the dq coordinate system (cont.) }
-	\onslide<1->
-	Transferring the stator voltage equation into the dq coordinate system results in
-		   \begin{equation}
-			\begin{split}
-			\uncover<+->{
-			\bm{u}^\mathrm{s}_\mathrm{s,\alpha\beta}(t) &= R_\mathrm{s} \bm{i}^\mathrm{s}_\mathrm{s,\alpha\beta}(t)+ \frac{\mathrm{d}}{\mathrm{d}t}\bm{\psi}^\mathrm{s}_\mathrm{s,\alpha\beta}(t)\\}
-			\uncover<+->{\Leftrightarrow \quad \bm{T}^{-1}_\mathrm{p}(\varepsilon_\mathrm{r,el})\bm{u}^\mathrm{s}_\mathrm{s,dq}(t) &= R_\mathrm{s} \bm{T}^{-1}_\mathrm{p}(\varepsilon_\mathrm{r,el})\bm{i}^\mathrm{s}_\mathrm{s,dq}(t)+ \frac{\mathrm{d}}{\mathrm{d}t}(\bm{T}^{-1}_\mathrm{p}(\varepsilon_\mathrm{r,el})\bm{\psi}^\mathrm{s}_\mathrm{s,dq}(t))\\}
-			\uncover<+->{\Leftrightarrow \quad \bm{u}^\mathrm{r}_\mathrm{s,dq}(t) &= R_\mathrm{s} \bm{i}^\mathrm{r}_\mathrm{s,dq}(t)+ \omega_\mathrm{r,el}(t)\bm{J}\bm{\psi}^\mathrm{r}_\mathrm{s,dq}(t) + \frac{\mathrm{d}}{\mathrm{d}t}\bm{\psi}^\mathrm{r}_\mathrm{s,dq}(t).}
-		\end{split}
-		\end{equation}
-		\onslide<+->
-	Since the dq coordinate system is always aligned with the rotor flux in the SM case, one can also drop the superscript $\mathrm{r}$:
-	\begin{equation*}
-		\bm{u}_\mathrm{s,dq}(t) = R_\mathrm{s} \bm{i}_\mathrm{s,dq}(t)+ \omega_\mathrm{r,el}(t)\bm{J}\bm{\psi}_\mathrm{s,dq}(t) + \frac{\mathrm{d}}{\mathrm{d}t}\bm{\psi}_\mathrm{s,dq}(t).
-	\end{equation*} 
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Rotor flux orientation: the dq coordinate system (cont.) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Rotor flux orientation: the dq coordinate system (cont.) }
-	\onslide<1->
-	The stator flux linkage model in the dq coordinate system is given by
-	\begin{equation}
-		\begin{split}
-			\uncover<+->{\bm{\psi}^\mathrm{s}_\mathrm{s,\alpha\beta}(t) &= L'_\mathrm{s} \bm{i}^\mathrm{s}_{\mathrm{s},\alpha\beta}(t) + M_\mathrm{fs} \begin{bmatrix}\cos(\varepsilon_\mathrm{r,el}(t))\\ \sin(\varepsilon_\mathrm{r,el}(t))\end{bmatrix} i^\mathrm{r}_{\mathrm{f}}(t),			 \\} 
-			\uncover<+->{\Leftrightarrow \quad 
-			 \bm{T}^{-1}_\mathrm{p}(\varepsilon_\mathrm{r,el}) \bm{\psi}_\mathrm{s,dq}(t) &= L'_\mathrm{s}  \bm{T}^{-1}_\mathrm{p}(\varepsilon_\mathrm{r,el})\bm{i}_{\mathrm{s, dq}}(t) + M_\mathrm{fs} \begin{bmatrix}\cos(\varepsilon_\mathrm{r,el}(t)) \\ \sin(\varepsilon_\mathrm{r,el}(t))\end{bmatrix}i_{\mathrm{f}}(t) \\}
-			 \uncover<+->{\Leftrightarrow \quad \bm{\psi}_\mathrm{s,dq}(t) &= L'_\mathrm{s} \bm{i}_{\mathrm{s,dq}}(t) + \underbrace{M_\mathrm{fs} \begin{bmatrix}1 \\ 0 \end{bmatrix}}_{\bm{M}_\mathrm{fs}}i^\mathrm{r}_{\mathrm{f}}(t)} \uncover<+->{= L'_\mathrm{s} \bm{i}_{\mathrm{s,dq}}(t) + \bm{M}_\mathrm{fs}i^\mathrm{r}_{\mathrm{f}}(t).}
-		\end{split}
-		\label{eq:SM_stator_dq_flux_linkage}
-	\end{equation}
-	\onslide<5->
-	while the field winding flux results in
-	\begin{equation}
-		\begin{split}
-			\uncover<+->{\psi^\mathrm{r}_\mathrm{f}(t) &= L_\mathrm{f} i^\mathrm{r}_\mathrm{f}(t) + M_\mathrm{fs} \begin{bmatrix}\cos(\varepsilon_\mathrm{r,el}(t)) & \sin(\varepsilon_\mathrm{r,el}(t))\end{bmatrix}\bm{i}^\mathrm{s}_\mathrm{s,\alpha\beta}(t)
-			 \\} 
-			 \uncover<+->{\Leftrightarrow \quad 	 \psi^\mathrm{r}_\mathrm{f}(t) &= L_\mathrm{f} i^\mathrm{r}_\mathrm{f}(t) + M_\mathrm{fs} \begin{bmatrix}\cos(\varepsilon_\mathrm{r,el}(t)) & \sin(\varepsilon_\mathrm{r,el}(t))\end{bmatrix}  \bm{T}^{-1}_\mathrm{p}(\varepsilon_\mathrm{r,el})\bm{i}^\mathrm{s}_\mathrm{s,dq}(t)
-			 \\}
-			 \uncover<+->{\Leftrightarrow \quad \psi^\mathrm{r}_\mathrm{f}(t) &= L_\mathrm{f} i^\mathrm{r}_\mathrm{f}(t) + M_\mathrm{fs} \begin{bmatrix}1 & 0\end{bmatrix} \bm{i}_\mathrm{s,dq}(t)}\uncover<+->{= L_\mathrm{f} i^\mathrm{r}_\mathrm{f}(t) + \bm{M}\T_\mathrm{fs} \bm{i}_\mathrm{s,dq}(t).}
-		\end{split}
-	\end{equation}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Summary: Cylindrical SM model in dq coordinates   %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Summary: cylindrical SM model in dq coordinates}
-    The most important equations of the cylindrical SM model in the  dq coordinates are:
-    \begin{equation*}
-        \begin{alignedat}{4}
-            &&\mbox{Stator voltage:}&& \quad\bm{u}_\mathrm{s,dq}(&t) &&= R_\mathrm{s} \bm{i}_\mathrm{s,dq}(t)+ \omega_\mathrm{r,el}(t)\bm{J}\bm{\psi}_\mathrm{s,dq}(t) + \frac{\mathrm{d}}{\mathrm{d}t}\bm{\psi}_\mathrm{s,dq}(t),\\
-			&&\mbox{Rotor / field winding  voltage:}&& \quad u_\mathrm{f}(&t) &&= R_\mathrm{f}i_\mathrm{f}(t)+\frac{\mathrm{d}}{\mathrm{d}t}\psi_\mathrm{f}(t),\\
-			&&\mbox{Stator flux linkage:}&& \quad \bm{\psi}_\mathrm{s,dq}(&t) &&= L'_\mathrm{s} \bm{i}_\mathrm{s,dq}(t) + \bm{M}_\mathrm{fs} i_{\mathrm{f}}(t),\\
-			&&\mbox{Rotor / field winding flux linkage:}&& \psi_\mathrm{f}(&t) &&= L_\mathrm{f} i^\mathrm{r}_\mathrm{f}(t) + \bm{M}\T_\mathrm{fs} \bm{i}_\mathrm{s,dq}(t),\\
-			&&\mbox{Torque:}&& \quad T(&t) &&= \frac{3}{2} p (\bm{i}_\mathrm{s,dq})\T\bm{J}\bm{\psi}_\mathrm{s,dq}.
-        \end{alignedat}
-    \end{equation*}
-	Here, one can observe that the d component of the stator flux linkage is directly coupled with the field winding flux and vice versa, which was to be expected due to the rotor flux orientation of the chosen coordinate system.  
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% ECD of cylindrical SM model in dq coordinates      %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{ECD of cylindrical SM model in dq coordinates}
-    \begin{figure}
-		\begin{columns}
-			\begin{column}{0.6\textwidth}
-					\centering
-					\includegraphics[width=\textwidth]{fig/lec07/SM_cylindrical_T_ECD_dq.pdf}
-			\end{column}
-			\begin{column}{0.4\textwidth}
-				\caption{\raggedright T-type ECD of a cylindrical SM in dq coordinates (note that this ECD is represented with scalar values and not as vectors or complex numbers as in the IM case).}
-				\label{fig:SM_cylindrical_T_ECD_dq}
-			\end{column}
-		\end{columns}
-    \end{figure}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Salient pole SM model %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Salient pole SM model}	
-    \begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{itemize}
-				\item<1-> The cylindrical rotor SM model \eqref{eq:SM_stator_dq_flux_linkage} considered an identical stator inductance $L'_\mathrm{s}$ for the d and q axis.  
-				\item<1-> In the cylindrical SM case this is a valid assumption, as the rotor is symmetrical. 
-				\item<3-> However, in the case of a salient pole SM, the rotor is not symmetrical and the flux path per axis is different (cf. \figref{fig:SM_salient_pole_dq_reluctance}).
-				\item<4-> The q-axis reluctance is larger than the d-axis reluctance due to the larger air gap in the q-axis direction. 
-				\item<4-> Consequently, the inductance per axis is different.
-			\end{itemize}
-		\end{column}
-        \begin{column}{0.5\textwidth}
-			\onslide<3->
-            \begin{figure}
-                \centering
-                \includegraphics[width=0.825\textwidth]{fig/lec07/SM_salient_pole_dq_reluctance.pdf}
-                \caption{Effective reluctance paths of the salient pole SM in the dq coordinate system}
-                \label{fig:SM_salient_pole_dq_reluctance}
-            \end{figure}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Salient pole SM model(cont.) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Salient pole SM model (cont.) }
-	\onslide<1->
-	From \figref{fig:SM_salient_pole_dq_reluctance} we derive the following stator flux linkage model for the salient pole SM:
-	\begin{equation}
-		\uncover<+->{
-			\bm{\psi}_\mathrm{s,dq}(t) = \underbrace{\begin{bmatrix}
-				L'_\mathrm{s,d} & 0\\
-				0 & L'_\mathrm{s,q}
-			\end{bmatrix}}_{\bm{L}_\mathrm{s,dq}} \bm{i}_{\mathrm{s,dq}}(t) + M_\mathrm{fs} \begin{bmatrix}1 \\ 0\end{bmatrix} i_{\mathrm{f}}(t)} \uncover<+->{= \bm{L}_\mathrm{s,dq}\bm{i}_{\mathrm{s,dq}}(t) + \bm{M}_\mathrm{fs} i_{\mathrm{f}}(t)}
-	\end{equation}
-	\onslide<2->
-	while the rotor field winding flux linkage remains identical to the cylindrical SM case. \onslide<+-> Inserting the stator flux linkage model into the torque equation yields
-	\begin{equation}
-		\begin{split}
-			\uncover<3->{
-			T(t) &= \frac{3}{2} p (\bm{i}_\mathrm{s,dq})\T\bm{J}\bm{\psi}_\mathrm{s,dq}}
-			\uncover<+->{= \frac{3}{2} p i_\mathrm{s,q}\left[ M_\mathrm{fs} i_{\mathrm{f}} + \left(L'_\mathrm{s,d}-L'_\mathrm{s,q}\right)i_\mathrm{s,d}\right]\\}
-			\uncover<+->{& = \underbrace{\frac{3}{2} p M_\mathrm{fs} i_\mathrm{s,q}  i_{\mathrm{f}}}_{\mbox{main torque}} + \underbrace{\frac{3}{2} p i_\mathrm{s,q} i_\mathrm{s,d} \left( L'_\mathrm{s,d}-L'_\mathrm{s,q}\right)}_{\mbox{reluctance torque}}.}
-		\end{split}
-	\end{equation}
-	\onslide<+-> 
-	The latter part is specific to the salient pole SM since $L'_\mathrm{s,d} \neq  L'_\mathrm{s,q}$ holds, while $L'_\mathrm{s,d} =  L'_\mathrm{s,q} =L'_\mathrm{s}$ applies to the cylindrical SM, that is, the reluctance torque is zero.
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Summary: Salient pole SM model in dq coordinates   %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Summary: salient pole SM model in dq coordinates}
-    The most important equations of the salient pole SM model in the  dq coordinates are:
-	\begin{equation*}
-		\begin{alignedat}{4}
-			&&\mbox{Stator voltage:}&& \quad\bm{u}_\mathrm{s,dq}(&t) &&= R_\mathrm{s} \bm{i}_\mathrm{s,dq}(t)+ \omega_\mathrm{r,el}(t)\bm{J}\bm{\psi}_\mathrm{s,dq}(t) + \frac{\mathrm{d}}{\mathrm{d}t}\bm{\psi}_\mathrm{s,dq}(t),\\
-			&&\mbox{Rotor / field winding  voltage:}&& \quad u_\mathrm{f}(&t) &&= R_\mathrm{f}i_\mathrm{f}(t)+\frac{\mathrm{d}}{\mathrm{d}t}\psi_\mathrm{f}(t),\\
-			&&\mbox{Stator flux linkage:}&& \quad \bm{\psi}_\mathrm{s,dq}(&t) &&= \bm{L}_\mathrm{s,dq}\bm{i}_{\mathrm{s,dq}}(t) + \bm{M}_\mathrm{fs} i_{\mathrm{f}}(t), \vphantom{\frac{\mathrm{d}}{\mathrm{d}t}}\\
-			&&\mbox{Rotor / field winding flux linkage:}&& \psi_\mathrm{f}(&t) &&= L_\mathrm{f} i^\mathrm{r}_\mathrm{f}(t) + \bm{M}\T_\mathrm{fs} \bm{i}_\mathrm{s,dq}(t),\vphantom{\frac{\mathrm{d}}{\mathrm{d}t}}\\
-			&&\mbox{Torque:}&& \quad T(&t) &&= \frac{3}{2} p (\bm{i}_\mathrm{s,dq})\T\bm{J}\bm{\psi}_\mathrm{s,dq}\\
-			&&&&&&&=\frac{3}{2} p i_\mathrm{s,q}\left[ M_\mathrm{fs} i_{\mathrm{f}} + \left(L'_\mathrm{s,d}-L'_\mathrm{s,q}\right)i_\mathrm{s,d}\right].
-		\end{alignedat}
-	\end{equation*}      
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Damper winding %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Damper winding}
-	\begin{figure}
-		\centering
-		\begin{subfigure}{0.49\textwidth}
-			\centering
-			\includegraphics[width=0.8\textwidth]{fig/lec07/SM_salient_pole_damper_winding.pdf}
-			\caption{Salient pole SM with damper winding}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}{0.49\textwidth}
-			\centering
-			\includegraphics[height=0.5\textheight]{fig/lec07/Salient_pole_damper_winding.png}
-			\caption{Salient pole with dismantled damper winding (source: L. Frosini, \textit{Novel Diagnostic Techniques for Rotating Electrical Machines -- A Review}, Energies, 2020, \href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0})} 
-		\end{subfigure}
-        \caption{SM with damper winding} 
-        \label{fig:SM_damper_winding}
-	\end{figure}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Damper winding (cont.) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Damper winding (cont.)}	
-    \begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{itemize}
-				\item<1-> The damper winding is a short-circuited winding in the rotor slots of the SM.
-				\item<2-> The damper winding is used to dampen the rotor oscillations during transients.
-				\item<3-> This is important for synchronous generators in power systems, where the rotor oscillations can lead to instabilities.
-			\end{itemize}
-			\onslide<4->
-			\begin{varblock}
-				{Damper winding model}
-					The SM damper winding can be interpreted as the IM squirrel cage, i.e., the rotor model can be extended accordingly (superposition). 
-			\end{varblock}
-		\end{column}
-        \begin{column}{0.5\textwidth}
-			\onslide<1->
-            \begin{figure}
-                \centering
-                \includegraphics[width=0.825\textwidth]{fig/lec07/Salient_pole_damper_winding_02.png}
-                \caption{SM rotor with solid damper bars (source: J.~Cros et al., \textit{Simulation Methods for the Transient Analysis of Synchronous Alternators}, Renewable Energy, 2016, \href{https://creativecommons.org/licenses/by/3.0/}{CC BY 3.0})}
-                \label{fig:Salient_pole_damper_winding_02}
-            \end{figure}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% SM model with damper winding %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{SM model with damper winding}
-	\onslide<1->
-	From the IM model in dq-coordinates (compare \figref{fig:IM_T_ECD_dq}) we introduce the short-circuited damper winding voltage equation:
-	\begin{equation}
-		\uncover<+->{
-		0 = \bm{R}_{\mathrm{r,DQ}} \bm{i}_{\mathrm{r,DQ}}(t) + \frac{\mathrm{d}}{\mathrm{d}t}\bm{\psi}_{\mathrm{r,DQ}}(t)} \uncover<+->{= \begin{bmatrix}
-			R_\mathrm{r,D} & 0 \\ 0 & R_\mathrm{r,Q} 
-		\end{bmatrix} \begin{bmatrix}
-			i_{\mathrm{r,D}}(t) \\ i_{\mathrm{r,Q}}(t)
-		\end{bmatrix} + \frac{\mathrm{d}}{\mathrm{d}t} \begin{bmatrix}
-			\psi_{\mathrm{r,D}}(t) \\ \psi_{\mathrm{r,Q}}(t)
-		\end{bmatrix}.}
-		\label{eq:damper_winding_voltage}
-	\end{equation}
-	\onslide<+->
-	Here, the following applies:
-	\begin{itemize}
-		\item<+-> Capital indices represent the damper winding.
-		\item<+-> $\bm{i}_{\mathrm{r,DQ}}(t)$ and $\bm{\psi}_{\mathrm{r,DQ}}(t)$ are the current as well as flux linkage in the damper winding.
-		\item<+-> $\bm{R}_{\mathrm{r,DQ}}$ represents the resistance matrix: Since the damper winding eventually does not cover the entire rotor circumference, $R_\mathrm{r,D}\neq R_\mathrm{r,Q}$ can apply (compare \figref{fig:SM_damper_winding}). 
-	\end{itemize} 
-	\onslide<+->
-	The stator and field winding voltage equations remain unchanged:
-	$$\bm{u}_\mathrm{s,dq}(t) = R_\mathrm{s} \bm{i}_\mathrm{s,dq}(t)+ \omega_\mathrm{r,el}(t)\bm{J}\bm{\psi}_\mathrm{s,dq}(t) + \frac{\mathrm{d}}{\mathrm{d}t}\bm{\psi}_\mathrm{s,dq}(t), \quad u_\mathrm{f}(t) = R_\mathrm{f}i_\mathrm{f}(t)+\frac{\mathrm{d}}{\mathrm{d}t}\psi_\mathrm{f}(t).$$
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% SM model with damper winding (cont.) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{SM model with damper winding (cont.)}
-	\onslide<1->
-	 The flux linkage equations become
-	\begin{equation}
-		\begin{split}
-			\uncover<+->{\bm{\psi}_\mathrm{s,dq}(t) &= \bm{L}_\mathrm{s,dq}\bm{i}_{\mathrm{s,dq}}(t) + \bm{M}_\mathrm{fs} i_{\mathrm{f}}(t) + \bm{M}_\mathrm{rs}\bm{i}_{\mathrm{r,DQ}}(t)\\}
-			\uncover<+->{&= \begin{bmatrix}
-				L'_\mathrm{s,d} & 0\\
-				0 & L'_\mathrm{s,q}
-			\end{bmatrix} \begin{bmatrix}
-				i_{\mathrm{s,d}}(t) \\ i_{\mathrm{s,q}}(t)
-			\end{bmatrix} + M_\mathrm{fs} \begin{bmatrix}1 \\ 0\end{bmatrix} i_{\mathrm{f}}(t) + \begin{bmatrix}
-				M_\mathrm{dD} & 0\\
-				0 & M_\mathrm{qQ}
-			\end{bmatrix} \begin{bmatrix}
-				i_{\mathrm{r,D}}(t) \\ i_{\mathrm{r,Q}}(t)
-			\end{bmatrix},\\[0.75em]}
-			\uncover<+->{\psi_\mathrm{f}(t) &= L_\mathrm{f} i_\mathrm{f}(t) + \bm{M}\T_\mathrm{fs} \bm{i}_\mathrm{s,dq}(t) + \bm{M}\T_\mathrm{fr} \bm{i}_\mathrm{r,DQ}(t)\\}
-			\uncover<+->{&= L_\mathrm{f} i_\mathrm{f}(t) + M_\mathrm{fs} \begin{bmatrix}1 & 0\end{bmatrix}\begin{bmatrix}
-				i_{\mathrm{s,d}}(t) \\ i_{\mathrm{s,q}}(t)
-			\end{bmatrix} + M_\mathrm{fr} \begin{bmatrix}1 & 0\end{bmatrix}\begin{bmatrix}
-				i_{\mathrm{r,D}}(t) \\ i_{\mathrm{r,Q}}(t)
-			\end{bmatrix},\\[0.75em]}
-			\uncover<+->{\bm{\psi}_\mathrm{r,DQ}(t) &= \bm{L}_\mathrm{r,DQ}\bm{i}_{\mathrm{r,DQ}}(t) + \bm{M}_\mathrm{rs}\bm{i}_{\mathrm{s,dq}}(t) + \bm{M}_\mathrm{fr} i_\mathrm{f}(t)\\}
-			\uncover<+->{& = \begin{bmatrix}
-				L_\mathrm{D} & 0\\
-				0 & L_\mathrm{Q}
-			\end{bmatrix} \begin{bmatrix}
-				i_{\mathrm{r,D}}(t) \\ i_{\mathrm{r,Q}}(t)
-			\end{bmatrix} + \begin{bmatrix}
-				M_\mathrm{dD} & 0\\
-				0 & M_\mathrm{qQ}
-			\end{bmatrix} \begin{bmatrix}
-				i_{\mathrm{s,d}}(t) \\ i_{\mathrm{s,q}}(t)
-			\end{bmatrix} + M_\mathrm{fr} \begin{bmatrix}1 \\ 0\end{bmatrix} i_\mathrm{f}(t).}
-		\end{split}
-	\end{equation}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% SM model with damper winding (cont.) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{SM model with damper winding (cont.)}
-	\onslide<1->
-	The torque equation results in
-	\begin{equation}
-		\begin{split}
-			\uncover<+->{T(t) &= \frac{3}{2} p (\bm{i}_\mathrm{s,dq})\T\bm{J}\bm{\psi}_\mathrm{s,dq}\\}
-			\uncover<+->{&=\frac{3}{2} p \left[ M_\mathrm{fs} i_{\mathrm{f}}i_\mathrm{s,q} + \left(L'_\mathrm{s,d}-L'_\mathrm{s,q}\right)i_\mathrm{s,d}i_\mathrm{s,q}+ M_\mathrm{dD}i_\mathrm{s,q} i_\mathrm{r,D} -M_\mathrm{qQ}i_\mathrm{s,d} i_\mathrm{r,Q}\right].}
-		\end{split}
-	\end{equation}
-	\onslide<+->
-	Here, the last two terms represent the torque contribution of the damper winding:
-	\begin{itemize}
-		\item<+-> In steady state, that is, the stator field rotates synchronously with the rotor, the damper winding current is zero, cf. \eqref{eq:damper_winding_voltage}. Consequently, the damper torque is zero. 
-		\item<+-> Only during transients, when a changing flux linkage induces a voltage within the damper winding, non-zero damper currents occur.
-		\item<+-> The resulting damper torque will oppose the transient and, e.g., dampen mechanical rotor oscillations in generator applications.
-	\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Permanent magnet synchronous machine (PMSM) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Permanent magnet synchronous machine (PMSM)}
-	\begin{figure}
-		\centering
-		\begin{subfigure}{0.49\textwidth}
-			\centering
-			\includegraphics[width=0.8\textwidth]{fig/lec07/SPMSM.pdf}
-			\caption{Surface-mounted PMSM (SPMSM)}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}{0.49\textwidth}
-			\centering
-			\includegraphics[width=0.8\textwidth]{fig/lec07/IPMSM.pdf}
-			\caption{Interior PMSM (IPMSM)}
-		\end{subfigure}
-        \caption{SM with permanent magnet excitation} 
-        \label{fig:PMSMs}
-	\end{figure}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% PMSM characteristics %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{PMSM characteristics}	
-    \begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{itemize}
-				\item<1-> Field winding is replaced by permanent magnets (PMs) in the rotor.
-				\item<2-> Typically increases efficiency and power density, since no field winding losses occur.
-				\item<3-> However, PMs are often more expensive than field windings and the machine is less flexible in terms of field weakening.
-			\end{itemize}
-			\onslide<4->
-			\vspace{-0.25cm}
-			\begin{varblock}
-				{PMSM applications}
-					Due to weight and size advantages, PMSMs are often used in automotive applications (e.g., electric vehicles) and in highly dynamic industrial applications (e.g., servo drives).
-			\end{varblock}
-		\end{column}
-        \begin{column}{0.5\textwidth}
-			\onslide<1->
-            \begin{figure}
-                \centering
-                \includegraphics[width=0.9\textwidth]{fig/lec07/External_rotor_PMSM.jpg}
-                \caption{PMSM with external rotor (source: \href{https://commons.wikimedia.org/wiki/File:General_Technic_GT_9840_-_capstan_motor-6683.jpg}{Wikimedia Commons},  R.~Spekking, \href{https://creativecommons.org/licenses/by-sa/4.0/deed}{CC BY-SA 4.0})}
-                \label{fig:External_rotor_PMSM}
-            \end{figure}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% PMSM model %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{PMSM model}
-	Due to the absence of a field winding, the PMSM model simplifies: The general stator voltage equation in the dq coordinate system remains identical to the SM model
-	$$\bm{u}_\mathrm{s,dq}(t) = R_\mathrm{s} \bm{i}_\mathrm{s,dq}(t)+ \omega_\mathrm{r,el}(t)\bm{J}\bm{\psi}_\mathrm{s,dq}(t) + \frac{\mathrm{d}}{\mathrm{d}t}\bm{\psi}_\mathrm{s,dq}(t)$$
-	while the field winding voltage equation is omitted. \pause The stator flux linkage model becomes
-	\begin{equation}
-		\bm{\psi}_\mathrm{s,dq}(t) = \bm{L}_\mathrm{s,dq}\bm{i}_{\mathrm{s,dq}}(t) + \bm{\psi}_\mathrm{pm} = \begin{bmatrix}
-			L'_\mathrm{s,d} & 0\\
-			0 & L'_\mathrm{s,q}
-		\end{bmatrix} \begin{bmatrix}
-			i_{\mathrm{s,d}}(t) \\ i_{\mathrm{s,q}}(t)
-		\end{bmatrix} + \begin{bmatrix}
-			\psi_\mathrm{pm} \\ 0
-		\end{bmatrix}.
-	\end{equation}
-	Here, $\bm{\psi}_\mathrm{pm}$ represents the (constant) permanent magnet flux linkage. \pause By definition of the dq coordinate system, the permanent magnet flux linkage is directed exclusively along the d-axis (cf. \figref{fig:PMSMs}). The rotor flux linkage model is omitted, since no field winding is present. Also, a damper winding is very uncommon for PMSMs. \pause Hence, torque equation results in
-	\begin{equation}
-		T(t) = \frac{3}{2} p (\bm{i}_\mathrm{s,dq})\T\bm{J}\bm{\psi}_\mathrm{s,dq} = \frac{3}{2} p i_\mathrm{s,q}\left[ \bm{\psi}_\mathrm{pm} + \left(L'_\mathrm{s,d}-L'_\mathrm{s,q}\right)i_\mathrm{s,d}\right].
-	\end{equation}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Isotropic vs. anisotropic PMSM %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Isotropic vs. anisotropic PMSM}
-	\onslide<+->
-	From \eqref{eq:PM_magnetization} we know that the relative permeability of the PM material is nearly as that of air, i.e., $$\mu_\mathrm{r,PM} \approx 1$$ applies. \onslide<+-> Consequently, the PM flux path can be considered as an (additional) air gap. Against this background, the two types for PMSM rotors as in \figref{fig:PMSMs} show different characteristics:
-	\vspace{0.5em}
-	\begin{itemize}
-		\item<+-> SPMSM: The PMs are distributed over the entire rotor circumference. 
-		\begin{itemize}
-			\item<+-> The PM flux path is isotropic, i.e., the same in all directions.
-			\item<+-> Consequently, the relucance paths in the d and q axis are identical.
-			\item<+-> $L'_\mathrm{s,d} =  L'_\mathrm{s,q} =L'_\mathrm{s}$ applies.
-		\end{itemize}
-		\vspace{0.5em}
-		\item<+-> IPMSM: The PMs are concentrated inside the rotor core.
-		\begin{itemize}
-			\item<+-> The PM flux path is anisotropic, i.e., different in the d and q axis.
-			\item<+-> Consequently, the effective reluctance along the d axis is much higher than along the q axis.
-			\item<+-> $L'_\mathrm{s,d} <  L'_\mathrm{s,q}$ applies.
-		\end{itemize}
-	\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Synchronous reluctance machine (SynRM) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Synchronous reluctance machine (SynRM)}	
-    \begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{itemize}
-				\item<2-> SynRM: utilizes only the reluctance torque.
-				\item<2->  No field winding or PMs are present.
-				\item<3-> The rotor is designed such that the reluctance difference in the d and q axis is maximized.
-				\item<4-> PMSM model equations can be used, but the PM flux linkage is zero.
-			\end{itemize}
-			\onslide<4->
-			\begin{equation}
-				\begin{split}
-					\bm{\psi}_\mathrm{s,dq}(t) &= \bm{L}_\mathrm{s,dq}\bm{i}_{\mathrm{s,dq}}(t), \\
-					T(t) &= \frac{3}{2} p (\bm{i}_\mathrm{s,dq})\T\bm{J}\bm{\psi}_\mathrm{s,dq}\\ &= \frac{3}{2} p i_\mathrm{s,q} \left(L'_\mathrm{s,d}-L'_\mathrm{s,q}\right)i_\mathrm{s,d}.
-				\end{split}
-			\end{equation}
-		\end{column}
-        \begin{column}{0.5\textwidth}
-			\onslide<1->
-            \begin{figure}
-                \centering
-                \includegraphics[width=0.8\textwidth]{fig/lec07/SynRM.pdf}
-                \caption{Example of a SynRM with rotor flux barriers (no PMs or field winding present)}
-                \label{fig:SynRM}
-            \end{figure}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Steady-state behavior %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Steady-state behavior}
-	We limit the following discussion to the isotropic case
-	$$L'_\mathrm{s,d} =  L'_\mathrm{s,q} =L'_\mathrm{s}$$
-	which covers the SPMSM and the cylindrical SM. \pause In steady state ($\nicefrac{\mathrm{d}x}{\mathrm{d}t} = 0$), the flux linked with possibly present damper windings is constant, i.e., no voltage is induced within the damper windings and 
-	$$\bm{I}_\mathrm{r,DQ} = 0$$ 
-	applies. \pause Hence, the damper winding can be neglected in steady state. \pause Furthermore, in steady state the field winding current is constant: 
-	$$I_\mathrm{f} = \frac{\mathrm{U}_\mathrm{f} }{\mathrm{R}_\mathrm{f}} = \mathrm{const.}$$
-	\pause
-	Consequently, the stator flux linkage share resulting from the field winding $\bm{M}_\mathrm{fs} I_{\mathrm{f}}$ is constant and can be interpreted as an equivalent permanent magnet flux linkage. Hence, we will focus on the steady-state behavior of the cylindrical SM in the following, which implicitly covers the SPMSM case as well. The steady-state characteristics of the other SM types are not covered.
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Steady-state behavior (cont.) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Steady-state behavior (cont.)}
-	In steady state, the flux linkage equation remains
-	$$\bm{\psi}_\mathrm{s,dq} =  L'_\mathrm{s} \bm{I}_\mathrm{s,dq} + \bm{M}_\mathrm{fs} I_{\mathrm{f}} \quad \Leftrightarrow \quad \begin{bmatrix}
-		\psi_\mathrm{s,d} \\ \psi_\mathrm{s,q}
-	\end{bmatrix} = \left(L_\mathrm{s} +\frac{M_\mathrm{s}}{2}\right)\begin{bmatrix}
-		I_\mathrm{s,d} \\ I_\mathrm{s,q}
-	\end{bmatrix} + M_\mathrm{fs} \begin{bmatrix}
-		I_\mathrm{f} \\ 0
-	\end{bmatrix}.$$
-	\pause
-	With the decomposition of $L_\mathrm{s}$ into its leakage part $L_{\sigma,\mathrm{s}}$ and the mutual part $M_\mathrm{s}$, 
-	\begin{equation}
-		L_\mathrm{s} = L_{\sigma,\mathrm{s}} + M_{\mathrm{s}}, 
-	\end{equation}
-	\pause
-	we obtain
-	\begin{equation}
-		\begin{bmatrix}
-			\psi_\mathrm{s,d} \\ \psi_\mathrm{s,q}
-		\end{bmatrix} = \left(L_{\sigma,\mathrm{s}} + \frac{3}{2}M_\mathrm{s}\right)\begin{bmatrix}
-			I_\mathrm{s,d} \\ I_\mathrm{s,q}
-		\end{bmatrix} + M_\mathrm{fs} \begin{bmatrix}
-			I_\mathrm{f} \\ 0
-		\end{bmatrix}.
-		\end{equation}
-		\pause
-	In the context of simplified modeling, the assumption is (often) made that the (scaled) mutual inductances are equal, i.e., 
-	$$M_\mathrm{fs} = \nicefrac{3}{2} M_\mathrm{s} = M$$ 
-	\pause 
-	leading to
-	\begin{equation}
-			\psi_\mathrm{s,d} = \left(L_{\sigma,\mathrm{s}} + M\right)I_\mathrm{s,d} + M I_\mathrm{f}, \qquad \psi_\mathrm{s,q} = \left(L_{\sigma,\mathrm{s}} + M\right)I_\mathrm{s,q}.
-			\label{eq:SM_stator_flux_linkage_steady_state}
-	\end{equation}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Steady-state behavior (cont.) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Steady-state behavior (cont.)}
-	\onslide<+->
-	The steady-state voltage equation is
-	\begin{equation}
-		\bm{U}_\mathrm{s,dq} = R_\mathrm{s} \bm{I}_\mathrm{s,dq}+ \omega_\mathrm{r,el}\bm{J}\bm{\psi}_\mathrm{s,dq} \quad \Leftrightarrow \quad \begin{bmatrix}
-			U_\mathrm{s,d} \\ U_\mathrm{s,q}
-		\end{bmatrix} = R_\mathrm{s} \begin{bmatrix}
-			I_\mathrm{s,d} \\ I_\mathrm{s,q}
-		\end{bmatrix} + \omega_\mathrm{r,el} \begin{bmatrix}
-			-\psi_\mathrm{s,q} \\ \psi_\mathrm{s,d}
-		\end{bmatrix}.
-	\end{equation}
-	\onslide<+->
-	Inserting the (simplified) flux linkage equation \eqref{eq:SM_stator_flux_linkage_steady_state} yields
-	\begin{equation}
-		\begin{bmatrix}
-			U_\mathrm{s,d} \\ U_\mathrm{s,q}
-		\end{bmatrix} = R_\mathrm{s} \begin{bmatrix}
-			I_\mathrm{s,d} \\ I_\mathrm{s,q}
-		\end{bmatrix} + \omega_\mathrm{r,el} \begin{bmatrix}
-			-\left(L_{\sigma,\mathrm{s}} + M\right)I_\mathrm{s,q} \\ \left(L_{\sigma,\mathrm{s}} + M\right)I_\mathrm{s,d} + M I_\mathrm{f}
-		\end{bmatrix}.
-	\end{equation}
-	\onslide<+->
-	Rewriting the vectorial quantities as complex phasors $\underline{X}_\mathrm{dq} = X e^{\mathrm{j}\phi}=X_\mathrm{d} + \mathrm{j} X_\mathrm{q}$ rotating with the angular frequency $\omega_\mathrm{r,el} \rightarrow \omega_\mathrm{s}$, we obtain
-	\begin{equation}
-		\begin{split}
-			\uncover<+->{\underline{U}_\mathrm{s} &= R_\mathrm{s} \underline{I}_\mathrm{s} + \mathrm{j}\omega_\mathrm{s} \left[\left(L_{\sigma,\mathrm{s}} + M\right)\underline{I}_\mathrm{s} + M I_\mathrm{f}\right]}
-			\uncover<+->{= R_\mathrm{s} \underline{I}_\mathrm{s} + \mathrm{j} \underbrace{\omega_\mathrm{s} \left(L_{\sigma,\mathrm{s}} + M\right)}_{X_\mathrm{s}}\underline{I}_\mathrm{s} + \underbrace{\mathrm{j}\omega_\mathrm{s} M I_\mathrm{f}}_{\underline{U}_\mathrm{i}}}
-		\end{split}
-		\label{eq:SM_voltage_steady_state}
-	\end{equation}
-	\onslide<+->
-	with $\underline{U}_\mathrm{i}$ being the internal voltage, i.e., the induced voltage due to the field winding excitation and $X_\mathrm{s}$ being the synchronous reactance (which can be empirically identified using open-circuit and short-circuit tests, cf. after next slide).
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Steady-state behavior (cont.) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Steady-state behavior (cont.)} 
-	\onslide<1->
-	The ECD of the cylindrical SM is sown in \figref{fig:SM_ECD_steady_state}. \onslide<2->Here, the following can be noted:
-	\begin{itemize}
-		\item<2-> The internal voltage $\underline{U}_\mathrm{i}$ is purely imaginary as the field winding current is a DC current and defined as real (convention).
-		\item<3-> If $\underline{U}_\mathrm{s}$ is fixed, e.g., by a stiff grid voltage, the stator current $\underline{I}_\mathrm{s}$ is determined by the voltage difference $\Delta\underline{U} = \underline{U}_\mathrm{s} - \underline{U}_\mathrm{i}$.
-		\item<4-> Hence, in grid operation the field winding current $I_\mathrm{f}$ is adjusted to reach a certain operation point, that is, the field excitation is controlled.
-	\end{itemize}
-	\onslide<1->
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.65\textwidth]{fig/lec07/SM_ECD_steady_state.pdf}
-        \caption{ECD of a (simplified) cylindrical SM in steady state represented by complex phasors}
-        \label{fig:SM_ECD_steady_state}
-    \end{figure}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Short-circuit and open-circuit tests %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Short-circuit and open-circuit tests} 
-	From \figref{fig:SM_ECD_steady_state} the open-circuit voltage is
-	\begin{equation}
-		\underline{U}_\mathrm{s,oc} = \underline{U}_\mathrm{i} = \mathrm{j} \omega_\mathrm{s} M I_\mathrm{f}.
-	\end{equation}
-	Here, the stator current is zero. \pause On the other hand, the short-circuit current is given by
-	\begin{equation}
-		\underline{I}_\mathrm{s,sc} = -\frac{\underline{U}_\mathrm{i}}{\mathrm{j}X_\mathrm{s}} = -\frac{\omega_\mathrm{s} M I_\mathrm{f}}{\mathrm{j}\omega_\mathrm{s}\left(L_{\sigma,\mathrm{s}} + M\right)} = \frac{\mathrm{j} M}{\left(L_{\sigma,\mathrm{s}} + M\right)}I_\mathrm{f}.
-	\end{equation}
-	Here, the stator voltage is zero and one can observe that the short-circuit current $\underline{I}_\mathrm{s,sc}$ can be interpreted as the excitation current $I_\mathrm{f}$ converted via the inductance ratio. \pause Finally, the synchronous reactance can be calculated by the ratio of the open-circuit voltage and the short-circuit current:
-	\begin{equation}
-		X_\mathrm{s} = \frac{\underline{U}_\mathrm{s,oc}}{\underline{I}_\mathrm{s,sc}}.
-	\end{equation}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Steady-state torque %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Steady-state torque} 
-	The steady-state torque of the cylindrical SM is given by
-	$$ T = \frac{3}{2} p \sqrt{2}I_\mathrm{s,q} M I_\mathrm{f} = \frac{3}{\sqrt{2}} p I_\mathrm{s,q} M I_\mathrm{f}.$$
-	\pause
-	Here, the factor $\sqrt{2}$ results from the RMS value representation of the AC stator current in the complex phasor component $I_\mathrm{s,q}$.  Note that $I_\mathrm{f}$ is a DC quantity, i.e., its RMS value is equal to the DC value in the time domain. \pause 
-	From \eqref{eq:SM_voltage_steady_state} we obtain the stator current as
-	\begin{equation}
-	\underline{I}_\mathrm{s} = \frac{\underline{U}_\mathrm{s} - \underline{U}_\mathrm{i}}{R_\mathrm{s} + \mathrm{j}\omega_\mathrm{s} \left(L_{\sigma,\mathrm{s}} + M\right)}.
-	\end{equation}
-	\pause
-	Assuming that the ohmic voltage drop is negligible ($R_\mathrm{s}\approx 0$), which typically applies to high power machines, the stator current simplifies to
-	\begin{equation}
-		\underline{I}_\mathrm{s} = \mathrm{j} \frac{\underline{U}_\mathrm{i} - \underline{U}_\mathrm{s}}{\omega_\mathrm{s} \left(L_{\sigma,\mathrm{s}} + M\right)}.
-		\label{eq:SM_stator_current_steady_state}
-	\end{equation}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Steady-state torque (cont.) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Steady-state torque (cont.)}
-    \begin{columns}
-		\begin{column}{0.55\textwidth}
-		\onslide<+->
-		The q part from $\underline{I}_\mathrm{s}=I_\mathrm{s,d} + \mathrm{j}I_\mathrm{s,q}$ is
-		\begin{equation}
-			I_\mathrm{s,q} = \frac{\left|\underline{U}_\mathrm{i} - \underline{U}_\mathrm{s}\right|}{\omega_\mathrm{s} \left(L_{\sigma,\mathrm{s}} + M\right)}.
-		\end{equation}
-		\onslide<+->
-		From \figref{fig:Load_angle_voltage_phasors} we identify 
-		$$\sin(\theta) = \frac{\left|\underline{U}_\mathrm{i} - \underline{U}_\mathrm{s}\right|}{\left|\underline{U}_\mathrm{s}\right|}$$
-		\onslide<+->
-		and can rewrite $I_\mathrm{s,q}$ as
-		\begin{equation}
-			I_\mathrm{s,q} = \frac{\left|\underline{U}_\mathrm{s}\right|}{\omega_\mathrm{s} \left(L_{\sigma,\mathrm{s}} + M\right)} \sin(\theta).
-		\end{equation}
-		\onslide<+->
-		Here, $\theta$ is the load angle counted from $\underline{U}_\mathrm{i}$ to $\underline{U}_\mathrm{s}$.
-        \end{column}
-        \begin{column}{0.45\textwidth}
-			\onslide<2->
-            \begin{figure}
-                \centering
-                \includegraphics[width=0.95\textwidth]{fig/lec07/Load_angle_voltage_phasors.pdf}
-                \caption{Exemplary phasor diagram of the cylindrical SM}
-                \label{fig:Load_angle_voltage_phasors}
-            \end{figure}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Steady-state torque (cont.) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Steady-state torque (cont.)} 
-	\onslide<+->
-	Moreover, from \eqref{eq:SM_voltage_steady_state} we can express the field winding current (amplitude, DC quantity) as
-	\begin{equation}
-		I_\mathrm{f} = \sqrt{2}\frac{\left|\underline{U}_\mathrm{i}\right|}{\omega_\mathrm{s}M}.
-	\end{equation}
-	\onslide<+->
-	Inserting the expressions for $I_\mathrm{s,q}$ and $I_\mathrm{f}$ into the torque equation yields
-	\begin{equation}
-		T = 3 p \frac{\left|\underline{U}_\mathrm{s}\right| \left|\underline{U}_\mathrm{i}\right|}{\omega_\mathrm{s}^2 \left(L_{\sigma,\mathrm{s}} + M\right)}  \sin(\theta)  = 3 p \frac{U_\mathrm{s} U_\mathrm{i}}{\omega_\mathrm{s}^2 \left(L_{\sigma,\mathrm{s}} + M\right)}  \sin(\theta). 
-		\label{eq:SM_torque_steady_state}
-	\end{equation}
-	\onslide<+->
-	Hence, the load angle $\theta$ determines the torque of the cylindrical SM:
-	\begin{itemize}
-		\item<+-> For $\theta < 0^\circ$, the torque is negative (generator mode, if $\omega_\mathrm{r}>0$).
-		\item<+-> For $\theta = 0^\circ$, the torque is zero.
-		\item<+-> For $\theta > 0^\circ$, the torque is positive (motor mode, if $\omega_\mathrm{r}>0$).
-		\item<+-> For $\theta = \pm 90^\circ$, the absolute torque is maximal.
-	\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Stable steady-state operation (with fixed stator excitation) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Stable steady-state operation (with fixed stator excitation)} 
+	\frametitle{Amp\`ere's circuital law: magnetic field strength}
 	\begin{columns}
 		\begin{column}{0.55\textwidth}
+			Relates the circulation of a magnetic field around a closed loop to the electric current passing through the loop:
+            \begin{align}
+                \mbox{Integral form:} \quad &\oint_{\partial S} \bm{H} \cdot \mathrm{d}\bm{s} = I_{\mathrm{f}},\\
+                \mbox{Differential form:} \quad &\nabla \times \bm{H} = \bm{J}_{\mathrm{f}}. 
+                \label{eq:ampere_law}
+            \end{align}
+            Here, $\bm{H}$ is the magnetic field strength, $\bm{J}_{\mathrm{f}}$ is the free current density, and $I_{\mathrm{f}}$ is the free current enclosed by the loop $\partial S$. 
+            \vspace{0.25cm}
+            \begin{itemize}
+                \item<2-> Free current: current that is not bound to a material (i.e., without polarization and magnetization currents).
+                \item<3-> SI-units: $[H] = \si{\ampere\per\metre}$, $[J] = \si{\ampere\per\metre\squared}$
+            \end{itemize}
+		\end{column}
+        \hfill
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=0.7\textheight]{fig/lec07/Magnetic_field_strength_simple_conductor.pdf}
+				\caption{Illustration of the magnetic field strength $\bm{H}$ around a simple conductor}
+			\end{figure}
+		\end{column}
+		\end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Ampere's circuital law: free current example %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Amp\`ere's circuital law: free current example}
+	\begin{columns}
+		\begin{column}{0.55\textwidth}
+			What is the free current $I_{\mathrm{f}}$ enclosed by the loop $\partial S$?
+            \begin{itemize}
+                \item<2-> The current $I_1$ flows in the direction of the loop $\partial S$ (according to right-hand rule).
+                \item<3-> The current $I_1$ must be counted $N$ times due to the $N$ turns of wire around the loop $\partial S$.
+                \item<4-> The current $I_2$ flows in the opposite direction of the loop $\partial S$ (according to right-hand rule).
+                \item<5-> Result:
+            \end{itemize}
+            \vspace{0.25cm}
+            \onslide<5->{\begin{equation*}
+                I_\mathrm{f} = N \cdot I_1 - I_2.
+            \end{equation*}}
+		\end{column}
+        \hfill
+		\begin{column}{0.45\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=0.5\textheight]{fig/lec07/Magnetic_field_strength_multiple_conductors.pdf}
+				\caption{Arrangement with two electrical conductors}
+			\end{figure}
+		\end{column}
+		\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Ampere's circuital law: simple solenoid  example%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Amp\`ere's circuital law: simple solenoid example}
+	\begin{columns}
+		\begin{column}{0.575\textwidth}
+			Ampere's law for magnetic flux density $\bm{B}$ in vacuum:
+            \begin{align}
+                \mbox{Integral form:} \quad &\oint_{\partial S} \bm{B} \cdot \mathrm{d}\bm{s} = \mu_0 I,\\
+                \mbox{Differential form:} \quad &\nabla \times \bm{B} = \mu_0\bm{J}. 
+            \end{align}
+            Here, $\mu_0$ is the permeability of free space, $\bm{J}$ is the total current density and $I$ is the total current enclosed by the loop $\partial S$. 
+            \vspace{0.25cm}
+            \begin{itemize}
+                \item<2-> SI-unit: $[B] = \si{\tesla} = \si{\volt\second\per\metre\squared} = \si{\newton\per\ampere\per\metre}$
+                \item<3-> Example contour $\partial S$  on the right covering $N$ turns and length $l$ (flux density within solenoid):
+            \end{itemize}
+            \onslide<4->{$$\oint_{\partial S} \bm{B} \cdot \mathrm{d}\bm{s} = N \mu_0 I  \Leftrightarrow B = \frac{N \mu_0 I}{l}$$}
+		\end{column}
+        \hfill
+		\begin{column}{0.425\textwidth}
+            \vspace{-0.2cm}
+			\begin{figure}
+				\centering
+				\includegraphics[height=0.68\textheight]{fig/lec07/Solenoid_Ampere_law.pdf}
+				\caption{Magnetic flux density evaluated at the contour $\partial \bm{S}$  (adapted from: \href{https://commons.wikimedia.org/wiki/File:Solenoid_and_Ampere_Law.png}{Wikimedia Commons}, Goodphy, \href{https://creativecommons.org/licenses/by-sa/4.0/deed.en}{CC BY-SA 4.0})}
+			\end{figure}
+		\end{column}
+		\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Shortcomings of the Ampere's circuital law %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Shortcomings of the Amp\`ere's circuital law}
+	\begin{columns}
+		\begin{column}{0.55\textwidth}
+			Applying Amp\`ere's circuital law to a capacitor with a changing electric field $\bm{E}$ leads to a contradiction:
+            \begin{itemize}
+                \item Applying \eqref{eq:ampere_law} to $S_1$ yields:
+                $$\oint_{\partial S_1} \bm{H} \cdot \mathrm{d}\bm{s} = I.$$
+                \item<2-> In the case of $S_2$ we receive:
+                $$\oint_{\partial S_2} \bm{H} \cdot \mathrm{d}\bm{s} = 0.$$
+                \item<3-> However, both surfaces share the same bounding contour $\partial S$.
+                \item<4-> Issue: The magnetic field strength $\bm{H}$ is not able to describe the displacement current.
+            \end{itemize}
+		\end{column}
+        \hfill
+		\begin{column}{0.45\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=0.55\textheight]{fig/lec07/Displacement_current_in_capacitor.pdf}
+				\caption{Surfaces $S_1$ and $S_2$ share the same bounding contour $\partial S$. However, $S_1$ is pierced by conduction current, while $S_2$ is pierced by displacement current (adapted from: \href{https://commons.wikimedia.org/wiki/File:Displacement_current_in_capacitor.svg}{Wikimedia Commons}, public domain).}
+			\end{figure}
+		\end{column}
+		\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Lorentz force %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Lorentz force}
+    \begin{columns}
+		\begin{column}{0.6\textwidth}
+        The force $\bm{F}$ acting on a particle of electric charge $q$ with instantaneous velocity $\bm{v}$, due to an external electric field $\bm{E}$ and magnetic field $\bm{B}$, is given by
+            \begin{equation}
+                \bm{F} = q\left(\bm{E} + \bm{v}\times\bm{B}\right).
+            \end{equation}
+            \pause
+            \begin{itemize}
+                \item The term $q\bm{E}$  is called the electric force. \pause
+                \item The term $q\left(\bm{v}\times\bm{B}\right)$ is called the magnetic force. \pause
+                \item In Cartesian coordinates, the Lorentz force is given by:
+            \end{itemize}
+            \begin{equation}
+                \begin{aligned}
+                    F_x &= q\left(E_x + v_yB_z - v_zB_y\right),\\
+                    F_y &= q\left(E_y + v_zB_x - v_xB_z\right),\\
+                    F_z &= q\left(E_z + v_xB_y - v_yB_x\right).
+                \end{aligned}
+            \end{equation}
+		\end{column}
+        \hfill
+		\begin{column}{0.40\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=0.5\textheight]{fig/lec07/Lorentz_force_particle.pdf}
+				\caption{Lorentz force $\bm{F}$ on a particle (of charge $q$) in motion (instantaneous velocity $\bm{v}$) with given $\bm{E}$ and $\bm{B}$ fields (adapted from: \href{https://commons.wikimedia.org/wiki/File:Lorentz_force_particle.svg}{Wikimedia Commons}, Maschen, \href{https://creativecommons.org/publicdomain/zero/1.0/deed.en}{CC0})}
+			\end{figure}
+		\end{column}
+		\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Hand rule of the magnetic Lorentz force %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Hand rule of the magnetic Lorentz force}
+    \begin{figure}
+        \centering
+        \includegraphics[height=0.6\textheight]{fig/lec07/Hand-rule-charges-both-hands.pdf}
+        \caption{Right and left hand rule for the magnetic Lorentz force $q\left(\bm{v}\times\bm{B}\right)$ (adapted from: \href{https://commons.wikimedia.org/wiki/File:Right-hand-rule-charges-both-hands.svg}{Wikimedia Commons}, M. Run, \href{https://creativecommons.org/licenses/by-sa/3.0/deed.en}{CC BY-SA 3.0})}
+    \end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Lorentz force density for a continuous charge distribution %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Lorentz force density for a continuous charge distribution}
+    \begin{columns}
+		\begin{column}{0.5\textwidth}
+         For a continuous charge distribution in motion, the Lorentz force density (force per unit volume) becomes: 
+            \begin{equation}
+                \bm{f} = \rho\bm{E} + \bm{J}\times\bm{B}.
+            \end{equation}
+            \begin{itemize}
+                \item $\rho$ is the charge density (charge per unit volume).
+                \item $\bm{J} = \rho \bm{v}$ is the current density.
+            \end{itemize}
+		\end{column}
+        \hfill
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=0.6\textheight]{fig/lec07/Lorentz_force_continuum.pdf}
+				\caption{Lorentz force density $\bm{f}$ on a continuous charge distribution (charge density $\rho$) in motion (adapted from: \href{https://commons.wikimedia.org/wiki/File:Lorentz_force_continuum.svg}{Wikimedia Commons}, Maschen, \href{https://creativecommons.org/publicdomain/zero/1.0/deed.en}{CC0})}
+			\end{figure}
+		\end{column}
+		\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The Ampere--Maxwell equation %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{The Amp\`ere -- Maxwell equation}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			The charge of capacitor is:
+            $$Q = \oint_{S_2} \bm{D}\cdot \mathrm{d}\bm{S}.$$
+            \onslide<2->{If the electric field ($\bm{D} = \varepsilon_0\varepsilon_\mathrm{r} \bm{E}$) changes, a displacement current results:
+            $$I_{\mathrm{d}} = \frac{\mathrm{d}}{\mathrm{d} t} \oint_{S_2} \bm{D}\cdot \mathrm{d}\bm{S}$$}
+            \begin{itemize}
+                \item<3-> Is not a classical electric current (moving charges) but a term to describe the changing electric field.
+                \item<4-> Above, $\varepsilon_0$ is the vacuum permittivity and $\varepsilon_\mathrm{r}$ is the relative permittivity of a material.
+            \end{itemize}
+		\end{column}
+        \hfill
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=0.65\textheight]{fig/lec07/Maxwell_integral_displacement_current.pdf}
+				\caption{Illustration for calculating the displacement current (adapted from: \href{https://commons.wikimedia.org/wiki/File:Maxwell_integral_displacement_current.svg}{Wikimedia Commons}, public domain).}
+			\end{figure}
+		\end{column}
+		\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The Ampere--Maxwell equation (cont.)%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{The Amp\`ere -- Maxwell equation (cont.)}
+        Adding the displacement current to \eqref{eq:ampere_law} we receive the Amp\`ere -- Maxwell equation:
+            \begin{align}    
+            \mbox{Integral form:} \quad  &\int_{\partial S} \bm{H} \cdot \mathrm{d}\bm{s} = \iint_{S}\left(\bm{J}_\mathrm{f} + \frac{\mathrm{d}}{\mathrm{d} t} \bm{D} \right)\cdot\mathrm{d}\bm{S}, \\
+            \mbox{Differential form:} \quad &\nabla \times \bm{H} = \bm{J}_\mathrm{f} +  \frac{\partial\bm{D}}{\partial t}. 
+            \label{eq:ampere_maxwell_law}
+        \end{align}
+        Above, $\bm{D}$ is the electric displacement field.
+        \vspace{0.5cm}
+        \begin{itemize}
+            \item SI-unit: $[D] = \si{\coulomb\per\metre\squared}$
+            \item SI-unit: $[E] = \si{\volt\per\metre}$
+            \item $\varepsilon_0 \approx \SI{8.854e-12}{\farad\per\metre}$
+        \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Ampere's circuital law: magnetic flux %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Magnetic flux and flux linkage}
+	\begin{columns}
+		\begin{column}{0.575\textwidth}
+			The magnetic flux $\phi$ is the surface integral of the normal component of $\bm{B}$ over that surface:
+            \begin{align}
+                \phi = \iint_{S} \bm{B} \cdot \mathrm{d}\bm{S}. 
+            \end{align}
+            \onslide<2->{As there are no magnetic monopoles, the magnetic flux through a closed surface (which is covering a volume without holes) is always zero:
+            \begin{align}
+                \oint_{S} \bm{B} \cdot \mathrm{d}\bm{S} = 0.
+            \end{align}}
+            \onslide<3->{The flux linkage $\psi$ is the product of the magnetic flux $\phi$ and the number of turns $N$ of a coil:
+            \begin{align}
+                \psi = N  \phi.
+            \end{align}}
+		\end{column}
+        \hfill
+		\begin{column}{0.425\textwidth}
+            \vspace{-0.4cm}
+			\begin{figure}
+				\centering
+				\includegraphics[height=0.68\textheight]{fig/lec07/Solenoid_Flux.pdf}
+				\caption{Magnetic flux $\phi$ evaluated at the surface $\bm{S}$  (adapted from: \href{https://commons.wikimedia.org/wiki/File:Solenoid_and_Ampere_Law.png}{Wikimedia Commons}, Goodphy, \href{https://creativecommons.org/licenses/by-sa/4.0/deed.en}{CC BY-SA 4.0})}
+                \label{fig:Solenoid_Flux}
+			\end{figure}
+		\end{column}
+		\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Magnetic leakage flux %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Magnetic leakage flux}
+	\begin{columns}
+		\begin{column}{0.48\textwidth}
 			\begin{itemize}
-				\item<1-> From \eqref{eq:SM_torque_steady_state} we see that the torque depends on $\sin(\theta)$.
-				\item<2-> Beyond $\theta = \pm 90^\circ$, the absolute torque decreases again.
-				\item<3-> If the SM is operated with a fixed stator excitation, e.g., by a stiff grid voltage, the load angle $\theta$ is determined by the mechanical load.
-				\item<4-> If the absolute mechanical load is increased such that $|\theta| > 90^\circ$ applies, the SM will lose synchronicity and stall.
-				\item<5-> Hence, the stable operation range is limited to $|\theta| \leq 90^\circ$ (while in practice an additional safety margin is considered).
-			\end{itemize}
-        \end{column}
-        \begin{column}{0.45\textwidth}
-			\onslide<1->
-            \begin{figure}
-                \centering
-                \includegraphics[width=0.95\textwidth]{fig/lec07/SM_steady_state_stability.pdf}
-                \caption{Torque vs. load angle for the cylindrical SM}
-                \label{fig:SM_steady_state_stability}
-            \end{figure}
-        \end{column}
-    \end{columns}
+                \item In the scenarios with multiple coils, the magnetic flux generated by one coil will influence also the other coils.
+                \item Exception: two coils are perfectly perpendicular to each other.
+                \item However, the magnetic flux typically does not fully couple with the other coils
+                \item The difference is the leakage flux $\phi_\sigma$.
+            \end{itemize}
+		\end{column}
+        \hfill
+		\begin{column}{0.48\textwidth}
+            \vspace{-0.2cm}
+			\begin{figure}
+				\centering
+				\includegraphics[height=0.55\textheight]{fig/lec07/Leakage_flux.pdf}
+				\caption{The magnetic flux $\phi_1$ generated by the current $I$ does only partly couple with the second coil, while the difference $\phi_1-\phi_2$ is the leakage flux (adapted from: \href{https://commons.wikimedia.org/wiki/File:Mutual_Inductivity.svg}{Wikimedia Commons}, M. Wacenovsky, public domain)}
+			\end{figure}
+		\end{column}
+		\end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Lenz's law %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Lenz's Law: Direction of Induced Voltage and Current} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            Lenz's law defines the polarity of the induced voltage. The induced current always acts in a direction that opposes the change in magnetic flux that produced it. 
+            \vspace{0.2cm} 
+            \begin{itemize} 
+                \item If the original flux increases, the induced current produces an opposing flux. 
+                \item If the original flux decreases, the induced current tries to maintain it. 
+                \item This is a direct consequence of energy conservation. 
+                \item Lenz's law explains eddy currents, transformer action, leakage effects, and magnetic damping. 
+            \end{itemize} 
+            \vspace{0.2cm} 
+            For a shorted conducting loop, 
+            \begin{align} v_{\mathrm{ind}}(t)=\frac{d\Phi(t)}{dt}, \qquad i_{\mathrm{ind}}(t)=\frac{v_{\mathrm{ind}}(t)}{Z_{\mathrm{loop}}} 
+            \end{align} The induced current produces a secondary flux that opposes the original flux variation. 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{figure} 
+                \centering 
+                \includegraphics[width=0.75\linewidth]{fig/lec07/Lenz_law.png} 
+                \caption{Lenz's law in a shorted loop: the induced current produces flux opposing the applied flux variation. Adapted from Erickson and Maksimovic, \textit{Fundamentals of Power Electronics}, 3rd edition, Springer, 2013.}
+            \end{figure} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Inductance %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Inductance}
+	The inductance $L$ describes the ratio between the magnetic flux linkage $\psi(t)$ to the current $i(t)$:
+    \begin{align}
+        \psi(t) = L i(t).
+    \end{align}
+    \pause
+    \textbf{Example}:  From the solenoid in \figref{fig:Solenoid_Flux} we know that the magnetic flux linkage $\psi$ is:
+    $$\psi = N \iint_{S} \bm{B} \cdot \mathrm{d}\bm{S}= \frac{1}{l}N^2 \mu_0 I \pi r^2 $$
+    with $r$ being the radius of the solenoid. \pause Hence, the inductance $L$ is:
+    $$L = \frac{\psi}{I} = \frac{N^2 \mu_0 \pi r^2}{l}.$$
+    \begin{itemize}
+        \item SI-unit: $[L] = \si{\henry} = \si{\volt\second\per\ampere}$
+        \item The inductance is an important parameter describing inductive systems.
+    \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Power balance %%
+%% Self and mutual inductance %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-	\frametitle{Power balance} 
-	The SM's complex power is given by 
-	\begin{equation}
-			\underline{S}= 3\underline{U}_\mathrm{s} \overline{\underline{I}}_\mathrm{s} =  3(P + \mathrm{j}Q) = 3S e^{\mathrm{j}\varphi} 
-	\end{equation}
-	with $\overline{\underline{X}}$ being the complex conjugate and the factor $3$ results from the representation of the three-phase machine in an orthogonal coordinate system (cf. Clarke transf.) plus the RMS phasor representation of currents and voltages. \pause Above, $S$ is the apparent power, $P$ and $Q$ are the active and reactive power, respectively. \pause The active power is
-	\begin{equation}
-		P = 3\mathrm{Re}\left\{ \underline{U}_\mathrm{s} \overline{\underline{I}}_\mathrm{s}\right\} = 3 U_\mathrm{s} I_\mathrm{s} \cos(\varphi)
-	\end{equation}
-	\pause
-	and the reactive power is
-	\begin{equation}
-		Q = 3\mathrm{Im}\left\{\underline{U}_\mathrm{s} \overline{\underline{I}}_\mathrm{s}\right\} = 3 U_\mathrm{s} I_\mathrm{s} \sin(\varphi).
-		\label{eq:SM_reactive_power}
-	\end{equation}
-	\pause
-	Here, $\varphi$ is the power factor angle, that is, the phase change between stator voltage and current (compare \figref{fig:Load_angle_voltage_phasors}). 
+	\frametitle{Self and mutual inductance}
+    \begin{columns}
+		\begin{column}{0.45\textwidth}
+            Based on the inductive coupling between the two coils from \figref{fig:Transformer3d_col3}, we can define the magnetic flux matrix:
+            \begin{equation}
+                \bm{\phi} = \begin{bmatrix} \phi_{11} & \phi_{12} \\ \phi_{21} & \phi_{22} \end{bmatrix} .
+                \label{eq:flux_matrix_transformer}
+            \end{equation}
+            \vspace{-0.2cm}
+			\begin{itemize}
+                \item<2-> $\phi_{11}$: magnetic flux component of coil 1 due to its own current $i_1$
+                \item<3-> $\phi_{12}$: magnetic flux component of coil 1 due to the current $i_2$ in coil 2
+                \item<4-> $\phi_{21}$: magnetic flux component of coil 2 due to the current $i_1$ in coil 1
+                \item<5-> $\phi_{22}$: magnetic flux component of coil 2 due to its own current $i_2$
+            \end{itemize}
+		\end{column}
+        \hfill
+		\begin{column}{0.525\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=0.575\textheight]{fig/lec07/Transformer3d_col3.pdf}
+				\caption{Two coils coupled via a common core (adapted from: \href{https://commons.wikimedia.org/wiki/File:Transformer3d_col3.svg}{Wikimedia Commons}, Bill C., \href{https://creativecommons.org/licenses/by-sa/3.0/deed.en}{CC~BY-SA~3.0})}
+                \label{fig:Transformer3d_col3}
+			\end{figure}
+		\end{column}
+		\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Power balance %%
+%% Self and mutual inductance (cont.) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-	\frametitle{Power balance (cont.)} 
-	From \eqref{eq:SM_torque_steady_state} we receive the active power as
-	\begin{equation}
-		P = T \omega_\mathrm{r} = T \frac{\omega_\mathrm{s}}{p} = 3 \frac{U_\mathrm{s} U_\mathrm{i}}{\omega_\mathrm{s} \left(L_{\sigma,\mathrm{s}} + M\right)}  \sin(\theta).
-	\end{equation} 
-	\pause
-	For the reactive power we insert \eqref{eq:SM_stator_current_steady_state} in \eqref{eq:SM_reactive_power} and obtain (after some rewritting)
-	\begin{equation}
-		Q = 3 \frac{U_\mathrm{s}}{\omega_\mathrm{s} \left(L_{\sigma,\mathrm{s}} + M\right)} \left(U_\mathrm{s} - U_\mathrm{i} \cos(\theta) \right).
-	\end{equation}
-	\pause
-	\begin{varblock}{Four quadrant operation}
-		Due to a combination of $\theta$ and $U_\mathrm{i}$, which are adjustable via the field winding current $I_\mathrm{f}$, the (cylindrical) SM can cover all four quadrants of operation (i.e., combine positive / negative signs of both the active and reactive power). This is why the externally-excited SM is often used in generator / power plant applications. 
-	\end{varblock}
+	\frametitle{Self and mutual inductance (cont.)}
+    Utilizing the permeance definition (``magnetic conductance'') 
+    \begin{equation}
+        \Lambda = \frac{\phi}{N i},
+    \end{equation}
+    \pause
+    we can represent \eqref{eq:flux_matrix_transformer} as:
+    \begin{equation}
+        \phi_{11} = \Lambda_{11} N_1 i_1, \quad \phi_{12} = \Lambda_{12} N_2 i_2, \quad \phi_{21} = \Lambda_{21} N_1 i_1, \quad \phi_{22} = \Lambda_{22} N_2 i_2.
+    \end{equation}
+    \pause
+    The resulting flux linkage per coil is then:
+    \begin{equation}
+        \begin{alignedat}{3}
+        \psi_1 &= N_1\left(\phi_{11} + \phi_{21} + \phi_{12}\right), \quad && \psi_2 && =  N_2\left(\phi_{22} + \phi_{12} + \phi_{21}\right),\\ \pause
+               &=\underbrace{\left(\Lambda_{11}N_1^2+\Lambda_{21}N_1^2\right)}_{L_1}i_1 + \underbrace{\Lambda_{12}N_1N_2}_{M_{12}}i_2, \quad && && =\underbrace{\left(\Lambda_{22}N_2^2+\Lambda_{12}N_1^2\right)}_{L_2}i_2 + \underbrace{\Lambda_{21}N_1N_2}_{M_{21}}i_1. 
+        \end{alignedat}
+        \label{eq:flux_linkage_transformer}
+    \end{equation}
+    Above, $L_1$ and $L_2$ are the self-inductances, $M_{12}$ and $M_{21}$ are the mutual inductances.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Phasor diagrams for the cylindrical SM in all four quadrants %%
+%% Self and mutual inductance (cont.) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-	\frametitle{Phasor diagrams for the cylindrical SM in all four quadrants} 
-	\begin{figure}
-		\centering
-		\includegraphics[height=0.85\textheight]{fig/lec07/Phasor_diagrams_4Q.pdf}
-	\end{figure}
+	\frametitle{Self and mutual inductance (cont.)}
+    Hence, we can define the flux linkages of both coils using the following inductance matrix:
+    \begin{equation}
+        \bm{\psi} = \begin{bmatrix} \psi_1 \\ \psi_2 \end{bmatrix} = \begin{bmatrix} L_1 & M_{12} \\ M_{21} & L_2 \end{bmatrix} \begin{bmatrix} i_1 \\ i_2 \end{bmatrix} = \bm{L}\bm{i}.
+        \label{eq:flux_linkage_matrix_transformer}
+    \end{equation}
+    \pause
+    Due to the symmetry of the inductive coupling, the mutual inductances are identical:
+    \begin{equation}
+        M_{12} = M_{21} = M.
+    \end{equation}
+    \pause
+    Based on \eqref{eq:flux_linkage_transformer}, we can also split the self-inductance $L_i$ of the $i$-th coil into the sum of the leakage inductance $L_{i,\sigma}$ and the magnetizing inductance $L_{i,\mathrm{m}}$:
+    \begin{equation}
+        L_i = L_{i,\sigma} + L_{i,\mathrm{m}} = \Lambda_{ii}N_i^2 + \Lambda_{ji}N_i^2 \quad \mbox{with} \quad i \neq j. 
+        \label{eq:inductance_split}
+    \end{equation}
+    \pause
+    Finally, we can define the coupling coefficient $k$ as:
+    \begin{equation}
+        k = \frac{M}{\sqrt{L_1 L_2}}, \qquad 0 \leq k \leq 1,
+        \label{eq:coupling_coefficient}
+    \end{equation}
+    which indicates how strong or week the inductive coupling between the coils is.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Electrical and magnetic domains %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+\frametitle{Interaction Between Electrical and Magnetic Domains} \begin{columns} 
+    \begin{column}{0.57\textwidth} 
+        A magnetic component is an energy-processing interface between the electrical and magnetic domains. 
+        \vspace{0.2cm} In the electrical domain, 
+        \begin{align} p_e(t)=v(t)i(t) 
+        \end{align} In the magnetic domain, the corresponding variables are MMF and rate of change of flux: 
+        \begin{align} 
+            p_m(t)=F(t)\frac{d\Phi(t)}{dt} 
+        \end{align} Using Amp\`ere's and Faraday's laws, 
+        \begin{align} 
+            v(t)i(t) = Ni(t)\frac{d\Phi(t)}{dt} = F(t)\frac{d\Phi(t)}{dt} 
+        \end{align} 
+        \begin{itemize} 
+            \item Voltage corresponds to flux rate. 
+            \item Current corresponds to magneto-motive force. 
+            \item Energy transfer occurs through magnetic field coupling. 
+        \end{itemize} 
+    \end{column} 
+    \begin{column}{0.39\textwidth} 
+        \begin{figure} 
+            \centering 
+            \includegraphics[width=\linewidth]{fig/lec07/electric_magnetic_domains.png} 
+            \caption{Interaction between electric and magnetic domains. Adapted from Umanand, \textit{Power Electronics: Essentials and Applications}, 2nd edition, Wiley, 2012.}
+        \end{figure} 
+    \end{column} 
+\end{columns} 
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Electrical magnetic analogy %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Electrical--Magnetic Domain Analogy} 
+    \begin{columns} 
+        \begin{column}{0.56\textwidth} 
+            The magnetic domain can be understood using analogies with electrical circuits. This is extremely useful for designing inductors and transformers. 
+            \vspace{0.15cm} 
+            \begin{table} 
+                \centering 
+                \small 
+                \begin{tabular}{lll} 
+                    \hline 
+                    \textbf{Electrical} & \textbf{Magnetic} & \textbf{Meaning}\\ \hline 
+                    Voltage $v$ & MMF $F$ & Driving effort\\ 
+                    Current $i$ & Flux $\Phi$ & Flow quantity\\ 
+                    Resistance $R$ & Reluctance $\mathcal{R}$ & Opposition to flow\\ 
+                    Conductance $G$ & Permeance $\Lambda$ & Ease of flow\\ 
+                    Current density $J$ & Flux density $B$ & Flow per area\\ 
+                    Electric field $E$ & Magnetic field $H$ & Field intensity\\ 
+                    \hline 
+                \end{tabular} 
+            \end{table} 
+            \vspace{0.15cm} 
+            The most important analogy is: 
+            \begin{align} 
+                V=IR \qquad \Longleftrightarrow \qquad F=\Phi\mathcal{R} 
+            \end{align} 
+        \end{column} 
+        \begin{column}{0.40\textwidth} 
+            \begin{block}{Design Interpretation} 
+                \small A magnetic core behaves like a path for magnetic flux. A high-permeability core provides a low-reluctance path, just as a low-resistance conductor provides an easy path for electric current. 
+            \end{block} 
+            \vspace{0.2cm} 
+            \begin{itemize} 
+                \small 
+                \item Air gaps increase reluctance. 
+                \item Larger core area reduces reluctance. 
+                \item Longer magnetic paths increase reluctance. 
+                \item High permeability reduces reluctance. 
+            \end{itemize} 
+            \vspace{0.15cm}
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Flux and flux density %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Magnetic Flux and Flux Density} 
+    \begin{columns} 
+        \begin{column}{0.5\textwidth} 
+            Magnetic flux $\Phi$ represents the total magnetic field passing through a given surface. Flux density $B$ represents how concentrated this flux is within the core cross-section. 
+            \begin{align} 
+                \Phi=\int_S \mathbf{B}\cdot d\mathbf{A} 
+            \end{align} 
+            For uniform flux density, 
+            \begin{align} 
+                \Phi=BA_c 
+            \end{align} 
+            \begin{align} 
+            \text{Hence,} B=\frac{\Phi}{A_c} 
+            \end{align} 
+            where $A_c$ is the cross-sectional area of the magnetic core.
+        \end{column} 
+        \begin{column}{0.5\textwidth} 
+            \vspace{-1.2cm}
+            \begin{figure} 
+                \centering 
+                \includegraphics[width=0.5\textwidth]{fig/lec07/flux_density.png} 
+                \caption{Definition of flux density in a magnetic core. Adapted from Umanand, \textit{Power Electronics: Essentials and Applications}, 2nd edition, Wiley, 2012.}
+             \end{figure} 
+             \vspace{-0.7cm}
+            \begin{itemize} 
+                \item $\Phi$ is measured in Weber. 
+                \item $B$ is measured in Tesla. 
+                \item $A_c$ is the effective core cross-sectional area. 
+                \item A larger $A_c$ allows the same flux at lower flux density. 
+                \item Excessive $B$ pushes the core toward satu. 
+            \end{itemize} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% H and permeability %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Magnetic Field Intensity and Permeability} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            The magnetic field intensity $H$ is produced by current excitation, while the flux density $B$ depends on both $H$ and the material property called permeability. 
+            \begin{align} 
+                B=\mu H 
+            \end{align} 
+            The permeability is usually written as $\mu=\mu_0\mu_r$. 
+            \begin{itemize} 
+                \item $\mu_0=4\pi\times10^{-7}\ \si{\henry\per\metre}$ is the permeability of free space. 
+                \item $\mu_r$ is the relative permeability of the magnetic material. 
+                \item Air has approximately $\mu_r=1$. 
+                \item Magnetic cores may have $\mu_r$ from hundreds to many thousands. 
+            \end{itemize}
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{figure} 
+                \centering 
+                \includegraphics[width=\linewidth]{fig/lec07/air_core_material.png} 
+                \caption{$B$--$H$ characteristics of air and a typical magnetic core material. Adapted from Erickson and Maksimovi\'c, Fig. 10.5.} 
+            \end{figure} 
+            A high value of $\mu$ means that a relatively small $H$ can produce a large $B$. 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Ideal B-H curve %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Idealized $B$--$H$ Characteristic} 
+    \begin{columns} 
+        \begin{column}{0.57\textwidth} 
+            For introductory analysis, a magnetic material is often represented using an idealized or piecewise-linear $B$--$H$ characteristic. 
+            \begin{align} 
+                B=\mu H 
+            \end{align} 
+            In the linear region, 
+            \begin{itemize} 
+                \item the slope of the $B$--$H$ curve is the permeability $\mu$, 
+                \item flux density increases almost linearly with field intensity, 
+                \item the core behaves as a predictable magnetic path, 
+                \item inductance remains approximately constant. 
+            \end{itemize} 
+            \vspace{0.15cm} 
+            However, this linear model is only valid before saturation. At high excitation, the material cannot support proportional increase in flux density. 
+            \begin{align} 
+                B \rightarrow B_{\mathrm{sat}} 
+            \end{align} 
+        \end{column} 
+        \begin{column}{0.39\textwidth} 
+            \begin{figure} 
+                \centering 
+                \includegraphics[width=0.8\linewidth]{fig/lec07/piecewise_linear_BH.png} 
+                \caption{Piecewise-linear approximation of the $B$--$H$ curve. Adapted from Umanand, \textit{Power Electronics: Essentials and Applications}, 2nd edition, Wiley, 2012.}
+            \end{figure} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Practical B-H curve and hysteresis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Practical $B$--$H$ Characteristic and Hysteresis}
+    \begin{columns} 
+        \begin{column}{0.57\textwidth} 
+            Practical magnetic materials do not follow a single-valued linear $B$--$H$ curve. Instead, they exhibit hysteresis: the flux density depends not only on the present value of $H$, but also on the previous magnetic history. 
+            \vspace{0.15cm} 
+            \begin{itemize} 
+                \item During magnetization, energy is stored in the magnetic field. 
+                \item During demagnetization, not all stored energy is returned. 
+                \item The enclosed area of the $B$--$H$ loop represents energy lost per cycle. 
+                \item This loss appears as heat in the magnetic core. 
+                \item Hysteresis loss increases with switching frequency. 
+            \end{itemize} 
+        \end{column} 
+        \begin{column}{0.39\textwidth} 
+            \vspace{-0.5cm}
+            \begin{figure} 
+                \centering 
+                \includegraphics[width=0.7\linewidth]{fig/lec07/practical_BH_loop.png} 
+                \caption{Practical $B$--$H$ loop showing hysteresis. Adapted from Umanand, \textit{Power Electronics: Essentials and Applications}, 2nd edition, Wiley, 2012.}
+            \end{figure} 
+            The core-loss energy density per cycle is proportional to 
+            \begin{align} 
+                W_{\mathrm{hyst}} \propto \oint H\,dB 
+            \end{align} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Saturation flux density %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Saturation Flux Density of Magnetic Materials} 
+    \begin{columns} 
+        \begin{column}{0.56\textwidth} 
+            The saturation flux density $B_{\mathrm{sat}}$ is a key material limit. If the operating flux density approaches this value, the effective permeability collapses and the magnetic component can no longer behave as intended. 
+            \vspace{0.15cm} 
+            \begin{table} 
+                \centering 
+                \small 
+                \begin{tabular}{lc} 
+                    \hline 
+                    \textbf{Core material} & \textbf{Typical $B_{\mathrm{sat}}$}\\ 
+                    \hline 
+                    Ferrite & $\approx 0.3\ \si{\tesla}$\\
+                    Silicon steel & $\approx 1.0$--$1.2\ \si{\tesla}$\\ 
+                    Powdered iron & $\approx 1.6\ \si{\tesla}$\\ 
+                    Amorphous core & $\approx 1.6\ \si{\tesla}$\\ 
+                    Mu-metal & $\approx 1.0\ \si{\tesla}$\\ \hline 
+                \end{tabular} 
+            \end{table} 
+            \vspace{0.1cm} 
+            These values provide first-order design limits. Practical operation usually uses lower peak flux density to limit core loss and temperature rise. 
+        \end{column} 
+        \begin{column}{0.40\textwidth} 
+            \begin{block}{Power Electronics Interpretation} 
+                \small High $B_{\mathrm{sat}}$ enables smaller cores, but high-frequency operation is often limited more strongly by core loss than by saturation. Ferrites have lower $B_{\mathrm{sat}}$, but are widely used at high frequency because of their relatively low eddy-current loss. 
+            \end{block} 
+         \end{column} 
+    \end{columns} 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Reluctance %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Reluctance: Opposition to Magnetic Flux} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            In an electrical circuit, resistance opposes current flow. Similarly, in a magnetic circuit, reluctance opposes magnetic flux. 
+            Starting from 
+                $H=\frac{Ni}{l_m}$ and $B=\mu H$ 
+            with $\Phi=BA_c$, one obtains 
+            \begin{align} 
+                \Phi = \frac{Ni\,\mu A_c}{l_m} 
+            \end{align} or 
+            \begin{align} 
+                \Phi = \frac{F}{\mathcal R} 
+            \end{align} 
+            where $\mathcal R = \frac{l_m}{\mu A_c}$ is called the magnetic reluctance.
+            \begin{itemize}
+                \item Long magnetic paths increase reluctance. 
+                \item Large core area reduces reluctance. 
+                \item High permeability reduces reluctance. 
+            \end{itemize} 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{block}{Electrical Analogy} 
+                \begin{align} 
+                    I=\frac{V}{R} 
+                \end{align} 
+                \begin{align} 
+                    \Phi=\frac{F}{\mathcal R} 
+                \end{align} 
+            \end{block} 
+            \begin{itemize} 
+                \item Voltage $\leftrightarrow$ MMF 
+                \item Current $\leftrightarrow$ Flux 
+                \item Resistance $\leftrightarrow$ Reluctance 
+            \end{itemize} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Permeance %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Permeance: Ease of Magnetic Flux Flow} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            The reciprocal of reluctance is called permeance. 
+            \begin{align} 
+                \Lambda = \frac{1}{\mathcal R} 
+            \end{align} 
+            Substituting the reluctance expression gives 
+                $\Lambda = \frac{\mu A_c}{l_m}$ 
+            Therefore $
+                \Phi=\Lambda F $
+                Permeance describes how easily magnetic flux can be established within a magnetic path. 
+                \begin{itemize} 
+                    \item Large cross-sectional area increases permeance. 
+                    \item High permeability materials increase permeance. 
+                    \item Longer magnetic paths decrease permeance. 
+                \end{itemize} 
+            \end{column} 
+            \begin{column}{0.38\textwidth} 
+                \begin{block}{Electrical Analogy} 
+                    Conductance: 
+                    \begin{align} 
+                        G=\frac{1}{R} 
+                    \end{align} 
+                    Magnetic equivalent: 
+                    \begin{align} 
+                        \Lambda=\frac{1}{\mathcal R} 
+                    \end{align} 
+                \end{block} 
+                Permeance plays a role analogous to capacitance in the magnetic energy-storage viewpoint discussed. 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Magnetic circuits %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame} 
+    \frametitle{Magnetic Circuit Representation} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            Magnetic components are often represented using equivalent magnetic circuits. 
+            \vspace{0.15cm} 
+            The governing magnetic-circuit equation is 
+            \begin{align} 
+                F=\Phi\mathcal R 
+            \end{align} 
+            \vspace{0.15cm} 
+            Using this representation: 
+            \begin{itemize} 
+                \item Flux can be calculated using circuit techniques. 
+                \item Air gaps can be incorporated naturally. 
+                \item Core saturation can be interpreted physically. 
+                \item Inductance calculations become straightforward. 
+            \end{itemize} 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{figure} 
+                \centering 
+                \includegraphics[width=\linewidth]{fig/lec07/magnetic_circuit_equivalent.png} 
+                \caption{Equivalent magnetic circuit representation of a magnetic core. Adapted from Erickson and Maksimovi\'c, \textit{Fundamentals of Power Electronics}, 3rd edition, Springer, 2013.}
+            \end{figure} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Series magnetic circuit %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Series Magnetic Circuits} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            When magnetic flux passes sequentially through several sections of a magnetic path, the corresponding reluctances are connected in series. 
+            \begin{align} 
+                \mathcal R_{eq} = \mathcal R_1 + \mathcal R_2 + \mathcal R_3 +\cdots 
+            \end{align} 
+            The same magnetic flux flows through all sections: 
+            \begin{align} 
+                \Phi_1=\Phi_2=\Phi_3 
+            \end{align} 
+            The total MMF is 
+            \begin{align} 
+                F=\Phi \mathcal R_{eq} 
+            \end{align} 
+            \vspace{0.15cm}  
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{block}{Electrical Equivalent} 
+                \begin{align} 
+                    R_{eq}=R_1+R_2+R_3 
+                \end{align} 
+            \end{block} 
+            \vspace{0.2cm} 
+            Exactly the same mathematical rules apply to reluctances. Examples: 
+            \begin{itemize} 
+                \item Core section + air gap. 
+                \item Multi-material magnetic path. 
+                \item Practical transformer cores. 
+            \end{itemize}
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Air gap reluctance %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Why Does the Air Gap Dominate Reluctance?} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            Consider a magnetic core containing a small air gap $l_g$. The total reluctance becomes 
+            \begin{align} 
+                \mathcal R = \frac{l_m}{\mu_0\mu_r A_c} + \frac{l_g}{\mu_0A_c} 
+            \end{align} 
+            Since 
+                $\mu_r \gg 1$ 
+            for practical magnetic materials, 
+            \begin{align} 
+                \mathcal R \approx \frac{l_g}{\mu_0A_c} 
+            \end{align} 
+            \vspace{0.15cm} 
+            Therefore: 
+            \begin{itemize} 
+                \item Even a very small air gap dominates the total reluctance. 
+                \item The effective permeability decreases dramatically. 
+                \item Saturation current increases significantly. 
+            \end{itemize} 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{figure} 
+                \centering 
+                \includegraphics[width=\linewidth]{fig/lec07/air_gap_effect.png} 
+                \caption{Effect of air-gap introduction on magnetic characteristics. Adapted from Umanand, \textit{Power Electronics: Essentials and Applications}, 2nd edition, Wiley, 2012.}
+            \end{figure} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Flux division %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame} 
+    \frametitle{Parallel Magnetic Circuits and Flux Division} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            Just as electric current divides among parallel resistors, magnetic flux divides among parallel reluctance paths. 
+            \vspace{0.15cm} 
+            For two parallel paths, 
+            \begin{align} 
+                \Phi = \Phi_1+\Phi_2 \quad F_1=F_2 
+            \end{align}
+            The flux distribution becomes 
+            \begin{align} 
+                \Phi_1 = \frac{F}{\mathcal R_1} 
+            \end{align} 
+            \begin{align} 
+                \Phi_2 = \frac{F}{\mathcal R_2} 
+            \end{align} 
+            Flux naturally prefers the lower-reluctance path. 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{block}{Important Observation} 
+                High-permeability materials attract magnetic flux. 
+                This principle explains: 
+                \begin{itemize} 
+                    \item Magnetic shielding 
+                    \item Flux concentrators 
+                    \item Core shaping 
+                    \item Leakage-flux paths 
+                \end{itemize} 
+            \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Volt second balance %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame} 
+    \frametitle{Volt-Second Balance: Fundamental Principle} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            Starting from Faraday's law, 
+            \begin{align} 
+                v=N A_c\frac{dB}{dt} 
+            \end{align} 
+            Integrating over one switching period, 
+            \begin{align} 
+                \int_0^T v(t)dt = NA_c \int_0^T dB 
+            \end{align} 
+            For periodic steady-state operation, 
+            \begin{align} 
+                B(T)=B(0) 
+            \end{align} 
+            Therefore, is the volt-second balance condition: 
+            \begin{align} 
+                \int_0^T v(t)dt=0 
+            \end{align} 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{block}{Physical Meaning} The average voltage across a magnetic winding must be zero in steady state. Otherwise flux continues to accumulate cycle after cycle. 
+            \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Volt second and saturation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame} 
+    \frametitle{Flux Build-Up and Core Saturation} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            From \begin{align} B = \frac{1}{NA_c} \int v(t)dt 
+            \end{align} 
+            we observe that flux density is determined by the accumulated volt-seconds. 
+            \vspace{0.15cm} 
+            If 
+            \begin{align} 
+                \frac{1}{T} \int_0^T v(t)dt \neq 0 
+            \end{align} 
+            then $B \rightarrow \infty$ in the ideal mathematical model. Practically, the flux density reaches 
+            \begin{align} 
+                B_{sat} 
+            \end{align} 
+            and the core saturates. 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{block}{Design Implication} 
+                A transformer can saturate even at low load current if volt-second balance is violated. 
+                \vspace{0.15cm} 
+                Transformer saturation is governed primarily by flux density, not by output current. 
+            \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Volt second example %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame} 
+    \frametitle{Example: Volt-Second Balance in a Square-Wave Excitation} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            Consider a winding excited by 
+            \begin{align} +V \quad \mathrm{for}\quad \frac{T}{2} \quad \text{and} \quad -V \quad \mathrm{for}\quad \frac{T}{2} 
+            \end{align} 
+            The total volt-seconds become 
+            \begin{align} 
+                VT/2 - VT/2 =0 
+            \end{align} 
+            Hence, 
+            \begin{itemize} 
+                \item Flux oscillates around zero. 
+                \item No long-term flux accumulation occurs. 
+                \item Core saturation is avoided. 
+            \end{itemize} 
+            This is the operating principle of ideal transformer excitation. 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{figure} 
+                \centering 
+                \includegraphics[width=\linewidth]{fig/lec07/square_wave_volt_second_balance.png} 
+                \caption{Balanced positive and negative volt-seconds leading to periodic flux excursion.} 
+            \end{figure} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Inductor concept %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{What is an Inductor?} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            An inductor is a magnetic component that stores energy in its magnetic field when current flows through its winding. 
+            \vspace{0.15cm} Unlike transformers, which ideally transfer energy from one winding to another, inductors are specifically designed to store energy temporarily. 
+            \vspace{0.15cm} 
+            Typical applications include: 
+            \begin{itemize} 
+                \item Buck converters 
+                \item Boost converters 
+                \item Flyback converters 
+                \item EMI filters 
+                \item Resonant converters 
+                \item Motor drives 
+            \end{itemize} 
+            \vspace{0.15cm} 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            The electrical behaviour of an inductor is governed by 
+            \begin{align} 
+                v=L\frac{di}{dt} 
+            \end{align} 
+            which indicates that an inductor opposes changes in current. 
+            \begin{block}{Physical Interpretation} 
+                Current establishes magnetic flux. 
+                \vspace{0.1cm} 
+                The magnetic field stores energy and resists abrupt changes in current. 
+            \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Inductor derivation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Derivation of Inductance from Magnetic Circuits} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            Starting from the magnetic circuit relation 
+                $\Phi=\Lambda Ni$.
+            Differentiating with respect to time, 
+            \begin{align} 
+                \frac{d\Phi}{dt} = \Lambda N \frac{di}{dt} 
+            \end{align} 
+            Applying Faraday's law, 
+            \begin{align} 
+                v = N\frac{d\Phi}{dt} \text{yields} \quad v = \Lambda N^2 \frac{di}{dt}
+            \end{align} 
+            Comparing with 
+            \begin{align} 
+                v=L\frac{di}{dt} \quad \Longrightarrow \quad L=\Lambda N^2
+            \end{align} 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{block}{Important Result} 
+                \begin{align} 
+                    L=\Lambda N^2 
+                \end{align} 
+                \vspace{0.1cm} 
+                Inductance is determined by \begin{itemize} \item Number of turns \item Core geometry \item Core permeability \item Air gap \end{itemize} 
+            \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Physical inductance %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame} 
+    \frametitle{Physical Expression for Inductance} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            Substituting 
+                $\Lambda=\frac{\mu A_c}{l_m}$ 
+            into $
+                L=\Lambda N^2 $
+            gives 
+            \begin{align} 
+                L= \frac{\mu A_c N^2}{l_m} 
+            \end{align} 
+            This expression reveals the physical parameters that determine inductance. 
+            \vspace{0.15cm} 
+            \begin{itemize} 
+                \item Increasing turns increases inductance quadratically. 
+                \item Increasing permeability increases inductance. 
+                \item Increasing core area increases inductance. 
+                \item Increasing magnetic path length reduces inductance. 
+            \end{itemize} 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{block}{Design Insight} 
+                \begin{align} 
+                    L \propto N^2 
+                \end{align} 
+                Doubling the number of turns increases inductance by a factor of four. 
+            \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Energy storage %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame} 
+    \frametitle{Energy Stored in an Inductor} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            The energy stored in an inductor is 
+            \begin{align} 
+                E_L = \int vi\,dt 
+            \end{align} 
+            Substituting 
+                $v=L\frac{di}{dt}$ 
+            gives 
+            \begin{align} 
+                E_L = \int Li\,di 
+            \end{align} 
+            which yields 
+            \begin{align} 
+                E_L = \frac12 LI^2 
+            \end{align} 
+            \vspace{0.15cm} 
+
+
+        \end{column} 
+        \begin{column}{0.38\textwidth}
+            Key observations:  
+            \begin{itemize} 
+                \item Energy increases with current squared. 
+                \item Energy is recoverable. 
+                \item Inductors are energy-storage devices. 
+                \item Larger currents require significantly larger stored energy capability. 
+            \end{itemize} 
+            \begin{block}{Example} 
+                If $L=100\ \mu H $ and $I=10A$ then $E_L=5\,mJ$ 
+            \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Energy storage physical meaning %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame} 
+    \frametitle{Where is the Energy Actually Stored?} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            A common misconception is that energy is stored in the magnetic core. 
+            \vspace{0.15cm} 
+            In reality, energy is stored in the magnetic field itself. 
+            \vspace{0.15cm} 
+            The magnetic energy density is 
+            \begin{align} 
+                w_m = \frac12 BH 
+            \end{align} 
+            and total stored energy becomes 
+            \begin{align} 
+                E=\int_V \frac12 BH\,dV 
+            \end{align} 
+            \vspace{0.15cm} 
+            For gapped inductors: 
+            \begin{itemize} 
+                \item Most stored energy resides in the air gap. 
+                \item The magnetic core primarily guides flux. 
+                \item The air gap acts as the main energy-storage region. 
+            \end{itemize} 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{block}{Important Concept} 
+                Transformer \[ \text{Transfer energy} \] 
+                Inductor \[ \text{Store energy} \] 
+                This distinction drives completely different magnetic designs. 
+            \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Air gap introduction %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame} \frametitle{Why are Air Gaps Introduced in Inductors?} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            Power inductors generally require an intentional air gap. 
+            \vspace{0.15cm} 
+            The air gap serves several important functions: 
+            \begin{itemize} 
+                \item Increases magnetic reluctance. 
+                \item Reduces effective permeability. 
+                \item Increases saturation current. 
+                \item Improves inductance stability. 
+                \item Enables substantial energy storage. 
+            \end{itemize} 
+            \vspace{0.15cm} 
+            Without an air gap: 
+            \begin{itemize} 
+                \item Flux density rises rapidly. 
+                \item Core saturation occurs at relatively low current. 
+            \end{itemize} 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{figure} 
+                \centering 
+                \includegraphics[width=\linewidth]{fig/lec07/air_gap_effect.png} 
+                \caption{Influence of an air gap on the effective permeability and saturation behaviour. Adapted from Umanand, \textit{Power Electronics: Essentials and Applications}, 2nd edition, Wiley, 2012.}
+            \end{figure} 
+        \end{column} 
+    \end{columns} 
+\end{frame} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Air gap and saturation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Air Gap and Saturation Current} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            The saturation condition occurs when 
+                $B=B_{sat}$. Using $B=\mu H$ and $               H=\frac{Ni}{l_m} $ one obtains 
+            \begin{align} 
+                i_{sat} \propto \frac{B_{sat}}{\mu} 
+            \end{align} 
+            \vspace{0.15cm} 
+            Introducing an air gap reduces the effective permeability. Therefore: 
+            \begin{itemize} 
+                \item Flux density rises more slowly. 
+                \item Larger current is required to reach saturation. 
+                \item Energy-storage capability increases. 
+            \end{itemize} 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{block}{Design Trade-Off} Air gap: 
+                \begin{itemize} 
+                    \item Higher saturation current 
+                    \item More energy storage 
+                    \item Lower inductance 
+                \end{itemize} 
+            \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Core geometries %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{Magnetic Core Geometries} 
+    \begin{columns} 
+        \begin{column}{0.56\textwidth} 
+            Different core geometries offer different trade-offs in: \vspace{-0.5cm}
+            \begin{itemize} 
+                \item Winding area 
+                \item Leakage flux 
+                \item Manufacturability 
+                \item Cooling 
+                \item Cost 
+            \end{itemize} 
+            Common geometries include: 
+            \begin{itemize} 
+                \item EI cores, E cores, C cores, Toroidal cores, PQ cores 
+            \end{itemize} 
+            Selection depends on frequency, power level, and isolation requirements. 
+        \end{column} 
+        \begin{column}{0.40\textwidth} 
+            \vspace{-1cm}
+            \begin{figure} 
+                \centering 
+                \includegraphics[height=0.68\textheight]{fig/lec07/core_geometries.png} 
+                \caption{Window area and cross-sectional area for common magnetic-core geometries. Adapted from Umanand, \textit{Power Electronics: Essentials and Applications}, 2nd edition, Wiley, 2012.}
+            \end{figure} 
+        \end{column} 
+    \end{columns} 
+\end{frame} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Area product %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Area Product Concept} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            The area-product method provides a simple approach for selecting a magnetic core. 
+            \vspace{0.15cm} Two physical parameters are particularly important: 
+                $A_c$ 
+            Core cross-sectional area and 
+                $A_w$. 
+            Window area available for windings. Their product 
+            \begin{align} 
+                A_P=A_cA_w 
+            \end{align} is called the area product. 
+            \vspace{0.15cm} It links the magnetic core dimensions directly to the electrical design requirements. 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{block}{Interpretation} \[ A_c \] determines flux capability 
+                \vspace{0.1cm} \[ A_w \] determines copper capability 
+                \vspace{0.1cm} \[ A_P \] determines overall magnetic capability 
+            \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Window area %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{Window Area and Copper Accommodation} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            The magnetic core must provide sufficient space to accommodate all winding conductors. 
+            \vspace{0.15cm} The available winding space is called the window area: $A_w$. However, the entire window cannot be filled with copper because insulation, bobbins, air spaces, and manufacturing constraints occupy part of the available area. 
+                \vspace{0.15cm} 
+                Therefore, the usable copper area becomes 
+                \begin{align} 
+                    A_{Cu} = K_w A_w 
+                \end{align} 
+                where 
+                \begin{itemize} 
+                    \item $A_w$ = window area 
+                    \item $K_w$ = window utilization factor 
+                \end{itemize} 
+                \vspace{0.15cm} Typical values: $0.2 < K_w < 0.5$ depending on winding complexity. 
+            \end{column} 
+            \begin{column}{0.38\textwidth} 
+                \begin{figure} 
+                    \centering 
+                    \includegraphics[height=0.68\textheight]{fig/lec07/core_geometries.png} 
+                    \caption{Definition of window area $A_w$ and core cross-sectional area $A_c$. Adapted from Umanand, \textit{Power Electronics: Essentials and Applications}, 2nd edition, Wiley, 2012.}
+                \end{figure} 
+            \end{column} 
+    \end{columns} 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Current density %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame} 
+\frametitle{Current Density Constraint} 
+\begin{columns} 
+    \begin{column}{0.58\textwidth} 
+        Conductor size is selected according to the allowable current density. 
+        \vspace{0.15cm} 
+        Current density is defined as 
+        \begin{align} 
+            J = \frac{I}{A_{wire}} 
+        \end{align} 
+        where 
+        \begin{itemize} 
+            \item $I$ is conductor current 
+            \item $A_{wire}$ is conductor cross-sectional area 
+        \end{itemize} 
+        A high current density reduces winding size but increases: 
+        \begin{itemize} 
+            \item Copper loss 
+            \item Temperature rise 
+            \item Reliability concerns 
+        \end{itemize} 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{block}{Typical Values} 
+                Power magnetics: 
+                \begin{align} 
+                    J = 3-6 \ \si{\ampere\per\milli\metre^2} 
+                \end{align} 
+                depending on cooling and thermal constraints. 
+            \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Window area requirement %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Required Window Area for an Inductor} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            Assume an inductor consists of $N$ turns carrying current $I$. 
+            \vspace{0.15cm} 
+            The total conductor area required becomes 
+                $A_{Cu} = N A_{wire}$.
+            Using $A_{wire} = \frac{I}{J}$ gives
+            \begin{align} 
+                A_{Cu} = \frac{NI}{J} 
+            \end{align} 
+            Since 
+            \begin{align} 
+                A_{Cu} = K_w A_w 
+            \end{align} 
+            the required window area becomes 
+            \begin{align} 
+                A_w = \frac{NI}{J K_w} 
+            \end{align} 
+            This is the first key design equation of the area-product method. 
+        \end{column} 
+        \begin{column}{0.38\textwidth} 
+            \begin{block}{Interpretation} Higher current: $\Rightarrow$ larger wire \vspace{0.1cm} More turns: $\Rightarrow$ larger window \vspace{0.1cm} Lower current density: $\Rightarrow$ larger magnetic core 
+            \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Flux density constraint %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame} \frametitle{Flux Density Constraint} 
+    \begin{columns} 
+        \begin{column}{0.58\textwidth} 
+            The magnetic core must also satisfy the allowable flux-density limit. \vspace{0.15cm} The magnetic flux is 
+            \begin{align} 
+                \Phi = B_m A_c 
+            \end{align} 
+            where 
+            \begin{itemize} 
+                \item $B_m$ is maximum operating flux density 
+                \item $A_c$ is core cross-sectional area \end{itemize} \vspace{0.15cm} The selected value of $B_m$ must remain below $B_{sat}$ to avoid saturation. In practice, 
+                    \begin{align} 
+                        B_m = 0.2-0.4B_{sat} 
+                    \end{align} is commonly chosen to limit core loss and temperature rise. 
+                \end{column} 
+        \begin{column}{0.38\textwidth} 
+                    \begin{block}{Design Rule} Large $B_m$ \vspace{0.05cm} $\Rightarrow$ smaller core \vspace{0.15cm} but \vspace{0.15cm} higher core loss \vspace{0.15cm} and smaller saturation margin. 
+                    \end{block} 
+        \end{column} 
+    \end{columns} 
+\end{frame} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Area product introduction %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{Derivation of the Area Product Method} \begin{columns} \begin{column}{0.58\textwidth} Two independent constraints must simultaneously be satisfied: \vspace{0.15cm} \begin{enumerate} \item Copper accommodation constraint \item Magnetic flux-density constraint \end{enumerate} Combining both constraints leads to the area-product concept \begin{align} A_P = A_cA_w \end{align} where \begin{itemize} \item $A_c$ determines magnetic capability \item $A_w$ determines copper capability \end{itemize} \vspace{0.15cm} The area product links electrical requirements directly to core dimensions. \end{column} \begin{column}{0.38\textwidth} \begin{block}{Why Area Product?} Rather than solving for \[ A_c \] and \[ A_w \] individually, the designer first determines \[ A_P \] and then selects a suitable commercial core. \end{block} \end{column} \end{columns} \end{frame} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Area product equation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{Area Product Equation for Power Inductors} \begin{columns} \begin{column}{0.58\textwidth} Combining the energy-storage requirement \begin{align} E=\frac12LI^2 \end{align} with the window-area and flux-density constraints yields the well-known area-product equation. \vspace{0.15cm} For practical inductor design, \begin{align} A_P = \frac{2E} {K_wK_cJB_m} \end{align} where \begin{itemize} \item $K_w$ = window utilization factor \item $K_c$ = waveform crest factor \item $J$ = current density \item $B_m$ = maximum flux density \end{itemize} \end{column} \begin{column}{0.38\textwidth} \begin{block}{Meaning} More stored energy \[ \uparrow E \] requires \[ \uparrow A_P \] and therefore a larger magnetic core. \end{block} \end{column} \end{columns} \end{frame} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Core selection %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame} \frametitle{Core Selection Using Area Product} \begin{columns} \begin{column}{0.58\textwidth} Once the required area product has been calculated, \begin{align} A_P^{req} \end{align} the designer consults magnetic-core manufacturer catalogues. \vspace{0.15cm} The selected core must satisfy \begin{align} A_P^{core} > A_P^{req} \end{align} \vspace{0.15cm} Typical selection criteria: \begin{itemize} \item Thermal performance \item Core material \item Available winding window \item Manufacturing constraints \item Cost \end{itemize} \end{column} \begin{column}{0.38\textwidth} \begin{block}{Important Observation} Area product provides only a first-order selection. \vspace{0.15cm} Detailed verification must still be performed afterwards. \end{block} \end{column} \end{columns} \end{frame} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Design procedure %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame} \frametitle{Practical Inductor Design Procedure} Based on the procedure presented by Umanand, the design process consists of the following steps: \vspace{0.2cm} \begin{enumerate} \item Specify inductance $L$ and maximum current $I$. \item Determine required stored energy: \[ E=\frac12LI^2 \] \item Calculate required area product. \item Select magnetic core. \item Determine air-gap length. \item Calculate required turns. \item Select conductor size. \item Verify flux density and temperature rise. \end{enumerate} \vspace{0.2cm} These steps form the basis of most industrial magnetic-component design workflows. \end{frame} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Fringing flux 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame} \frametitle{Fringing Flux Around Air Gaps} \begin{columns} \begin{column}{0.58\textwidth} The previous analysis assumed that magnetic flux remains confined within the core cross-sectional area. \vspace{0.15cm} In practice, flux spreads outward near the air gap. \vspace{0.15cm} This phenomenon is called fringing flux. \vspace{0.15cm} Consequences include: \begin{itemize} \item Increased effective gap area \item Reduced effective gap reluctance \item Increased winding eddy-current loss \item Localized heating \end{itemize} \vspace{0.15cm} Fringing becomes increasingly important in high-current and high-frequency inductors. \end{column} \begin{column}{0.38\textwidth} \begin{block}{Practical Solution} Avoid placing winding conductors directly adjacent to the air gap. \vspace{0.15cm} Many commercial designs deliberately move the gap away from copper windings. \end{block} \end{column} \end{columns} \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Inductor design summary %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{Summary of Practical Inductor Design} \begin{itemize} \item The area-product method combines magnetic and copper constraints. \item Window area determines winding capability. \item Core area determines flux capability. \item Air gaps enable practical energy storage. \item Core selection is usually performed using the required area product. \item Fringing flux must be considered in practical implementations. \item Detailed design requires verification of: \begin{itemize} \item Flux density \item Saturation current \item Copper loss \item Core loss \item Temperature rise \end{itemize} \end{itemize} \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Transformer concept
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{What is a Transformer?}
+
+\begin{columns}
+
+\begin{column}{0.58\textwidth}
+
+A transformer is a magnetic device that transfers electrical energy from one circuit to another through magnetic coupling.
+
+\vspace{0.15cm}
+
+Unlike inductors, transformers are ideally designed to transfer energy rather than store it.
+
+\vspace{0.15cm}
+
+Key functions include:
+
+\begin{itemize}
+\item Voltage step-up
+\item Voltage step-down
+\item Galvanic isolation
+\item Impedance matching
+\item Multiple output generation
+\end{itemize}
+
+
+\end{column}
+
+\begin{column}{0.38\textwidth}
+
+Transformer operation relies on:
+
+\begin{itemize}
+\item Amp\`ere's law
+\item Faraday's law
+\item Mutual magnetic coupling
+\end{itemize}
+\begin{block}{Fundamental Difference}
+
+Inductor:
+
+\[
+\text{Store energy}
+\]
+
+\vspace{0.15cm}
+
+Transformer:
+
+\[
+\text{Transfer energy}
+\]
+
+\end{block}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Ideal transformer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Ideal Transformer Model}
+
+\begin{columns}
+
+\begin{column}{0.58\textwidth}
+
+The ideal transformer assumes:
+
+\begin{itemize}
+\item Infinite permeability
+\item Zero leakage flux
+\item Zero winding resistance
+\item Zero core loss
+\item Perfect magnetic coupling
+\end{itemize}
+
+Under these assumptions,
+
+\begin{align}
+\frac{v_1}{N_1}
+=
+\frac{v_2}{N_2}
+\end{align}
+and
+\end{column}
+
+\begin{column}{0.38\textwidth}
+\begin{align}
+\frac{i_1}{N_2}
+=
+-\frac{i_2}{N_1}
+\end{align}
+
+The negative sign reflects power conservation and dot-convention polarity.
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{fig/lec07/Ideal_Transformer_Model.png}
+\caption{Ideal transformer representation. Adapted from Erickson and Maksimovic, \textit{Fundamentals of Power Electronics}, 3rd edition, Springer, 2013.}
+\end{figure}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Voltage ratio
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Voltage Transformation Ratio}
+
+\begin{columns}
+
+\begin{column}{0.58\textwidth}
+
+Applying Faraday's law to both windings,
+
+\begin{align}
+v_1
+=
+N_1\frac{d\Phi}{dt}
+\end{align}
+
+\begin{align}
+v_2
+=
+N_2\frac{d\Phi}{dt}
+\end{align}
+
+Dividing the equations gives
+
+\begin{align}
+\frac{v_2}{v_1}
+=
+\frac{N_2}{N_1}
+\end{align}
+
+\end{column}
+
+\begin{column}{0.38\textwidth}
+This relation determines whether the transformer acts as:
+
+\begin{itemize}
+\item Step-up transformer
+\item Step-down transformer
+\item Isolation transformer
+\end{itemize}
+\begin{block}{Example}
+$N_1=20$ and $N_2=100$
+\[
+\frac{V_2}{V_1}=5
+\]
+Voltage is increased by a factor of five.
+\end{block}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Current ratio
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Current Transformation Ratio}
+
+\begin{columns}
+
+\begin{column}{0.58\textwidth}
+
+Power conservation in an ideal transformer requires
+
+\begin{align}
+v_1i_1
+=
+v_2i_2
+\end{align}
+
+Using
+
+\begin{align}
+\frac{v_2}{v_1}
+=
+\frac{N_2}{N_1}
+\end{align}
+
+gives
+
+\begin{align}
+\frac{i_2}{i_1}
+=
+\frac{N_1}{N_2}
+\end{align}
+
+\vspace{0.15cm}
+
+Important observations:
+
+\begin{itemize}
+\item Voltage increases with turns ratio.
+\item Current decreases with turns ratio.
+\item Power remains unchanged in the ideal case.
+\end{itemize}
+
+\end{column}
+
+\begin{column}{0.38\textwidth}
+
+\begin{block}{Design Insight}
+
+High-voltage winding
+
+\[
+\Rightarrow
+\]
+
+low current
+
+\vspace{0.15cm}
+
+Low-voltage winding
+
+\[
+\Rightarrow
+\]
+
+high current
+
+\end{block}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Ampere turn balance
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Ampere-Turn Balance}
+
+\begin{columns}
+
+\begin{column}{0.58\textwidth}
+
+Applying Amp\`ere's law around the magnetic core yields
+
+\begin{align}
+N_1i_1+N_2i_2
+=
+0
+\end{align}
+
+This relation is called ampere-turn balance.
+
+\vspace{0.15cm}
+
+Physically:
+
+\begin{itemize}
+\item Primary current establishes flux.
+\item Secondary current opposes that flux.
+\item The core adjusts so that net flux remains finite.
+\end{itemize}
+
+\vspace{0.15cm}
+
+This is the magnetic equivalent of current balance in electrical circuits.
+
+\end{column}
+
+\begin{column}{0.38\textwidth}
+
+\begin{block}{Key Result}
+
+\begin{align}
+N_1i_1
+=
+-N_2i_2
+\end{align}
+
+Ampere-turns cancel.
+
+\end{block}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Magnetizing current
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Magnetizing Current}
+
+\begin{columns}
+
+\begin{column}{0.58\textwidth}
+
+A practical transformer requires a finite current to establish magnetic flux. This current is called the magnetizing current. Using
+$L_m = \frac{N^2}{\mathcal R}$ the magnetizing current becomes
+
+\begin{align}
+i_m
+=
+\frac{1}{L_m}
+\int v\,dt
+\end{align}
+
+\vspace{0.15cm}
+
+Magnetizing current:
+
+\begin{itemize}
+\item Exists even under no-load conditions.
+\item Establishes the required core flux.
+\item Is usually much smaller than load current.
+\end{itemize}
+
+\end{column}
+
+\begin{column}{0.38\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{fig/lec07/Magnetizing_Inductance.png}
+\caption{Magnetizing inductance representation in a practical transformer. Adapted from Erickson and Maksimovic, \textit{Fundamentals of Power Electronics}, 3rd edition, Springer, 2013.}
+\end{figure}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Magnetizing inductance
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Physical Meaning of Magnetizing Inductance}
+
+\begin{columns}
+
+\begin{column}{0.58\textwidth}
+
+Magnetizing inductance represents the ability of the transformer core to establish magnetic flux.
+
+\vspace{0.15cm}
+
+\begin{align}
+L_m
+=
+\frac{N^2}{\mathcal R}
+\end{align}
+
+Therefore,
+
+\begin{itemize}
+\item Higher permeability increases $L_m$.
+\item More turns increase $L_m$.
+\item Air gaps reduce $L_m$.
+\item Lower reluctance increases $L_m$.
+\end{itemize}
+
+\vspace{0.15cm}
+
+Power transformers generally seek a large magnetizing inductance to minimize no-load current.
+
+\end{column}
+
+\begin{column}{0.38\textwidth}
+
+\begin{block}{Transformer Design Goal}
+
+Large
+
+\[
+L_m
+\]
+
+\vspace{0.15cm}
+
+Small
+
+\[
+i_m
+\]
+
+\vspace{0.15cm}
+
+High efficiency
+
+\end{block}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Practical transformer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Practical Transformer Equivalent Circuit}
+
+\begin{columns}
+
+\begin{column}{0.58\textwidth}
+
+Real transformers deviate from the ideal model because of:
+
+\begin{itemize}
+\item Copper resistance
+\item Leakage inductance
+\item Core loss
+\item Finite permeability
+\end{itemize}
+
+\vspace{0.15cm}
+
+The practical transformer therefore includes:
+
+\begin{itemize}
+\item Winding resistances
+\item Magnetizing inductance
+\item Core-loss resistance
+\item Leakage inductances
+\end{itemize}
+
+\vspace{0.15cm}
+
+\end{column}
+
+\begin{column}{0.38\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{fig/lec07/Practical_Transformer_Equivalent.png}
+\caption{Practical transformer equivalent circuit including magnetizing branch and parasitic elements. Adapted from Erickson and Maksimovic, \textit{Fundamentals of Power Electronics}, 3rd edition, Springer, 2013.}
+\end{figure}
+This equivalent circuit is extensively used in transformer design and simulation.
+
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Leakage flux
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Leakage Flux}
+
+\begin{columns}
+
+\begin{column}{0.58\textwidth}
+
+Not all magnetic flux generated by one winding links the other winding.
+
+\vspace{0.15cm}
+
+The uncoupled portion of flux is called leakage flux.
+
+\vspace{0.15cm}
+
+Leakage flux:
+
+\begin{itemize}
+\item Does not contribute to energy transfer.
+\item Produces voltage overshoot.
+\item Creates ringing during switching transitions.
+\item Becomes important at high switching frequencies.
+\end{itemize}
+
+\vspace{0.15cm}
+
+Leakage flux is inevitable in practical transformers.
+
+\end{column}
+
+\begin{column}{0.38\textwidth}
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{fig/lec07/Leakage_Flux.png}
+\caption{Leakage-flux paths that do not couple both windings. Adapted from Erickson and Maksimovic, \textit{Fundamentals of Power Electronics}, 3rd edition, Springer, 2013.}
+\end{figure}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Leakage inductance
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Leakage Inductance}
+
+\begin{columns}
+
+\begin{column}{0.58\textwidth}
+
+The energy associated with leakage flux is represented electrically as leakage inductance.
+
+\vspace{0.15cm}
+
+Leakage inductance appears in series with the transformer windings.
+
+\vspace{0.15cm}
+
+Consequences include:
+
+\begin{itemize}
+\item Reduced transient response
+\item Increased switching stress
+\item Voltage spikes
+\item Resonant ringing
+\end{itemize}
+
+\vspace{0.15cm}
+
+In resonant converters, however, leakage inductance can be deliberately utilized as a functional circuit element.
+
+\end{column}
+
+\begin{column}{0.38\textwidth}
+
+\begin{block}{Design Objective}
+
+Conventional transformer:
+
+\[
+L_{lk}
+\rightarrow
+\mathrm{minimum}
+\]
+
+\vspace{0.15cm}
+
+LLC converter:
+
+\[
+L_{lk}
+\rightarrow
+\mathrm{useful}
+\]
+
+\end{block}
+
+\end{column}
+
+\end{columns}
+
 \end{frame}
