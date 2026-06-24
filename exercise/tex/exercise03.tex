@@ -1,0 +1,339 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Begin exercise %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ex{Power MOSFETs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 1 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Choosing the MOSFET for two converter roles}
+
+Two MOSFETs are available. The corresponding parameters are listed in \autoref{table:mosfet_task1_devices}.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{lll}
+        \toprule
+        Parameter & Device A & Device B \\
+        \midrule
+        Drain-source blocking voltage $V_\mathrm{DSS}$ & \SI{80}{\volt} & \SI{650}{\volt} \\
+        On-state resistance $R_\mathrm{DS(on)}$ & \SI{3}{\milli\ohm} & \SI{120}{\milli\ohm} \\
+        Switching interval $(t_\mathrm{r} + t_\mathrm{f})$ & \SI{40}{\nano\second} & \SI{100}{\nano\second} \\
+        \bottomrule
+    \end{tabular}
+    \caption{MOSFET data for Task 1.}
+    \label{table:mosfet_task1_devices}
+\end{table}
+
+Two applications are being considered. \\
+\textbf{Application I:} \\
+\SI{48}{\volt} synchronous buck leg, load current $I = \SI{40}{\ampere}$, switching frequency $f_\mathrm{s} = \SI{200}{\kilo\hertz}$, \newline
+duty ratio $D = 0.5$ \\
+
+\textbf{Application II:} \\
+\SI{400}{\volt} boost / PFC switch position, current $I = \SI{8}{\ampere}$, switching frequency $f_\mathrm{s} = \SI{50}{\kilo\hertz}$, \newline
+duty ratio $D = 0.5$ \\
+
+Use the slide expressions
+\begin{align}
+    P_\mathrm{ON} &= I_\mathrm{D(rms)}^2 R_\mathrm{DS(on)} \\
+    P_\mathrm{switching} &= \frac{1}{6} V_\mathrm{DS} I_\mathrm{D} (t_\mathrm{r} + t_\mathrm{f}) f_\mathrm{s}.
+\end{align}
+
+\subtask{Select the appropriate device for each application.}
+
+\begin{solutionblock}
+    The choice is based on the required parameter and the semiconductor characteristic. For application I, both devices are suitable due to their 
+    drain-source blocking voltage, on-state resistance and switching frequency. If you compare the single values, device A has lower power losses
+    due to lower on-state resistance and lower switching interval. Therefore device A is selected for application I.
+    For application II the exclusion criterion for device A is the drain-source blocking voltage of $\SI{80}{\volt}$, but \SI{400}{\volt} is necessary.
+    This means for application II you can only choose device B, even if the other parameters of device A are more suitable.
+\end{solutionblock}
+
+\subtask{Compute the conduction and switching loss for each candidate in each application.}
+
+\begin{solutionblock}
+    For $D = 0.5$, the root-mean-square current is
+    \begin{equation}
+        I_\mathrm{rms} = I \sqrt{D}.
+    \end{equation}
+
+    For Application I:
+    \begin{equation}
+        I_\mathrm{rms} = \SI{40}{\ampere} \cdot \sqrt{0.5} = \SI{28.3}{\ampere}.
+    \end{equation}
+
+    Device A:
+    \begin{align}
+        P_\mathrm{ON,A} &= \left( \SI{28.3}{\ampere} \right)^2 \cdot \SI{3}{\milli\ohm} \approx \SI{2.4}{\watt} \\
+        P_\mathrm{sw,A} &= \frac{1}{6} \cdot \SI{48}{\volt} \cdot \SI{40}{\ampere} \cdot \SI{40}{\nano\second} \cdot \SI{200}{\kilo\hertz}
+        \approx \SI{2.56}{\watt} \\
+        P_\mathrm{tot,A} &\approx \SI{4.96}{\watt}.
+    \end{align}
+
+    Device B:
+    \begin{align}
+        P_\mathrm{ON,B} &= \left( \SI{28.3}{\ampere} \right)^2 \cdot \SI{120}{\milli\ohm} \approx \SI{96}{\watt} \\
+        P_\mathrm{sw,B} &= \frac{1}{6} \cdot \SI{48}{\volt} \cdot \SI{40}{\ampere} \cdot \SI{100}{\nano\second} \cdot \SI{200}{\kilo\hertz}
+        \approx \SI{6.4}{\watt} \\
+        P_\mathrm{tot,B} &\approx \SI{102.4}{\watt}.
+    \end{align}
+
+    Hence, Device A is clearly correct for Application I.
+
+    For Application II:
+    \begin{equation}
+        I_\mathrm{rms} = \SI{8}{\ampere} \cdot \sqrt{0.5} = \SI{5.66}{\ampere}.
+    \end{equation}
+
+    Device B:
+    \begin{align}
+        P_\mathrm{ON,B} &= \left( \SI{5.66}{\ampere} \right)^2 \cdot \SI{120}{\milli\ohm} \approx \SI{3.84}{\watt} \\
+        P_\mathrm{sw,B} &= \frac{1}{6} \cdot \SI{400}{\volt} \cdot \SI{8}{\ampere} \cdot \SI{100}{\nano\second} \cdot \SI{50}{\kilo\hertz}
+        \approx \SI{2.67}{\watt} \\
+        P_\mathrm{tot,B} &\approx \SI{6.51}{\watt}.
+    \end{align}
+
+\end{solutionblock}
+
+\subtask{Explain why the high-voltage MOSFET is penalized in conduction.}
+
+\begin{solutionblock}
+    A high-voltage MOSFET needs a thicker and more lightly doped drift region in order to withstand the blocking voltage.
+    This raises $R_\mathrm{DS(on)}$ and therefore increases the conduction loss. 
+    The device that survives voltage stress is therefore not automatically the device with the lowest on-state loss.
+\end{solutionblock}
+
+\subtask{State one design lesson you should extract from this comparison.}
+
+\begin{solutionblock}
+    MOSFET selection is not only a matter of blocking voltage. 
+    A device with a much higher voltage rating can be a very poor choice at low voltage because its on-state resistance becomes unnecessarily large.
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 2 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Gate charge, Miller plateau, and switching-speed trade-off}
+
+A MOSFET is driven from a gate driver through a gate resistor $R_\mathrm{g}$ according \autoref{table:MOSFET_Gate_Driver_parameter}.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ll}
+        \toprule
+        Parameter & Value\\
+        \midrule
+        Driver voltage $V_\mathrm{drv}:$ & $\SI{12}{\volt}$\\
+        Threshold voltage $V_\mathrm{GS(th)}:$ & $\SI{4}{\volt}$\\
+        Miller plateau voltage $V_\mathrm{GP}:$ & $\SI{6}{\volt}$\\
+        Gate resistance $R_\mathrm{g}:$ & $\SI{10}{\ohm}$\\
+        Charge from $\SI{0}{\volt}$ to threshold: $Q_\mathrm{GS1}:$ & $\SI{8}{\nano\coulomb}$\\
+        Gate-drain charge  $Q_\mathrm{GD}$ during plateau: & $\SI{24}{\nano\coulomb}$\\
+        Effective Miller capacitance $C_\mathrm{GD}$ & $\SI{300}{\pico\farad}$\\
+        \bottomrule
+    \end{tabular}
+    \caption{MOSFET and Gate Driver Characteristics.}
+    \label{table:MOSFET_Gate_Driver_parameter}
+\end{table}
+
+\FloatBarrier
+
+Assume piecewise-constant gate current:
+\begin{align*}
+    I_\mathrm{g1} &\approx \frac{V_\mathrm{drv}}{R_\mathrm{g}} = \frac{\SI{12}{\volt}}{\SI{10}{\ohm}} = \SI{1.2}{\ampere} \\
+    I_\mathrm{g2} &\approx \frac{V_\mathrm{drv} - V_\mathrm{GP}}{R_\mathrm{g}}
+    = \frac{\SI{12}{\volt} - \SI{6}{\volt}}{\SI{10}{\ohm}} = \SI{0.6}{\ampere}.
+\end{align*}
+
+\subtask{Estimate the delay to reach threshold.}
+
+\begin{solutionblock}
+    The delay up to threshold is
+    \begin{equation}
+        t_\mathrm{d} \approx \frac{Q_\mathrm{GS1}}{I_\mathrm{g1}}
+        = \frac{\SI{8}{\nano\coulomb}}{\SI{1.2}{\ampere}}
+        \approx \SI{6.7}{\nano\second}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Estimate the Miller plateau duration.}
+
+\begin{solutionblock}
+    The Miller interval is estimated by
+    \begin{equation}
+        t_\mathrm{M} \approx \frac{Q_\mathrm{GD}}{I_\mathrm{g2}}
+        = \frac{\SI{24}{\nano\coulomb}}{\SI{0.6}{\ampere}}
+        = \SI{40}{\nano\second}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Estimate the voltage slew rate during the Miller plateau using
+\begin{equation*}
+    \frac{\mathrm{d}V_\mathrm{DS}}{\mathrm{d}t} \approx \frac{I_\mathrm{g}}{C_\mathrm{GD}}.
+\end{equation*}
+}
+
+\begin{solutionblock}
+    During the plateau,
+    \begin{equation}
+        \frac{\mathrm{d}V_\mathrm{DS}}{\mathrm{d}t}
+        \approx \frac{\SI{0.6}{\ampere}}{\SI{300}{\pico\farad}}
+        = 2 \cdot 10^9 \,\si{\volt\per\second}
+        = \SI{2}{\volt\per\nano\second}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Repeat qualitatively for $R_\mathrm{g} = \SI{20}{\ohm}$ and explain why ``faster'' is not always ``better''.}
+
+\begin{solutionblock}
+    If $R_\mathrm{g}$ doubles to \SI{20}{\ohm}, the gate current roughly halves. Therefore,
+    the threshold delay roughly doubles, the Miller plateau roughly doubles, and the voltage slew rate roughly halves.
+    A larger gate resistance slows the switching transient, usually reduces ringing and EMI, but increases overlap loss.
+    Hence, fast switching is not the only requirement because the designer must also consider ringing, overshoot, and electromagnetic interference.
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Should the body diode be trusted as the freewheel path?}
+
+A half-bridge uses a MOSFET according \autoref{table:MOSFET_half_bridge_parameter}. The body diode of the MOSFET is conducting 
+before the complementary switch turns on.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ll}
+        \toprule
+        Parameter & Value\\
+        \midrule
+        Bus voltage $V_\mathrm{DC}:$ & $\SI{100}{\volt}$\\
+        Reverse-recovery peak current $I_\mathrm{rr}:$ & $\SI{15}{\ampere}$\\
+        Reverse-recovery time $t_\mathrm{rr}:$ & $\SI{60}{\nano\second}$   \\
+        Switching frequency $f_\mathrm{s}:$ & $\SI{200}{\kilo\hertz}$      \\   
+        \bottomrule
+    \end{tabular}
+    \caption{MOSFET and half-bridge Characteristics.}
+    \label{table:MOSFET_half_bridge_parameter}
+\end{table}
+
+Approximate:
+\begin{align*}
+    Q_\mathrm{rr} &\approx \frac{1}{2} I_\mathrm{rr} t_\mathrm{rr} \\
+    E_\mathrm{rr} &\approx \frac{1}{2} Q_\mathrm{rr} V_\mathrm{DC}.
+\end{align*}
+
+\subtask{Estimate the reverse-recovery charge $Q_\mathrm{rr}$.}
+
+\begin{solutionblock}
+    The reverse-recovery charge $Q_\mathrm{rr}$ is calculated by
+    \begin{equation}
+        Q_\mathrm{rr}
+        = \frac{1}{2} \cdot \SI{15}{\ampere} \cdot \SI{60}{\nano\second}
+        = \SI{450}{\nano\coulomb}
+        = \SI{0.45}{\micro\coulomb}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Estimate the reverse-recovery energy $E_\mathrm{rr}$.}
+
+\begin{solutionblock}
+    The reverse-recovery energy $E_\mathrm{rr}$ is obtained by
+    \begin{equation}
+        E_\mathrm{rr}
+        = \frac{1}{2} \cdot \SI{0.45}{\micro\coulomb} \cdot \SI{100}{\volt}
+        = \SI{22.5}{\micro\joule}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Estimate the average recovery power.}
+
+\begin{solutionblock}
+    The average recovery power yields
+    \begin{equation}
+        P_\mathrm{rr} = E_\mathrm{rr} f_\mathrm{s}
+        = \SI{22.5}{\micro\joule} \cdot \SI{200}{\kilo\hertz}
+        = \SI{4.5}{\watt}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Explain why a fast voltage rise at the opposite switch can become dangerous, and state when an external freewheeling diode becomes attractive.}
+
+\begin{solutionblock}
+    The body diode alone may already produce a non-trivial reverse-recovery loss. 
+    More importantly, a very fast reapplied drain-source voltage plus reverse-recovery current can interact with the parasitic bipolar transistor and damage the MOSFET.
+
+    An external freewheeling diode becomes attractive when the commutation is hard-switched, the switching frequency is high, and the body diode recovery becomes a relevant source of loss or stress.
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 4 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Parallel MOSFETs: why current sharing is naturally stabilizing}
+
+Two identical MOSFETs are connected in parallel. At \SI{25}{\celsius},
+\begin{equation}
+    R_\mathrm{DS(on),25} = \SI{4}{\milli\ohm}.
+\end{equation}
+
+Assume the temperature coefficient
+\begin{equation}
+    R_\mathrm{DS(on)}(T) = R_{25} \left[ 1 + 0.004(T - 25) \right].
+\end{equation}
+
+At one operating point:
+\begin{itemize}
+    \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-2pt} % Distance between the points (Part2)    
+    \item MOSFET 1 is at \SI{100}{\celsius}
+    \item MOSFET 2 is at \SI{50}{\celsius}
+    \item the pair carries a total current of \SI{120}{\ampere}
+\end{itemize}
+
+\subtask{Calculate the two on-state resistances.}
+
+\begin{solutionblock}
+    For MOSFET 1 the on-state resistances is calculated by
+    \begin{equation}
+        R_1 = \SI{4}{\milli\ohm} \cdot \left[ 1 + 0.004(100 - 25) \right]
+        = \SI{5.2}{\milli\ohm}.
+    \end{equation}
+
+    For MOSFET 2 the on-state resistances is calculated by
+    \begin{equation}
+        R_2 = \SI{4}{\milli\ohm} \cdot \left[ 1 + 0.004(50 - 25) \right]
+        = \SI{4.4}{\milli\ohm}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Assuming equal drain-source voltage, find the current split.}
+
+\begin{solutionblock}
+    The current splits inversely with resistance:
+    \begin{align}
+        I_1 &= \SI{120}{\ampere} \cdot \frac{R_2}{R_1 + R_2}
+        = \SI{120}{\ampere} \cdot \frac{4.4}{5.2 + 4.4}
+        = \SI{55}{\ampere} \\
+        I_2 &= \SI{120}{\ampere} \cdot \frac{R_1}{R_1 + R_2}
+        = \SI{120}{\ampere} \cdot \frac{5.2}{5.2 + 4.4}
+        = \SI{65}{\ampere}.
+    \end{align}
+\end{solutionblock}
+
+\subtask{Explain why this tends to stabilize sharing and contrast it with BJT paralleling.}
+
+\begin{solutionblock}
+    The hotter MOSFET has the larger on-state resistance and therefore takes less current. 
+    This negative feedback makes current sharing naturally stabilizing.
+
+    In contrast, BJTs do not show this same helpful positive temperature coefficient in the on-state and are much more prone to current hogging.
+\end{solutionblock}
+

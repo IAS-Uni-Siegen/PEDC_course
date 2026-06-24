@@ -12,41 +12,49 @@
 
 Two devices are available for a converter leg.
 
-\vspace{0.5em}
-\textbf{\SI{600}{\volt} MOSFET}
-\begin{itemize}
-    \item $R_\mathrm{DS(on)} = \SI{80}{\milli\ohm}$
-    \item $(t_\mathrm{r} + t_\mathrm{f}) = \SI{80}{\nano\second}$
-\end{itemize}
+\begin{table}[h]
+  \centering
+  % Erste Tabelle
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \begin{tabular}{ll}
+        \toprule
+        \multicolumn{2}{l}{\textbf{MOSFET}} \\
+        \midrule
+        Drain-source blocking voltage $V_\mathrm{DSS}$ & $\SI{600}{\volt}$\\
+        On-state resistance $R_\mathrm{DS(on)}$: & $\SI{80}{\milli\ohm}$ \\
+        Switching time $(t_\mathrm{r} + t_\mathrm{f})$ & $\SI{80}{\nano\second}$\\
+        \multicolumn{2}{l}{}  \\        
+        \bottomrule
+    \end{tabular}
+  \end{minipage}
+  \hfill % Abstand zwischen den Tabellen
+  % Zweite Tabelle
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \begin{tabular}{ll}
+        \toprule
+        \multicolumn{2}{l}{\textbf{IGBT}}  \\
+        \midrule
+        Maximal CE voltage $V_\mathrm{CE,max}$: & $\SI{1200}{\volt}$\\
+        On-state resistance $V_\mathrm{CE(sat)}$: $\SI{2.1}{\volt}$ \\
+        Switching energy $E_\mathrm{on} + E_\mathrm{off}$: & $\SI{1.8}{\milli\joule}$ \\
+        \multicolumn{2}{l}{(Switching energy at $\SI{400}{\volt},\SI{20}{\ampere}$)}  \\        
+        \bottomrule
+    \end{tabular}
+  \end{minipage}
+\caption{MOSFET and IGBT data.}
+\label{table:mosfet_igbt_data}        
+\end{table}
 
-\textbf{\SI{1200}{\volt} IGBT}
-\begin{itemize}
-    \item $V_\mathrm{CE(sat)} = \SI{2.1}{\volt}$
-    \item $E_\mathrm{on} + E_\mathrm{off} = \SI{1.8}{\milli\joule}$ at \SI{400}{\volt}, \SI{20}{\ampere}
-\end{itemize}
-
-\vspace{0.25em}
-\textbf{Application I}
-\begin{itemize}
-    \item $V_\mathrm{DC} = \SI{400}{\volt}$
-    \item $I = \SI{20}{\ampere}$
-    \item $f_\mathrm{s} = \SI{80}{\kilo\hertz}$
-    \item duty ratio $D = 0.5$
-\end{itemize}
-
-\vspace{0.25em}
-\textbf{Application II}
-\begin{itemize}
-    \item $V_\mathrm{DC} = \SI{800}{\volt}$
-    \item $I = \SI{50}{\ampere}$
-    \item $f_\mathrm{s} = \SI{5}{\kilo\hertz}$
-\end{itemize}
+\textbf{Application I}: $V_\mathrm{DC} = \SI{400}{\volt}$, $I = \SI{20}{\ampere}$, $f_\mathrm{s} = \SI{80}{\kilo\hertz}$, duty ratio $D = 0.5$ \\
+\textbf{Application II}: $V_\mathrm{DC} = \SI{800}{\volt}$, $I = \SI{50}{\ampere}$, $f_\mathrm{s} = \SI{5}{\kilo\hertz}$ \\
 
 For Application II, compare the IGBT with a hypothetical high-voltage MOSFET having
-\begin{equation}
+\begin{equation*}
     R_\mathrm{DS(on)} = \SI{180}{\milli\ohm}
-\end{equation}
-and assume the IGBT switching energy is \SI{6}{\milli\joule} per cycle.
+\end{equation*}
+and assume the IGBT switching energy is $\SI{6}{\milli\joule}$ per cycle.
 
 \subtask{For Application I, compare approximate losses and choose the preferred device.}
 
@@ -111,22 +119,26 @@ and assume the IGBT switching energy is \SI{6}{\milli\joule} per cycle.
 
 \task{Conductivity modulation made quantitative}
 
-Use the simplified on-state model
-\begin{equation}
-    V_\mathrm{CE(on)} \approx V_\mathrm{J1} + V_\mathrm{drift} + I_\mathrm{C} R_\mathrm{channel}.
-\end{equation}
+A \SI{1200}{\volt} IGBT carries $I_\mathrm{C} = \SI{40}{\ampere}$. The corresponding parameters are listed in \autoref{table:igbt_task2_device}.
 
-A \SI{1200}{\volt} IGBT carries $I_\mathrm{C} = \SI{40}{\ampere}$. Assume:
-\begin{itemize}
-    \item $V_\mathrm{J1} = \SI{0.95}{\volt}$
-    \item $V_\mathrm{drift} = \SI{0.55}{\volt}$
-    \item $R_\mathrm{channel} = \SI{12}{\milli\ohm}$
-\end{itemize}
 
-A comparable high-voltage MOSFET would have
-\begin{equation}
-    R_\mathrm{DS(on)} = \SI{90}{\milli\ohm}.
-\end{equation}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ll}
+        \toprule
+        \multicolumn{2}{l}{\textbf{IGBT}}  \\
+        \midrule
+        Junction voltage $V_\mathrm{J1}$: & $\SI{0.95}{\volt}$ \\
+        Drift region voltage $V_\mathrm{drift}$: & $\SI{0.55}{\volt}$ \\
+        Channel resistance $R_\mathrm{channel}$: & $\SI{12}{\milli\ohm}$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{IGBT semiconductor characteristic.}
+    \label{table:igbt_task2_device}
+\end{table}
+
+Use the simplified on-state model $V_\mathrm{CE(on)} \approx V_\mathrm{J1} + V_\mathrm{drift} + I_\mathrm{C} R_\mathrm{channel}$. \\
+A comparable high-voltage MOSFET would have $R_\mathrm{DS(on)} = \SI{90}{\milli\ohm}$. \\
 
 \subtask{Estimate $V_\mathrm{CE(on)}$ for the IGBT.}
 
@@ -137,7 +149,7 @@ A comparable high-voltage MOSFET would have
     \end{equation}
 \end{solutionblock}
 
-\subtask{Estimate the on-state drop of the MOSFET at \SI{40}{\ampere}.}
+\subtask{Estimate the on-state drop of the MOSFET at $\SI{40}{\ampere}$.}
 
 \begin{solutionblock}
     \begin{equation}
@@ -172,22 +184,25 @@ A comparable high-voltage MOSFET would have
 
 \task{Latch-up is not a mystery; it is a voltage-drop problem}
 
-A student says: ``Latch-up sounds like an abstract failure mechanism.'' Show that it can be framed as a simple lateral voltage-drop problem.
+A student says: "Latch-up sounds like an abstract failure mechanism."
+Show that it can be framed as a simple lateral voltage-drop problem.\\
 
 In an IGBT cell, assume the hole current in the p-body is $I_\mathrm{h}$, and the effective body-spreading resistance is $R_\mathrm{b}$.
-Latch-up risk begins when the lateral voltage drop is large enough to forward-bias the $n^+$-source / p-body junction, approximately \SI{0.7}{\volt}.
+Latch-up risk begins when the lateral voltage drop is large enough to forward-bias the $n^+$-source / p-body junction, approximately $\SI{0.7}{\volt}$.
 
-\textbf{Case A}
-\begin{itemize}
-    \item $I_\mathrm{h} = \SI{12}{\ampere}$
-    \item $R_\mathrm{b} = \SI{60}{\milli\ohm}$
-\end{itemize}
-
-\textbf{Case B}
-\begin{itemize}
-    \item $I_\mathrm{h} = \SI{12}{\ampere}$
-    \item $R_\mathrm{b} = \SI{35}{\milli\ohm}$
-\end{itemize}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{lll}
+        \toprule
+        Parameter  & \textbf{Case A} & \textbf{Case B} \\
+        \midrule
+        Hole current $I_\mathrm{h}$: & $\SI{12}{\ampere}$ & $\SI{12}{\ampere}$  \\
+        Effective body-spreading resistance $R_\mathrm{b}$: & $\SI{60}{\milli\ohm}$ & $\SI{35}{\milli\ohm}$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{IGBT semiconductor characteristic.}
+    \label{table:igbt_task2_device}
+\end{table}
 
 \subtask{Compute the lateral p-body voltage drop in each case.}
 
@@ -237,40 +252,27 @@ Latch-up risk begins when the lateral voltage drop is large enough to forward-bi
 
 Two IGBTs are available.
 
-\textbf{Device P (PT-IGBT)}
-\begin{itemize}
-    \item $E_\mathrm{off} = \SI{2.5}{\milli\joule}$
-    \item tail-current fraction = \SI{15}{\percent}
-    \item short-circuit withstand time = \SI{6}{\micro\second}
-    \item avalanche ruggedness = moderate
-\end{itemize}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{lll}
+        \toprule
+        Parameter  & \textbf{Device P (PT-IGBT)} & \textbf{Device N (NPT-IGBT)} \\
+        \midrule
+        Switch off energy loss $E_\mathrm{off}$: & $\SI{2.5}{\milli\joule}$  & $\SI{4}{\milli\joule}$  \\
+        Tail-current fraction: & $\SI{15}{\percent}$ & $\SI{25}{\percent}$ \\
+        Short-circuit withstand time: & $\SI{6}{\micro\second}$ & $\SI{10}{\micro\second}$ \\
+        Avalanche ruggedness : & moderate & high \\
+        \bottomrule
+    \end{tabular}
+    \caption{IGBT semiconductor characteristic.}
+    \label{table:igbt_task4_device}
+\end{table}
 
-\textbf{Device N (NPT-IGBT)}
-\begin{itemize}
-    \item $E_\mathrm{off} = \SI{4.0}{\milli\joule}$
-    \item tail-current fraction = \SI{25}{\percent}
-    \item short-circuit withstand time = \SI{10}{\micro\second}
-    \item avalanche ruggedness = high
-\end{itemize}
+Assume both have similar $E_\mathrm{on} = \SI{1.5}{\milli\joule}$.\\
 
-Assume both have similar $E_\mathrm{on} = \SI{1.5}{\milli\joule}$.
-
-\vspace{0.25em}
-\textbf{Application I}
-\begin{itemize}
-    \item \SI{600}{\volt} servo inverter
-    \item \SI{25}{\ampere}
-    \item $f_\mathrm{s} = \SI{20}{\kilo\hertz}$
-\end{itemize}
-
-\vspace{0.25em}
-\textbf{Application II}
-\begin{itemize}
-    \item \SI{1200}{\volt} industrial motor drive
-    \item \SI{40}{\ampere}
-    \item $f_\mathrm{s} = \SI{4}{\kilo\hertz}$
-    \item overloads and harsh fault conditions are expected
-\end{itemize}
+\textbf{Application I}: Servo inverter with $\SI{600}{\volt}$ , $\SI{25}{\ampere}$, $f_\mathrm{s} = \SI{20}{\kilo\hertz}$ \\
+\textbf{Application II}: Industrial motor drive  with $\SI{1200}{\volt}$ , $\SI{40}{\ampere}$, $f_\mathrm{s} = \SI{4}{\kilo\hertz}$ \\
+Remark: For Application II overloads and harsh fault conditions are expected.
 
 \subtask{Compute the switching-loss power in each application for each device.}
 
@@ -328,29 +330,34 @@ Assume both have similar $E_\mathrm{on} = \SI{1.5}{\milli\joule}$.
 
 \task{Device-limit and SOA screening}
 
+For an IGBT the simplified limits are listed in \autoref{table:igbt_task5_limits}.
 Use the following simplified IGBT limits:
-\begin{itemize}
-    \item collector-emitter blocking voltage $V_\mathrm{CES} = \SI{1200}{\volt}$
-    \item maximal gate-emitter voltage $\lvert V_\mathrm{GE(max)} \rvert = \SI{20}{\volt}$
-    \item continuous collector current limit $I_\mathrm{C} = \SI{75}{\ampere}$
-    \item pulsed current limit $I_\mathrm{CM} = \SI{150}{\ampere}$
-    \item short-circuit withstand time $t_\mathrm{SC} = \SI{8}{\micro\second}$
-    \item dc conduction thermal proxy:
-    \begin{equation*}
-        V_\mathrm{CE} I_\mathrm{C} \leq \SI{250}{\watt}
-    \end{equation*}
-    \item \SI{100}{\micro\second} pulse limit:
-    \begin{equation*}
-        V_\mathrm{CE} I_\mathrm{C} \leq \SI{4000}{\watt}
-    \end{equation*}
-    \item turn-off RBSOA proxy for $V_\mathrm{CE} > \SI{400}{\volt}$:
-    \begin{equation*}
-        I_\mathrm{C} \leq \frac{1200}{V_\mathrm{CE}}
-    \end{equation*}
-\end{itemize}
+
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ll}
+        \toprule
+        Parameter  & Value \\
+        \midrule
+        collector-emitter blocking voltage $V_\mathrm{CES}$: & $\SI{1200}{\volt}$ \\
+        maximal gate-emitter voltage $\lvert V_\mathrm{GE(max)} \rvert$: & $\SI{20}{\volt}$ \\
+        continuous collector current limit $I_\mathrm{C}$: & $\SI{75}{\ampere}$\\
+        pulsed current limit $I_\mathrm{CM}$: & $\SI{150}{\ampere}$ \\
+        short-circuit withstand time $t_\mathrm{SC}$: & $\SI{8}{\micro\second}$ \\
+        dc conduction thermal proxy: & $V_\mathrm{CE} I_\mathrm{C} \leq \SI{250}{\watt}$ \\
+        $\SI{100}{\micro\second}$ pulse limit: & $V_\mathrm{CE} I_\mathrm{C} \leq \SI{4000}{\watt}$ \\
+        turn-off RBSOA proxy for $V_\mathrm{CE} > \SI{400}{\volt}$: & $I_\mathrm{C} \leq \frac{1200}{V_\mathrm{CE}}$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{IGBT semiconductor limits.}
+    \label{table:igbt_task5_limits}
+\end{table}
 
 Consider the following cases:
 \begin{itemize}
+    \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-2pt} % Distance between the points (Part2)    
     \item \textbf{A.} $V_\mathrm{CE} = \SI{2.2}{\volt}$, $I_\mathrm{C} = \SI{60}{\ampere}$, dc
     \item \textbf{B.} $V_\mathrm{CE} = \SI{600}{\volt}$, $I_\mathrm{C} = \SI{3}{\ampere}$, turn-off event, \SI{100}{\micro\second}
     \item \textbf{C.} $V_\mathrm{CE} = \SI{600}{\volt}$, $I_\mathrm{C} = \SI{1.5}{\ampere}$, turn-off event, \SI{100}{\micro\second}
@@ -401,106 +408,4 @@ Consider the following cases:
 \begin{solutionblock}
     The short-circuit withstand time tells the designer how long the protection system may need to detect and clear a fault without destroying the device.
     Therefore, it is a real coordination parameter between the device, the gate driver, and the fault-protection strategy.
-\end{solutionblock}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Task 6 %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\task{Coding exercise: tail-current and switching-energy map}
-
-Model the IGBT turn-off current as two segments:
-\begin{enumerate}
-    \item fast fall from $I_\mathrm{C} = \SI{40}{\ampere}$ to $I_\mathrm{tail,0} = \SI{10}{\ampere}$ over \SI{100}{\nano\second}
-    \item tail current
-    \begin{equation*}
-        i_\mathrm{tail}(t) = I_\mathrm{tail,0} e^{-t/\tau}
-    \end{equation*}
-\end{enumerate}
-
-Use:
-\begin{itemize}
-    \item $V_\mathrm{DC} = \SI{600}{\volt}$
-    \item $I_\mathrm{tail,0} = \SI{10}{\ampere}$
-    \item $\tau_\mathrm{PT} = \SI{0.3}{\micro\second}$
-    \item $\tau_\mathrm{NPT} = \SI{0.8}{\micro\second}$
-\end{itemize}
-
-\subtask{State the coding tasks to be completed by the students.}
-
-\begin{solutionblock}
-    The students should:
-    \begin{itemize}
-        \item plot the turn-off current waveform for the PT and NPT cases,
-        \item compute the tail-energy contribution
-        \begin{equation*}
-            E_\mathrm{tail} = V_\mathrm{DC}\int i_\mathrm{tail}(t)\,\mathrm{d}t,
-        \end{equation*}
-        \item compare the total turn-off energy for PT and NPT,
-        \item and explain how lifetime and drift-region structure shape the result.
-    \end{itemize}
-\end{solutionblock}
-
-\subtask{What should the students observe physically from the computed waveforms?}
-
-\begin{solutionblock}
-    The students should observe that a longer carrier-removal time creates a larger tail-energy penalty.
-    This provides a numerical visualization of the stored minority carriers and the PT/NPT trade-off.
-\end{solutionblock}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Task 7 %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\task{Coding exercise: FBSOA/RBSOA visualization}
-
-Build a simplified SOA visualization for two IGBTs.
-
-\textbf{PT-IGBT}
-\begin{itemize}
-    \item $V_\mathrm{CES} = \SI{1200}{\volt}$
-    \item $I_\mathrm{AM} = \SI{150}{\ampere}$
-    \item pulse thermal limit:
-    \begin{equation*}
-        V_\mathrm{CE} I_\mathrm{C} \leq \SI{5000}{\watt}
-    \end{equation*}
-    \item RBSOA:
-    \begin{equation*}
-        I_\mathrm{C} \leq \frac{1000}{V_\mathrm{CE}}
-    \end{equation*}
-\end{itemize}
-
-\textbf{NPT-IGBT}
-\begin{itemize}
-    \item same $V_\mathrm{CES}$
-    \item same $I_\mathrm{AM}$
-    \item same pulse thermal limit:
-    \begin{equation*}
-        V_\mathrm{CE} I_\mathrm{C} \leq \SI{5000}{\watt}
-    \end{equation*}
-    \item RBSOA:
-    \begin{equation*}
-        I_\mathrm{C} \leq \frac{1400}{V_\mathrm{CE}}
-    \end{equation*}
-\end{itemize}
-
-\subtask{State the coding tasks to be completed by the students.}
-
-\begin{solutionblock}
-    The students should:
-    \begin{itemize}
-        \item plot the FBSOA and RBSOA boundaries for both devices,
-        \item mark a list of candidate operating points,
-        \item identify which points are allowed for PT but not NPT, and vice versa,
-        \item and explain why the NPT device gives a wider safe turn-off region in this simplified model.
-    \end{itemize}
-\end{solutionblock}
-
-\subtask{What should the students conclude from the final SOA plots?}
-
-\begin{solutionblock}
-    The key design message is that SOA is not just a current or voltage rating; it is a dynamic operating boundary.
-    The wider RBSOA of the NPT type in the simplified model visualizes the ruggedness advantage of that structure.
 \end{solutionblock}
