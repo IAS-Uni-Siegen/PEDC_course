@@ -1056,72 +1056,72 @@ This distinction is fundamental because the design objectives of inductors and t
     \end{columns} 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Inductor concept %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame} 
-    \frametitle{What is an Inductor?} 
-    \begin{columns} 
-        \begin{column}{0.58\textwidth} 
-            An inductor is a magnetic component that stores energy in its magnetic field when current flows through its winding. 
-            \vspace{0.15cm} Unlike transformers, which ideally transfer energy from one winding to another, inductors are specifically designed to store energy temporarily. 
-            \vspace{0.15cm} 
-            Typical applications include: 
-            \begin{itemize} 
-                \item Buck converters 
-                \item Boost converters 
-                \item Flyback converters 
-                \item EMI filters 
-                \item Resonant converters 
-                \item Motor drives 
-            \end{itemize} 
-            \vspace{0.15cm} 
-        \end{column} 
-        \begin{column}{0.38\textwidth} 
-            The electrical behaviour of an inductor is governed by 
-            \begin{align} 
-                v=L\frac{di}{dt} 
-            \end{align} 
-            which indicates that an inductor opposes changes in current. 
-            \begin{block}{Physical Interpretation} 
-                Current establishes magnetic flux. 
-                \vspace{0.1cm} 
-                The magnetic field stores energy and resists abrupt changes in current. 
-            \end{block} 
-        \end{column} 
-    \end{columns} 
-\end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Inductor concept %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame} 
+%     \frametitle{What is an Inductor?} 
+%     \begin{columns} 
+%         \begin{column}{0.58\textwidth} 
+%             An inductor is a magnetic component that stores energy in its magnetic field when current flows through its winding. 
+%             \vspace{0.15cm} Unlike transformers, which ideally transfer energy from one winding to another, inductors are specifically designed to store energy temporarily. 
+%             \vspace{0.15cm} 
+%             Typical applications include: 
+%             \begin{itemize} 
+%                 \item Buck converters 
+%                 \item Boost converters 
+%                 \item Flyback converters 
+%                 \item EMI filters 
+%                 \item Resonant converters 
+%                 \item Motor drives 
+%             \end{itemize} 
+%             \vspace{0.15cm} 
+%         \end{column} 
+%         \begin{column}{0.38\textwidth} 
+%             The electrical behaviour of an inductor is governed by 
+%             \begin{align} 
+%                 v=L\frac{di}{dt} 
+%             \end{align} 
+%             which indicates that an inductor opposes changes in current. 
+%             \begin{block}{Physical Interpretation} 
+%                 Current establishes magnetic flux. 
+%                 \vspace{0.1cm} 
+%                 The magnetic field stores energy and resists abrupt changes in current. 
+%             \end{block} 
+%         \end{column} 
+%     \end{columns} 
+% \end{frame}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Inductor derivation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame} 
-    \frametitle{Derivation of Inductance from Magnetic Circuits} 
-    \begin{columns} 
-        \begin{column}{0.58\textwidth} 
-            Starting from the magnetic circuit relation 
-                $\Phi=\Lambda Ni$.
-            Differentiating with respect to time, 
-            \begin{align} 
-                \frac{d\Phi}{dt} = \Lambda N \frac{di}{dt} 
-            \end{align} 
-            Applying Faraday's law, 
-            \begin{align} 
-                v = N\frac{d\Phi}{dt} \text{yields} \quad v = \Lambda N^2 \frac{di}{dt}
-            \end{align} 
-            Comparing with 
-            \begin{align} 
-                v=L\frac{di}{dt} \quad \Longrightarrow \quad L=\Lambda N^2
-            \end{align} 
-        \end{column} 
-        \begin{column}{0.38\textwidth} 
-            \begin{block}{Important Result} 
-                \begin{align} 
-                    L=\Lambda N^2 
-                \end{align} 
-                \vspace{0.1cm} 
-                Inductance is determined by \begin{itemize} \item Number of turns \item Core geometry \item Core permeability \item Air gap \end{itemize} 
-            \end{block} 
-        \end{column} 
-    \end{columns} 
-\end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Inductor derivation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame} 
+%     \frametitle{Derivation of Inductance from Magnetic Circuits} 
+%     \begin{columns} 
+%         \begin{column}{0.58\textwidth} 
+%             Starting from the magnetic circuit relation 
+%                 $\Phi=\Lambda Ni$.
+%             Differentiating with respect to time, 
+%             \begin{align} 
+%                 \frac{d\Phi}{dt} = \Lambda N \frac{di}{dt} 
+%             \end{align} 
+%             Applying Faraday's law, 
+%             \begin{align} 
+%                 v = N\frac{d\Phi}{dt} \text{yields} \quad v = \Lambda N^2 \frac{di}{dt}
+%             \end{align} 
+%             Comparing with 
+%             \begin{align} 
+%                 v=L\frac{di}{dt} \quad \Longrightarrow \quad L=\Lambda N^2
+%             \end{align} 
+%         \end{column} 
+%         \begin{column}{0.38\textwidth} 
+%             \begin{block}{Important Result} 
+%                 \begin{align} 
+%                     L=\Lambda N^2 
+%                 \end{align} 
+%                 \vspace{0.1cm} 
+%                 Inductance is determined by \begin{itemize} \item Number of turns \item Core geometry \item Core permeability \item Air gap \end{itemize} 
+%             \end{block} 
+%         \end{column} 
+%     \end{columns} 
+% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Physical inductance %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{frame} 
@@ -1232,66 +1232,66 @@ This distinction is fundamental because the design objectives of inductors and t
 \end{frame}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Air gap introduction %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{frame} \frametitle{Why are Air Gaps Introduced in Inductors?} 
-    \begin{columns} 
-        \begin{column}{0.58\textwidth} 
-            Power inductors generally require an intentional air gap. 
-            \vspace{0.15cm} 
-            The air gap serves several important functions: 
-            \begin{itemize} 
-                \item Increases magnetic reluctance. 
-                \item Reduces effective permeability. 
-                \item Increases saturation current. 
-                \item Improves inductance stability. 
-                \item Enables substantial energy storage. 
-            \end{itemize} 
-            \vspace{0.15cm} 
-            Without an air gap: 
-            \begin{itemize} 
-                \item Flux density rises rapidly. 
-                \item Core saturation occurs at relatively low current. 
-            \end{itemize} 
-        \end{column} 
-        \begin{column}{0.38\textwidth} 
-            \begin{figure} 
-                \centering 
-                \includegraphics[width=\linewidth]{fig/lec07/air_gap_effect.png} 
-                \caption{Influence of an air gap on the effective permeability and saturation behaviour. Adapted from Umanand, \textit{Power Electronics: Essentials and Applications}, 2nd edition, Wiley, 2012.}
-            \end{figure} 
-        \end{column} 
-    \end{columns} 
-\end{frame} 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Air gap introduction %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% \begin{frame} \frametitle{Why are Air Gaps Introduced in Inductors?} 
+%     \begin{columns} 
+%         \begin{column}{0.58\textwidth} 
+%             Power inductors generally require an intentional air gap. 
+%             \vspace{0.15cm} 
+%             The air gap serves several important functions: 
+%             \begin{itemize} 
+%                 \item Increases magnetic reluctance. 
+%                 \item Reduces effective permeability. 
+%                 \item Increases saturation current. 
+%                 \item Improves inductance stability. 
+%                 \item Enables substantial energy storage. 
+%             \end{itemize} 
+%             \vspace{0.15cm} 
+%             Without an air gap: 
+%             \begin{itemize} 
+%                 \item Flux density rises rapidly. 
+%                 \item Core saturation occurs at relatively low current. 
+%             \end{itemize} 
+%         \end{column} 
+%         \begin{column}{0.38\textwidth} 
+%             \begin{figure} 
+%                 \centering 
+%                 \includegraphics[width=\linewidth]{fig/lec07/air_gap_effect.png} 
+%                 \caption{Influence of an air gap on the effective permeability and saturation behaviour. Adapted from Umanand, \textit{Power Electronics: Essentials and Applications}, 2nd edition, Wiley, 2012.}
+%             \end{figure} 
+%         \end{column} 
+%     \end{columns} 
+% \end{frame} 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Air gap and saturation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame} 
-    \frametitle{Air Gap and Saturation Current} 
-    \begin{columns} 
-        \begin{column}{0.58\textwidth} 
-            The saturation condition occurs when 
-                $B=B_{sat}$. Using $B=\mu H$ and $               H=\frac{Ni}{l_m} $ one obtains 
-            \begin{align} 
-                i_{sat} \propto \frac{B_{sat}}{\mu} 
-            \end{align} 
-            \vspace{0.15cm} 
-            Introducing an air gap reduces the effective permeability. Therefore: 
-            \begin{itemize} 
-                \item Flux density rises more slowly. 
-                \item Larger current is required to reach saturation. 
-                \item Energy-storage capability increases. 
-            \end{itemize} 
-        \end{column} 
-        \begin{column}{0.38\textwidth} 
-            \begin{block}{Design Trade-Off} Air gap: 
-                \begin{itemize} 
-                    \item Higher saturation current 
-                    \item More energy storage 
-                    \item Lower inductance 
-                \end{itemize} 
-            \end{block} 
-        \end{column} 
-    \end{columns} 
-\end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Air gap and saturation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame} 
+%     \frametitle{Air Gap and Saturation Current} 
+%     \begin{columns} 
+%         \begin{column}{0.58\textwidth} 
+%             The saturation condition occurs when 
+%                 $B=B_{sat}$. Using $B=\mu H$ and $               H=\frac{Ni}{l_m} $ one obtains 
+%             \begin{align} 
+%                 i_{sat} \propto \frac{B_{sat}}{\mu} 
+%             \end{align} 
+%             \vspace{0.15cm} 
+%             Introducing an air gap reduces the effective permeability. Therefore: 
+%             \begin{itemize} 
+%                 \item Flux density rises more slowly. 
+%                 \item Larger current is required to reach saturation. 
+%                 \item Energy-storage capability increases. 
+%             \end{itemize} 
+%         \end{column} 
+%         \begin{column}{0.38\textwidth} 
+%             \begin{block}{Design Trade-Off} Air gap: 
+%                 \begin{itemize} 
+%                     \item Higher saturation current 
+%                     \item More energy storage 
+%                     \item Lower inductance 
+%                 \end{itemize} 
+%             \end{block} 
+%         \end{column} 
+%     \end{columns} 
+% \end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% Core geometries %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1359,7 +1359,6 @@ This distinction is fundamental because the design objectives of inductors and t
                 \begin{align} 
                     A_{Cu} = K_w A_w 
                 \end{align} 
-                where 
                 \begin{itemize} 
                     \item $A_w$ = window area 
                     \item $K_w$ = window utilization factor 
@@ -1570,17 +1569,14 @@ Under these assumptions,
 \begin{align}
 \frac{v_1}{N_1}
 =
-\frac{v_2}{N_2}
-\end{align}
-and
-\end{column}
-
-\begin{column}{0.38\textwidth}
-\begin{align}
+\frac{v_2}{N_2} \\
 \frac{i_1}{N_2}
 =
 -\frac{i_2}{N_1}
 \end{align}
+\end{column}
+
+\begin{column}{0.38\textwidth}
 
 The negative sign reflects power conservation and dot-convention polarity.
 \begin{figure}
