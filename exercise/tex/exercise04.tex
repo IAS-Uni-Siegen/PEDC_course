@@ -61,17 +61,17 @@ and assume the IGBT switching energy is $\SI{6}{\milli\joule}$ per cycle.
 \begin{solutionblock}
     The MOSFET conduction loss is
     \begin{align}
-        I_\mathrm{rms} &= \SI{20}{\ampere}\sqrt{0.5} = \SI{14.14}{\ampere} \\
-        P_\mathrm{ON,M} &= \left( \SI{14.14}{\ampere} \right)^2 \cdot \SI{80}{\milli\ohm} \approx \SI{16}{\watt} \\
-        P_\mathrm{sw,M} &= \frac{1}{6} \cdot \SI{400}{\volt} \cdot \SI{20}{\ampere} \cdot \SI{80}{\nano\second} \cdot \SI{80}{\kilo\hertz}
-        \approx \SI{8.53}{\watt} \\
-        P_\mathrm{tot,M} &\approx \SI{24.5}{\watt}.
+        I_\mathrm{rms} &= I \cdot D = \SI{20}{\ampere} 0.5 = \SI{10}{\ampere} \\
+        P_\mathrm{ON,M} &= \left(I_\mathrm{rms}\right)^2 \cdot R_\mathrm{DS(on)} = \left( \SI{10}{\ampere} \right)^2 \cdot \SI{80}{\milli\ohm} = \SI{8}{\watt} \\
+        P_\mathrm{sw,M} &\approx \frac{1}{6} V_\mathrm{DS} I_\mathrm{D} (t_\mathrm{r} + t_\mathrm{f}) f_\mathrm{s} =
+                          \frac{1}{6} \cdot \SI{400}{\volt} \cdot \SI{20}{\ampere} \cdot \SI{80}{\nano\second} \cdot \SI{80}{\kilo\hertz} = \SI{8.53}{\watt} \\
+        P_\mathrm{tot,M} &\approx \SI{16.5}{\watt}.
     \end{align}
 
     For the IGBT:
     \begin{align}
         P_\mathrm{ON,I} &= \SI{2.1}{\volt} \cdot \SI{20}{\ampere} \cdot 0.5 = \SI{21}{\watt} \\
-        P_\mathrm{sw,I} &= \SI{1.8}{\milli\joule} \cdot \SI{80}{\kilo\hertz} = \SI{144}{\watt} \\
+        P_\mathrm{sw,I} &\approx \SI{1.8}{\milli\joule} \cdot \SI{80}{\kilo\hertz} = \SI{144}{\watt} \\
         P_\mathrm{tot,I} &\approx \SI{165}{\watt}.
     \end{align}
 
@@ -83,14 +83,17 @@ and assume the IGBT switching energy is $\SI{6}{\milli\joule}$ per cycle.
 \begin{solutionblock}
     For the hypothetical high-voltage MOSFET:
     \begin{align}
-        I_\mathrm{rms} &= \SI{50}{\ampere}\sqrt{0.5} = \SI{35.36}{\ampere} \\
-        P_\mathrm{ON,M} &= \left( \SI{35.36}{\ampere} \right)^2 \cdot \SI{180}{\milli\ohm} \approx \SI{225}{\watt}.
+        I_\mathrm{rms} &= \SI{50}{\ampere} \cdot 0.5 = \SI{25}{\ampere} \\
+        P_\mathrm{ON,M} &= \left( \SI{25}{\ampere} \right)^2 \cdot \SI{180}{\milli\ohm} = \SI{112.5}{\watt}  \\
+        P_\mathrm{sw,M} &\approx \frac{1}{6} V_\mathrm{DS} I_\mathrm{D} (t_\mathrm{r} + t_\mathrm{f}) f_\mathrm{s} =
+                        \frac{1}{6} \cdot \SI{800}{\volt} \cdot \SI{50}{\ampere} \cdot \SI{80}{\nano\second} \cdot \SI{5}{\kilo\hertz} = \SI{2.7}{\watt} \\
+        P_\mathrm{tot,M} &\approx \SI{115}{\watt}.
     \end{align}
 
     For the IGBT, taking a realistic high-current value of $V_\mathrm{CE(sat)} \approx \SI{2.4}{\volt}$:
     \begin{align}
         P_\mathrm{ON,I} &= \SI{2.4}{\volt} \cdot \SI{50}{\ampere} \cdot 0.5 = \SI{60}{\watt} \\
-        P_\mathrm{sw,I} &= \SI{6}{\milli\joule} \cdot \SI{5}{\kilo\hertz} = \SI{30}{\watt} \\
+        P_\mathrm{sw,I} &\approx \SI{6}{\milli\joule} \cdot \SI{5}{\kilo\hertz} = \SI{30}{\watt} \\
         P_\mathrm{tot,I} &\approx \SI{90}{\watt}.
     \end{align}
 
@@ -353,6 +356,8 @@ Use the following simplified IGBT limits:
     \caption{IGBT semiconductor limits.}
     \label{table:igbt_task5_limits}
 \end{table}
+
+\FloatBarrier
 
 Consider the following cases:
 \begin{itemize}

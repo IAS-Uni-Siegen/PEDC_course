@@ -1,0 +1,260 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Begin exercise %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ex{Wide-Bandgap Devices (Slides 224--300)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 1 Why WBG is not just ``better silicon''
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Why WBG is not just ``better silicon''}
+
+A design team is deciding whether to redesign a converter platform from silicon to wide-bandgap devices. They are comparing two materials for the active switch:
+\begin{itemize}
+    \setlength{\itemsep}{-1pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-1pt} % Distance between the points (Part2)     
+    \item \textbf{Silicon:} $E_\mathrm{g} \approx \SI{1.1}{\electronvolt}$, $E_{\mathrm{crit}} \approx \SI{0.3}{\mega\volt\per\centi\metre}$
+    \item \textbf{4H-SiC:} $E_\mathrm{g} \approx \SI{3.2}{\electronvolt}$, $E_{\mathrm{crit}} \approx \SI{2.5}{\mega\volt\per\centi\metre}$
+\end{itemize}
+
+\subtask{Explain physically why a larger bandgap improves high-temperature blocking behavior.}
+\begin{solutionblock}
+A larger bandgap reduces the intrinsic carrier concentration and therefore suppresses thermally activated leakage. As temperature rises, the device can still maintain blocking capability because the leakage increase is much smaller than in silicon.
+\end{solutionblock}
+
+\subtask{Estimate the ratio of critical electric fields by using equation $k=\frac{E_{\mathrm{crit,SiC}}}{E_{\mathrm{crit,Si}}}$.}
+\begin{solutionblock}
+    \begin{align*}
+        k = \frac{E_{\mathrm{crit,SiC}}}{E_{\mathrm{crit,Si}}} = \frac{\SI{2.5}{\mega\volt\per\centi\metre}}{\SI{0.3}{\mega\volt\per\centi\metre}} \approx 8.33.
+    \end{align*}
+    
+    So SiC can sustain roughly $8$--$10$ times larger electric field before breakdown than silicon.
+\end{solutionblock}
+
+\subtask{For the same blocking voltage, argue qualitatively what happens to drift-region thickness and specific on-resistance when moving from Si to SiC.}
+\begin{solutionblock}
+Because SiC can tolerate a much larger electric field, the same blocking voltage can be supported with a thinner drift region. A thinner drift region reduces the resistive burden of the blocking layer, so the specific on-resistance drops strongly.
+\end{solutionblock}
+
+\subtask{Should WBG always be used? Give two correct counterarguments.}
+\begin{solutionblock}
+Two correct counterarguments are:
+\begin{itemize}   
+    \item The device alone is not the full answer; at converter level, layout, parasitics, passives, EMI, cooling, and packaging can dominate the design.
+    \item WBG devices also create new challenges, including oxide-field stress, parasitic ringing, false turn-on risk, measurement difficulty, and cost.
+\end{itemize}
+\end{solutionblock}
+
+\subtask{State the real system-level promise of WBG in one sentence.}
+\begin{solutionblock}
+The real promise of WBG devices is lower loss together with higher switching frequency and higher temperature capability, enabling smaller passive components, smaller cooling systems, and higher power density.
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 2 SiC diode selection under thermal derating and surge stress
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{SiC diode selection under thermal derating and surge stress}
+
+A SiC diode is being evaluated for a high-frequency PFC stage.
+\begin{itemize}
+    \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-2pt} % Distance between the points (Part2)      
+    \item forward drop at operating current: $V_\mathrm{F} = \SI{1.6}{\volt}$
+    \item allowed total dissipation at the chosen case temperature: $P_{\mathrm{tot}}(T_\mathrm{C}) = \SI{48}{\watt}$
+    \item duty ratio: $D = 0.40$
+    \item surge forward current rating: $I_\mathrm{FSM} = \SI{180}{\ampere}$
+\end{itemize}
+
+\vspace{0.2cm}
+
+Use
+    \begin{align*}
+        I_\mathrm{F} \approx \frac{P_{\mathrm{tot}}(T_\mathrm{C})/D}{V_\mathrm{F}}  \qquad \text{and} \qquad
+        i^2t \approx 0.005\ \cdot  I_\mathrm{FSM}^2.
+    \end{align*}
+
+\subtask{Estimate the allowable forward current during the conduction interval under the stated duty cycle. Also state the full-cycle average current.}
+
+\begin{solutionblock}
+    The average power relation is
+    \begin{equation}
+        D\,V_\mathrm{F}I_\mathrm{F} \approx P_{\mathrm{tot}}(T_\mathrm{C}).
+    \end{equation}
+    Therefore the allowable \emph{ON-state} current is
+    \begin{equation}
+        I_\mathrm{F} \approx \frac{\SI{48}{\watt}/0.40}{\SI{1.6}{\volt}} = \frac{\SI{120}{\watt}}{\SI{1.6}{\volt}} = \SI{75}{\ampere}.
+    \end{equation}
+    This is the forward current during the conduction interval. The full-cycle average current is
+    \begin{equation}
+        I_{\mathrm{avg,cycle}} = D\,I_\mathrm{F} = 0.40 \cdot 75 = \SI{30}{\ampere}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Estimate the $i^2t$ capability from the given $I_\mathrm{FSM}$.}
+\begin{solutionblock}
+    \begin{equation}
+        i^2t \approx 0.005\ \cdot I_\mathrm{FSM}^2 = 0.005 \cdot (\SI{180}{\ampere})^2 = 0.005 \cdot \SI{32.4}{\kilo\ampere\squared} = \SI{162}{\ampere\squared\second}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{A second designer ignores duty cycle and uses $I_\mathrm{F}=P_{\mathrm{tot}}/V_\mathrm{F}$. Why is that wrong here?}
+\begin{solutionblock}
+Ignoring duty cycle implicitly assumes the diode dissipates continuously at the ON-state power level. Here the diode conducts only for 40\% of the cycle, so the allowable current \emph{during conduction} is higher than the continuous-current estimate.
+\end{solutionblock}
+
+\subtask{Explain why a SiC diode can still have switching-related loss even though reverse recovery is much smaller than in silicon \emph{p--n} diodes.}
+\begin{solutionblock}
+A SiC diode still stores and releases junction-capacitance energy. Under hard commutation, that capacitance is charged and discharged very rapidly, and the associated energy contributes to switching loss even if classical reverse-recovery charge is very small.
+\end{solutionblock}
+
+\subtask{State two reasons why the same diode may appear ``stronger'' in one datasheet plot and ``weaker'' in another.}
+\begin{solutionblock}
+Two valid reasons are:
+\begin{itemize}
+    \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-2pt} % Distance between the points (Part2)  
+    \item the case temperature or initial junction temperature is different;
+    \item the pulse duration, duty cycle, or surge definition is different.
+\end{itemize}
+The key idea is that a diode rating is a thermal-electrical operating envelope, not a single current number.
+\end{solutionblock}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3 SiC MOSFET structure trade-off: blocking vs threshold vs channel resistance
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{SiC MOSFET structure trade-off: blocking vs threshold vs channel resistance}
+
+A planar SiC MOSFET must block a high drain voltage without reach-through. Use the slide relation for the minimum p-base thickness:
+    \begin{equation}
+        t_\mathrm{P} = \frac{\varepsilon_\mathrm{s}E_\mathrm{C}}{qN_\mathrm{A}}.
+    \end{equation}
+Let
+\begin{itemize}
+    \setlength{\itemsep}{-0.5pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-0.5pt} % Distance between the points (Part2)     
+    \item $\varepsilon_\mathrm{s} = \SI{8.6 \cdot 10^{-13}}{\farad\per\centi\metre}$
+    \item $E_\mathrm{C} = \SI{2.5 \cdot 10^6}{\volt\per\centi\metre}$
+    \item $q = \SI{1.6 \cdot 10^{-19}}{\coulomb}$
+\end{itemize}
+
+Two p-base options are being compared:
+\begin{itemize}
+    \setlength{\itemsep}{-0.5pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-0.5pt} % Distance between the points (Part2) 
+    \item \textbf{Case A:} $N_\mathrm{A} = \SI{8 \cdot 10^{16}}{\per\cubic\centi\metre}$
+    \item \textbf{Case B:} $N_\mathrm{A} = \SI{2 \cdot 10^{17}}{\per\cubic\centi\metre}$
+\end{itemize}
+
+\subtask{Estimate $t_\mathrm{P}$ for both cases.}
+
+\begin{solutionblock}
+    First compute the common numerator:
+        \begin{equation}
+            \varepsilon_\mathrm{s}E_\mathrm{C} = \SI{8.6 \cdot 10^{-13}}{\farad\per\centi\metre} \cdot \SI{2.5 \cdot 10^6}{\volt\per\centi\metre}
+            = \SI{2.15 \cdot 10^{-6}}{\volt\farad\per\centi\metre^2}.
+        \end{equation}
+
+    For Case A:
+        \begin{equation}
+            qN_\mathrm{A} = \SI{1.6 \cdot 10^{-19}}{\coulomb} \cdot \SI{8 \cdot 10^{16}}{\per\cubic\centi\metre} = \SI{1.28 \cdot 10^{-2}}{\coulomb\per\cubic\centi\metre}
+        \end{equation}
+        \begin{equation}
+            t_\mathrm{P} = \frac{\SI{2.15 \cdot 10^{-6}}{\volt\farad\per\centi\metre^2}}{\SI{1.28 \cdot 10^{-2}}{\coulomb\per\cubic\centi\metre}} 
+            = \SI{1.68 \cdot 10^{-4}}{\centi\metre} = \SI{1.68}{\micro\metre}.
+        \end{equation}
+
+    For Case B:
+        \begin{equation}
+            qN_\mathrm{A} = \SI{1.6 \cdot 10^{-19}}{\coulomb} \cdot \SI{2 \cdot 10^{17}}{\per\cubic\centi\metre} = \SI{3.2 \cdot 10^{-2}}{\coulomb\per\cubic\centi\metre}
+        \end{equation}
+        \begin{equation}
+            t_\mathrm{P} = \frac{\SI{2.15 \cdot 10^{-6}}{\volt\farad\per\centi\metre^2}}{\SI{3.2 \cdot 10^{-2}}{\coulomb\per\cubic\centi\metre}} 
+            = \SI{6.72 \cdot 10^{-5}}{\centi\metre} = \SI{0.672}{\micro\metre}.
+        \end{equation}
+\end{solutionblock}
+
+\subtask{Which case needs the thicker p-base?}
+\begin{solutionblock}
+Case A needs the thicker p-base because the lower p-base doping requires a larger thickness to support the same electrostatic requirement against reach-through.
+\end{solutionblock}
+
+\subtask{Which case is more likely to push threshold voltage upward?}
+\begin{solutionblock}
+Case B, with the more highly doped p-base, is more likely to push threshold voltage upward.
+\end{solutionblock}
+
+\subtask{Why does this trade-off appear more severely in SiC than in ordinary Si MOS structures?}
+\begin{solutionblock}
+In SiC, the combination of high critical field, gate-oxide stress, and channel-formation constraints makes the electrostatics more severe. This amplifies the trade-off among blocking capability, threshold control, channel resistance, and oxide reliability.
+\end{solutionblock}
+
+\subtask{Explain why advanced structures such as shielded planar or trench-gate SiC MOSFETs are not just ``manufacturing variants'' but responses to real physical limitations.}
+\begin{solutionblock}
+These structures are direct design responses to oxide-field stress, threshold-voltage control, channel resistance, third-quadrant conduction, and body-diode limitations. They are therefore rooted in device physics, not merely in manufacturing preference.
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 4 Dynamic switching of a SiC MOSFET: why ``fast'' creates new problems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Dynamic switching of a SiC MOSFET: why ``fast'' creates new problems}
+
+A SiC MOSFET is tested in the inductive-load switching circuit shown in the lecture. Assume during the Miller interval:
+\begin{itemize}
+    \setlength{\itemsep}{-0.5pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-0.5pt} % Distance between the points (Part2)     
+    \item $C_\mathrm{GD} = \SI{120}{\pico\farad}$
+    \item $\mathrm{d}v_\mathrm{DS}/\mathrm{d}t = \SI{40}{\volt\per\nano\second}$
+\end{itemize}
+Also assume:
+\begin{itemize}
+    \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-2pt} % Distance between the points (Part2)     
+    \item dc bus voltage $V_\mathrm{Bus} = \SI{800}{\volt}$
+    \item drain current at the switching overlap $I_\mathrm{D} = \SI{25}{\ampere}$
+    \item voltage-fall interval $t_\mathrm{vf} = \SI{18}{\nano\second}$
+\end{itemize}
+
+Use
+    \begin{equation}
+        I_\mathrm{CGD} = C_\mathrm{GD}\frac{\mathrm{d}v_\mathrm{DS}}{\mathrm{d}t}
+        \qquad \text{and} \qquad
+        E \approx \frac{1}{2}V_\mathrm{Bus}I_\mathrm{D}t_\mathrm{vf}.
+    \end{equation}
+
+\subtask{Compute the Miller current $I_\mathrm{CGD}$.}
+\begin{solutionblock}
+    \begin{equation}
+        I_\mathrm{CGD} = \SI{120 \cdot 10^{-12}}{\farad} \cdot \SI{40 \cdot 10^9}{\volt\per\second}= \SI{4.8}{\ampere}.
+    \end{equation}
+So the displacement current through the Miller capacitance is not small at all.
+\end{solutionblock}
+
+\subtask{Estimate the switching energy for the stated interval.}
+\begin{solutionblock}
+    \begin{equation}
+        E \approx \frac{1}{2}\cdot  \SI{800}{\volt} \cdot \SI{25}{\ampere} \cdot \SI{18 \cdot 10^{-9}}{\second}
+        = \SI{180 \cdot 10^{-6}}{\joule}
+        = \SI{180}{\micro\joule}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Explain why the measured drain current during turn-off is not equal to the true channel current.}
+\begin{solutionblock}
+The measured terminal current contains both conductive current and capacitive displacement current, especially through $C_\mathrm{GD}$. The true channel current is the conductive component after the displacement-current contribution is removed.
+\end{solutionblock}
+
+\subtask{Evaluate the claim: ``SiC is fast, therefore gate resistance should always be minimized.''}
+\begin{solutionblock}
+This claim is not sound. Very small gate resistance increases switching speed, but it can also increase voltage overshoot, current overshoot, ringing, EMI, and false turn-on risk through Miller coupling. Faster switching is useful only when the parasitic environment is well controlled.
+\end{solutionblock}
+
+\subtask{Give three practical quantities that gate resistance can tune in a real commutation loop.}
+\begin{solutionblock}
+Gate resistance can tune switching speed, voltage overshoot, current overshoot, and EMI level. Any three of these are valid answers.
+\end{solutionblock}
+
