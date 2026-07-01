@@ -1619,6 +1619,7 @@ low-frequency converters are more frequently limited by copper loss.
                 \vspace{0.15cm} Typical values: $0.2 < K_w < 0.5$ depending on winding complexity. 
             \end{column} 
             \begin{column}{0.38\textwidth} 
+                \vspace{-1cm}
                 \begin{figure} 
                     \centering 
                     \includegraphics[height=0.68\textheight]{fig/lec07/core_geometries.png} 
@@ -2159,3 +2160,1682 @@ low-frequency converters are more frequently limited by copper loss.
 
 
 % Next I should prepare slides on design of transformers including current transformers, then I want to talk about the losses, then I want to talk about the new versions like planer magnetics, MHz magnetics, and then I want to talk about the design of magnetic components for high frequency applications. Also, if possible something in direction of winding arrangements and cooling. This will conclude the magnetics. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Practical magnetic components
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{center}
+  \textbf{\Huge{Practical Magnetic Components}}\\[0.4cm]
+  \textbf{\Large{Inductors, Transformers, Coupled Inductors, and Current Transformers}}
+\end{center}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Magnetic component families
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Main Families of Magnetic Components in Power Electronics}
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            Magnetic components in power electronics can be grouped according to their dominant function.
+
+            \vspace{0.15cm}
+
+            \begin{itemize}
+                \item \textbf{Energy-storage components}
+                \begin{itemize}
+                    \item DC filter inductors
+                    \item AC inductors or line reactors
+                    \item Flyback magnetic components
+                \end{itemize}
+
+                \item \textbf{Energy-transfer components}
+                \begin{itemize}
+                    \item High-frequency transformers
+                    \item Pulse transformers
+                    \item Current transformers
+                \end{itemize}
+
+                \item \textbf{Coupled and integrated components}
+                \begin{itemize}
+                    \item Coupled inductors
+                    \item Integrated magnetics
+                    \item Planar magnetics
+                \end{itemize}
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            The correct magnetic component is selected from converter function, isolation requirement, stored energy, frequency, current ripple, and thermal constraints.
+            \begin{block}{Key Design Question}
+                Is the component mainly required to store energy, transfer energy, sense current, or combine several magnetic functions?
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Filter inductor
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Filter Inductor}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            A filter inductor is used to control current ripple and shape the current waveform in a switching converter. Typical applications include:
+            \begin{itemize}
+                \item Buck converter output filter
+                \item Boost converter input inductor
+                \item PFC boost inductor
+                \item DC-link filtering
+                \item EMI and differential-mode filtering
+            \end{itemize}
+            The governing relation is
+            \begin{align}
+                v_L = L\frac{di_L}{dt}
+            \end{align}
+            A larger inductance reduces ripple, but also increases volume, copper loss, and stored energy requirement.
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{block}{Design Focus}
+                \small
+                For a filter inductor, the most important quantities are:
+                \begin{itemize}
+                    \item Required inductance $L$
+                    \item Peak current $I_{\mathrm{pk}}$
+                    \item RMS current $I_{\mathrm{rms}}$
+                    \item Allowed ripple $\Delta i$
+                    \item Saturation current
+                    \item Temperature rise
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% AC inductor
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{AC Inductor or Line Reactor}
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            An AC inductor, often called a line reactor, is used when the current is alternating rather than purely DC with ripple. It is commonly used in:
+            \begin{itemize}
+                \item Grid-connected converters
+                \item Three-phase rectifiers
+                \item Motor-drive output filters
+                \item Active front-end converters
+                \item LCL filters for inverters
+            \end{itemize}
+            Unlike a DC filter inductor, an AC inductor experiences bidirectional flux swing. So, the design must consider:
+            \begin{itemize}
+                \item Fundamental-frequency current
+                \item Switching-frequency ripple
+                \item Core loss under AC excitation
+                \item Audible noise and vibration
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{block}{Practical Difference}
+                A DC filter inductor is often limited by peak current and saturation. An AC inductor is often limited by combined copper loss, core loss, thermal rise, and insulation stress.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Coupled inductor
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Coupled Inductor}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            A coupled inductor contains two or more windings on a common magnetic core. The windings share part of their magnetic flux. The coupling is described by the mutual inductance $M$ and the coupling coefficient $k$:
+            \begin{align}
+                k = \frac{M}{\sqrt{L_1L_2}}, \qquad 0 \leq k \leq 1
+            \end{align}
+            Coupled inductors are useful in:
+            \begin{itemize}
+                \item Interleaved buck converters
+                \item Multiphase voltage regulators
+                \item Coupled-inductor boost converters
+                \item Ripple-current cancellation
+                \item Integrated magnetic structures
+            \end{itemize}
+
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/coupled_inductor_ill.png}
+                \caption{Multiple-winding magnetic structure illustrating shared magnetic coupling. Adapted from Umanand, \textit{Power Electronics: Essentials and Applications}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Coupled inductor
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Coupled Inductor}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            As in the case of the single winding filter inductor, the size of the minor B-H loop is proportional to the total current ripple (Fig. 10.48). Small ripple implies small core loss, as well as small proximity loss. An air gap is employed, and the maximum flux density is typically limited by saturation.
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.8\linewidth]{fig/lec07/coupled_inductor.png}
+                \caption{Coupled inductor minor B-H loop. Adapted from Errikson and Maksimovic, \textit{Fundamentals of Power Electronics}, 3rd edition, Springer, 2013}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% True transformer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{High-Frequency Transformer}
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            A high-frequency transformer transfers energy between two or more electrical ports through a shared magnetic flux. It is used for:
+            \begin{itemize}
+                \item Galvanic isolation
+                \item Voltage step-up or step-down
+                \item Impedance matching
+                \item Multiple isolated outputs
+            \end{itemize}
+            Applying Faraday's law to two windings gives
+            \begin{align}
+                \frac{v_1}{N_1} = \frac{v_2}{N_2}
+            \end{align}
+
+            and ideal ampere-turn balance gives
+
+            \begin{align}
+                N_1 i_1 + N_2 i_2 = 0
+            \end{align}
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            A true transformer should ideally transfer energy, not store significant energy.
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/Transformer3d_col3.pdf}
+                \caption{Operating principle of a transformer with primary and secondary windings linked by common flux.}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Flyback transformer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Flyback Transformer: Actually a Coupled Inductor}
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            The term ``flyback transformer'' is widely used in industry, but magnetically it is more accurately a coupled inductor. In a true transformer:
+            \begin{itemize}
+                \item Primary and secondary currents flow simultaneously.
+                \item Ampere-turns largely cancel.
+                \item Energy storage is undesirable.
+            \end{itemize}
+            In a flyback magnetic component:
+            \begin{itemize}
+                \item Primary and secondary currents occur sequentially.
+                \item Energy is first stored in magnetizing inductance.
+                \item Energy is later delivered to the secondary.
+                \item An air gap is essential for energy storage.
+            \end{itemize}
+            \begin{align}
+                E = \frac{1}{2}L_m I_{\mathrm{pk}}^2
+            \end{align}
+        \end{column}
+        \begin{column}{0.38\textwidth}
+            \vspace{-1cm}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.6\linewidth]{fig/lec07/flyback_inductor.png}
+                \caption{Continuous-mode flyback winding ampere-turn waveforms showing sequential primary and secondary current action. Adapted from Dixon, Texas Instruments, \textit{Designing Planar Magnetics}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Current transformer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Current Transformer}
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            A current transformer is a magnetic sensor used to reproduce a scaled version of a primary current in an isolated secondary circuit. For an ideal current transformer,
+            \begin{align}
+                \frac{I_s}{I_p} \approx \frac{N_p}{N_s}
+            \end{align}
+            Typical uses include:
+            \begin{itemize}
+                \item Isolated current sensing
+                \item Over-current protection
+                \item Gate-drive power sensing
+                \item Converter diagnostics
+                \item Protection relays
+            \end{itemize}
+
+        \end{column}
+        \begin{column}{0.38\textwidth}
+            The secondary current is usually converted to a voltage using a burden resistor:
+            \begin{align}
+                v_s = I_s R_b
+            \end{align}
+            \vspace{-0.75cm}
+            \begin{block}{Safety Note}
+                \small
+                A current-transformer secondary should not be open-circuited while primary current is flowing. A large voltage can be induced across the secondary winding.
+            \end{block}
+            \begin{block}{Design Focus}
+                \small
+                Important parameters are turns ratio, burden resistance, saturation current, bandwidth, leakage inductance, and insulation rating.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Leakage flux in transformers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Leakage Flux in Transformer-Type Magnetics}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            In practical transformers, not all magnetic flux links both windings. The flux that links only one winding is called leakage flux. It appears electrically as leakage inductance.
+            Leakage inductance can be harmful or useful depending on the converter:
+            \begin{itemize}
+                \item In hard-switched converters, it causes voltage overshoot and ringing.
+                \item In isolated converters, it can slow current transfer between windings.
+                \item In resonant converters such as LLC converters, it can become part of the resonant tank.
+            \end{itemize}
+            Therefore, leakage inductance is not simply a parasitic; it is a design variable.
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/linkage_flux.png}
+                \caption{Leakage flux that does not fully link the second winding. Adapted from Umanand, \textit{Power Electronics: Essentials and Applications}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Comparison of magnetic components
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Comparison of Practical Magnetic Components}
+
+    \scriptsize
+    \begin{table}
+        \centering
+        \begin{tabular}{p{0.22\textwidth}p{0.15\textwidth}p{0.15\textwidth}p{0.13\textwidth}p{0.22\textwidth}}
+            \hline
+            \textbf{Component} & \textbf{Stores Energy} & \textbf{Transfers Energy} & \textbf{Air Gap} & \textbf{Typical Use}\\
+            \hline
+            Filter inductor & Yes & No & Usually yes & Buck, boost, PFC, DC filters\\
+            AC inductor / reactor & Yes & No & Sometimes & Grid filters, motor drives, rectifiers\\
+            Coupled inductor & Yes & Partly & Sometimes & Interleaved converters, ripple cancellation\\
+            Flyback transformer & Yes & Sequentially & Yes & Isolated low/medium-power supplies\\
+            HF transformer & Ideally no & Yes & Usually no & LLC, DAB, PSFB, isolated converters\\
+            Current transformer & No & Signal energy only & No & Sensing and protection\\
+            \hline
+        \end{tabular}
+    \end{table}
+    \begin{block}{Message}
+        \small
+        The distinction between stored energy and transferred energy is the most important conceptual difference between inductors, flyback magnetic components, and true transformers.
+    \end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Transformer design section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{center}
+  \textbf{\Huge{Transformer Design}}\\[0.4cm]
+  \textbf{\Large{From Converter Specification to Magnetic Hardware}}
+\end{center}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Transformer design inputs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Transformer Design Inputs}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            Transformer design begins from the converter-level specification, not from the core catalogue.
+
+            \vspace{0.15cm}
+
+            The main electrical inputs are:
+            \begin{itemize}
+                \item Input-voltage range: $V_{\mathrm{in,min}}$ to $V_{\mathrm{in,max}}$
+                \item Output voltage and power: $V_o$, $P_o$
+                \item Switching frequency: $f_s$
+                \item Topology: flyback, forward, LLC, PSFB, DAB, etc.
+                \item Maximum duty ratio or phase-shift range
+                \item Required isolation voltage
+                \item Allowed temperature rise
+            \end{itemize}
+
+            \vspace{0.15cm}
+
+            These specifications determine the required volt-seconds, turns ratio, core size, winding current, insulation system, and thermal design.
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{block}{Design Message}
+                \small
+                A transformer cannot be designed independently of the converter topology. The applied voltage waveform determines the flux swing, while the winding currents determine copper loss and heating.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Transformer design workflow
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Transformer Design Workflow}
+
+    \begin{center}
+    \begin{circuitikz}[scale=0.78, transform shape]
+        \tikzstyle{block} = [draw, rounded corners, align=center,
+        minimum width=3.0cm, minimum height=0.85cm]
+
+        \node[block] (spec) at (0,0) {Converter\\specification};
+        \node[block] (wave) at (4,0) {Voltage/current\\waveforms};
+        \node[block] (core) at (8,0) {Core material\\and geometry};
+
+        \node[block] (turns) at (8,-2) {Turns ratio and\\primary turns};
+        \node[block] (wind) at (4,-2) {Winding area,\\wire/PCB traces};
+        \node[block] (loss) at (0,-2) {Core loss and\\copper loss};
+
+        \node[block] (thermal) at (0,-4) {Thermal and\\insulation check};
+        \node[block] (iterate) at (4,-4) {Iterate design};
+        \node[block] (proto) at (8,-4) {Prototype and\\measure};
+
+        \draw[->, thick] (spec) -- (wave);
+        \draw[->, thick] (wave) -- (core);
+        \draw[->, thick] (core) -- (turns);
+        \draw[->, thick] (turns) -- (wind);
+        \draw[->, thick] (wind) -- (loss);
+        \draw[->, thick] (loss) -- (thermal);
+        \draw[->, thick] (thermal) -- (iterate);
+        \draw[->, thick] (iterate) -- (proto);
+        \draw[->, thick, dashed] (iterate.north) .. controls (4,-1.0) and (6,-1.0) .. (core.south);
+    \end{circuitikz}
+    \end{center}
+
+    \vspace{0.15cm}
+
+    \begin{block}{Practical Interpretation}
+        \small
+        Transformer design is iterative because turns, flux density, copper area, leakage inductance, temperature rise, and insulation clearance are strongly coupled.
+    \end{block}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Volt-second constraint
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Volt-Second Constraint and Primary Turns}
+
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            The primary turns are selected so that the core flux density remains below the allowable limit. From Faraday's law,
+            \begin{align}
+                v_1(t) = N_1 A_c \frac{dB(t)}{dt}
+            \end{align}
+            \begin{align}
+                \text{Therefore,} \quad
+                \Delta B =
+                \frac{1}{N_1 A_c}
+                \int_{t_1}^{t_2} v_1(t)\,dt
+                =
+                \frac{\lambda_1}{N_1 A_c}
+            \end{align}
+
+            Rearranging gives the minimum primary turns:
+            \begin{align}
+                N_1 \geq
+                \frac{\lambda_1}{A_c \Delta B_{\max}}
+            \end{align}
+        \end{column}
+
+        \begin{column}{0.48\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.75\linewidth]{fig/lec07/volt_sec.png}
+                \caption{$\lambda_1$ is the applied positive volt-second on the primary winding. Primary voltage waveform and applied volt-seconds $\lambda_1$ used for transformer design. Adapted from Erickson and Maksimovi\'c, \textit{Fundamentals of Power Electronics}, 3rd edition}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Transformer saturation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Transformer Saturation is a Volt-Second Problem}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            A transformer saturates when the applied volt-seconds force the core flux density beyond the saturation limit. The core flux density is
+            \begin{align}
+                B(t)=\frac{1}{N_1A_c}\int v_1(t)\,dt
+            \end{align}
+            Hence, transformer saturation is mainly controlled by:
+            \begin{itemize}
+                \item Primary voltage waveform
+                \item Number of primary turns
+                \item Core cross-sectional area
+                \item Reset condition or volt-second balance
+            \end{itemize}
+            Large load current does not automatically saturate a true transformer if the primary and secondary ampere-turns cancel properly.
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{block}{Important Correction}
+                \small
+                Adding an air gap does not solve saturation in a conventional transformer. It mainly lowers magnetizing inductance and increases magnetizing current.
+            \end{block}
+
+            \vspace{0.15cm}
+
+            \begin{block}{Correct Remedies}
+                \small
+                Increase $N_1$, increase $A_c$, reduce volt-seconds, or ensure proper core reset.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Core geometry and material selection
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Core Geometry and Material Selection}
+            Core selection determines the magnetic, electrical, thermal, and manufacturing limits of the transformer.
+
+            \vspace{0.15cm}
+
+            Important core parameters are:
+            \begin{itemize}
+                \item Effective core area $A_c$ or $A_e$
+                \item Window area $A_w$ or $W_A$
+                \item Magnetic path length $l_m$
+                \item Mean length per turn MLT
+                \item Core volume $V_c$
+                \item Core material and loss data
+            \end{itemize}
+            Typical high-frequency core families include EE, EI, ER, ETD, PQ, RM and low-profile planar variants.
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Core Geometry and Material Selection}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.75\linewidth]{fig/lec07/EE_core.png}
+                \includegraphics[width=0.75\linewidth]{fig/lec07/ETD_core.png}
+              \caption{Low-profile planar core geometries including EE/EI, ER, ETD families. Adapted from \textit{Transformer and Inductor Design Handbook}}
+            \end{figure}
+        \end{column}
+
+        \begin{column}{0.5\textwidth}
+            \begin{figure}
+                \includegraphics[width=0.75\linewidth]{fig/lec07/PQ_core.png}
+                \includegraphics[width=0.5\linewidth]{fig/lec07/RM_core.png}
+                \caption{Low-profile planar core geometries including PQ and RM families. Adapted from \textit{Transformer and Inductor Design Handbook}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Area product and core size
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Area Product and Core-Size Selection}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            The core must simultaneously satisfy magnetic and winding-space constraints. The area product is
+            \begin{align}
+                A_P = A_c A_w
+            \end{align}
+
+            where
+            \begin{itemize}
+                \item $A_c$ supports the required flux,
+                \item $A_w$ provides space for the windings.
+            \end{itemize}
+            For transformer designs where core loss is important, a core geometrical constant $K_{gfe}$ is introduced as a first-pass sizing parameter:
+            \begin{align}
+                K_{gfe} \geq K_{gfe,\mathrm{req}}
+            \end{align}
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            This approach using $K_{gfe}$ accounts for both copper loss and core loss in selecting a suitable core size.
+            \begin{block}{Design Interpretation}
+                \small
+                At high frequency, transformer design is often not saturation-limited. It is frequently core-loss-limited, so the selected $\Delta B$ is much lower than $B_{\mathrm{sat}}$.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Turns ratio and secondary turns
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Turns Ratio and Secondary Turns}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            The turns ratio is selected from converter voltage gain and device-voltage stress requirements. For an ideal transformer,
+            \begin{align}
+                \frac{v_2}{v_1}=\frac{N_2}{N_1}=n
+            \end{align}
+            Once $N_1$ is selected from the volt-second constraint, the secondary turns are $N_2 = nN_1$.
+            In practical design:
+            \begin{itemize}
+                \item $N_1$ and $N_2$ must be rounded to integers.
+                \item Rounding changes the actual turns ratio.
+                \item The new ratio must be checked against voltage gain and semiconductor stress.
+                \item Multi-output transformers require additional secondary turns and regulation checks.
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/trans_sec_winding.png}
+                \caption{Single-secondary and multiple-secondary transformer structures. Adapted from Umanand, \textit{Power Electronics: Essentials and Applications}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Winding area and current density
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Winding Area, Fill Factor, and Current Density}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            After determining the turns, the winding must physically fit inside the available window area. The available copper area is $
+                A_{\mathrm{Cu,available}} = K_u W_A$, 
+            where $K_u$ is the window utilization or fill factor. For each winding,
+            \begin{align}
+                A_{w,j} \approx \frac{I_{j,\mathrm{rms}}}{J}
+            \end{align}
+            where $J$ is the allowable current density. The selected winding must satisfy:
+            \begin{itemize}
+                \item DC resistance limit
+                \item AC resistance limit
+                \item Temperature-rise limit
+                \item Insulation and creepage/clearance limits
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/window_uti.png}
+                \caption{Comparison of window utilization in standard and planar transformers. Adapted from \textit{Transformer and Inductor Design Handbook}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Planar transformer winding design
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Planar Transformer Winding Design}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            In planar transformers, the winding is implemented using PCB copper, flexible PCB, stamped copper, or a hybrid structure.
+
+            \vspace{0.15cm}
+
+            The main winding decisions are:
+            \begin{itemize}
+                \item Copper thickness: 1 oz, 2 oz, 3 oz, or thicker copper
+                \item Track width and spacing
+                \item Number of PCB layers
+                \item Via current capability
+                \item Layer-to-layer insulation
+                \item Primary-secondary arrangement
+            \end{itemize}
+
+            \vspace{0.15cm}
+
+            Planar windings provide excellent repeatability and controlled parasitics, but they can suffer from low window utilization and high interwinding capacitance.
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/planer_E_core_winding.png}
+                \caption{Typical planar E-core winding PCB with high-current and low-current traces. Adapted from \textit{Transformer and Inductor Design Handbook}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Leakage and magnetizing inductance check
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Magnetizing and Leakage Inductance Check}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            After the first-pass design, the transformer must be checked using its equivalent circuit. The magnetizing inductance is approximately $L_M = \frac{N_1^2}{\mathcal{R}}$, and determines the magnetizing current:
+            \begin{align}
+                i_M(t)=\frac{1}{L_M}\int v_1(t)\,dt
+            \end{align}
+            Leakage inductance appears in series with the windings and affects:
+            \begin{itemize}
+                \item Voltage spikes
+                \item Current transfer
+                \item Ringing frequency
+                \item Resonant-tank behaviour
+                \item Snubber or clamp design
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/transformer_equivalent_circuit.png}
+                \caption{Two-winding transformer equivalent circuit including magnetizing inductance and primary/secondary leakage inductances. Adapted from Erickson and Maksimovi\'c, \textit{Fundamentals of Power Electronics}, 3rd edition}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Design verification and iteration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Transformer Design Verification}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            A transformer design is acceptable only after electrical, magnetic, thermal, and insulation checks are satisfied.
+
+            \vspace{0.15cm}
+
+            Minimum verification checklist:
+            \begin{itemize}
+                \item Flux density:
+                \[
+                    \Delta B < \Delta B_{\max}
+                \]
+                \item Core loss from material loss curves or Steinmetz model
+                \item DC and AC copper losses
+                \item Leakage inductance and parasitic capacitance
+                \item Temperature rise at worst-case operation
+                \item Isolation, creepage and clearance
+                \item Manufacturability and repeatability
+            \end{itemize}
+
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+        High-frequency transformers usually require several design iterations.
+            \begin{block}{First-Pass Design is Not Final}
+                \small
+                Analytical equations select a candidate core and turns. Final design requires loss estimation, thermal validation, parasitic extraction, and experimental measurement.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Module 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{center}
+  \textbf{\Huge{Winding Arrangements}}\\[0.4cm]
+  \textbf{\Large{Leakage, AC Resistance, Capacitance, and Manufacturability}}
+\end{center}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Why winding arrangement matters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Why Winding Arrangement Matters}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            In high-frequency magnetic components, the winding arrangement is often as important as the core material. It directly influences:
+            \begin{itemize}
+                \item Leakage inductance
+                \item Proximity-effect loss
+                \item Skin-effect loss
+                \item Interwinding capacitance
+                \item Common-mode noise
+                \item Thermal path from copper to ambient
+                \item Manufacturability and repeatability
+            \end{itemize}
+            In low-frequency transformers, winding design is mainly about copper area and insulation. In high-frequency power electronics, it is also about controlling the magnetic field distribution inside the winding window.
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{block}{Design Message}
+                \small
+                A transformer with the correct turns ratio can still perform poorly if the winding layout produces excessive leakage inductance, AC resistance, or parasitic capacitance.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Layered winding
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Layered Winding}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            A layered winding places one winding layer after another inside the core window. This is simple and manufacturable, but it may produce high leakage inductance and high proximity loss. Typical structure:
+            \begin{itemize}
+                \item Primary layers grouped together
+                \item Secondary layers grouped together
+                \item Insulation placed between primary and secondary
+            \end{itemize}
+
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/planar_transformer_flux.png}
+                \caption{Magnetic force equipotentials and leakage flux lines between primary and secondary windings in a planar transformer. Adapted from Dixon, Texas Instruments, \textit{Designing Planar Magnetics}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Layered winding
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Layered Winding}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            Advantages:
+            \begin{itemize}
+                \item Simple construction
+                \item Good insulation control
+                \item Easy to manufacture
+            \end{itemize}
+
+            Limitations:
+            \begin{itemize}
+                \item Larger leakage field between winding groups
+                \item Increased AC winding resistance
+                \item Poorer transient behaviour in hard-switched converters
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/planar_transformer_flux.png}
+                \caption{Magnetic force equipotentials and leakage flux lines between primary and secondary windings in a planar transformer. Adapted from Dixon, Texas Instruments, \textit{Designing Planar Magnetics}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sectional winding
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Sectional Winding}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            In sectional winding, the winding is divided into sections rather than being placed as one continuous block. The purpose is to control the spatial distribution of magnetic field and electric field inside the winding window.
+            Sectional winding can be useful when:
+            \begin{itemize}
+                \item High isolation voltage is required
+                \item Interwinding capacitance must be reduced
+                \item Leakage inductance must be intentionally adjusted
+                \item Multiple outputs require physical separation
+            \end{itemize}
+
+            Compared with full interleaving, sectional winding may increase leakage inductance, but can reduce capacitance and simplify insulation design.
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{block}{Engineering Trade-off}
+                \small
+                Interleaving generally reduces leakage inductance but increases capacitance.
+
+                \vspace{0.15cm}
+
+                Sectionalization generally reduces capacitance and improves insulation control but can increase leakage inductance.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Interleaved winding
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Interleaved Winding}
+
+    \begin{columns}
+        \begin{column}{0.55\textwidth}
+            Interleaving alternates primary and secondary winding sections to reduce the magnetic field energy stored between them. Examples:
+            \begin{itemize}
+                \item P--S--P
+                \item S--P--S
+                \item P--S--P--S
+                \item PCB layer interleaving in planar transformers
+            \end{itemize}
+            Main benefits:
+            \begin{itemize}
+                \item Reduced leakage inductance
+                \item Reduced voltage overshoot
+                \item Better current transfer
+                \item Lower proximity-effect loss in many transformer cases
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{0.44\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.8\linewidth]{fig/lec07/planar_winding_stack.png}
+                \caption{Planar winding stack with multiple layers, winding ports and vias, illustrating how PCB layers can be connected and interleaved. Adapted from Chen et al., \textit{A Systematic Approach to Modeling Impedances and Current Distribution in Planar Magnetics}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+However, interleaving can increase interwinding capacitance and common-mode noise.
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Foil winding
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Foil Winding}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            Foil windings use wide, thin copper conductors instead of round wires.
+
+            \vspace{0.15cm}
+
+            They are attractive for high-current windings because:
+            \begin{itemize}
+                \item DC resistance can be low
+                \item Current can be spread over a wide conductor surface
+                \item Thermal contact area is large
+                \item Winding height can be compact
+            \end{itemize}
+
+            \vspace{0.15cm}
+
+            The conductor thickness must be selected carefully. If the foil is much thicker than the skin depth, the inner copper is poorly used at high frequency.
+
+            \begin{align}
+                \delta = \sqrt{\frac{2\rho}{\omega \mu}}
+            \end{align}
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            Foil windings are therefore useful when the foil thickness is comparable to, or smaller than, the relevant skin depth.
+            \begin{block}{Design Rule}
+                \small
+                Foil width reduces DC resistance, but foil thickness controls high-frequency AC resistance.
+
+                \vspace{0.15cm}
+
+                Thin, wide copper is usually preferable to thick copper for high-frequency transformer windings.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Litz, foil, PCB comparison
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Comparison of Round Wire, Foil, Litz, and PCB Windings}
+
+    \scriptsize
+    \begin{table}
+        \centering
+        \begin{tabular}{p{0.18\textwidth}p{0.20\textwidth}p{0.25\textwidth}p{0.25\textwidth}}
+            \hline
+            \textbf{Winding} & \textbf{Main Strength} & \textbf{Main Limitation} & \textbf{Typical Use}\\
+            \hline
+            Round wire & Simple and low cost & High AC loss at high frequency & Low-frequency and low-power magnetics\\
+            Foil & Low DC resistance and good thermal area & Proximity loss if poorly arranged & High-current transformer windings\\
+            Litz wire & Reduced skin and proximity effects & Cost, termination complexity & Resonant and MHz-range magnetics\\
+            PCB winding & Repeatable and low profile & Low fill factor and high capacitance & Planar transformers and integrated magnetics\\
+            \hline
+        \end{tabular}
+    \end{table}
+
+    \vspace{0.15cm}
+
+    \begin{block}{Message}
+        \small
+        The best winding technology depends on frequency, current, voltage isolation, manufacturing volume, leakage requirement, and thermal path.
+    \end{block}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Module 4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{center}
+  \textbf{\Huge{Magnetic Losses}}\\[0.4cm]
+  \textbf{\Large{Core Loss, Copper Loss, and High-Frequency Effects}}
+\end{center}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Loss map
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Loss Mechanisms in Magnetic Components}
+
+    \begin{center}
+    \begin{circuitikz}[scale=0.78, transform shape]
+        \tikzstyle{block} = [draw, rounded corners, align=center,
+        minimum width=3.0cm, minimum height=0.8cm]
+
+        \node[block] (total) at (4,0) {Total magnetic\\component loss};
+        \node[block] (core) at (0,-1.7) {Core loss};
+        \node[block] (copper) at (4,-1.7) {Copper loss};
+        \node[block] (parasitic) at (8,-1.7) {Parasitic-related\\loss};
+
+        \node[block] (hyst) at (-1.5,-3.4) {Hysteresis};
+        \node[block] (eddy) at (1.5,-3.4) {Core eddy\\current};
+
+        \node[block] (dc) at (3,-3.4) {DC winding\\loss};
+        \node[block] (ac) at (5.2,-3.4) {AC winding\\loss};
+
+        \node[block] (skin) at (3.8,-5.1) {Skin effect};
+        \node[block] (prox) at (6.2,-5.1) {Proximity effect};
+
+        \draw[->, thick] (total) -- (core);
+        \draw[->, thick] (total) -- (copper);
+        \draw[->, thick] (total) -- (parasitic);
+        \draw[->, thick] (core) -- (hyst);
+        \draw[->, thick] (core) -- (eddy);
+        \draw[->, thick] (copper) -- (dc);
+        \draw[->, thick] (copper) -- (ac);
+        \draw[->, thick] (ac) -- (skin);
+        \draw[->, thick] (ac) -- (prox);
+    \end{circuitikz}
+    \end{center}
+
+    \vspace{0.1cm}
+
+    \begin{block}{Teaching Message}
+        \small
+        At low frequency, DC copper loss and saturation may dominate. At high frequency, core loss, skin effect, proximity effect, leakage energy, and capacitance-related effects become increasingly important.
+    \end{block}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Core loss
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Core Loss}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            Core loss is the heat generated inside the magnetic material during cyclic magnetization. The main components are:
+            \begin{itemize}
+                \item Hysteresis loss
+                \item Eddy-current loss
+                \item Excess or residual loss
+            \end{itemize}
+            Hysteresis loss is related to the energy required to reverse magnetic domains. Eddy-current loss is caused by induced circulating currents in conductive core material. A common empirical representation is the Steinmetz form:
+            \begin{align}
+                P_v = k f^{\alpha} B_{\mathrm{pk}}^{\beta}
+            \end{align}
+            where $P_v$ is the volumetric core-loss density.
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{block}{Practical Meaning}
+                At high switching frequency, the safe operating flux density is often much lower than the saturation flux density.
+
+                \vspace{0.15cm}
+
+                The design may be loss-limited rather than saturation-limited.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Hysteresis loss
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Hysteresis Loss}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            Hysteresis loss is associated with the non-recoverable energy required to magnetize and demagnetize the core material. The energy lost per cycle is proportional to the area enclosed by the $B$--$H$ loop:
+
+            \begin{align}
+                W_{\mathrm{hyst}} = V_c \oint H\,dB
+            \end{align}
+
+            The hysteresis power loss is then
+
+            \begin{align}
+                P_{\mathrm{hyst}} = f V_c \oint H\,dB
+            \end{align}
+
+            Therefore, hysteresis loss increases with frequency and with the size of the flux-density excursion.
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/BH_loop.png}
+                \caption{Piecewise-linear and practical $B$--$H$ characteristics, including hysteresis loop behaviour. Adapted from Umanand, \textit{Power Electronics: Essentials and Applications}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Eddy current loss
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Eddy-Current Loss in the Core}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            A time-varying magnetic flux induces voltage inside conductive magnetic material. This voltage drives circulating currents called eddy currents. Eddy currents cause resistive heating inside the core:
+            \begin{align}
+                P_{\mathrm{eddy}} \sim i_{\mathrm{eddy}}^2 R_{\mathrm{core}}
+            \end{align}
+            Eddy-current loss increases strongly with frequency. This is why:
+            \begin{itemize}
+                \item Laminated steel is used at low line frequency.
+                \item Ferrites are preferred at high frequency.
+                \item Nanocrystalline and amorphous materials require careful loss evaluation.
+            \end{itemize}
+            High electrical resistivity of ferrite suppresses core eddy currents.
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/eddy_current.png}
+                \caption{Eddy currents induced in a magnetic core by time-varying flux. Adapted from Erickson and Maksimovi\'c, \textit{Fundamentals of Power Electronics}, 3rd edition}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Skin and proximity
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Skin Effect and Proximity Effect}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            AC winding loss is usually much larger than DC winding loss at high frequency.
+            \textbf{Skin effect:}
+            \begin{itemize}
+                \item Current crowds near the surface of a conductor.
+                \item Effective conducting area decreases.
+                \item AC resistance increases with frequency.
+            \end{itemize}
+            \begin{align}
+                \delta = \sqrt{\frac{2\rho}{\omega\mu}}
+            \end{align}
+            \textbf{Proximity effect:}
+            \begin{itemize}
+                \item Nearby conductors impose additional magnetic fields.
+                \item Current distribution becomes non-uniform.
+                \item Multilayer windings can suffer severe AC resistance increase.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/current_density_distribution.png}
+                \caption{Current-density distribution in single and multiple conductors showing skin and proximity effects. Adapted from Ouyang, \textit{Advances in Planar and Integrated Magnetics}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Fringing and gapped inductor loss
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Fringing-Field Loss in Gapped Inductors}
+            In gapped inductors and flyback magnetic components, the air gap stores most of the recoverable magnetic energy.
+
+            \vspace{0.15cm}
+
+            However, the gap also creates fringing flux. This flux can cut nearby windings and induce additional eddy-current loss.
+
+            \vspace{0.15cm}
+
+            Practical consequences:
+            \begin{itemize}
+                \item Local hot spots near the air gap
+                \item Increased AC resistance
+                \item Strong dependence on gap location
+                \item Need for keep-away regions around the gap
+            \end{itemize}
+
+            \vspace{0.15cm}
+
+            Distributed gaps or moving the gap away from windings can reduce fringing-field loss.
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Fringing-Field Loss in Gapped Inductors}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.3\linewidth]{fig/lec07/fringing_gap_cases.png}
+                \caption{Comparison of fringing effects for different air-gap arrangements using 2-D FEA. Adapted from Ouyang, \textit{Advances in Planar and Integrated Magnetics}}
+            \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Copper vs core loss trade-off
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Copper Loss versus Core Loss Trade-off}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            Magnetic design is an optimization problem, not a single-equation calculation. If the designer increases the flux density:
+            \begin{itemize}
+                \item Fewer turns are required.
+                \item Winding length decreases.
+                \item Copper loss may decrease.
+                \item Core loss increases.
+            \end{itemize}
+            If the designer decreases the flux density:
+            \begin{itemize}
+                \item More turns are required.
+                \item Copper loss may increase.
+                \item Core loss decreases.
+                \item Core may become larger.
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{align}
+                P_{\mathrm{total}} =
+                P_{\mathrm{core}} + P_{\mathrm{Cu,dc}} + P_{\mathrm{Cu,ac}}
+            \end{align}
+            \begin{block}{Design Objective}
+                \small
+                Do not minimize core loss alone or copper loss alone.
+
+                \vspace{0.15cm}
+
+                Select geometry, turns, flux density, and winding layout to minimize total loss subject to thermal, insulation, and parasitic constraints.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Module 5
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{center}
+  \textbf{\Huge{Modern Magnetics}}\\[0.4cm]
+  \textbf{\Large{Planar, Integrated, MHz, and Thermally-Aware Designs}}
+\end{center}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Planar magnetics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Planar Magnetics}
+
+    \begin{columns}
+        \begin{column}{0.40\textwidth}
+            Planar magnetics use flat copper windings and low-profile magnetic cores instead of conventional round-wire windings on bobbins.
+
+            Advantages:
+            \begin{itemize}
+                \item Low profile
+                \item Good repeatability
+                \item Improved thermal spreading
+                \item Easier interleaving
+                \item Controlled parasitics
+                \item Suitable for automated manufacturing
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{0.60\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/standard_vs_planar_cross_section.png}
+                \caption{Comparison of standard transformer and planar transformer cross-section structures. Adapted from STMicroelectronics, \textit{How Planar Magnetics Improve Performance in Power Electronics}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Planar magnetics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Planar Magnetics}
+    \begin{columns}
+        \begin{column}{0.38\textwidth}
+            Drawbacks:
+            \begin{itemize}
+                \item Larger footprint
+                \item Lower copper fill factor
+                \item Limited number of turns
+                \item Higher interwinding capacitance
+                \item PCB manufacturing constraints
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{0.60\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/standard_vs_planar_cross_section.png}
+                \caption{Comparison of standard transformer and planar transformer cross-section structures. Adapted from STMicroelectronics, \textit{How Planar Magnetics Improve Performance in Power Electronics}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Planar construction
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Planar Transformer Construction}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            A planar transformer is usually built from:
+            \begin{itemize}
+                \item Low-profile ferrite core
+                \item PCB or flexible-PCB winding layers
+                \item Copper traces or stamped copper turns
+                \item Insulation layers
+                \item Vias or pins for interconnection
+            \end{itemize}
+
+            The geometry fixes the winding positions very precisely. Therefore, leakage inductance, capacitance, and resistance are more repeatable than in manually wound transformers.
+
+            \vspace{0.15cm}
+
+            This is a major advantage in resonant converters, where leakage inductance and parasitic capacitance can strongly affect the gain and EMI behaviour.
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/planar_EE_perspective.png}
+                \caption{Perspective view of a typical EE planar transformer using PC-board windings and planar EE cores. Adapted from \textit{Transformer and Inductor Design Handbook}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PCB integrated transformer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{PCB-Integrated Planar Transformer}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            Planar magnetics can be integrated into the main converter PCB. This reduces separate component count and improves mechanical repeatability.
+
+            \vspace{0.15cm}
+
+            A PCB-integrated transformer typically uses:
+            \begin{itemize}
+                \item Multiple copper layers for primary and secondary turns
+                \item Vias for layer-to-layer connections
+                \item Ferrite core halves inserted around the PCB
+                \item Controlled insulation layers between primary and secondary
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/planer_trans.png}
+                \caption{Planar transformer integrated into the main PC board and final assembly. Adapted from \textit{Transformer and Inductor Design Handbook}, Chapter 20, Figs. 20-5 and 20-6.}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PCB integrated transformer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{PCB-Integrated Planar Transformer}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            The design challenge is to simultaneously satisfy:
+            \begin{itemize}
+                \item Copper loss limit
+                \item Core loss limit
+                \item Isolation requirement
+                \item Leakage and capacitance targets
+                \item PCB manufacturing rules
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/planar_trans_assembly.png}
+                \caption{Planar transformer integrated into the main PC board and final assembly. Adapted from \textit{Transformer and Inductor Design Handbook}, Chapter 20, Figs. 20-5 and 20-6.}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Modeling planar magnetics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Modeling Planar Magnetics}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            Planar magnetics are attractive, but they require accurate modeling because skin effect, proximity effect, vias, gaps, and layer coupling strongly influence performance.
+
+            The Modular Layer Model represents each PCB layer as an impedance network. This allows the designer to predict:
+            \begin{itemize}
+                \item Current sharing
+                \item AC resistance
+                \item Winding impedance
+                \item Stored reactive energy
+                \item Field distribution
+                \item Loss distribution
+            \end{itemize}
+
+            \vspace{0.15cm}
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/one_turn_layer_model.png}
+                \caption{One-turn planar layer and its three-terminal impedance network. Adapted from Chen et al., \textit{A Systematic Approach to Modeling Impedances and Current Distribution in Planar Magnetics}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+Such models are useful before moving to detailed 2-D or 3-D finite-element simulations.
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MHz magnetics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{MHz Magnetics}
+
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            Wide-bandgap devices enable switching frequencies from hundreds of kHz into the MHz range.
+
+            Higher frequency can reduce magnetic size because volt-seconds per cycle decrease:
+            \begin{align}
+                \Delta B =
+                \frac{1}{N A_c}\int v(t)\,dt
+            \end{align}
+            However, MHz magnetics face severe constraints:
+            \begin{itemize}
+                \item Core loss rises rapidly with frequency
+                \item AC winding resistance increases
+                \item Parasitic capacitance becomes circuit-relevant
+                \item Thermal paths become critical
+                \item Layout and EMI dominate behaviour
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.38\textwidth}
+            Ferrites, air-core structures, PCB windings, and thin low-loss cores are often considered.
+            \begin{block}{MHz Design Message}
+                \small
+                Increasing frequency reduces magnetic volume only if core loss, winding loss, thermal rise, and EMI remain controlled.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Integrated magnetics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Integrated Magnetics}
+            Integrated magnetics combine multiple magnetic functions into one magnetic structure.
+
+            Examples include:
+            \begin{itemize}
+                \item Transformer plus resonant inductor
+                \item Transformer plus output filter inductor
+                \item Coupled inductors for multiphase converters
+                \item Current balancing transformer plus common inductor
+            \end{itemize}
+
+            \vspace{0.15cm}
+
+            Potential benefits:
+            \begin{itemize}
+                \item Fewer magnetic components
+                \item Reduced converter volume
+                \item Better power density
+                \item Controlled leakage or coupling
+                \item Lower assembly cost
+            \end{itemize}
+
+            The main challenge is controlling flux paths so that the intended functions are coupled while unwanted interactions are avoided.
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Cooling
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Cooling and Thermal Paths in Magnetics}
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            Magnetic components must be designed thermally as well as electrically.
+
+            Heat sources:
+            \begin{itemize}
+                \item Core loss
+                \item DC copper loss
+                \item AC winding loss
+                \item Fringing-induced local loss
+                \item Termination and via loss
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/thermal_profiles.png}
+                \caption{Thermal comparison of planar and concentric transformers, including the effect of an aluminum dissipation plane. Adapted from STMicroelectronics, \textit{How Planar Magnetics Improve Performance in Power Electronics}, Figs. 4 and 5.}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Cooling
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Cooling and Thermal Paths in Magnetics}
+    \begin{columns}
+        \begin{column}{0.58\textwidth}
+            Cooling options:
+            \begin{itemize}
+                \item Natural convection
+                \item Forced-air cooling
+                \item Heat spreading through PCB copper
+                \item Aluminum baseplate or heat spreader
+                \item Liquid-cooled cold plate for high power density
+            \end{itemize}
+            Planar cores often have favourable surface-to-volume ratio, improving heat spreading.
+        \end{column}
+
+        \begin{column}{0.38\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{fig/lec07/thermal_profiles_2.png}
+                \caption{Thermal comparison of planar and concentric transformers, including the effect of an aluminum dissipation plane. Adapted from STMicroelectronics, \textit{How Planar Magnetics Improve Performance in Power Electronics}, Figs. 4 and 5.}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Conventional to future magnetics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Evolution of Magnetic Components}
+
+    \scriptsize
+    \begin{table}
+        \centering
+        \begin{tabular}{p{0.18\textwidth}p{0.23\textwidth}p{0.26\textwidth}p{0.22\textwidth}}
+            \hline
+            \textbf{Technology} & \textbf{Main Feature} & \textbf{Strength} & \textbf{Challenge}\\
+            \hline
+            Conventional wire-wound & Round wire on bobbin & Mature, flexible, low cost & Large size and variable parasitics\\
+            Foil / Litz magnetics & Optimized conductor geometry & Lower AC loss & Manufacturing and termination complexity\\
+            Planar magnetics & PCB or flat copper winding & Low profile, repeatable, good thermal spreading & Low fill factor and capacitance\\
+            Integrated magnetics & Multiple magnetic functions in one core & Higher power density & Complex flux-path design\\
+            Future 3-D / additive magnetics & Geometrically optimized cores and windings & Custom field shaping & Material, cost, and qualification issues\\
+            \hline
+        \end{tabular}
+    \end{table}
+
+    \vspace{0.15cm}
+
+    \begin{block}{Conclusion}
+        \small
+        Modern magnetic design is moving from component selection toward co-design of core, winding, layout, thermal path, converter topology, and switching frequency.
+    \end{block}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Final magnetics summary
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Concluding Remarks on Magnetics}
+
+    \begin{itemize}
+        \item Magnetic components are not auxiliary parts; they often define the achievable efficiency, size, EMI performance, and thermal limit of a converter.
+
+        \item Inductors, transformers, coupled inductors, flyback magnetics, and current transformers have different design objectives.
+
+        \item Transformer design begins from volt-seconds, turns ratio, current waveforms, isolation, and thermal constraints.
+
+        \item Winding arrangement controls leakage inductance, proximity effect, capacitance, and cooling.
+
+        \item At high frequency, losses are dominated by core loss, skin effect, proximity effect, fringing fields, and parasitics.
+
+        \item Planar and integrated magnetics are powerful technologies for high-power-density converters, but they require careful electromagnetic, thermal, and manufacturing co-design.
+
+        \item For GaN and SiC converters, the magnetic component is often the bottleneck that determines whether MHz operation is practically useful.
+    \end{itemize}
+\end{frame}
+
