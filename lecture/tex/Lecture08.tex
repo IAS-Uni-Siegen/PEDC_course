@@ -1152,7 +1152,7 @@ A smaller $\tan\delta$ means lower dielectric and resistive loss. For sinusoidal
 \begin{column}{0.40\textwidth}
 \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{fig/lec08/vector_R_Xc_tandelta.png}
+    \includegraphics[width=0.5\linewidth]{fig/lec08/vector_R_Xc_tandelta.png}
     \caption{Vector expression of resistance and capacitive reactance used to define $\tan\delta$. Adapted from AIC tech, \textit{The Three Essential Characteristics of Capacitors}}
 \end{figure}
 \end{column}
@@ -1513,6 +1513,27 @@ where
     \item \(\Delta v_{\mathrm{ESR}}\) is due to ripple current through ESR,
     \item \(\Delta v_{\mathrm{ESL}}\) is due to fast current transitions through ESL.
 \end{itemize}
+\end{column}
+
+\begin{column}{0.40\textwidth}
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{fig/lec08/capacitor_impedance_characteristics.png}
+    \caption{Capacitor impedance characteristics relevant to output capacitor selection. Adapted from Texas Instruments, \textit{Input and Output Capacitor Selection}}
+\end{figure}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Output capacitor function
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Output Capacitor in a Buck Converter}
+
+\begin{columns}
+\begin{column}{0.56\textwidth}
 For inductor ripple current \(\Delta i_L\), the ideal capacitive ripple is approximately
 \begin{align}
     \Delta v_C
@@ -1532,7 +1553,6 @@ for a buck converter with triangular ripple current.
 \end{columns}
 
 \end{frame}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Output capacitor load transient
@@ -2373,6 +2393,7 @@ DC-link capacitor sizing is application-specific. A single equation is rarely su
 \end{column}
 
 \begin{column}{0.40\textwidth}
+    \vspace{-1cm}
     \begin{figure}
         \centering
         \includegraphics[width=\linewidth]{fig/lec08/DC_link_sizing_criteria.png}
@@ -2966,7 +2987,7 @@ Aluminum electrolytic capacitors can fail by early-life, random, or wear-out mec
 \end{column}
 
 \begin{column}{0.40\textwidth}
-    \vspace{-1cm}
+    \vspace{-0.5cm}
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{fig/lec08/AlCap_failure_modes.png}
@@ -3235,7 +3256,7 @@ For PV inverters and outdoor converters, humidity stress must be considered with
 \end{column}
 
 \begin{column}{0.40\textwidth}
-        \vspace{-1cm}
+        \vspace{-0.5cm}
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{fig/lec08/humidity_lifetime_MPPF.png}
