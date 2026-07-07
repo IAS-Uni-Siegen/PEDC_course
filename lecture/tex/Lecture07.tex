@@ -1,5 +1,5 @@
-\section{Passive components- Inductors and Capacitors}
-\title[Passive components- Inductors and Capacitors]{Passive components- Inductors and Capacitors}  
+\section{Passive components in power electronics- Magnetics}
+\title[Passive components- Magnetics]{Passive components- Magnetics}  
 
 \begin{frame}[plain]
     \titlepage
@@ -2333,7 +2333,7 @@ low-frequency converters are more frequently limited by copper loss.
 
     \begin{columns}
         \begin{column}{0.58\textwidth}
-            As in the case of the single winding filter inductor, the size of the minor B-H loop is proportional to the total current ripple (Fig. 10.48). Small ripple implies small core loss, as well as small proximity loss. An air gap is employed, and the maximum flux density is typically limited by saturation.
+            As in the case of the single winding filter inductor, the size of the minor B-H loop is proportional to the total current ripple. Small ripple implies small core loss, as well as small proximity loss. An air gap is employed, and the maximum flux density is typically limited by saturation.
         \end{column}
 
         \begin{column}{0.38\textwidth}
@@ -2717,16 +2717,16 @@ low-frequency converters are more frequently limited by copper loss.
         \begin{column}{0.5\textwidth}
             \begin{figure}
                 \centering
-                \includegraphics[width=0.75\linewidth]{fig/lec07/EE_core.png}
-                \includegraphics[width=0.75\linewidth]{fig/lec07/ETD_core.png}
+                \includegraphics[width=0.85\linewidth]{fig/lec07/EE_core.png}
+                \includegraphics[width=0.85\linewidth]{fig/lec07/ETD_core.png}
               \caption{Low-profile planar core geometries including EE/EI, ER, ETD families. Adapted from \textit{Transformer and Inductor Design Handbook}}
             \end{figure}
         \end{column}
 
         \begin{column}{0.5\textwidth}
             \begin{figure}
-                \includegraphics[width=0.75\linewidth]{fig/lec07/PQ_core.png}
-                \includegraphics[width=0.5\linewidth]{fig/lec07/RM_core.png}
+                \includegraphics[width=0.85\linewidth]{fig/lec07/PQ_core.png}
+                \includegraphics[width=0.85\linewidth]{fig/lec07/RM_core.png}
                 \caption{Low-profile planar core geometries including PQ and RM families. Adapted from \textit{Transformer and Inductor Design Handbook}}
             \end{figure}
         \end{column}
@@ -3207,39 +3207,55 @@ However, interleaving can increase interwinding capacitance and common-mode nois
     \frametitle{Loss Mechanisms in Magnetic Components}
 
     \begin{center}
-    \begin{circuitikz}[scale=0.78, transform shape]
-        \tikzstyle{block} = [draw, rounded corners, align=center,
-        minimum width=3.0cm, minimum height=0.8cm]
+    \begin{tikzpicture}[
+        scale=0.82,
+        transform shape,
+        block/.style={
+            draw,
+            rounded corners,
+            align=center,
+            minimum width=2.35cm,
+            minimum height=0.62cm,
+            font=\scriptsize
+        },
+        arrow/.style={->, thick}
+    ]
 
-        \node[block] (total) at (4,0) {Total magnetic\\component loss};
-        \node[block] (core) at (0,-1.7) {Core loss};
-        \node[block] (copper) at (4,-1.7) {Copper loss};
-        \node[block] (parasitic) at (8,-1.7) {Parasitic-related\\loss};
+        \node[block, minimum width=3.0cm] (total) at (0,0) 
+        {Total magnetic\\component loss};
 
-        \node[block] (hyst) at (-1.5,-3.4) {Hysteresis};
-        \node[block] (eddy) at (1.5,-3.4) {Core eddy\\current};
+        \node[block] (core) at (-4.2,-1.5) {Core loss};
+        \node[block] (copper) at (0,-1.5) {Copper loss};
+        \node[block] (parasitic) at (4.2,-1.5) {Parasitic-related\\loss};
 
-        \node[block] (dc) at (3,-3.4) {DC winding\\loss};
-        \node[block] (ac) at (5.2,-3.4) {AC winding\\loss};
+        \node[block] (hyst) at (-5.5,-3.0) {Hysteresis\\loss};
+        \node[block] (eddy) at (-2.9,-3.0) {Core eddy\\current loss};
 
-        \node[block] (skin) at (3.8,-5.1) {Skin effect};
-        \node[block] (prox) at (6.2,-5.1) {Proximity effect};
+        \node[block] (dc) at (-1.3,-3.0) {DC winding\\loss};
+        \node[block] (ac) at (1.3,-3.0) {AC winding\\loss};
 
-        \draw[->, thick] (total) -- (core);
-        \draw[->, thick] (total) -- (copper);
-        \draw[->, thick] (total) -- (parasitic);
-        \draw[->, thick] (core) -- (hyst);
-        \draw[->, thick] (core) -- (eddy);
-        \draw[->, thick] (copper) -- (dc);
-        \draw[->, thick] (copper) -- (ac);
-        \draw[->, thick] (ac) -- (skin);
-        \draw[->, thick] (ac) -- (prox);
-    \end{circuitikz}
+        \node[block] (skin) at (0.0,-4.5) {Skin effect};
+        \node[block] (prox) at (2.6,-4.5) {Proximity effect};
+
+        \draw[arrow] (total) -- (core);
+        \draw[arrow] (total) -- (copper);
+        \draw[arrow] (total) -- (parasitic);
+
+        \draw[arrow] (core) -- (hyst);
+        \draw[arrow] (core) -- (eddy);
+
+        \draw[arrow] (copper) -- (dc);
+        \draw[arrow] (copper) -- (ac);
+
+        \draw[arrow] (ac) -- (skin);
+        \draw[arrow] (ac) -- (prox);
+
+    \end{tikzpicture}
     \end{center}
 
-    \vspace{0.1cm}
+    \vspace{0.05cm}
 
-    \begin{block}{Teaching Message}
+    \begin{block}{Message}
         \small
         At low frequency, DC copper loss and saturation may dominate. At high frequency, core loss, skin effect, proximity effect, leakage energy, and capacitance-related effects become increasingly important.
     \end{block}
@@ -3413,7 +3429,7 @@ However, interleaving can increase interwinding capacitance and common-mode nois
     \frametitle{Fringing-Field Loss in Gapped Inductors}
             \begin{figure}
                 \centering
-                \includegraphics[width=0.3\linewidth]{fig/lec07/fringing_gap_cases.png}
+                \includegraphics[width=0.35\linewidth]{fig/lec07/fringing_gap_cases.png}
                 \caption{Comparison of fringing effects for different air-gap arrangements using 2-D FEA. Adapted from Ouyang, \textit{Advances in Planar and Integrated Magnetics}}
             \end{figure}
 \end{frame}
