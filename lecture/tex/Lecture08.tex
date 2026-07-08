@@ -600,12 +600,14 @@ The ideal capacitor relation $i_C = C\frac{dv_C}{dt}$ is useful for understandin
     \item \textbf{Equivalent series resistance (ESR):} produces heat under ripple current.
     \item \textbf{Equivalent series inductance (ESL):} causes high-frequency impedance rise and voltage spikes.
     \item \textbf{Leakage resistance:} allows a small DC current through the dielectric.
-    \item \textbf{Dielectric loss:} produces additional AC loss, usually represented by $\tan\delta$.
+    \item \textbf{Dielectric loss:} produces additional AC loss, usually represented by $\tan\delta^*$.
     \item \textbf{Dielectric absorption:} causes residual or recovery voltage after discharge.
 \end{itemize}
 
 Therefore, in power electronics, a capacitor must be treated as a frequency-dependent impedance rather than as a fixed capacitance.
 
+\small
+* -- also known as the loss tangent or dissipation factor—measures a capacitor's internal energy loss. It is the ratio of resistive (wasted) power to reactive (stored) power. A lower $\tan\delta^*$ means a more efficient capacitor with minimal energy lost as heat.
 \end{frame}
 
 
@@ -1355,7 +1357,7 @@ Thus, capacitor selection must always begin with the converter function.
 \end{circuitikz}
 \end{center}
 
-\begin{block}{Teaching Message}
+\begin{block}{Message}
 The same symbol \(C\) can represent very different hardware requirements depending on its converter location. A DC-link capacitor, snubber capacitor, and output capacitor are not interchangeable design objects.
 \end{block}
 
