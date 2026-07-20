@@ -1,0 +1,377 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Begin exercise %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ex{Passive Components in Power Electronics (Slides 364--485)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 1 Volt-second balance, flux excursion, and why transformer saturation is not a load-current problem
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Volt-second balance, flux excursion, and why transformer saturation is not a load-current problem}
+
+A half-bridge applies a square-wave voltage of $\pm \SI{200}{\volt}$ to the primary of a ferrite transformer. \\
+
+Given:
+\begin{itemize}
+    \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-2pt} % Distance between the points (Part2)    
+    \item switching frequency $f_s = \SI{100}{\kilo\hertz}$
+    \item primary turns $N_p = 40$
+    \item effective core cross-section $A_c = \SI{1.25}{\centi\meter\squared}$
+    \item ferrite saturation flux density $B_{sat} = \SI{0.32}{\tesla}$
+\end{itemize}
+
+Use
+\begin{equation*}
+    \Delta B = \frac{1}{N A_c}\int v(t)\,dt
+\end{equation*}
+and assume ideal symmetric excitation unless stated otherwise.
+
+\subtask{Under ideal symmetric excitation, compute the peak flux excursion during one half-cycle.}
+\begin{solutionblock}
+    The switching period is
+    \begin{equation}
+        T = \frac{1}{f_s} = \frac{1}{\SI{100}{\kilo\hertz}}= \SI{10}{\micro\second}
+    \end{equation}
+    so each ideal half-cycle is
+    \begin{equation}
+        t_\mathrm{on} = \frac{T}{2} = \frac{\SI{10}{\micro\second}}{2} =\SI{5}{\micro\second}.
+    \end{equation}
+    Convert the core area to SI units:
+    \begin{equation}
+        A_c = \SI{1.25}{\centi\meter\squared} = \SI{1.25\cdot 10^{-4}}{\meter\squared}.
+    \end{equation}
+    Then
+    \begin{equation}
+        \Delta B = \frac{V t_\mathrm{on}}{N A_c}
+        = \frac{\SI{200}{\volt}  \cdot  \SI{5}{\micro\second}}{40  \cdot  \SI{1.25\cdot 10^{-4}}{\meter\squared}}
+        = \frac{ \SI{1.0 \cdot 10^{-3}}{\micro\volt\second}}{\SI{5.0 \cdot 10^{-3}}{\meter\squared}}
+        = \SI{0.20}{\tesla}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Is the transformer safely below saturation under ideal operation?}
+\begin{solutionblock}
+    Yes. The peak flux excursion is only
+    \begin{equation}
+    B_{pk} = \SI{0.20}{\tesla},
+    \end{equation}
+    which is below the ferrite saturation flux density
+    \begin{equation}
+    B_{sat} = \SI{0.32}{\tesla}.
+    \end{equation}
+    So under ideal balanced excitation the design is below saturation.
+\end{solutionblock}
+
+\subtask{Now assume a 2\% timing imbalance: the positive half-cycle lasts $\SI{5.1}{\micro\second}$ and the negative half-cycle lasts $\SI{4.9}{\micro\second}$. Estimate the net flux-density drift per cycle.}
+\begin{solutionblock}
+    The excess positive volt-seconds per cycle are
+    \begin{equation}
+    \Delta(Vt) = \SI{200}{\volt}  \cdot  (\SI{5.1}{\micro\second} - \SI{4.9}{\micro\second})
+    = \SI{200}{\volt}  \cdot  \SI{0.2}{\micro\second}
+    = \SI{40 \cdot 10^{-6}}{\volt\second}.
+    \end{equation}
+    Hence the net flux-density drift per cycle is
+    \begin{equation}
+    \Delta B_{\text{drift}} = \frac{\Delta(Vt)}{N A_c}
+    = \frac{\SI{40 \cdot 10^{-6}}{\volt\second}}{40  \cdot  \SI{1.25\cdot 10^{-4}}{\meter\squared}}
+    = \SI{0.008}{\tesla\per cycle}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Starting from zero average flux, estimate after how many cycles the core would reach saturation if this imbalance persisted.}
+\begin{solutionblock}
+    The available headroom from zero average flux to saturation is approximately
+    \begin{equation}
+        \SI{0.32}{\tesla}.
+    \end{equation}
+    So the approximate number of cycles to reach saturation is
+    \begin{equation}
+        n \approx \frac{\SI{0.32}{\tesla}}{\SI{0.008}{\tesla\per cycle}} = 40.
+    \end{equation}
+    At \SI{100}{\kilo\hertz}, this corresponds to
+    \begin{equation}
+        40  \cdot  \SI{10}{\micro\second} = \SI{400}{\micro\second}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Explain why the transformer can saturate even if the load current is small.}
+\begin{solutionblock}
+    Transformer saturation is governed by the accumulated volt-seconds, not primarily by the load current. 
+    Even with small load current, any dc bias or timing imbalance causes flux walk and eventually drives the core into saturation.
+\end{solutionblock}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 2 Why the air gap dominates: inductance, energy storage, and the wrong way to design an inductor
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Task 2 -- Why the air gap dominates: inductance, energy storage, and the wrong way to design an inductor}
+
+A ferrite inductor core has:
+\begin{itemize}
+    \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-2pt} % Distance between the points (Part2)    
+    \item mean magnetic path length $l_m = \SI{5}{\centi\meter}$
+    \item cross-sectional area $A_c = \SI{1.0}{\centi\meter\squared}$
+    \item relative permeability $\mu_r = 2000$
+    \item turns $N = 25$
+\end{itemize}
+
+Case A: no air gap.\\
+Case B: air gap $g = \SI{0.5}{\milli\meter}$.\\
+
+Use
+\begin{equation*}
+    \mathcal{R} = \frac{l}{\mu A},
+    \qquad
+    L = \frac{N^2}{\mathcal{R}},
+    \qquad
+    \mu_0 = \SI{4 \pi \cdot 10^{-7}}{\henry\per\meter}.
+\end{equation*}
+
+\subtask{Compute the core reluctance.}
+\begin{solutionblock}
+    Convert dimensions:
+    \begin{equation}
+        l_m = \SI{0.05}{\meter},
+        \qquad
+        A_c = \SI{1.0}{\centi\meter\squared} = \SI{1.0 \cdot 10^{-4}}{\meter\squared}.
+    \end{equation}
+    Then
+    \begin{equation}
+        \mathcal{R}_{core} = \frac{l_m}{\mu_0\mu_r A_c}
+        = \frac{\SI{0.05}{\meter}}{(\SI{4 \pi \cdot 10^{-7}}{\henry\per\meter})(2000)(\SI{1.0 \cdot 10^{-4}}{\meter\squared})}
+        \approx \SI{1.99 \cdot 10^{5}}{\ampere\per\weber}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Compute the air-gap reluctance.}
+\begin{solutionblock}
+    Convert the air gap:
+    \begin{equation}
+        g = \SI{0.5}{\milli\meter} = \SI{5 \cdot 10^{-4}}{\meter}.
+    \end{equation}
+    Thus,
+    \begin{equation}
+        \mathcal{R}_{gap} = \frac{g}{\mu_0 A_c}
+        = \frac{\SI{5 \cdot 10^{-4}}{\meter}}{(\SI{4 \pi \cdot 10^{-7}}{\henry\per\meter})(\SI{1.0 \cdot 10^{-4}}{\meter\squared})}
+        \approx \SI{3.98 \cdot 10^{6}}{\ampere\per\weber}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Show which reluctance dominates in Case B.}
+\begin{solutionblock}
+    The ratio is
+    \begin{equation}
+        \frac{\mathcal{R}_{gap}}{\mathcal{R}_{core}}
+        \approx \frac{\SI{3.98 \cdot 10^{6}}{\ampere\per\weber}}{\SI{1.99 \cdot 10^{5}}{\ampere\per\weber}}
+        \approx 20.
+    \end{equation}
+    So in the gapped design the air gap dominates the total reluctance.
+\end{solutionblock}
+
+\subtask{Compute the inductance in Case A and Case B.}
+\begin{solutionblock}
+    Case A (no air gap):
+    \begin{equation}
+        L_A = \frac{N^2}{\mathcal{R}_{core}} = \frac{25^2}{\SI{1.99 \cdot 10^{5}}{\ampere\per\weber}}
+        \approx \SI{3.14 \cdot 10^{-3}}{\henry} = \SI{3.14}{\milli\henry}.
+    \end{equation}
+
+    Case B (with air gap):
+    \begin{equation}
+        \mathcal{R}_{tot} = \mathcal{R}_{core} + \mathcal{R}_{gap}
+        \approx \SI{4.18 \cdot 10^6}{\ampere\per\weber}
+    \end{equation}
+    \begin{equation}
+        L_B = \frac{25^2}{\SI{4.18 \cdot 10^6}{\ampere\per\weber}}
+        \approx \SI{1.50 \cdot 10^{-4}}{\henry} = \SI{150}{\micro\henry}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Explain why an ungapped ferrite core is usually a poor choice for substantial energy storage.}
+\begin{solutionblock}
+    The ungapped core provides very high inductance but stores very little usable energy before saturating, because the high-permeability core forces a rapid rise in flux density. A gap reduces inductance but makes the design far more suitable for energy storage. This is why inductors and transformers have fundamentally different magnetic design philosophies.
+\end{solutionblock}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3 Area-product core selection: first-pass sizing is useful, but not enough
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Task 3 -- Area-product core selection: first-pass sizing is useful, but not enough}
+
+You want to design a power inductor for:
+\begin{itemize}
+    \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-2pt} % Distance between the points (Part2)    
+    \item inductance $L = \SI{150}{\micro\henry}$
+    \item peak current $I = \SI{12}{\ampere}$
+\end{itemize}
+
+Use
+\begin{equation*}
+E = \frac{1}{2}LI^2
+\end{equation*}
+and the area-product method
+\begin{equation*}
+A_P = \frac{2E}{K_w K_c J B_m}.
+\end{equation*}
+
+Take:
+\begin{itemize}
+    \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-2pt} % Distance between the points (Part2)    
+    \item window utilization factor $K_w = 0.30$
+    \item waveform crest factor $K_c = 1.25$
+    \item current density $J = \SI{4}{\ampere\per\milli\meter\squared} = \SI{4 \cdot 10^6}{\ampere\per\meter\squared}$
+    \item operating flux density $B_m = \SI{0.22}{\tesla}$
+\end{itemize}
+\vspace{5pt}
+
+Available catalog cores:
+\begin{itemize}
+    \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-2pt} % Distance between the points (Part2)    
+    \item Core X: $A_P = \SI{3.8}{\centi\meter^4}$
+    \item Core Y: $A_P = \SI{6.2}{\centi\meter^4}$
+    \item Core Z: $A_P = \SI{8.5}{\centi\meter^4}$
+\end{itemize}
+
+\subtask{Compute the required energy.}
+\begin{solutionblock}
+    \begin{equation}
+        E = \frac{1}{2}LI^2 = \frac{1}{2} \SI{150 \cdot 10^{-6}}{\henry} \cdot (\SI{12}{\ampere})^2
+        = \SI{10.8 \cdot 10^{-3}}{\joule}
+        = \SI{10.8}{\milli\joule}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Compute the required area product.}
+\begin{solutionblock}
+    \begin{equation}
+        A_P = \frac{2E}{K_w K_c J B_m}
+        = \frac{2 \cdot \SI{10.8 \cdot 10^{-3}}{\joule}}{0.30 \cdot 1.25 \cdot \SI{4 \cdot 10^6}{\ampere\per\meter\squared} \cdot \SI{0.22}{\tesla}}.
+    \end{equation}
+    The denominator is
+    \begin{equation}
+        0.30 \cdot 1.25 \cdot \SI{4 \cdot 10^6}{\ampere\per\meter\squared} \cdot \SI{0.22}{\tesla} = \SI{3.30 \cdot 10^5}{\joule\per\meter^4}
+    \end{equation}
+    Hence
+    \begin{equation}
+        A_P = \frac{\SI{0.0216}{\joule}}{\SI{3.30 \cdot 10^5}{\joule\per\meter^4}} = \SI{6.55 \cdot 10^{-8}}{\meter^4}.
+    \end{equation}
+    Since $\SI{1}{\meter^4} = \SI{10^8}{\centi\meter^4}$,
+    \begin{equation}
+        A_P = \SI{6.55}{\centi\meter^4}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Select the smallest acceptable core from the catalog.}
+\begin{solutionblock}
+Comparing against the available cores:
+\begin{itemize}
+    \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-2pt} % Distance between the points (Part2)    
+    \item Core X: \SI{3.8}{\centi\meter^4} \;\; too small
+    \item Core Y: \SI{6.2}{\centi\meter^4} \;\; still slightly too small
+    \item Core Z: \SI{8.5}{\centi\meter^4} \;\; acceptable
+\end{itemize}
+Therefore the smallest acceptable choice is \textbf{Core Z}.
+\end{solutionblock}
+
+\subtask{If you reduce the allowable current density from $\SI{4}{\ampere\per\milli\meter\squared}$ to $\SI{3}{\ampere\per\milli\meter\squared}$, what happens to the required $A_P$?}
+\begin{solutionblock}
+    Since
+    \begin{equation}
+        A_P \propto \frac{1}{J},
+    \end{equation}
+    reducing $J$ from 4 to 3 increases the required area product by
+    \begin{equation}
+        \frac{4}{3} = 1.33.
+    \end{equation}
+    So the new required area product is
+    \begin{equation}
+        1.33 \cdot  \SI{6.55}{\centi\meter^4} \approx \SI{8.73}{\centi\meter^4}.
+    \end{equation}
+    That would make even Core Z marginal.
+\end{solutionblock}
+
+\subtask{Explain why area product alone does not finish the magnetic design.}
+\begin{solutionblock}
+    Area product is only a first-pass selector. The designer must still verify flux density, saturation margin, winding fit, fill factor, copper loss, core loss, fringing, temperature rise, and manufacturability.
+\end{solutionblock}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 4 Transformer design is not just turns ratio: winding arrangement decides leakage, capacitance, and EMI
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Task 4 -- Transformer design is not just turns ratio: winding arrangement decides leakage, capacitance, and EMI}
+
+You are designing a high-frequency isolated transformer for a \SI{400}{\volt} to \SI{48}{\volt} converter.
+Assume the primary sees $\pm \SI{200}{\volt}$ square-wave excitation at \SI{100}{\kilo\hertz}. \\
+
+Given:
+\begin{itemize}
+    \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-2pt} % Distance between the points (Part2)    
+    \item effective core area $A_c = \SI{1.6}{\centi\meter\squared}$
+    \item allowable peak flux density $B_m = \SI{0.18}{\tesla}$
+    \item on-time $t_{on}=\SI{5}{\micro\second}$
+\end{itemize}
+
+Use
+\begin{equation*}
+    N_p \ge \frac{V_p t_{on}}{A_c B_m}.
+\end{equation*}
+
+\subtask{Compute the minimum primary turns.}
+\begin{solutionblock}
+    Convert the core area:
+    \begin{equation}
+        A_c = \SI{1.6}{\centi\meter\squared} = \SI{1.6 \cdot 10^{-4}}{\meter\squared}.
+    \end{equation}
+    Then
+    \begin{equation}
+        N_p \ge \frac{V_p t_{on}}{A_c B_m}
+        = \frac{\SI{200}{\volt} \cdot \SI{5 \cdot 10^{-6}}{\second}}{\SI{1.6 \cdot 10^{-4}}{\meter\squared} \cdot \SI{0.18}{\tesla}}
+        = \frac{\SI{1.0 \cdot 10^{-3}}{\volt\second}}{\SI{2.88 \cdot 10^{-5}}{\volt\second}}
+        \approx 34.7.
+    \end{equation}
+    So a practical choice is
+    \begin{equation}
+        N_p = 35.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Estimate the secondary turns for an ideal turns ratio from \SI{200}{\volt} to \SI{48}{\volt}.}
+\begin{solutionblock}
+    The ideal turns ratio is
+    \begin{equation}
+        \frac{N_s}{N_p} = \frac{V_s}{V_p} = \frac{\SI{48}{\volt}}{\SI{200}{\volt}} = 0.24.
+    \end{equation}
+    Thus
+    \begin{equation}
+        N_s \approx 0.24 \cdot 35 = 8.4.
+    \end{equation}
+    So a practical choice is
+    \begin{equation}
+        N_s = 8 \text{ or } 9.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{For each of the following applications, choose the most suitable winding arrangement and justify it: (a) a high-current LLC / phase-shifted converter where low leakage inductance is a priority, (b) a flyback-like isolated stage where interwinding capacitance and insulation control are the main concerns.}
+\begin{solutionblock}
+    For case (a), an \textbf{interleaved winding} is preferred, because interleaving reduces leakage inductance by bringing coupled conductors closer together.
+
+    For case (b), a \textbf{sectional or layered winding with deliberate separation} is preferred, because it reduces interwinding capacitance and helps insulation coordination, even though it increases leakage inductance.
+\end{solutionblock}
+
+\subtask{Explain why interleaving helps one design objective but can hurt another.}
+\begin{solutionblock}
+    Interleaving reduces leakage inductance, but because the windings overlap more closely it usually increases parasitic capacitance. So it improves magnetic coupling while potentially worsening common-mode noise and EMI.
+\end{solutionblock}
+
+\subtask{Why are winding arrangements treated as first-order design decisions rather than packaging details?}
+\begin{solutionblock}
+    Because the winding arrangement directly affects leakage inductance, parasitic capacitance, AC resistance, EMI, thermal behavior, and insulation distance. It therefore determines the electrical behavior of the converter, not just the physical packaging.
+\end{solutionblock}

@@ -1,0 +1,302 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Begin exercise %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ex{Wide-Bandgap Devices (Slides 301--363)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 1 Why GaN is not just ``a faster MOSFET''
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Why GaN is not just ``a faster MOSFET''}
+
+A design team compares Si and GaN for a high-frequency power stage. Use the following material data:
+\begin{itemize}
+    \setlength{\itemsep}{0pt} % Distance between the points (Part1)
+    \setlength{\parskip}{0pt} % Distance between the points (Part2)     
+    \item \textbf{Silicon:} $E_c = \SI{0.3}{\mega\volt\per\centi\metre}$, $v_{\mathrm{sat}} = \SI{1.0 \cdot 10^7}{\centi\metre\per\second}$
+    \item \textbf{GaN:} $E_c = \SI{3.0}{\mega\volt\per\centi\metre}$, $v_{\mathrm{sat}} = \SI{ 2.5 \cdot 10^7}{\centi\metre\per\second}$
+\end{itemize}
+
+Use the Johnson-limit relation $B_\mathrm{V}f_\mathrm{T} = \frac{E_c v_{\mathrm{sat}}}{2\pi}$.
+
+\FloatBarrier
+
+\subtask{Explain physically why a larger bandgap improves high-temperature blocking behavior.}
+
+\begin{solutionblock}
+A larger bandgap reduces the intrinsic carrier concentration and therefore suppresses thermally activated leakage. As temperature rises, the device can still maintain blocking capability because the leakage increase is much smaller than in silicon.
+\end{solutionblock}
+
+\subtask{Compute the proportional Johnson-limit merit for Si and GaN using $E_c v_{\mathrm{sat}}$.}
+\begin{solutionblock}
+For Si:
+    \begin{equation}
+        E_c v_{\mathrm{sat}} = \SI{0.3}{\mega\volt\per\centi\metre} \cdot \SI{1.0 \cdot 10^7}{\centi\metre\per\second} 
+                             = \SI{0.30 \cdot 10^7}{\mega\volt\per\second}
+    \end{equation}
+
+For GaN:
+    \begin{equation}
+        E_c v_{\mathrm{sat}} = \SI{3.0}{\mega\volt\per\centi\metre} \cdot \SI{2.5 \cdot 10^7}{\centi\metre\per\second} 
+                             = \SI{7.5 \cdot 10^7}{\mega\volt\per\second}
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Find the ratio $\dfrac{(B_\mathrm{V}f_\mathrm{T})_{\mathrm{GaN}}}{(B_\mathrm{V}f_\mathrm{T})_{\mathrm{Si}}}$.}
+\begin{solutionblock}
+Since the factor $1/(2\pi)$ is common to both materials, the ratio is simply
+    \begin{equation}
+        \frac{\SI{7.5 \cdot 10^7}{\mega\volt\per\second}}{\SI{0.30 \cdot 10^7}{\mega\volt\per\second}} = 25.
+    \end{equation}
+So GaN has an approximate \textbf{25-fold Johnson-limit advantage} over silicon in this simplified comparison.
+\end{solutionblock}
+
+\subtask{Explain physically why this result matters for compact converter design.}
+\begin{solutionblock}
+A larger $BVf_T$ capability means that one material can, in principle, support both high blocking voltage and fast operation. At converter level, that opens the door to higher switching frequency, smaller magnetics, smaller capacitors, and higher power density.
+\end{solutionblock}
+
+\subtask{A student says: ``If GaN is always better in $BVf_T$, then it should automatically replace Si everywhere.'' Give two technically correct objections.}
+\begin{solutionblock}
+Two correct objections are:
+\begin{itemize}
+    \setlength{\itemsep}{0pt} % Distance between the points (Part1)
+    \setlength{\parskip}{0pt} % Distance between the points (Part2)        
+    \item real devices are still constrained by traps, field crowding, thermal design, packaging, EMI, and gate-reliability issues;
+    \item converter optimization depends on the whole system, including cost, layout, passives, and control, not on one material metric alone.
+\end{itemize}
+\end{solutionblock}
+
+\subtask{State one sentence that captures the actual message of the slides.}
+\begin{solutionblock}
+GaN is attractive because it combines high critical electric field and high carrier velocity, enabling both high-voltage and high-frequency operation in one material system.
+\end{solutionblock}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 2 Controlling the 2DEG: from normally-on to normally-off
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Controlling the 2DEG: from normally-on to normally-off}
+
+The slides explain that the AlGaN/GaN heterostructure naturally creates a 2DEG and that a conventional AlGaN/GaN HEMT is therefore normally on. For a simplified threshold model, use
+    \begin{equation}
+        V_T = A - \frac{q N_s d_{\mathrm{AlGaN}}}{\varepsilon_0\varepsilon_{\mathrm{AlGaN}}}
+    \end{equation}
+with
+\begin{itemize}
+    \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-2pt} % Distance between the points (Part2)        
+    \item $A = \SI{2.5}{\volt}$,
+    \item $q = \SI{1.6 \cdot 10^{-19}}{\coulomb}$,
+    \item $\varepsilon_0 = \SI{8.85 \cdot 10^{-14}}{\farad\per\centi\metre}$,
+    \item $\varepsilon_{\mathrm{AlGaN}} = 9$.
+\end{itemize}
+
+Two barrier designs are considered:
+\begin{itemize}
+    \setlength{\itemsep}{0pt} % Distance between the points (Part1)
+    \setlength{\parskip}{0pt} % Distance between the points (Part2)      
+    \item \textbf{Case A:} $N_s = \SI{1.1 \cdot 10^{13}}{\per\centi\metre\squared}$, $d_{\mathrm{AlGaN}} = \SI{20}{\nano\metre}$
+    \item \textbf{Case B:} $N_s = \SI{7 \cdot 10^{12}}{\per\centi\metre\squared}$, $d_{\mathrm{AlGaN}} = \SI{12}{\nano\metre}$
+\end{itemize}
+
+\subtask{Estimate $V_T$ for both cases.}
+\begin{solutionblock}
+Convert thicknesses to centimetres:
+    \begin{equation}
+        \SI{20}{\nano\metre} = \SI{2.0 \cdot 10^{-6}}{\centi\metre},
+        \qquad
+        \SI{12}{\nano\metre} = \SI{1.2 \cdot 10^{-6}}{\centi\metre}.
+    \end{equation}
+Also,
+    \begin{equation}
+        \varepsilon_0\varepsilon_{\mathrm{AlGaN}} = \SI{8.85 \cdot 10^{-14}}{\farad\per\centi\metre} \cdot  9 = \SI{7.965 \cdot 10^{-13}}{\farad\per\centi\metre}.
+    \end{equation}
+
+For Case A:
+    \begin{equation}
+        qN_sd = \SI{1.6 \cdot 10^{-19}}{\coulomb} \cdot \SI{1.1 \cdot 10^{13}}{\per\centi\metre\squared} \cdot \SI{2.0 \cdot 10^{-6}}{\centi\metre} 
+              = \SI{3.52 \cdot 10^{-12}}{\coulomb\per\centi\metre}
+    \end{equation}
+    \begin{equation}
+        \frac{qN_sd}{\varepsilon_0\varepsilon_{\mathrm{AlGaN}}} 
+        = \frac{\SI{3.52 \cdot 10^{-12}}{\coulomb\per\centi\metre}}{\SI{7.965 \cdot 10^{-13}}{\farad\per\centi\metre}} 
+        \approx \SI{4.42}{\volt}
+    \end{equation}
+    \begin{equation}
+        V_T = \SI{2.5}{\volt} - \SI{4.42}{\volt} = \SI{-1.92}{\volt}.
+    \end{equation}
+
+For Case B:
+    \begin{equation}
+        qN_sd = \SI{1.6 \cdot 10^{-19}}{\coulomb} \cdot \SI{7 \cdot 10^{12}}{\per\centi\metre\squared} \cdot \SI{1.2 \cdot 10^{-6}}{\centi\metre} 
+              = \SI{1.344 \cdot 10^{-12}}{\coulomb\per\centi\metre}        
+    \end{equation}
+    \begin{equation}
+        \frac{qN_sd}{\varepsilon_0\varepsilon_{\mathrm{AlGaN}}} 
+        = \frac{\SI{1.344 \cdot 10^{-12}}{\coulomb\per\centi\metre}}{\SI{7.965 \cdot 10^{-13}}{\farad\per\centi\metre}} 
+        \approx \SI{1.69}{\volt}        
+    \end{equation}
+    \begin{equation}
+        V_T = \SI{2.5}{\volt} - \SI{1.69}{\volt} = \SI{0.81}{\volt}.        
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Which case is more likely to be normally off?}
+\begin{solutionblock}
+Case B is more likely to be normally off because its threshold voltage is positive.
+\end{solutionblock}
+
+\subtask{Why does thinning or recessing the barrier help move a GaN HEMT toward enhancement-mode operation?}
+\begin{solutionblock}
+Reducing the barrier thickness and/or the 2DEG sheet density weakens the polarization-induced channel under the gate. As a result, a positive gate voltage is needed to create a strong conduction path, which shifts the device toward normally-off behavior.
+\end{solutionblock}
+
+\subtask{Why is this not a free improvement?}
+\begin{solutionblock}
+Because reducing the barrier or charge density usually increases channel resistance, can reduce current capability, and may introduce process, threshold, or reliability sensitivity.
+\end{solutionblock}
+
+\subtask{Based on the slides, which normally-off approach has become most commercially important?}
+\begin{solutionblock}
+The p-GaN gate approach has become the most commercially important normally-off solution, although recessed-gate, fluorine-treated, and hybrid/cascode approaches are also discussed.
+\end{solutionblock}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3 The high-frequency design trade-off: why an optimum device size exists
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{The high-frequency design trade-off: why an optimum device size exists}
+
+Slides 317--324 emphasize that in low-voltage GaN design, reducing device size lowers capacitance and gate charge, while increasing device size lowers on-resistance. 
+The result is an optimum device size where DC and AC losses balance. \newline
+Use the simplified model $R_{\mathrm{on}} = \SI{\frac{0.18}{W_g}}{\ohm}$ and $Q_g = \SI{6 W_g}{\nano\coulomb}$ where $W_g$ is a normalized width factor. 
+\newline
+A converter operates at:
+\FloatBarrier
+\begin{itemize}
+    \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-2pt} % Distance between the points (Part2)      
+    \item $I = \SI{12}{\ampere}$
+    \item $V_{\mathrm{drv}} = \SI{5}{\volt}$
+    \item $f_s = \SI{2}{\mega\hertz}$
+    \item conduction duty ratio $D = 0.5$
+\end{itemize}
+
+Use $P_{\mathrm{cond}} = I^2 D\,R_{\mathrm{on}}$ and $P_g = Q_g V_{\mathrm{drv}} f_s$ for calculation.
+
+\subtask{Compute $P_{\mathrm{cond}}$, $P_g$, and $P_{\mathrm{tot}}$ for $W_g = 1$, $2$, and $4$.}
+\begin{solutionblock}
+\textbf{Case $W_g=1$:}
+    \begin{equation}
+        R_{\mathrm{on}} = \SI{0.18}{\ohm}, \qquad Q_g = \SI{(6 \cdot W_g)}{\nano\coulomb} = \SI{6}{\nano\coulomb}
+    \end{equation}
+    \begin{equation}
+        P_{\mathrm{cond}} = I^2 D = (\SI{12}{\ampere})^2 \cdot 0.5 \cdot \SI{0.18}{\ohm} = \SI{12.96}{\watt}
+    \end{equation}
+    \begin{equation}
+        P_g = Q_g V_{\mathrm{drv}} f_s = \SI{6 \cdot 10^{-9}}{\coulomb} \cdot \SI{5}{\volt} \cdot \SI{2}{\mega\hertz} = \SI{0.06}{\watt}
+    \end{equation}
+    \begin{equation}
+        P_{\mathrm{tot}} = P_{\mathrm{cond}} + P_g = \SI{12.96}{\watt} + \SI{0.06}{\watt} = \SI{13.02}{\watt}
+    \end{equation}
+
+\textbf{Case $W_g=2$:}
+    \begin{equation}
+        R_{\mathrm{on}} = \SI{\frac{0.18}{W_g}}{\ohm} = \SI{0.09}{\ohm}, \qquad Q_g = \SI{(6 \cdot W_g)}{\nano\coulomb} = \SI{12}{\nano\coulomb}
+    \end{equation}
+    \begin{equation}
+        P_{\mathrm{cond}} = I^2 D = (\SI{12}{\ampere})^2 \cdot 0.5 \cdot \SI{0.09}{\ohm} = \SI{6.48}{\watt}
+    \end{equation}
+    \begin{equation}
+        P_g = Q_g V_{\mathrm{drv}} f_s = \SI{12 \cdot 10^{-9}}{\coulomb} \cdot \SI{5}{\volt} \cdot \SI{2}{\mega\hertz} = \SI{0.12}{\watt}
+    \end{equation}
+    \begin{equation}
+        P_{\mathrm{tot}} = P_{\mathrm{cond}} + P_g = \SI{6.48}{\watt} + \SI{0.12}{\watt} = \SI{6.60}{\watt}        
+    \end{equation}
+
+\textbf{Case $W_g=4$:}
+    \begin{equation}
+        R_{\mathrm{on}} = \SI{\frac{0.18}{W_g}}{\ohm} = \SI{0.045}{\ohm}, \qquad Q_g = \SI{(6 \cdot W_g)}{\nano\coulomb} = \SI{24}{\nano\coulomb}        
+    \end{equation}
+    \begin{equation}
+        P_{\mathrm{cond}} = I^2 D = (\SI{12}{\ampere})^2 \cdot 0.5 \cdot \SI{0.045}{\ohm} = \SI{3.24}{\watt}        
+    \end{equation}
+    \begin{equation}
+        P_g = Q_g V_{\mathrm{drv}} f_s = \SI{24 \cdot 10^{-9}}{\coulomb} \cdot \SI{5}{\volt} \cdot \SI{2}{\mega\hertz} = \SI{0.24}{\watt}        
+    \end{equation}
+    \begin{equation}
+        P_{\mathrm{tot}} = P_{\mathrm{cond}} + P_g = \SI{3.24}{\watt} + \SI{0.24}{\watt} = \SI{3.48}{\watt}        
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Which value of $W_g$ is best among these three?}
+\begin{solutionblock}
+    Among the three candidates, $W_g=4$ gives the lowest total loss. However, the result also shows the trend that gate-drive loss rises with device size, so at even higher frequency or with stronger switching-overlap losses the optimum would shift back toward a smaller device.
+\end{solutionblock}
+
+\subtask{Explain physically why increasing device size can improve conduction loss but worsen high-frequency performance.}
+\begin{solutionblock}
+    A larger device gives a wider channel and lower on-resistance, which improves conduction. But it also increases gate charge and capacitances, so more energy is needed every switching cycle. At high frequency this AC penalty becomes increasingly important.
+\end{solutionblock}
+
+\subtask{What is the main meaning of the $R_{\mathrm{on}}Q_g$ product in the lecture?}
+\begin{solutionblock}
+    It is a compact way to express the trade-off between conduction efficiency and switching-drive burden. A lower $R_{\mathrm{on}}Q_g$ usually indicates a better balance between low static loss and low dynamic gate-drive penalty.
+\end{solutionblock}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 4 High-voltage GaN: lateral, vertical, current collapse, and field plates
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{High-voltage GaN: lateral, vertical, current collapse, and field plates}
+
+The lecture moves from low-voltage scaling to high-voltage GaN, where drift-region resistance, lateral versus vertical structures, field plates, and current collapse become central. Use the simplified scaling
+    \begin{align*}
+        R_{\mathrm{epi}} \propto \frac{BV^2}{\mu E_c^3}
+    \end{align*}
+    and assume equal mobility for the comparison. Take:
+    \begin{itemize}
+        \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+        \setlength{\parskip}{-2pt} % Distance between the points (Part2)  
+        \item Si: $E_c = \SI{0.3}{\mega\volt\per\centi\metre}$
+        \item GaN: $E_c = \SI{3.0}{\mega\volt\per\centi\metre}$
+    \end{itemize}
+
+\subtask{Estimate the ratio $\dfrac{R_{\mathrm{epi,GaN}}}{R_{\mathrm{epi,Si}}}$ at the same breakdown voltage.}
+\begin{solutionblock}
+    Since $R_{\mathrm{epi}} \propto 1/E_c^3$ for fixed $BV$ and equal mobility,
+    \begin{equation}
+        \frac{R_{\mathrm{epi,GaN}}}{R_{\mathrm{epi,Si}}}
+        =
+        \left(\frac{E_{c,\mathrm{Si}}}{E_{c,\mathrm{GaN}}}\right)^3
+        =
+        \left(\frac{\SI{0.3}{\mega\volt\per\centi\metre}}{\SI{3.0}{\mega\volt\per\centi\metre}}\right)^3
+        =
+        (0.1)^3
+        =
+        10^{-3}.
+    \end{equation}
+    So, in this simplified scaling view, GaN can have roughly \textbf{1000 times lower drift resistance} than silicon at the same breakdown voltage.
+\end{solutionblock}
+
+\subtask{Explain why GaN can achieve low drift resistance without relying on conductivity modulation.}
+\begin{solutionblock}
+    Because its high critical electric field allows the device to block the same voltage with a much smaller or more efficient drift region. The blocking layer itself is therefore less resistive, so minority-carrier injection is not needed just to reduce drift-region resistance.
+\end{solutionblock}
+
+\subtask{Why do lateral GaN devices eventually face scaling limits for very high voltage?}
+\begin{solutionblock}
+    Lateral devices block voltage across the surface, so as the voltage increases the gate--drain spacing and field shaping become increasingly critical. The area penalty, field crowding, and surface-trap sensitivity all grow rapidly, which makes very-high-voltage lateral scaling difficult.
+\end{solutionblock}
+
+\subtask{What role do field plates play in high-voltage GaN switching?}
+\begin{solutionblock}
+    Field plates spread the electric field, reduce peak field concentration, improve breakdown capability, and help suppress trap-related dynamic degradation and current collapse.
+\end{solutionblock}
+
+\subtask{Explain the phrase ``dynamic $R_{\mathrm{on}}$ increase'' in the context of current collapse.}
+\begin{solutionblock}
+    After high-voltage stress, trapped charge and field redistribution can reduce the available channel charge or disturb the field distribution, so the device shows a temporarily higher apparent on-resistance when it is turned on again. This phenomenon is called dynamic $R_{\mathrm{on}}$ increase and is one practical form of current collapse.
+\end{solutionblock}
+
