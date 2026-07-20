@@ -1,0 +1,587 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Begin exercise %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ex{Capacitors in Power Electronics}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 1 Why one capacitor cannot perform every function
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Why one capacitor cannot perform every function}
+
+A \SI{400}{\volt} DC bus uses the three capacitor branches listed in
+\autoref{table:capacitor_task1_data}. The MLCC bank has a nominal capacitance of
+\SI{4.7}{\micro\farad}, but its effective capacitance falls to
+\SI{2.2}{\micro\farad} under the applied DC bias.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{llll}
+        \toprule
+        Technology & Effective capacitance & ESR & ESL \\
+        \midrule
+        Aluminum electrolytic & \SI{1000}{\micro\farad} & \SI{40}{\milli\ohm} & \SI{20}{\nano\henry} \\
+        Film & \SI{20}{\micro\farad} & \SI{8}{\milli\ohm} & \SI{8}{\nano\henry} \\
+        MLCC bank & \SI{2.2}{\micro\farad} & \SI{3}{\milli\ohm} & \SI{1}{\nano\henry} \\
+        \bottomrule
+    \end{tabular}
+    \caption{Capacitor data for Task 1.}
+    \label{table:capacitor_task1_data}
+\end{table}
+
+Use
+\begin{align*}
+    E_C &= \frac{1}{2}CV^2, \quad 
+    f_\mathrm{SRF} = \frac{1}{2\pi\sqrt{L_\mathrm{ESL}C}} \quad  \text{and} \\
+    Z(j\omega) &= R_\mathrm{ESR} + j\left(\omega L_\mathrm{ESL}-\frac{1}{\omega C}\right).
+\end{align*}
+
+\subtask{Calculate the energy stored in each capacitor at \SI{400}{\volt}.}
+
+\begin{solutionblock}
+    For the electrolytic capacitor,
+    \begin{equation}
+        E_\mathrm{el}=\frac{1}{2}\cdot\SI{1000}{\micro\farad}\cdot(\SI{400}{\volt})^2
+        =\SI{80}{\joule}.
+    \end{equation}
+    For the film capacitor,
+    \begin{equation}
+        E_\mathrm{film}=\frac{1}{2}\cdot\SI{20}{\micro\farad}\cdot(\SI{400}{\volt})^2
+        =\SI{1.6}{\joule}.
+    \end{equation}
+    For the MLCC bank,
+    \begin{equation}
+        E_\mathrm{MLCC}=\frac{1}{2}\cdot\SI{2.2}{\micro\farad}\cdot(\SI{400}{\volt})^2
+        =\SI{0.176}{\joule}.
+    \end{equation}
+    The electrolytic capacitor dominates the energy-buffering function.
+\end{solutionblock}
+
+\subtask{Calculate the self-resonant frequency of each capacitor.}
+
+\begin{solutionblock}
+    \begin{align}
+        f_\mathrm{SRF,el}
+        &=\frac{1}{2\pi\sqrt{\SI{20}{\nano\henry}\cdot\SI{1000}{\micro\farad}}}
+        \approx\SI{35.6}{\kilo\hertz},\\
+        f_\mathrm{SRF,film}
+        &=\frac{1}{2\pi\sqrt{\SI{8}{\nano\henry}\cdot\SI{20}{\micro\farad}}}
+        \approx\SI{398}{\kilo\hertz},\\
+        f_\mathrm{SRF,MLCC}
+        &=\frac{1}{2\pi\sqrt{\SI{1}{\nano\henry}\cdot\SI{2.2}{\micro\farad}}}
+        \approx\SI{3.39}{\mega\hertz}.
+    \end{align}
+\end{solutionblock}
+
+\subtask{Calculate the approximate impedance magnitude of each capacitor at
+\SI{100}{\hertz}, \SI{300}{\kilo\hertz}, and \SI{5}{\mega\hertz}. Identify the
+most effective branch at each frequency.}
+
+\begin{solutionblock}
+    The impedance magnitude is
+    \begin{equation}
+        |Z|=\sqrt{R_\mathrm{ESR}^2+
+        \left(2\pi fL_\mathrm{ESL}-\frac{1}{2\pi fC}\right)^2}.
+    \end{equation}
+
+    \begin{center}
+        \begin{tabular}{llll}
+            \toprule
+            Frequency & Electrolytic & Film & MLCC \\
+            \midrule
+            \SI{100}{\hertz} & \SI{1.59}{\ohm} & \SI{79.6}{\ohm} & \SI{723}{\ohm} \\
+            \SI{300}{\kilo\hertz} & \SI{54.6}{\milli\ohm} & \SI{14.0}{\milli\ohm} & \SI{239}{\milli\ohm} \\
+            \SI{5}{\mega\hertz} & \SI{630}{\milli\ohm} & \SI{250}{\milli\ohm} & \SI{17.2}{\milli\ohm} \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+
+    Therefore, the electrolytic branch is most effective at \SI{100}{\hertz},
+    the film branch at \SI{300}{\kilo\hertz}, and the MLCC branch at
+    \SI{5}{\mega\hertz}. Nominal capacitance alone is therefore not a sufficient
+    selection criterion.
+\end{solutionblock}
+
+\subtask{The switching current changes by \SI{30}{\ampere} within
+\SI{10}{\nano\second}. The total loop inductance is \SI{12}{\nano\henry}.
+Estimate the resulting voltage spike.}
+
+\begin{solutionblock}
+    \begin{align}
+        \frac{\mathrm{d}i}{\mathrm{d}t}
+        &=\frac{\SI{30}{\ampere}}{\SI{10}{\nano\second}}
+        =\SI{3}{\ampere\per\nano\second},\\
+        v_\mathrm{spike}
+        &=L_\mathrm{loop}\frac{\mathrm{d}i}{\mathrm{d}t}
+        =\SI{12}{\nano\henry}\cdot\SI{3}{\ampere\per\nano\second}
+        =\SI{36}{\volt}.
+    \end{align}
+    A low-ESL capacitor cannot compensate for a poorly designed external
+    commutation loop.
+\end{solutionblock}
+
+\subtask{The electrolytic capacitor has an insulation resistance of
+\SI{20}{\mega\ohm}. Calculate its leakage current and leakage power at
+\SI{400}{\volt}.}
+
+\begin{solutionblock}
+    \begin{align}
+        I_\mathrm{leak}&=\frac{\SI{400}{\volt}}{\SI{20}{\mega\ohm}}
+        =\SI{20}{\micro\ampere},\\
+        P_\mathrm{leak}&=VI=\SI{400}{\volt}\cdot\SI{20}{\micro\ampere}
+        =\SI{8}{\milli\watt}.
+    \end{align}
+\end{solutionblock}
+
+\subtask{Explain why all three capacitor technologies may be required on the same DC bus.}
+
+\begin{solutionblock}
+    The electrolytic branch supplies low-frequency energy, the film branch
+    carries substantial mid-frequency ripple current with low loss, and the
+    MLCC branch provides the local high-frequency switching-current path.
+    Their parallel combination must nevertheless be checked for anti-resonance
+    and layout-induced impedance peaks.
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 2 Input and output capacitor co-design for a buck converter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\task{Input and output capacitor co-design for a buck converter}
+
+A buck converter operates with
+\begin{equation*}
+    V_\mathrm{in}=\SI{48}{\volt},\qquad
+    V_o=\SI{12}{\volt},\qquad
+    I_o=\SI{10}{\ampere},\qquad
+    f_s=\SI{200}{\kilo\hertz}.
+\end{equation*}
+The allowable peak-to-peak input ripple is $\SI{0.20}{\volt}$. The output
+inductor ripple is $\SI{4}{\ampere}$. A candidate output capacitor has an
+effective capacitance of $\SI{100}{\micro\farad}$ and an ESR of
+$\SI{5}{\milli\ohm}$. \newline
+
+For a load transient, the load current increases suddenly by \SI{8}{\ampere}.
+The output inductor is \SI{10}{\micro\henry}, and the maximum available voltage
+for increasing its current is \SI{6}{\volt}. The maximum permitted output
+voltage drop is \SI{0.20}{\volt}. \newline
+Use $\quad C_\mathrm{in,min} \approx \frac{I_oD(1-D)}{f_s\Delta V_\mathrm{in,pp}}, \quad  
+    \Delta v_\mathrm{C} \approx\frac{\Delta i_\mathrm{L}}{8f_sC_o},\quad \Delta v_\mathrm{ESR} = \Delta i_LR_\mathrm{ESR},  
+    \quad \text{and} \quad Z_\mathrm{target}=\frac{\Delta V_\mathrm{max}}{\Delta I_\mathrm{load}}.$
+
+
+\subtask{Calculate the converter duty ratio and the minimum effective input capacitance.}
+
+\begin{solutionblock}
+    \begin{align}
+        D&=\frac{V_o}{V_\mathrm{in}}=\frac{\SI{12}{\volt}}{\SI{48}{\volt}}=0.25,\\
+        C_\mathrm{in,min}
+        &\approx \frac{I_oD(1-D)}{f_s\Delta V_\mathrm{in,pp}} = \frac{\SI{10}{\ampere}(0.25)(0.75)}
+        {\SI{200}{\kilo\hertz} \cdot \SI{0.20}{\volt}}
+        \approx\SI{46.9}{\micro\farad}.
+    \end{align}
+\end{solutionblock}
+
+\subtask{Compare one nominal \SI{100}{\micro\farad} MLCC that retains
+\SI{45}{\percent} of its capacitance with two nominal
+\SI{47}{\micro\farad} MLCCs that each retain \SI{55}{\percent}.}
+
+\begin{solutionblock}
+    \begin{align}
+        C_\mathrm{eff,100}&=0.45\cdot\SI{100}{\micro\farad}
+        =\SI{45}{\micro\farad},\\
+        C_\mathrm{eff,2x47}&=2\cdot0.55\cdot\SI{47}{\micro\farad}
+        =\SI{51.7}{\micro\farad}.
+    \end{align}
+    The first choice is slightly below the required effective capacitance,
+    whereas the two-capacitor solution meets the first-order requirement.
+    Tolerance, ageing, and temperature derating still require additional margin.
+\end{solutionblock}
+
+\subtask{Calculate the ideal capacitive output ripple and the ESR ripple.}
+
+\begin{solutionblock}
+    \begin{align}
+        \Delta v_\mathrm{C}&\approx \frac{\Delta i_\mathrm{L}}{8f_sC_o} = \frac{\SI{4}{\ampere}}
+        {8\cdot\SI{200}{\kilo\hertz}\cdot\SI{100}{\micro\farad}}
+        =\SI{25}{\milli\volt},\\
+        \Delta v_\mathrm{ESR}&=\Delta i_\mathrm{L} R_\mathrm{ESR}=\SI{4}{\ampere}\cdot\SI{5}{\milli\ohm}
+        =\SI{20}{\milli\volt}.
+    \end{align}
+    Neglecting ESL, the approximate total ripple is \SI{45}{\milli\volt}.
+\end{solutionblock}
+
+\subtask{During the \SI{8}{\ampere} load step, calculate the inductor current
+slew rate, the response time, and the charge supplied by the output capacitor.}
+
+\begin{solutionblock}
+    \begin{align}
+        \frac{\mathrm{d}i_\mathrm{L}}{\mathrm{d}t}
+        &=\frac{V_\mathrm{L, max}}{L}=\frac{\SI{6}{\volt}}{\SI{10}{\micro\henry}}
+        =\SI{0.6}{\ampere\per\micro\second},\\
+        t_r&=\frac{\Delta I_\mathrm{load}}{\mathrm{d}i_\mathrm{L} / \mathrm{d}t}
+            =\frac{\SI{8}{\ampere}}{\SI{0.6}{\ampere\per\micro\second}}
+        \approx\SI{13.3}{\micro\second}.
+    \end{align}
+    The current deficit decreases approximately linearly, so
+    \begin{equation}
+        \Delta Q=\frac{1}{2}\Delta I_\mathrm{load}t_r
+        =\frac{1}{2}\cdot\SI{8}{\ampere}\cdot\SI{13.3}{\micro\second}
+        \approx\SI{53.3}{\micro\coulomb}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Determine the capacitance required to keep the total transient drop below
+\SI{0.20}{\volt}.}
+
+\begin{solutionblock}
+    The immediate ESR drop is
+    \begin{equation}
+        \Delta v_\mathrm{ESR}=\Delta i_\mathrm{L} R_\mathrm{ESR}=\SI{8}{\ampere}\cdot\SI{5}{\milli\ohm}
+        =\SI{40}{\milli\volt}.
+    \end{equation}
+    The remaining capacitive voltage budget is therefore
+    \SI{0.16}{\volt}. Hence,
+    \begin{equation}
+        C_\mathrm{min}=\frac{\Delta Q}{\Delta V_\mathrm{C}}
+        =\frac{\SI{53.3}{\micro\coulomb}}{\SI{0.16}{\volt}}
+        \approx\SI{333}{\micro\farad}.
+    \end{equation}
+    The \SI{100}{\micro\farad} capacitor satisfies the steady-state ripple
+    requirement but not the load-transient requirement.
+\end{solutionblock}
+
+\subtask{Calculate the target impedance and explain why ripple-based capacitance alone is insufficient.}
+
+\begin{solutionblock}
+    \begin{equation}
+        Z_\mathrm{target}=\frac{\Delta V_\mathrm{max}}{\Delta I_\mathrm{load}}=\frac{\SI{0.20}{\volt}}{\SI{8}{\ampere}}
+        =\SI{25}{\milli\ohm}.
+    \end{equation}
+    The output network must remain below this impedance over the frequency range
+    where the control loop and inductor cannot yet restore the load current.
+    This normally requires a coordinated bulk, polymer, film, and/or ceramic network.
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 3 DC-link capacitor bank, current capability, and layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{DC-link capacitor bank, current capability, and layout}
+
+A converter must supply a temporary power mismatch of \SI{25}{\kilo\watt} for
+\SI{5}{\milli\second}. The DC-link voltage may fall from \SI{800}{\volt} to
+\SI{720}{\volt}. Available electrolytic capacitors have
+\begin{equation*}
+    C=\SI{4700}{\micro\farad},\quad
+    V_\mathrm{rated}=\SI{450}{\volt},\quad
+    R_\mathrm{ESR}=\SI{18}{\milli\ohm},\quad
+    I_\mathrm{ripple,rated}=\SI{18}{\ampere}.
+\end{equation*}
+The required DC-link ripple-current capability is \SI{30}{\ampere}. Use
+$\quad C_\mathrm{req}=\frac{2P \cdot t_\mathrm{h}}{V_\mathrm{max}^2-V_\mathrm{min}^2}.$
+
+
+\subtask{Calculate the minimum capacitance from the hold-up requirement.}
+
+\begin{solutionblock}
+    \begin{equation}
+        C_\mathrm{req} = C_\mathrm{req}=\frac{2P \cdot t_\mathrm{h}}{V_\mathrm{max}^2-V_\mathrm{min}^2}
+        =\frac{2\cdot\SI{25}{\kilo\watt}\cdot\SI{5}{\milli\second}}
+        {(\SI{800}{\volt})^2-(\SI{720}{\volt})^2}
+        \approx\SI{2.06}{\milli\farad}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Evaluate one string of two series-connected capacitors in terms of
+equivalent capacitance, voltage rating, ESR, and ripple-current capability.}
+
+\begin{solutionblock}
+    \begin{align}
+        C_\mathrm{string}&=\frac{C}{2}=\frac{\SI{4700}{\micro\farad}}{2}=\SI{2350}{\micro\farad},\\
+        V_\mathrm{string}&=2 \cdot V_\mathrm{rated} = 2\cdot\SI{450}{\volt}=\SI{900}{\volt},\\
+        R_\mathrm{ESR,string}&=2 \cdot R_\mathrm{ESR} =2\cdot\SI{18}{\milli\ohm}=\SI{36}{\milli\ohm}.
+    \end{align}
+    The ripple-current rating remains approximately \SI{18}{\ampere} because
+    the same current passes through both series capacitors. The string meets the
+    capacitance and voltage requirements, but not the required ripple-current capability.
+\end{solutionblock}
+
+\subtask{Evaluate two identical series strings connected in parallel and determine
+whether the resulting bank satisfies all first-order requirements.}
+
+\begin{solutionblock}
+    \begin{align}
+        C_\mathrm{bank}&=2 \cdot C_\mathrm{string}=2\cdot\SI{2350}{\micro\farad}
+        =\SI{4700}{\micro\farad},\\
+        R_\mathrm{ESR,bank}&=\frac{R_\mathrm{ESR,string}}{2}=\frac{\SI{36}{\milli\ohm}}{2}
+        =\SI{18}{\milli\ohm},\\
+        I_\mathrm{ripple,bank}&\approx 2 \cdot I_\mathrm{ripple,rated} = 2 \cdot \SI{18}{\ampere}
+        =\SI{36}{\ampere}.
+    \end{align}
+    The two-string bank satisfies the capacitance, voltage, and ripple-current requirements.
+\end{solutionblock}
+
+\subtask{Calculate the ESR loss of the complete bank at \SI{30}{\ampere} RMS,
+assuming equal current sharing.}
+
+\begin{solutionblock}
+    \begin{equation}
+        P_\mathrm{ESR}=I_\mathrm{rms}^2 R_\mathrm{ESR,bank}
+        =(\SI{30}{\ampere})^2\cdot\SI{18}{\milli\ohm}
+        =\SI{16.2}{\watt}.
+    \end{equation}
+    Each string carries \SI{15}{\ampere}; therefore, each of the four capacitors
+    dissipates approximately
+    \begin{equation}
+        P_\mathrm{cap}= (\frac{I_\mathrm{rms}}{2})^2 R_\mathrm{ESR,bank}=(\SI{15}{\ampere})^2\cdot\SI{18}{\milli\ohm}
+        =\SI{4.05}{\watt}.
+    \end{equation}
+\end{solutionblock}
+
+\subtask{Explain why voltage-balancing resistors are needed.}
+
+\begin{solutionblock}
+    Capacitance tolerance, leakage-current mismatch, temperature, and ageing can
+    produce unequal voltage sharing. One capacitor may therefore exceed its
+    individual voltage rating even when the total string voltage is acceptable.
+    Passive or active balancing is needed to control this imbalance.
+\end{solutionblock}
+
+\subtask{A local film/ceramic branch and laminated busbar reduce the total loop
+inductance from \SI{15}{\nano\henry} to \SI{4}{\nano\henry}. Calculate the
+switching spike before and after the improvement for
+$\mathrm{d}i/\mathrm{d}t=\SI{3}{\ampere\per\nano\second}$.}
+
+\begin{solutionblock}
+    \begin{align}
+        v_{\sigma,1}&=L_\mathrm{loop, org} \cdot \frac{\mathrm{d}i}{\mathrm{d}t}=\SI{15}{\nano\henry}\cdot
+        \SI{3}{\ampere\per\nano\second}=\SI{45}{\volt},\\
+        v_{\sigma,2}&=L_\mathrm{loop, improved} \cdot \frac{\mathrm{d}i}{\mathrm{d}t}=\SI{4}{\nano\henry}\cdot
+        \SI{3}{\ampere\per\nano\second}=\SI{12}{\volt}.
+    \end{align}
+    The layout and local capacitor placement reduce the overshoot by \SI{33}{\volt}.
+\end{solutionblock}
+
+\subtask{Explain why a hybrid bank may improve electrolytic-capacitor lifetime.}
+
+\begin{solutionblock}
+    Film capacitors can carry much of the mid-frequency ripple current, while
+    local ceramics carry the highest-frequency switching current. This reduces
+    high-frequency heating in the electrolytic capacitors and can extend their
+    useful life. Anti-resonance and unequal current sharing must still be checked.
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 4 Why snubber, resonant, and EMI capacitors are not interchangeable
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Why snubber, resonant, and EMI capacitors are not interchangeable}
+
+Three capacitor applications are being designed. \newline
+
+\textbf{Case A -- WBG snubber:} \newline
+$C_s=\SI{4.7}{\nano\farad}$ is connected across an \SI{800}{\volt} switch,
+$\mathrm{d}v/\mathrm{d}t=\SI{20}{\volt\per\nano\second}$, and
+$f_s=\SI{50}{\kilo\hertz}$. \newline
+
+\textbf{Case B -- resonant capacitor:} \newline
+$L_r=\SI{10}{\micro\henry}$, required $f_r=\SI{250}{\kilo\hertz}$, and
+capacitance tolerance $\pm\SI{5}{\percent}$. \newline
+
+\textbf{Case C -- Y capacitors:} \newline
+A $\SI{230}{\volt}$ RMS, $\SI{50}{\hertz}$ supply permits a maximum total
+line-to-earth leakage current of $\SI{0.5}{\milli\ampere}$ through two identical
+Y capacitors.
+
+\subtask{For the snubber, calculate the peak capacitor current, stored energy,
+and an upper-bound repetitive power if the stored energy is dissipated once per cycle.}
+
+\begin{solutionblock}
+    \begin{align}
+        I_\mathrm{pk}&=C_s\frac{\mathrm{d}v}{\mathrm{d}t}
+        =\SI{4.7}{\nano\farad}\cdot\SI{20}{\volt\per\nano\second}
+        =\SI{94}{\ampere},\\
+        E_s&=\frac{1}{2}C_sV^2
+        =\frac{1}{2}\cdot\SI{4.7}{\nano\farad}\cdot(\SI{800}{\volt})^2
+        \approx\SI{1.50}{\milli\joule},\\
+        P_\mathrm{upper}&=E_sf_s
+        =\SI{1.50}{\milli\joule}\cdot\SI{50}{\kilo\hertz}
+        \approx\SI{75.2}{\watt}.
+    \end{align}
+    The actual energy exchange depends on the snubber topology, but pulse-current,
+    pulse-energy, and thermal ratings cannot be ignored.
+\end{solutionblock}
+
+\subtask{Calculate the resonant capacitance required in Case B and the frequency
+range caused by the \SI{5}{\percent} capacitance tolerance.}
+
+\begin{solutionblock}
+    \begin{align}
+        C_r&=\frac{1}{(2\pi f_r)^2L_r}
+        \approx\SI{40.5}{\nano\farad},\\
+        f_{r,\min}&=\frac{f_{r,\min}}{\sqrt{1+\Delta C/C}} = \frac{\SI{250}{\kilo\hertz}}{\sqrt{1.05}}
+        \approx\SI{244.0}{\kilo\hertz},\\
+        f_{r,\max}&=\frac{f_{r,\min}}{\sqrt{1-\Delta C/C}} = \frac{\SI{250}{\kilo\hertz}}{\sqrt{0.95}}
+        \approx\SI{256.5}{\kilo\hertz}.
+    \end{align}
+    Thus, a \SI{5}{\percent} capacitance tolerance produces approximately a
+    \SI{2.5}{\percent} resonant-frequency variation.
+\end{solutionblock}
+
+\subtask{Determine the maximum value of each Y capacitor in Case C. Check whether
+two \SI{4.7}{\nano\farad} Y capacitors satisfy the leakage-current limit.}
+
+\begin{solutionblock}
+    The total leakage current through two equal capacitors is
+    \begin{equation}
+        I_\mathrm{leak,total}=2\omega C \cdot V.
+    \end{equation}
+    Hence,
+    \begin{equation}
+        C_\mathrm{max}=\frac{I_\mathrm{leak,total}}{2\omega \cdot  V}=\frac{\SI{0.5}{\milli\ampere}}
+        {2\cdot2\pi \cdot \SI{50}{\hertz}\cdot\SI{230}{\volt}}
+        \approx\SI{3.46}{\nano\farad}.
+    \end{equation}
+    A standard \SI{3.3}{\nano\farad} value satisfies the first-order limit.
+    For two \SI{4.7}{\nano\farad} capacitors,
+    \begin{equation}
+        I_\mathrm{leak}=2\omega C \cdot V=2 \cdot2 \pi \cdot \SI{50}{\hertz} \cdot
+        \SI{4.7}{\nano\farad} \cdot \SI{230}{\volt}
+        \approx\SI{0.679}{\milli\ampere},
+    \end{equation}
+    which exceeds the permitted value.
+\end{solutionblock}
+
+\subtask{Recommend an appropriate capacitor technology for each case and explain
+why nominal capacitance and voltage rating are not sufficient selection criteria.}
+
+\begin{solutionblock}
+    A pulse-rated low-ESL film or power-ceramic capacitor is appropriate for the
+    snubber. A low-loss and capacitance-stable polypropylene film or suitable
+    resonant ceramic capacitor is appropriate for the resonant tank. Only a
+    certified Y-class safety capacitor is acceptable from line to earth.
+    Pulse-current capability, dielectric loss, capacitance stability, self-healing,
+    safety certification, and failure mode are application-specific requirements.
+\end{solutionblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Task 5 Condition monitoring and an end-of-life decision
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\task{Condition monitoring and an end-of-life decision}
+
+A DC-link electrolytic capacitor was characterized when new and again after
+several years of operation. The data are listed in
+\autoref{table:capacitor_task5_data}.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{lll}
+        \toprule
+        Parameter & New condition & Measured condition \\
+        \midrule
+        Capacitance & \SI{2200}{\micro\farad} & \SI{1760}{\micro\farad} \\
+        ESR at the monitoring frequency & \SI{20}{\milli\ohm} & \SI{40}{\milli\ohm} \\
+        \bottomrule
+    \end{tabular}
+    \caption{Condition-monitoring data for Task 5.}
+    \label{table:capacitor_task5_data}
+\end{table}
+
+The capacitor carries \SI{10}{\ampere} RMS ripple current at an ambient
+temperature of \SI{70}{\degreeCelsius}. Its thermal resistance to ambient is
+\SI{4}{\kelvin\per\watt}. For this tutorial, use the following maintenance limits:
+
+\begin{itemize}
+    \setlength{\itemsep}{-2pt} % Distance between the points (Part1)
+    \setlength{\parskip}{-2pt} % Distance between the points (Part2)       
+    \item capacitance not below \SI{80}{\percent} of the initial value,
+    \item ESR not above twice its initial value,
+    \item hot-spot temperature below \SI{95}{\degreeCelsius}.
+\end{itemize}
+
+Use $P_\mathrm{ESR}=I_\mathrm{rms}^2R_\mathrm{ESR}, \quad \text{and} \quad
+    T_\mathrm{hotspot}=T_\mathrm{amb}+R_\mathrm{th}P_\mathrm{ESR}$.
+
+\subtask{Calculate the percentage capacitance remaining and the ESR increase factor.}
+
+\begin{solutionblock}
+    \begin{align}
+        \frac{C_\mathrm{meas}}{C_0}
+        &=\frac{\SI{1760}{\micro\farad}}{\SI{2200}{\micro\farad}}
+        =0.80=\SI{80}{\percent},\\
+        \frac{R_\mathrm{ESR,meas}}{R_\mathrm{ESR,0}}
+        &=\frac{\SI{40}{\milli\ohm}}{\SI{20}{\milli\ohm}}=2.
+    \end{align}
+    Both electrical health indicators have reached, but not yet exceeded, the
+    defined maintenance limits.
+\end{solutionblock}
+
+\subtask{Calculate the capacitor loss and estimated hot-spot temperature in the
+new and measured conditions at \SI{10}{\ampere} RMS.}
+
+\begin{solutionblock}
+    New condition:
+    \begin{align}
+        P_0&=(I_\mathrm{rms,ripple})^2 \cdot R_\mathrm{ESR,0}=(\SI{10}{\ampere})^2\cdot\SI{20}{\milli\ohm}
+        =\SI{2.0}{\watt},\\
+        T_\mathrm{hotspot,0}&=T_\mathrm{ambient} + R_\mathrm{th} \cdot P_0 =\SI{70}{\degreeCelsius}
+        +\SI{4}{\kelvin\per\watt}\cdot\SI{2.0}{\watt}
+        =\SI{78}{\degreeCelsius}.
+    \end{align}
+    Measured condition:
+    \begin{align}
+        P_1&=(I_\mathrm{rms,ripple})^2 \cdot R_\mathrm{ESR,meas}=(\SI{10}{\ampere})^2\cdot\SI{40}{\milli\ohm}
+        =\SI{4.0}{\watt},\\
+        T_\mathrm{hotspot,1}&=T_\mathrm{ambient} + R_\mathrm{th} \cdot P_1 = \SI{70}{\degreeCelsius}
+        +\SI{4}{\kelvin\per\watt}\cdot\SI{4.0}{\watt}
+        =\SI{86}{\degreeCelsius}.
+    \end{align}
+    ESR ageing doubles the internal heating under the same ripple current.
+\end{solutionblock}
+
+\subtask{Repeat the measured-condition thermal calculation for a temporary
+\SI{13}{\ampere} RMS operating mode.}
+
+\begin{solutionblock}
+    \begin{align}
+        P_{13\mathrm{A}}&=(I_\mathrm{rms(13),ripple})^2 \cdot R_\mathrm{ESR,meas}=(\SI{13}{\ampere})^2\cdot\SI{40}{\milli\ohm}
+        =\SI{6.76}{\watt},\\
+        T_\mathrm{hotspot,13\mathrm{A}}&=\SI{70}{\degreeCelsius}
+        +\SI{4}{\kelvin\per\watt}\cdot\SI{6.76}{\watt}
+        \approx\SI{97.0}{\degreeCelsius}.
+    \end{align}
+    The high-load mode violates the specified hot-spot limit.
+\end{solutionblock}
+
+\subtask{For the same capacitor-current waveform, quantify the change in the
+ideal capacitive voltage ripple caused by the capacitance reduction.}
+
+\begin{solutionblock}
+    Since ideal capacitive ripple is inversely proportional to capacitance,
+    \begin{equation}
+        \frac{\Delta V_\mathrm{meas}}{\Delta V_0}
+        =\frac{C_0}{C_\mathrm{meas}}
+        =\frac{2200}{1760}=1.25.
+    \end{equation}
+    The ideal capacitive ripple is therefore \SI{25}{\percent} higher than in the
+    new condition.
+\end{solutionblock}
+
+\subtask{Make a maintenance decision and identify the quantities that should be trended.}
+
+\begin{solutionblock}
+    The capacitor can still remain below the thermal limit at the nominal
+    \SI{10}{\ampere} operating point, but both capacitance and ESR have reached
+    the defined electrical maintenance limits, and the high-load mode is no longer
+    thermally acceptable. Planned replacement is therefore justified rather than
+    continued unrestricted operation. Capacitance, ESR or dissipation factor,
+    leakage current, case/hot-spot temperature, and ripple-current exposure should
+    be trended over time.
+\end{solutionblock}
