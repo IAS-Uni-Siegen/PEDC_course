@@ -53,10 +53,10 @@ So GaN has an approximate \textbf{25-fold Johnson-limit advantage} over silicon 
 
 \subtask{Explain physically why this result matters for compact converter design.}
 \begin{solutionblock}
-A larger $BVf_T$ capability means that one material can, in principle, support both high blocking voltage and fast operation. At converter level, that opens the door to higher switching frequency, smaller magnetics, smaller capacitors, and higher power density.
+A larger $B_\mathrm{V}f_\mathrm{T}$ capability means that one material can, in principle, support both high blocking voltage and fast operation. At converter level, that opens the door to higher switching frequency, smaller magnetics, smaller capacitors, and higher power density.
 \end{solutionblock}
 
-\subtask{A student says: ``If GaN is always better in $BVf_T$, then it should automatically replace Si everywhere.'' Give two technically correct objections.}
+\subtask{A student says: ``If GaN is always better in $B_\mathrm{V}f_\mathrm{T}$, then it should automatically replace Si everywhere.'' Give two technically correct objections.}
 \begin{solutionblock}
 Two correct objections are:
 \begin{itemize}
@@ -253,7 +253,7 @@ Use $P_{\mathrm{cond}} = I^2 D\,R_{\mathrm{on}}$ and $P_g = Q_g V_{\mathrm{drv}}
 
 The lecture moves from low-voltage scaling to high-voltage GaN, where drift-region resistance, lateral versus vertical structures, field plates, and current collapse become central. Use the simplified scaling
     \begin{align*}
-        R_{\mathrm{epi}} \propto \frac{BV^2}{\mu E_c^3}
+        R_{\mathrm{epi}} \propto \frac{B_\mathrm{V}^2}{\mu E_\mathrm{c}^3}
     \end{align*}
     and assume equal mobility for the comparison. Take:
     \begin{itemize}
@@ -265,7 +265,7 @@ The lecture moves from low-voltage scaling to high-voltage GaN, where drift-regi
 
 \subtask{Estimate the ratio $\dfrac{R_{\mathrm{epi,GaN}}}{R_{\mathrm{epi,Si}}}$ at the same breakdown voltage.}
 \begin{solutionblock}
-    Since $R_{\mathrm{epi}} \propto 1/E_c^3$ for fixed $BV$ and equal mobility,
+    Since $R_{\mathrm{epi}} \propto 1/E_c^3$ for fixed $B_\mathrm{V}$ and equal mobility,
     \begin{equation}
         \frac{R_{\mathrm{epi,GaN}}}{R_{\mathrm{epi,Si}}}
         =
